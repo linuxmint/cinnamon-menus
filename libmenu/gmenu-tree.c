@@ -163,7 +163,7 @@ static void      gmenu_tree_resolve_files        (GMenuTree       *tree,
 						  MenuLayoutNode  *layout);
 static void      gmenu_tree_force_recanonicalize (GMenuTree       *tree);
 static void      gmenu_tree_invoke_monitors      (GMenuTree       *tree);
-
+     
 static void gmenu_tree_item_unref_and_unset_parent (gpointer itemp);
 
 typedef enum
@@ -1255,12 +1255,8 @@ gmenu_tree_directory_make_path (GMenuTreeDirectory *directory,
   append_directory_path (directory, path);
 
   if (entry != NULL)
-    {
-      const char *basename;
-
-      basename = desktop_entry_get_basename (entry->desktop_entry);
-      g_string_append (path, basename);
-    }
+    g_string_append (path,
+		     desktop_entry_get_basename (entry->desktop_entry));
 
   return g_string_free (path, FALSE);
 }
@@ -1290,7 +1286,7 @@ gmenu_tree_entry_get_desktop_file_path (GMenuTreeEntry *entry)
 const char *
 gmenu_tree_entry_get_desktop_file_id (GMenuTreeEntry *entry)
 {
-  g_return_val_if_fail (entry != NULL, FALSE);
+  g_return_val_if_fail (entry != NULL, NULL);
 
   return entry->desktop_file_id;
 }
@@ -1502,7 +1498,7 @@ gmenu_tree_directory_finalize (GMenuTreeDirectory *directory)
 		   NULL);
   g_slist_free (directory->contents);
   directory->contents = NULL;
-
+  
   g_slist_foreach (directory->default_layout_info,
 		   (GFunc) menu_layout_node_unref,
 		   NULL);

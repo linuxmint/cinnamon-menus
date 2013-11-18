@@ -446,7 +446,7 @@ desktop_entry_ref (DesktopEntry *entry)
   g_return_val_if_fail (entry != NULL, NULL);
   g_return_val_if_fail (entry->refcount > 0, NULL);
 
-  g_atomic_int_inc (&entry->refcount);
+  entry->refcount += 1;
 
   return entry;
 }
@@ -740,7 +740,7 @@ desktop_entry_set_ref (DesktopEntrySet *set)
   g_return_val_if_fail (set != NULL, NULL);
   g_return_val_if_fail (set->refcount > 0, NULL);
 
-  g_atomic_int_inc (&set->refcount);
+  set->refcount += 1;
 
   return set;
 }
@@ -748,13 +748,11 @@ desktop_entry_set_ref (DesktopEntrySet *set)
 void
 desktop_entry_set_unref (DesktopEntrySet *set)
 {
-  gboolean is_zero;
-
   g_return_if_fail (set != NULL);
   g_return_if_fail (set->refcount > 0);
 
-  is_zero = g_atomic_int_dec_and_test (&set->refcount);
-  if (is_zero)
+  set->refcount -= 1;
+  if (set->refcount == 0)
     {
       menu_verbose (" Deleting entry set %p\n", set);
 
