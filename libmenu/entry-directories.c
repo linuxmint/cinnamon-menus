@@ -65,7 +65,10 @@ struct CachedDir
   guint have_read_entries : 1;
   guint deleted : 1;
 
-  guint references : 28;
+  guint references;
+
+  GFunc    notify;
+  gpointer notify_data;
 };
 
 struct CachedDirMonitor
@@ -80,6 +83,12 @@ static void     cached_dir_remove_reference       (CachedDir *dir);
 static void     cached_dir_free                   (CachedDir  *dir);
 static gboolean cached_dir_load_entries_recursive (CachedDir  *dir,
                                                    const char *dirname);
+static void     cached_dir_unref                  (CachedDir *dir);
+static CachedDir * cached_dir_add_subdir          (CachedDir  *dir,
+                                                   const char *basename,
+                                                   const char *path);
+static gboolean cached_dir_remove_subdir          (CachedDir  *dir,
+                                                   const char *basename);
 
 static void handle_cached_dir_changed (MenuMonitor      *monitor,
 				       MenuMonitorEvent  event,
@@ -92,14 +101,35 @@ static void handle_cached_dir_changed (MenuMonitor      *monitor,
 
 static CachedDir *dir_cache = NULL;
 
+static void
+clear_cache (CachedDir *dir,
+             gpointer  *cache)
+{
+  *cache = NULL;
+}
+
 static CachedDir *
 cached_dir_new (const char *name)
 {
   CachedDir *dir;
 
   dir = g_new0 (CachedDir, 1);
-
   dir->name = g_strdup (name);
+
+  return dir;
+}
+
+static CachedDir *
+cached_dir_new_full (const char *name,
+                     GFunc       notify,
+                     gpointer    notify_data)
+{
+  CachedDir *dir;
+
+  dir = cached_dir_new (name);
+
+  dir->notify = notify;
+  dir->notify_data = notify_data;
 
   return dir;
 }
@@ -127,7 +157,7 @@ cached_dir_free (CachedDir *dir)
   dir->entries = NULL;
 
   g_slist_foreach (dir->subdirs,
-                   (GFunc) cached_dir_free,
+                   (GFunc) cached_dir_unref,
                    NULL);
   g_slist_free (dir->subdirs);
   dir->subdirs = NULL;
@@ -137,6 +167,32 @@ cached_dir_free (CachedDir *dir)
 
   g_free (dir->name);
   g_free (dir);
+}
+
+static CachedDir *
+cached_dir_ref (CachedDir *dir)
+{
+  dir->references++;
+  return dir;
+}
+
+static void
+cached_dir_unref (CachedDir *dir)
+{
+  if (--dir->references)
+    {
+      CachedDir *parent;
+
+      parent = dir->parent;
+
+      if (parent != NULL)
+        cached_dir_remove_subdir (parent, dir->name);
+
+      if (dir->notify)
+        dir->notify (dir, dir->notify_data);
+
+      cached_dir_free (dir);
+    }
 }
 
 static inline CachedDir *
@@ -217,7 +273,9 @@ cached_dir_lookup (const char *canonical)
   int         i;
 
   if (dir_cache == NULL)
-    dir_cache = cached_dir_new ("/");
+    dir_cache = cached_dir_new_full ("/",
+                                     (GFunc) clear_cache,
+                                     &dir_cache);
   dir = dir_cache;
 
   g_assert (canonical != NULL && canonical[0] == G_DIR_SEPARATOR);
@@ -231,12 +289,7 @@ cached_dir_lookup (const char *canonical)
     {
       CachedDir *subdir;
 
-      if ((subdir = find_subdir (dir, split[i])) == NULL)
-        {
-          subdir = cached_dir_new (split[i]);
-          dir->subdirs = g_slist_prepend (dir->subdirs, subdir);
-          subdir->parent = dir;
-        }
+      subdir = cached_dir_add_subdir (dir, split[i], NULL);
 
       dir = subdir;
 
@@ -324,7 +377,7 @@ cached_dir_remove_entry (CachedDir  *dir,
   return FALSE;
 }
 
-static gboolean
+static CachedDir *
 cached_dir_add_subdir (CachedDir  *dir,
                        const char *basename,
                        const char *path)
@@ -336,23 +389,23 @@ cached_dir_add_subdir (CachedDir  *dir,
   if (subdir != NULL)
     {
       subdir->deleted = FALSE;
-      return TRUE;
+      return subdir;
     }
 
   subdir = cached_dir_new (basename);
 
-  if (!cached_dir_load_entries_recursive (subdir, path))
+  if (path != NULL && !cached_dir_load_entries_recursive (subdir, path))
     {
       cached_dir_free (subdir);
-      return FALSE;
+      return NULL;
     }
 
   menu_verbose ("Caching dir \"%s\"\n", basename);
 
   subdir->parent = dir;
-  dir->subdirs = g_slist_prepend (dir->subdirs, subdir);
+  dir->subdirs = g_slist_prepend (dir->subdirs, cached_dir_ref (subdir));
 
-  return TRUE;
+  return subdir;
 }
 
 static gboolean
@@ -369,7 +422,7 @@ cached_dir_remove_subdir (CachedDir  *dir,
 
       if (subdir->references == 0)
         {
-          cached_dir_free (subdir);
+          cached_dir_unref (subdir);
           dir->subdirs = g_slist_remove (dir->subdirs, subdir);
         }
 
@@ -564,7 +617,7 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
       switch (event)
         {
         case MENU_MONITOR_EVENT_CREATED:
-          handled = cached_dir_add_subdir (dir, basename, path);
+          handled = cached_dir_add_subdir (dir, basename, path) != NULL;
           break;
 
         case MENU_MONITOR_EVENT_CHANGED:
@@ -736,7 +789,7 @@ cached_dir_remove_monitor (CachedDir                 *dir,
 static void
 cached_dir_add_reference (CachedDir *dir)
 {
-  dir->references++;
+  cached_dir_ref (dir);
 
   if (dir->parent != NULL)
     {
@@ -751,29 +804,7 @@ cached_dir_remove_reference (CachedDir *dir)
 
   parent = dir->parent;
 
-  if (--dir->references == 0 && dir->deleted)
-    {
-      if (dir->parent != NULL)
-	{
-	  GSList *tmp;
-
-	  tmp = parent->subdirs;
-	  while (tmp != NULL)
-	    {
-	      CachedDir *subdir = tmp->data;
-
-	      if (!strcmp (subdir->name, dir->name))
-		{
-		  parent->subdirs = g_slist_delete_link (parent->subdirs, tmp);
-		  break;
-		}
-
-	      tmp = tmp->next;
-	    }
-	}
-
-      cached_dir_free (dir);
-    }
+  cached_dir_unref (dir);
 
   if (parent != NULL)
     {

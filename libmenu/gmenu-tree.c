@@ -163,7 +163,7 @@ static void      gmenu_tree_resolve_files        (GMenuTree       *tree,
 						  MenuLayoutNode  *layout);
 static void      gmenu_tree_force_recanonicalize (GMenuTree       *tree);
 static void      gmenu_tree_invoke_monitors      (GMenuTree       *tree);
-     
+
 static void gmenu_tree_item_unref_and_unset_parent (gpointer itemp);
 
 typedef enum
@@ -1498,7 +1498,7 @@ gmenu_tree_directory_finalize (GMenuTreeDirectory *directory)
 		   NULL);
   g_slist_free (directory->contents);
   directory->contents = NULL;
-  
+
   g_slist_foreach (directory->default_layout_info,
 		   (GFunc) menu_layout_node_unref,
 		   NULL);
