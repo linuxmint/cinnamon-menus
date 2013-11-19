@@ -179,7 +179,7 @@ cached_dir_ref (CachedDir *dir)
 static void
 cached_dir_unref (CachedDir *dir)
 {
-  if (--dir->references)
+  if (--dir->references == 0)
     {
       CachedDir *parent;
 
