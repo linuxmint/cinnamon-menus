@@ -538,12 +538,6 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
   char     *basename;
   char     *dirname;
 
-  menu_verbose ("'%s' notified of '%s' %s - invalidating cache\n",
-		dir->name,
-                path,
-                event == MENU_MONITOR_EVENT_CREATED ? ("created") :
-                event == MENU_MONITOR_EVENT_DELETED ? ("deleted") : ("changed"));
-
   dirname  = g_path_get_dirname  (path);
   basename = g_path_get_basename (path);
 
@@ -647,6 +641,12 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
 
   if (handled)
     {
+      menu_verbose ("'%s' notified of '%s' %s - invalidating cache\n",
+                    dir->name,
+                    path,
+                    event == MENU_MONITOR_EVENT_CREATED ? ("created") :
+                    event == MENU_MONITOR_EVENT_DELETED ? ("deleted") : ("changed"));
+
       /* CHANGED events don't change the set of desktop entries, unless it's the mimeinfo.cache file changing */
       if (retry_changes || (event == MENU_MONITOR_EVENT_CREATED || event == MENU_MONITOR_EVENT_DELETED))
         {
