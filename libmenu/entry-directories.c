@@ -547,7 +547,7 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
           break;
         }
     }
-  else /* Try recursing */
+  else if (g_file_test (path, G_FILE_TEST_IS_DIR)) /* Try recursing */
     {
       switch (event)
         {
