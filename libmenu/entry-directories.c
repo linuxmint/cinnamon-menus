@@ -550,6 +550,7 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
   basename = g_path_get_basename (path);
 
   dir = cached_dir_lookup (dirname);
+  cached_dir_add_reference (dir);
 
   if (g_str_has_suffix (basename, ".desktop") ||
       g_str_has_suffix (basename, ".directory"))
@@ -656,6 +657,8 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
 
       cached_dir_queue_monitor_event (dir);
     }
+
+  cached_dir_remove_reference (dir);
 }
 
 static void
