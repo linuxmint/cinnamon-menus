@@ -157,16 +157,28 @@ key_file_get_show_in (GKeyFile *key_file)
   gchar **strv;
   gboolean show_in = TRUE;
   int i;
+  gchar *exec;
 
   current_desktop = get_current_desktop ();
   if (!current_desktop)
     return TRUE;
+
+  exec = g_key_file_get_string (key_file,
+                                DESKTOP_ENTRY_GROUP,
+                                "Exec",
+                                NULL);
+
+  if (g_str_has_prefix (exec, "gnome-control-center")) {
+    g_free (exec);
+    return FALSE;
+  }
 
   strv = g_key_file_get_string_list (key_file,
                                      DESKTOP_ENTRY_GROUP,
                                      "OnlyShowIn",
                                      NULL,
                                      NULL);
+
   if (strv)
     {
       show_in = FALSE;
@@ -588,9 +600,13 @@ desktop_entry_get_show_in (DesktopEntry *entry)
 
       if (current_desktop == NULL)
         return TRUE;
-      else
-        //return g_desktop_app_info_get_show_in (((DesktopEntryDesktop*)entry)->appinfo, current_desktop);
-        return g_strcmp0 (current_desktop, "GNOME") == 0 || g_strcmp0 (current_desktop, "X-Cinnamon") == 0;
+      else {
+        const char *exec = g_app_info_get_executable (G_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo));
+        if (g_str_has_prefix (exec, "gnome-control-center"))
+            return FALSE;
+        else
+            return g_strcmp0 (current_desktop, "GNOME") == 0 || g_strcmp0 (current_desktop, "X-Cinnamon") == 0;
+      }
     }
   return ((DesktopEntryDirectory*)entry)->showin;
 }
