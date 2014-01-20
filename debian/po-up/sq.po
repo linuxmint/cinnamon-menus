@@ -1,0 +1,156 @@
+# Menu section translation
+# Copyright (C) 2003
+# This file is distributed under the same license as the menu package.
+# Bill Allombert <ballombe@debian.org>, 2003.
+# , fuzzy
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: menu-section 2.1.9-3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-04 22:08+0200\n"
+"PO-Revision-Date: 2006-10-14 13:18+0200\n"
+"Last-Translator: Elian Myftiu <elian.myftiu@gmail.com>\n"
+"Language-Team: Debian L10n Albanian <debian-l10n-albanian@lists.debian.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:1
+#, fuzzy
+msgid "Action"
+msgstr "Edukim"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:2
+#, fuzzy
+msgid "Action games"
+msgstr "Edukim"
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:1
+msgid "Adventure"
+msgstr "Aventurë"
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:2
+#, fuzzy
+msgid "Adventure style games"
+msgstr "Aventurë"
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:1
+msgid "Arcade"
+msgstr "Arcade"
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:2
+msgid "Arcade style games"
+msgstr ""
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:1
+msgid "Falling blocks"
+msgstr ""
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:2
+msgid "Falling blocks games"
+msgstr ""
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:1
+msgid "Board"
+msgstr "Fushe"
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:2
+#, fuzzy
+msgid "Board games"
+msgstr "Fushe"
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:1
+msgid "Card games"
+msgstr ""
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:2
+#, fuzzy
+msgid "Cards"
+msgstr "Letra"
+
+#: ../../debian/desktop-files/Debian.directory.in.h:1
+msgid "Debian"
+msgstr ""
+
+#: ../../debian/desktop-files/Debian.directory.in.h:2
+msgid "The Debian menu"
+msgstr ""
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:1
+msgid "Science"
+msgstr "Shkencë"
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:2
+msgid "Scientific applications"
+msgstr ""
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:1
+msgid "Games for kids"
+msgstr ""
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:2
+msgid "Kids"
+msgstr ""
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:1
+msgid "Logic"
+msgstr ""
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:2
+msgid "Logic and puzzle games"
+msgstr ""
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:1
+msgid "Role playing"
+msgstr ""
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:2
+msgid "Role playing games"
+msgstr ""
+
+#: ../../debian/desktop-files/Settings.directory.in.h:1
+msgid "Personal preferences"
+msgstr "Preferime vetjake"
+
+#: ../../debian/desktop-files/Settings.directory.in.h:2
+msgid "Preferences"
+msgstr "Preferime"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:1
+msgid "Administration"
+msgstr "Administrim"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:2
+msgid "Change system-wide settings (affects all users)"
+msgstr "Ndrysho rregullimet në rang sistemi (ndikon tek të gjithë përdoruesit)"
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:1
+msgid "Simulation"
+msgstr "Simulim"
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:2
+#, fuzzy
+msgid "Simulation games"
+msgstr "Simulim"
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:1
+msgid "Sports"
+msgstr "Sporte"
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:2
+#, fuzzy
+msgid "Sports games"
+msgstr "Sporte"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:1
+msgid "Strategy"
+msgstr "Strategji"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:2
+#, fuzzy
+msgid "Strategy games"
+msgstr "Strategji"
+

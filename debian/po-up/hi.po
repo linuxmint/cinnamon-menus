@@ -1,0 +1,155 @@
+# translation of menu_po-sections.hi.po to Hindi
+# Menu section translation
+# Copyright (C) 2003
+# This file is distributed under the same license as the menu package.
+#
+# Bill Allombert <ballombe@debian.org>, 2003.
+# G Karunakar <karunakar@freedomink.org>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: menu_po-sections.hi\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-04 22:08+0200\n"
+"PO-Revision-Date: 2006-11-09 12:29+0530\n"
+"Last-Translator: G Karunakar <karunakar@freedomink.org>\n"
+"Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:1
+#, fuzzy
+msgid "Action"
+msgstr "शिक्षा"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:2
+#, fuzzy
+msgid "Action games"
+msgstr "शिक्षा"
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:1
+msgid "Adventure"
+msgstr ""
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:2
+msgid "Adventure style games"
+msgstr ""
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:1
+msgid "Arcade"
+msgstr ""
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:2
+msgid "Arcade style games"
+msgstr ""
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:1
+msgid "Falling blocks"
+msgstr ""
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:2
+msgid "Falling blocks games"
+msgstr ""
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:1
+msgid "Board"
+msgstr "बोर्ड"
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:2
+#, fuzzy
+msgid "Board games"
+msgstr "बोर्ड"
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:1
+msgid "Card games"
+msgstr ""
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:2
+#, fuzzy
+msgid "Cards"
+msgstr "कार्ड"
+
+#: ../../debian/desktop-files/Debian.directory.in.h:1
+msgid "Debian"
+msgstr ""
+
+#: ../../debian/desktop-files/Debian.directory.in.h:2
+msgid "The Debian menu"
+msgstr ""
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:1
+msgid "Science"
+msgstr "विज्ञान"
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:2
+msgid "Scientific applications"
+msgstr ""
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:1
+msgid "Games for kids"
+msgstr ""
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:2
+msgid "Kids"
+msgstr ""
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:1
+msgid "Logic"
+msgstr ""
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:2
+msgid "Logic and puzzle games"
+msgstr ""
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:1
+msgid "Role playing"
+msgstr ""
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:2
+msgid "Role playing games"
+msgstr ""
+
+#: ../../debian/desktop-files/Settings.directory.in.h:1
+msgid "Personal preferences"
+msgstr "निजी वरीयता"
+
+#: ../../debian/desktop-files/Settings.directory.in.h:2
+msgid "Preferences"
+msgstr "वरीयता"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:1
+msgid "Administration"
+msgstr "प्रशासन"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:2
+msgid "Change system-wide settings (affects all users)"
+msgstr "तंत्र स्तरीय सेटिंग बदलें (सभी उपयोक्ता प्रभावित होते हैं)"
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:1
+msgid "Simulation"
+msgstr ""
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:2
+msgid "Simulation games"
+msgstr ""
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:1
+msgid "Sports"
+msgstr "खेलकूद"
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:2
+#, fuzzy
+msgid "Sports games"
+msgstr "खेलकूद"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:1
+msgid "Strategy"
+msgstr "रणनीति"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:2
+#, fuzzy
+msgid "Strategy games"
+msgstr "रणनीति"
+

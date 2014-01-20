@@ -1,0 +1,9 @@
+Index: gnome-menus-3.7.90/desktop-directories/X-GNOME-SystemSettings.directory.in
+===================================================================
+--- gnome-menus-3.7.90.orig/desktop-directories/X-GNOME-SystemSettings.directory.in	2013-02-15 20:48:56.000000000 -0500
++++ gnome-menus-3.7.90/desktop-directories/X-GNOME-SystemSettings.directory.in	2013-03-03 01:12:40.241503804 -0500
+@@ -2,4 +2,3 @@
+ Name=System Settings
+ Icon=gnome-settings
+ Type=Directory
+-NoDisplay=true

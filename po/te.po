@@ -1,0 +1,184 @@
+# translation of gnome-menus.master.te.po to Telugu
+# Telugu translation of gnome-menus
+# Copyright (C) 2011 Gnome Telugu Contributors
+# Copyright (C) 2005, 2007, 2012 Swecha Telugu Localisation Team <localization@swecha.net>
+# This file is distributed under the same license as the gnome-menus package.
+#
+#
+# Y.Kiran Chandra <kiran@gnu.org.in>, 2005.
+# Bharat Kumar <jonnalagaddabharat@gmail.com>, 2007.
+# Krishna Babu K <kkrothap@redhat.com>, 2009, 2013.
+# Sasi Bhushan Boddepalli <sasi@swecha.net>, 2012.
+# Praveen Illa <mail2ipn@gmail.com>, 2011, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus.master.te\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"menus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-03-18 10:33+0000\n"
+"PO-Revision-Date: 2013-03-25 14:35+0530\n"
+"Last-Translator: Krishnababu Krothapalli <kkrothap@redhat.com>\n"
+"Language-Team: Telugu <Fedora-trans-te@redhat.com>\n"
+"Language: te\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Lokalize 1.5\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "ధ్వని మరియు దృశ్యం"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "బహుళమాధ్యమాల మెను"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "ప్రోగ్రామింగ్"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "సాఫ్ట్‍వేర్ అభివృద్ధిచేయుటకు పనిముట్లు"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "విద్య"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "ఆటలు"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "ఆటలు మరియు వినోదకాలు"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "రేఖాచిత్రాలు"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "రేఖాచిత్రాల అనువర్తనాలు"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "అంతర్జాలం"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "అంతర్జాల ప్రాప్తి కొరకు జాలం మరియు ఈమెయిల్ వంటి వాటికోసం కార్యక్రమాలు"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "కార్యాలయం"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "కార్యాలయ అనువర్తనాలు"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "వ్యవస్థ పనిముట్లు"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "వ్యవస్థ స్వరూపణం మరియు పర్యవేక్షణ"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "సార్వత్రిక ప్రాప్తి"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "సార్వత్రిక ప్రాప్తి అమరికలు"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "సహాయకాలు"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "డెస్క్‍టాప్ సహాయకాలు"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "అనువర్తనాలు"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "ఇతర"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr "ఇతర విభాగాలలో  ఇమడని అనువర్తనాలు"
+
+#: ../desktop-directories/X-GNOME-Sundry.directory.in.h:1
+msgid "Sundry"
+msgstr "సన్‌డ్రై"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:1
+msgid "Utilities"
+msgstr "సౌలభ్యాలు"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:2
+msgid "Small but useful GNOME tools"
+msgstr "చిన్నవి అయితే వుపయోగకర GNOME సాధనాలు"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+msgid "Web Applications"
+msgstr "జాల అనువర్తనాలు"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr "జాలం నుండి దాయబడిన అనువర్తనాలు మరియు సైట్లు"
+
+#~ msgid "Hardware"
+#~ msgstr "హార్డ్‍వేర్"
+
+#~ msgid "Settings for several hardware devices"
+#~ msgstr "వివిధ హార్డ్‍వేర్ పరికరాల కొరకు అమరికలు"
+
+#~ msgid "Personal"
+#~ msgstr "వ్యక్తిగత"
+
+#~ msgid "Personal settings"
+#~ msgstr "వ్యక్తిగత అమరికలు"
+
+#~ msgid "System"
+#~ msgstr "వ్యవస్థ"
+
+#~ msgid "System settings"
+#~ msgstr "వ్యవస్థ అమరికలు"
+
+#~ msgid "Menu Editor"
+#~ msgstr "మెను కూర్పకం"
+
+#~ msgid "Edit Menus"
+#~ msgstr "మెనూలను సవరించు"
+
+#~ msgid "_Defaults"
+#~ msgstr "అప్రమేయాలు (_D)"
+
+#~ msgid "_Menus:"
+#~ msgstr "మెనూలు (_M)"
+
+#~ msgid "_Applications:"
+#~ msgstr "అనువర్తనాలు (_A):"
+
+#~ msgid "Simple Menu Editor %s"
+#~ msgstr "సులభ మెనూ కూర్పకం %s"
+
+#~ msgid "Name"
+#~ msgstr "పేరు"
+
+#~ msgid "Show"
+#~ msgstr "చూపించు"
+
+#~ msgid ""
+#~ "Cannot find home directory: not set in /etc/passwd and no value for $HOME "
+#~ "in environment"
+#~ msgstr ""
+#~ "నివాస చిరునామాను కనిపెట్టలేదు: /etc/passwd లో అమర్చబడలేదు మరియు పరిసరములో $HOME కు విలువ "
+#~ "కనుగొనబడలేదు"

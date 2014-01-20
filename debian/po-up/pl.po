@@ -1,0 +1,147 @@
+# Menu section translation
+# Copyright (C) 2003, 2007
+# This file is distributed under the same license as the menu package.
+# Bill Allombert <ballombe@debian.org>, 2003.
+# Polish translation:
+# Marcin Owsiany <porridge@debian.org>, 2003, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: menu-section 2.1.9-3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-04 22:08+0200\n"
+"PO-Revision-Date: 2007-07-18 09:16+0100\n"
+"Last-Translator: Marcin Owsiany <porridge@debian.org>\n"
+"Language-Team: Polish\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:1
+msgid "Action"
+msgstr "Akcji"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:2
+msgid "Action games"
+msgstr "Gry akcji"
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:1
+msgid "Adventure"
+msgstr "Przygodowe"
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:2
+msgid "Adventure style games"
+msgstr "Gry przygodowe"
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:1
+msgid "Arcade"
+msgstr "Zrêczno¶ciowe"
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:2
+msgid "Arcade style games"
+msgstr "Gry zrêczno¶ciowe"
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:1
+msgid "Falling blocks"
+msgstr "Spadaj±ce klocki"
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:2
+msgid "Falling blocks games"
+msgstr "Gry ze spadaj±cymi klockami"
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:1
+msgid "Board"
+msgstr "Planszowe"
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:2
+msgid "Board games"
+msgstr "Gry planszowe"
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:1
+msgid "Card games"
+msgstr "Gry karciane"
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:2
+msgid "Cards"
+msgstr "Karciane"
+
+#: ../../debian/desktop-files/Debian.directory.in.h:1
+msgid "Debian"
+msgstr "Debian"
+
+#: ../../debian/desktop-files/Debian.directory.in.h:2
+msgid "The Debian menu"
+msgstr "Menu Debiana"
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:2
+msgid "Scientific applications"
+msgstr ""
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:1
+msgid "Games for kids"
+msgstr "Gry dla dzieci"
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:2
+msgid "Kids"
+msgstr "Dla dzieci"
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:1
+msgid "Logic"
+msgstr "Logiczne"
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:2
+msgid "Logic and puzzle games"
+msgstr "Gry logiczne i ³amig³ówki"
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:1
+msgid "Role playing"
+msgstr "RPG"
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:2
+msgid "Role playing games"
+msgstr "Gry RPG (fabularne)"
+
+#: ../../debian/desktop-files/Settings.directory.in.h:1
+msgid "Personal preferences"
+msgstr "Ustawienia osobiste"
+
+#: ../../debian/desktop-files/Settings.directory.in.h:2
+msgid "Preferences"
+msgstr "Preferencje"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:1
+msgid "Administration"
+msgstr "Administracja"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:2
+msgid "Change system-wide settings (affects all users)"
+msgstr "Zmiana ustawieñ systemowych (wp³ywa na wszystkich u¿ytkowników)"
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:1
+msgid "Simulation"
+msgstr "Symulatory"
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:2
+msgid "Simulation games"
+msgstr "Gry symulacyjne"
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:1
+msgid "Sports"
+msgstr "Sportowe"
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:2
+msgid "Sports games"
+msgstr "Gry sportowe"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:1
+msgid "Strategy"
+msgstr "Strategiczne"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:2
+msgid "Strategy games"
+msgstr "Gry strategiczne"

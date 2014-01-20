@@ -1,0 +1,151 @@
+# Gnome-Menus section translation
+# Copyright (C) Software in the Public Interest, 2004
+# This file is distributed under the same license as the gnome-menus package.
+#
+# Translators:
+# - Initial translation: Javier Fernandez-Sanguino <jfs@debian.org>, march 2004
+#   (menu translation)
+# - Revision: Javier Fernandez-Sanguino <jfs@debian.org>, july 2007
+#   (update for gnome-menus)
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus 2.18.3-2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-04 22:08+0200\n"
+"PO-Revision-Date: 2007-07-18 09:01+0200\n"
+"Last-Translator: Javier Fernandez-Sanguino <jfs@debian.org>\n"
+"Language-Team: Debian Spanish <debian-l10n-spanish@lists.debian.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:1
+msgid "Action"
+msgstr "Acción"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:2
+msgid "Action games"
+msgstr "Juegos de acción"
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:1
+msgid "Adventure"
+msgstr "Aventura"
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:2
+msgid "Adventure style games"
+msgstr "Juegos tipo aventura"
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:1
+msgid "Arcade"
+msgstr "Arcade"
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:2
+msgid "Arcade style games"
+msgstr "Juegos tipo arcade"
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:1
+msgid "Falling blocks"
+msgstr "Bloques cayendo"
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:2
+msgid "Falling blocks games"
+msgstr "Juegos de bloques cayendo"
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:1
+msgid "Board"
+msgstr "Tablero"
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:2
+msgid "Board games"
+msgstr "Juegos de tablero"
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:1
+msgid "Card games"
+msgstr "Juegos de cartas"
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:2
+msgid "Cards"
+msgstr "Cartas"
+
+#: ../../debian/desktop-files/Debian.directory.in.h:1
+msgid "Debian"
+msgstr "Debian"
+
+#: ../../debian/desktop-files/Debian.directory.in.h:2
+msgid "The Debian menu"
+msgstr "El menú de Debian"
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:2
+msgid "Scientific applications"
+msgstr ""
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:1
+msgid "Games for kids"
+msgstr "Juegos para niños"
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:2
+msgid "Kids"
+msgstr "Niños"
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:1
+msgid "Logic"
+msgstr "Lógica"
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:2
+msgid "Logic and puzzle games"
+msgstr "Juegos de lógica y puzles"
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:1
+msgid "Role playing"
+msgstr "Rol"
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:2
+msgid "Role playing games"
+msgstr "Juegos de rol"
+
+#: ../../debian/desktop-files/Settings.directory.in.h:1
+msgid "Personal preferences"
+msgstr "Preferencias personales"
+
+#: ../../debian/desktop-files/Settings.directory.in.h:2
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:1
+msgid "Administration"
+msgstr "Administración"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:2
+msgid "Change system-wide settings (affects all users)"
+msgstr ""
+"Cambia las preferencias globales del sistema (afecta a todos los usuarios)"
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:1
+msgid "Simulation"
+msgstr "Simulación"
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:2
+msgid "Simulation games"
+msgstr "Juegos de simulación"
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:1
+msgid "Sports"
+msgstr "Deportes"
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:2
+msgid "Sports games"
+msgstr "Juegos de deportes"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:1
+msgid "Strategy"
+msgstr "Estrategia"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:2
+msgid "Strategy games"
+msgstr "Juegos de estrategia"

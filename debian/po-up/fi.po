@@ -1,0 +1,155 @@
+# Menu section translation
+# Copyright (C) 2003
+# This file is distributed under the same license as the menu package.
+# Bill Allombert <ballombe@debian.org>, 2003.
+# Tommi Vainikainen, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: menu-section 2.1.9-3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-04 22:08+0200\n"
+"PO-Revision-Date: 2004-10-12 09:01+0300\n"
+"Last-Translator: Tommi Vainikainen <thv+debian@iki.fi>\n"
+"Language-Team: Finnish <debian-l10n-finnish@lists.debian.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:1
+#, fuzzy
+msgid "Action"
+msgstr "Koulutus"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:2
+#, fuzzy
+msgid "Action games"
+msgstr "Koulutus"
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:1
+msgid "Adventure"
+msgstr "Seikkailu"
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:2
+#, fuzzy
+msgid "Adventure style games"
+msgstr "Seikkailu"
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:1
+msgid "Arcade"
+msgstr "Arcade"
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:2
+msgid "Arcade style games"
+msgstr ""
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:1
+msgid "Falling blocks"
+msgstr ""
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:2
+msgid "Falling blocks games"
+msgstr ""
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:1
+msgid "Board"
+msgstr "Lauta"
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:2
+#, fuzzy
+msgid "Board games"
+msgstr "Lauta"
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:1
+msgid "Card games"
+msgstr ""
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:2
+#, fuzzy
+msgid "Cards"
+msgstr "Kortti"
+
+#: ../../debian/desktop-files/Debian.directory.in.h:1
+msgid "Debian"
+msgstr ""
+
+#: ../../debian/desktop-files/Debian.directory.in.h:2
+msgid "The Debian menu"
+msgstr ""
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:1
+msgid "Science"
+msgstr "Tiede"
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:2
+msgid "Scientific applications"
+msgstr ""
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:1
+msgid "Games for kids"
+msgstr ""
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:2
+msgid "Kids"
+msgstr ""
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:1
+msgid "Logic"
+msgstr ""
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:2
+msgid "Logic and puzzle games"
+msgstr ""
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:1
+msgid "Role playing"
+msgstr ""
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:2
+msgid "Role playing games"
+msgstr ""
+
+#: ../../debian/desktop-files/Settings.directory.in.h:1
+msgid "Personal preferences"
+msgstr "Henkilökohtaiset valinnat"
+
+#: ../../debian/desktop-files/Settings.directory.in.h:2
+msgid "Preferences"
+msgstr "Asetukset"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:1
+msgid "Administration"
+msgstr "Ylläpito"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:2
+msgid "Change system-wide settings (affects all users)"
+msgstr "Muuta järjestelmänlaajuisia asetuksia (vaikuttaa joka käyttäjään)"
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:1
+msgid "Simulation"
+msgstr "Simulaatio"
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:2
+#, fuzzy
+msgid "Simulation games"
+msgstr "Simulaatio"
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:1
+msgid "Sports"
+msgstr "Urheilu"
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:2
+#, fuzzy
+msgid "Sports games"
+msgstr "Urheilu"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:1
+msgid "Strategy"
+msgstr "Strategia"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:2
+#, fuzzy
+msgid "Strategy games"
+msgstr "Strategia"
+

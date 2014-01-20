@@ -1,0 +1,18 @@
+Package: gnome-menus
+Version: 3.8.0-1ubuntu5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1338
+Depends: python3, python3:any (>= 3.1)
+Breaks: alacarte (<< 0.13.2-2), gnome-control-center (<< 2.91), gnome-panel (<< 2.91)
+Section: gnome
+Priority: optional
+Description: GNOME implementation of the freedesktop menu specification
+ The package contains an implementation of the draft
+ "Desktop Menu Specification" from freedesktop.org:
+ .
+ http://www.freedesktop.org/Standards/menu-spec
+ .
+ Also contained here are the GNOME menu layout configuration files, .directory
+ files and assorted menu related utility programs.
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>

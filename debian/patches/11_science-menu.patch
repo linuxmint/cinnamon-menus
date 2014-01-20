@@ -1,0 +1,43 @@
+--- a/layout/gnome-applications.menu
++++ b/layout/gnome-applications.menu
+@@ -88,10 +88,23 @@
+     <Include>
+       <And>
+         <Category>Education</Category>
++        <Not><Category>Science</Category></Not>
+       </And>
+     </Include>
+   </Menu> <!-- End Education -->
+ 
++  <!-- Science -->
++  <Menu>
++    <Name>Science</Name>
++    <Directory>GnomeScience.directory</Directory>
++    <Include>
++      <And>
++        <Category>Education</Category>
++        <Category>Science</Category>
++      </And>
++    </Include>
++  </Menu> <!-- End Science -->
++
+   <!-- Games -->
+   <Menu>
+     <Name>Games</Name>
+--- a/desktop-directories/Education.directory.in
++++ b/desktop-directories/Education.directory.in
+@@ -1,4 +1,4 @@
+ [Desktop Entry]
+ _Name=Education
+-Icon=applications-science
++Icon=applications-accessories
+ Type=Directory
+--- a/desktop-directories/Utility.directory.in
++++ b/desktop-directories/Utility.directory.in
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+ _Name=Accessories
+ _Comment=Desktop accessories
+-Icon=applications-accessories
++Icon=applications-utilities
+ Type=Directory

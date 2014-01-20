@@ -1,0 +1,10 @@
+--- a/layout/gnome-applications.menu
++++ b/layout/gnome-applications.menu
+@@ -7,7 +7,6 @@
+   <Directory>X-GNOME-Menu-Applications.directory</Directory>
+ 
+   <!-- Scan legacy dirs first, as later items take priority -->
+-  <KDELegacyDirs/>
+   <LegacyDir>/etc/X11/applnk</LegacyDir>
+   <LegacyDir>/usr/share/gnome/apps</LegacyDir>
+ 

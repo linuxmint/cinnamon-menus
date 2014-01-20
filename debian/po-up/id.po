@@ -1,0 +1,148 @@
+# Menu section translation to Bahasa Indonesia
+# Copyright (C) 2003
+# This file is distributed under the same license as the menu package.
+# Bill Allombert <ballombe@debian.org>, 2003.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: menu-section 2.1.9-3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-04 22:08+0200\n"
+"PO-Revision-Date: 2007-07-19 17:19+0700\n"
+"Last-Translator: Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>\n"
+"Language-Team: Debian Indonesian Team <debian-l10n-id@gurame.fisika.ui.ac."
+"id>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:1
+msgid "Action"
+msgstr "Aksi"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:2
+msgid "Action games"
+msgstr "Permainan aksi"
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:1
+msgid "Adventure"
+msgstr "Petualangan"
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:2
+msgid "Adventure style games"
+msgstr "Permainan bertema petualangan"
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:1
+msgid "Arcade"
+msgstr "Pertempuran"
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:2
+msgid "Arcade style games"
+msgstr "Permainan bertema pertempuran"
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:1
+msgid "Falling blocks"
+msgstr "Tetris"
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:2
+msgid "Falling blocks games"
+msgstr "Permainan tetris"
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:1
+msgid "Board"
+msgstr "Di Atas Papan"
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:2
+msgid "Board games"
+msgstr "Permainan di atas papan"
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:1
+msgid "Card games"
+msgstr "Permainan kartu"
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:2
+msgid "Cards"
+msgstr "Kartu"
+
+#: ../../debian/desktop-files/Debian.directory.in.h:1
+msgid "Debian"
+msgstr "Debian"
+
+#: ../../debian/desktop-files/Debian.directory.in.h:2
+msgid "The Debian menu"
+msgstr "Menu Debian"
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:1
+msgid "Science"
+msgstr "IPTEK"
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:2
+msgid "Scientific applications"
+msgstr ""
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:1
+msgid "Games for kids"
+msgstr "Permainan anak-anak"
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:2
+msgid "Kids"
+msgstr "Anak-anak"
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:1
+msgid "Logic"
+msgstr "Logika"
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:2
+msgid "Logic and puzzle games"
+msgstr "Permainan Logika dan teka-teki"
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:1
+msgid "Role playing"
+msgstr "Bermain kekuasaan"
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:2
+msgid "Role playing games"
+msgstr "Permainan tentang kekuasaan"
+
+#: ../../debian/desktop-files/Settings.directory.in.h:1
+msgid "Personal preferences"
+msgstr "Preferensi pribadi"
+
+#: ../../debian/desktop-files/Settings.directory.in.h:2
+msgid "Preferences"
+msgstr "Preferensi"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:1
+msgid "Administration"
+msgstr "Administrasi"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:2
+msgid "Change system-wide settings (affects all users)"
+msgstr "Pengaturan sistem secara luas (mempengaruhi seluruh pengguna)"
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:1
+msgid "Simulation"
+msgstr "Simulasi"
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:2
+msgid "Simulation games"
+msgstr "Permainan simulasi"
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:1
+msgid "Sports"
+msgstr "Olahraga"
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:2
+msgid "Sports games"
+msgstr "Permainan olahraga"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:1
+msgid "Strategy"
+msgstr "Taktik dan Strategi"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:2
+msgid "Strategy games"
+msgstr "Permainan taktik dan strategi"
+

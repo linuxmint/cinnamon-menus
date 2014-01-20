@@ -1,0 +1,290 @@
+# Brazilian Portuguese translation of GNOME Menus.
+# Copyright (C) 2004-2013 the GNOME Menu authors.
+# This file is distributed under the same license as the gnome-menus package.
+# Raphael Higino <In Memoriam>, 2004-2005.
+# Afonso Celso Medina <afmedina@uol.com.br>, 2005.
+# Og Maciel <ogmaciel@ubuntu.com>, 2006-2007.
+# Leonardo Ferreira Fontenelle <leonardof@gnome.org>, 2007, 2008.
+# Fabrício Godoy <skarllot@gmail.com>, 2008
+# Krix Apolinário <krixapolinario@gmail.com>, 2009.
+# Rafael Ferreira <rafael.f.f1@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-menus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-02-25 19:57+0000\n"
+"PO-Revision-Date: 2013-03-05 10:15-0300\n"
+"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
+"Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+
+# Traduzir "Sound & Video" como "Multimídia" é o resultado de uma padronização do menu Aplicativos do GNOME com os seus equivalentes no KDE e no XFCE.
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "Multimídia"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "Menu multimídia"
+
+# Traduzir "Programming" como "Desenvolvimento" é o resultado de uma
+# padronização do menu Aplicativos do GNOME com os seus equivalentes
+# em outros ambientes de trabalho, mais precisamente KDE e XFCE.
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "Desenvolvimento"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "Ferramentas para desenvolvimento de software"
+
+# Traduzir "Education" como "Educativo" é o resultado de uma padronização do
+# menu Aplicativos do GNOME com os seus equivalentes em outros ambientes de
+# trabalho, mais precisamente KDE e XFCE.
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "Educativo"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "Jogos"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "Jogos e diversões"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "Gráficos"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "Aplicativos gráficos"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "Internet"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "Programas para acesso à Internet tais como web e e-mail"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "Escritório"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "Aplicativos de escritório"
+
+# Essa alteração, Ferramentas do Sistema → Sistema, não foi discutida mas
+# acredito que todos vão aprovar. Assim jogamos esse submenu para o fim da
+# lista, facilitando para a maioria dos usuários o acesso aos aplicativos
+# mais cotidianos.
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "Sistema"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "Configuração e monitoramento do sistema"
+
+# Traduzir "Universal Access" como "Acessibilidade" é o resultado de uma
+# padronização do menu Aplicativos do GNOME com os seus equivalentes
+# em outros ambientes de trabalho, mais precisamente KDE e XFCE.
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "Acessibilidade"
+
+# Traduzir "Universal Access" como "Acessibilidade" é o resultado de uma
+# padronização do menu Aplicativos do GNOME com os seus equivalentes
+# em outros ambientes de trabalho, mais precisamente KDE e XFCE.
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "Configurações de acessibilidade"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "Acessórios"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "Acessórios da área de trabalho"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "Aplicativos"
+
+# Outros aplicativos
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "Outros"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr "Aplicativos que não se encaixam em outras categorias"
+
+#: ../desktop-directories/X-GNOME-Sundry.directory.in.h:1
+msgid "Sundry"
+msgstr "Diversos"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:1
+msgid "Utilities"
+msgstr "Utilitários"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:2
+msgid "Small but useful GNOME tools"
+msgstr "Pequenas ferramentas do GNOME, mas muitos úteis"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+msgid "Web Applications"
+msgstr "Aplicativos web"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr "Aplicativos e sites salvos da internet"
+
+#~ msgid "Hardware"
+#~ msgstr "Hardware"
+
+#~ msgid "Settings for several hardware devices"
+#~ msgstr "Configurações para vários dispositivos de hardware"
+
+#~ msgid "Personal"
+#~ msgstr "Pessoal"
+
+#~ msgid "Personal settings"
+#~ msgstr "Configurações pessoais"
+
+#~ msgid "System"
+#~ msgstr "Sistema"
+
+#~ msgid "System settings"
+#~ msgstr "Configurações do sistema"
+
+#~ msgid "Menu Editor"
+#~ msgstr "Editor do Menu"
+
+#~ msgid "Edit Menus"
+#~ msgstr "Editar menus"
+
+#~ msgid "_Defaults"
+#~ msgstr "_Padrões"
+
+#~ msgid "_Menus:"
+#~ msgstr "_Menus:"
+
+#~ msgid "_Applications:"
+#~ msgstr "_Aplicativos:"
+
+#~ msgid "Simple Menu Editor %s"
+#~ msgstr "Editor simples de menu %s"
+
+#~ msgid "Name"
+#~ msgstr "Nome"
+
+#~ msgid "Show"
+#~ msgstr "Mostrar"
+
+#~ msgid ""
+#~ "Cannot find home directory: not set in /etc/passwd and no value for $HOME "
+#~ "in environment"
+#~ msgstr ""
+#~ "Não foi possível localizar o diretório home: não está definido em /etc/"
+#~ "passwd e nenhum valor para $HOME nas variáveis de ambiente"
+
+#~ msgid "Internet and Network"
+#~ msgstr "Internet e rede"
+
+#~ msgid "Network-related settings"
+#~ msgstr "Configurações de rede"
+
+#~ msgid "Look and Feel"
+#~ msgstr "Visual e comportamento"
+
+#~ msgid "Settings controlling the desktop appearance and behavior"
+#~ msgstr ""
+#~ "Configurações que controlam o visual e o comportamento da área de trabalho"
+
+#~ msgid "Administration"
+#~ msgstr "Administração"
+
+#~ msgid "Change system-wide settings (affects all users)"
+#~ msgstr ""
+#~ "Modifique configurações gerais do sistema (isso afeta a todos os usuários)"
+
+#~ msgid "Personal preferences"
+#~ msgstr "Preferências pessoais"
+
+#~ msgid "Preferences"
+#~ msgstr "Preferências"
+
+#~ msgid "Personal preferences and administration settings"
+#~ msgstr "Preferências pessoais e configurações de administração"
+
+#~ msgid "Menu file"
+#~ msgstr "Arquivo de menu"
+
+#~ msgid "MENU_FILE"
+#~ msgstr "ARQUIVO_DE_MENU"
+
+#~ msgid "Monitor for menu changes"
+#~ msgstr "Monitora alterações do menu"
+
+#~ msgid "Include <Exclude>d entries"
+#~ msgstr "Inclui entradas <Exclude>d"
+
+#~ msgid "Include NoDisplay=true entries"
+#~ msgstr "Inclui entradas NoDisplay=true"
+
+#~ msgid "Invalid desktop file ID"
+#~ msgstr "ID do arquivo da área de trabalho inválido"
+
+#~ msgid "[Invalid Filename]"
+#~ msgstr "[Nome de arquivo inválido]"
+
+#~ msgid " <excluded>"
+#~ msgstr " <excluded>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menu changed, reloading ====\n"
+#~ "\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menu alterado, recarregando ====\n"
+#~ "\n"
+#~ "\n"
+
+#~ msgid "Menu tree is empty"
+#~ msgstr "A árvore do menu está vazia"
+
+#~ msgid "- test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr ""
+#~ "- testa a implementação GNOME da Especificação de Menu da Área de Trabalho"
+
+#~ msgid "Universal access related preferences"
+#~ msgstr "Preferências relativas ao acesso universal"
+
+#~ msgid "Personal preferences and settings"
+#~ msgstr "Preferências e configurações pessoais"
+
+#~ msgid "Accessibility"
+#~ msgstr "Acessibilidade"
+
+#~ msgid "Accessibility Settings"
+#~ msgstr "Configurações de acessibilidade"
+
+#~ msgid "Desktop"
+#~ msgstr "Área de Trabalho"

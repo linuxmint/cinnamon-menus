@@ -1,0 +1,2 @@
+python3:Depends=python3, python3:any (>= 3.1)
+misc:Depends=

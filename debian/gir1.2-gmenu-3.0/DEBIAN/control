@@ -1,0 +1,17 @@
+Package: gir1.2-gmenu-3.0
+Source: gnome-menus
+Version: 3.8.0-1ubuntu5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 101
+Depends: gir1.2-glib-2.0, libgnome-menu-3-0 (>= 3.6.0)
+Conflicts: gobject-introspection-repository
+Section: introspection
+Priority: optional
+Description: GObject introspection data for the GNOME menu library
+ This package contains introspection data for GNOME menu, an
+ implementation of the desktop menu specification from freedesktop.org.
+ .
+ It can be used by languages supporting dynamic bindings with
+ the GIRepository format.
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>

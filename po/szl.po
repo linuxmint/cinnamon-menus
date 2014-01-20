@@ -1,0 +1,181 @@
+# Silesian translation for gnome-menus
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the gnome-menus package.
+# Przemysław Buczkowski <przemub@yahoo.pl>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-26 19:29+0200\n"
+"PO-Revision-Date: 2012-07-26 16:33+0000\n"
+"Last-Translator: Przemysław Buczkowski <przemub@yahoo.pl>\n"
+"Language-Team: Silesian <szl@li.org>\n"
+"Language: szl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "Dźwiynk a wideo"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "Myni multimedyjōw"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "Richtowaniy softwara"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "Werkcojg dlŏ riychtowania softwara"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "Edukacyjŏ"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "Szpile"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "Szpile a inksze atrakce"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "Grafika"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "Graficzny softwar"
+
+#: ../desktop-directories/Hardware.directory.in.h:1
+msgid "Hardware"
+msgstr "Hardwar"
+
+#: ../desktop-directories/Hardware.directory.in.h:2
+msgid "Settings for several hardware devices"
+msgstr "Nŏstŏwiynia lo roztōmajtych urzōndzyń"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "Internec"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "Softwar lo Interneca"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "Biyrowe"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "Biyrowy softwar"
+
+#. Translators: this is Personal as in "Personal settings"
+#: ../desktop-directories/Personal.directory.in.h:2
+msgid "Personal"
+msgstr "Włosne"
+
+#: ../desktop-directories/Personal.directory.in.h:3
+msgid "Personal settings"
+msgstr "Włosne nŏstŏwiynia"
+
+#: ../desktop-directories/System.directory.in.h:1
+msgid "System"
+msgstr "Systyma"
+
+#: ../desktop-directories/System.directory.in.h:2
+msgid "System settings"
+msgstr "Nŏstŏwiynia systymy"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "Werkcojg systymowy"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "Nŏstŏwiynia systymy"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "Ôniywersalny dostymp"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "Nŏstowiynia ôniwersalnygo dostympa"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "Dodatki"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "Dodatki pulpita"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "Softwar"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "Inksze"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr "Softwar kery niy wkludza siã dlŏ inkszych kategoryji"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+#, fuzzy
+msgid "Web Applications"
+msgstr "Softwar"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr ""
+
+#: ../simple-editor/gmenu-simple-editor.desktop.in.h:1
+msgid "Menu Editor"
+msgstr "Sprowjor myni"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:1
+msgid "Edit Menus"
+msgstr "Sprŏwjaj mynia"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:2
+msgid "_Defaults"
+msgstr "_Domyślne"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:3
+msgid "_Menus:"
+msgstr "_Mynia:"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:4
+msgid "_Applications:"
+msgstr "_Softwar:"
+
+#. Translators: %s is the version number
+#: ../simple-editor/GMenuSimpleEditor/main.py:44
+#, python-format
+msgid "Simple Menu Editor %s"
+msgstr "Prosty sprowjar myni %s"
+
+#: ../simple-editor/GMenuSimpleEditor/maindialog.py:97
+#: ../simple-editor/GMenuSimpleEditor/maindialog.py:124
+msgid "Name"
+msgstr "Miano"
+
+#: ../simple-editor/GMenuSimpleEditor/maindialog.py:116
+msgid "Show"
+msgstr "Pokŏż"
+
+#: ../simple-editor/GMenuSimpleEditor/menufilewriter.py:44
+msgid ""
+"Cannot find home directory: not set in /etc/passwd and no value for $HOME in "
+"environment"
+msgstr ""
+"Niy je mogebne nŏleźć domowygŏ kataloga: niy je ôn we /etc/passwd a $HOME"

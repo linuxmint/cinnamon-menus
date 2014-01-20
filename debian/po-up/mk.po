@@ -1,0 +1,158 @@
+# translation of menu_po-sections_mk.po to Macedonian
+# Menu section translation
+# Copyright (C) 2003
+# This file is distributed under the same license as the menu package.
+#
+# Bill Allombert <ballombe@debian.org>, 2003.
+# Georgi Stanojevski <glisha@gmail.com>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: menu_po-sections_mk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-04 22:08+0200\n"
+"PO-Revision-Date: 2006-10-20 11:03+0200\n"
+"Last-Translator: Georgi Stanojevski <glisha@gmail.com>\n"
+"Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
+"Language: mk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.2\n"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:1
+#, fuzzy
+msgid "Action"
+msgstr "Образовни"
+
+#: ../../debian/desktop-files/ActionGames.directory.in.h:2
+#, fuzzy
+msgid "Action games"
+msgstr "Образовни"
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:1
+msgid "Adventure"
+msgstr "Авантура"
+
+#: ../../debian/desktop-files/AdventureGames.directory.in.h:2
+#, fuzzy
+msgid "Adventure style games"
+msgstr "Авантура"
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:1
+msgid "Arcade"
+msgstr "Аркадни"
+
+#: ../../debian/desktop-files/ArcadeGames.directory.in.h:2
+msgid "Arcade style games"
+msgstr ""
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:1
+msgid "Falling blocks"
+msgstr ""
+
+#: ../../debian/desktop-files/BlocksGames.directory.in.h:2
+msgid "Falling blocks games"
+msgstr ""
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:1
+msgid "Board"
+msgstr "На табла"
+
+#: ../../debian/desktop-files/BoardGames.directory.in.h:2
+#, fuzzy
+msgid "Board games"
+msgstr "На табла"
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:1
+msgid "Card games"
+msgstr ""
+
+#: ../../debian/desktop-files/CardGames.directory.in.h:2
+#, fuzzy
+msgid "Cards"
+msgstr "Карти"
+
+#: ../../debian/desktop-files/Debian.directory.in.h:1
+msgid "Debian"
+msgstr ""
+
+#: ../../debian/desktop-files/Debian.directory.in.h:2
+msgid "The Debian menu"
+msgstr ""
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:1
+msgid "Science"
+msgstr "Наука"
+
+#: ../../debian/desktop-files/GnomeScience.directory.in.h:2
+msgid "Scientific applications"
+msgstr ""
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:1
+msgid "Games for kids"
+msgstr ""
+
+#: ../../debian/desktop-files/KidsGames.directory.in.h:2
+msgid "Kids"
+msgstr ""
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:1
+msgid "Logic"
+msgstr ""
+
+#: ../../debian/desktop-files/LogicGames.directory.in.h:2
+msgid "Logic and puzzle games"
+msgstr ""
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:1
+msgid "Role playing"
+msgstr ""
+
+#: ../../debian/desktop-files/RolePlayingGames.directory.in.h:2
+msgid "Role playing games"
+msgstr ""
+
+#: ../../debian/desktop-files/Settings.directory.in.h:1
+msgid "Personal preferences"
+msgstr "Лични преференции"
+
+#: ../../debian/desktop-files/Settings.directory.in.h:2
+msgid "Preferences"
+msgstr "Преференции"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:1
+msgid "Administration"
+msgstr "Администрација"
+
+#: ../../debian/desktop-files/Settings-System.directory.in.h:2
+msgid "Change system-wide settings (affects all users)"
+msgstr ""
+"Промени ги поставувањата на целиот систем (има ефект врз сите корисници)"
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:1
+msgid "Simulation"
+msgstr "Симулација"
+
+#: ../../debian/desktop-files/SimulationGames.directory.in.h:2
+#, fuzzy
+msgid "Simulation games"
+msgstr "Симулација"
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:1
+msgid "Sports"
+msgstr "Спорт"
+
+#: ../../debian/desktop-files/SportsGames.directory.in.h:2
+#, fuzzy
+msgid "Sports games"
+msgstr "Спорт"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:1
+msgid "Strategy"
+msgstr "Стратегија"
+
+#: ../../debian/desktop-files/StrategyGames.directory.in.h:2
+#, fuzzy
+msgid "Strategy games"
+msgstr "Стратегија"
+

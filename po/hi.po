@@ -1,0 +1,259 @@
+# translation of gnome-menus.master.po to Hindi
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Amanpreet Singh Alam <aalam@redhat.com>, 2004.
+# Rajesh Ranjan <rranjan@redhat.com>, 2005, 2006, 2008, 2009.
+# Rajesh Ranjan <rajesh672@gmail.com>, 2009.
+# rajesh <rajeshkajha@yahoo.com>, 2012, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus.master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"menus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-03-18 10:33+0000\n"
+"PO-Revision-Date: 2013-03-22 12:20+0530\n"
+"Last-Translator: raj <raj>\n"
+"Language-Team: Hindi <kde-i18n-doc@kde.org>\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "ध्वनि व वीडियो"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "मल्टीमीडिया मेनू"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "प्रोग्रामिंग"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "सॉफ्टवेयर विकास के औज़ार"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "शिक्षा"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "खेल"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "खेल व मनोरंजन"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "चित्रादि"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "चित्रादि अनुप्रयोग"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "इंटरनेट"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "इंटरनेट पहुँच के लिए वेब व ईमेल जैसे प्रोग्राम"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "कार्यालय"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "कार्यालय अनुप्रयोग"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "तंत्र औज़ार"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "तंत्र विन्यास व निरीक्षण"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "सार्वभौमिक पहुँच"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "सार्वभौमिक पहुँच सेटिंग"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "उपसाधन"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "डेस्कटॉप उपसाधन"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "अनुप्रयोग"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "अन्य"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr "अनुप्रयोग जो अन्य श्रेणी में सटीक नहीं बैठा"
+
+#: ../desktop-directories/X-GNOME-Sundry.directory.in.h:1
+msgid "Sundry"
+msgstr "सनड्राइ"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:1
+msgid "Utilities"
+msgstr "उपयोगिताएँ"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:2
+msgid "Small but useful GNOME tools"
+msgstr "छोटा लेकिन उपयोगी GNOME औज़ार"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+msgid "Web Applications"
+msgstr "वेब अनुप्रयोग"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr "वेब से सहेजा अनुप्रयोग और साइट"
+
+#~ msgid "Hardware"
+#~ msgstr "हार्डवेयर"
+
+#~ msgid "Settings for several hardware devices"
+#~ msgstr "कई हार्डवेयर युक्तियों के लिए सेटिंग"
+
+#~ msgid "Personal"
+#~ msgstr "निजी"
+
+#~ msgid "Personal settings"
+#~ msgstr "निजी सेटिंग"
+
+#~ msgid "System"
+#~ msgstr "तंत्र"
+
+#~ msgid "System settings"
+#~ msgstr "तंत्र सेटिंग"
+
+#~ msgid "Menu Editor"
+#~ msgstr "मेन्यू संपादक"
+
+#~ msgid "Edit Menus"
+#~ msgstr "मेन्यू संपादित करें"
+
+#~ msgid "_Defaults"
+#~ msgstr "तयशुदा (_D)"
+
+#~ msgid "_Menus:"
+#~ msgstr "मेन्यू (_M):"
+
+#~ msgid "_Applications:"
+#~ msgstr "अनुप्रयोग (_A)"
+
+#~ msgid "Simple Menu Editor %s"
+#~ msgstr "सरल मेन्यू संपादक %s"
+
+#~ msgid "Name"
+#~ msgstr "नाम"
+
+#~ msgid "Show"
+#~ msgstr "दिखाएँ"
+
+#~ msgid ""
+#~ "Cannot find home directory: not set in /etc/passwd and no value for $HOME "
+#~ "in environment"
+#~ msgstr ""
+#~ "घर निर्देशिका नहीं पा सकता है: /etc/passwd में सेट नहीं है और $HOME के लिये वातावरण "
+#~ "में कोई मान नहीं है"
+
+#~ msgid "Internet and Network"
+#~ msgstr "इंटरनेट व संजाल"
+
+#~ msgid "Network-related settings"
+#~ msgstr "संजाल संबंधित सेटिंग"
+
+#~ msgid "Look and Feel"
+#~ msgstr "रूप-रंग"
+
+#~ msgid "Settings controlling the desktop appearance and behavior"
+#~ msgstr "डेस्कटॉप रूपाकार व व्यवहार का नियंत्रण करने वाले सेटिंग"
+
+#~ msgid "Administration"
+#~ msgstr "प्रशासन"
+
+#~ msgid "Change system-wide settings (affects all users)"
+#~ msgstr "तंत्र स्तरीय सेटिंग बदलें (सभी उपयोक्ता प्रभावित होते हैं)"
+
+#~ msgid "Personal preferences"
+#~ msgstr "निजी वरीयता"
+
+#~ msgid "Preferences"
+#~ msgstr "वरीयता"
+
+#~ msgid "Personal preferences and administration settings"
+#~ msgstr "निजी वरीयता व प्रशासन सेटिंग"
+
+#~ msgid "Menu file"
+#~ msgstr "मेन्यू फ़ाइल"
+
+#~ msgid "MENU_FILE"
+#~ msgstr "MENU_FILE"
+
+#~ msgid "Monitor for menu changes"
+#~ msgstr "मेन्यू परिवर्तन के लिए मॉनिटर"
+
+#~ msgid "Include <Exclude>d entries"
+#~ msgstr "<निकाली> गई प्रविष्टि शामिल करें"
+
+#~ msgid "Include NoDisplay=true entries"
+#~ msgstr "NoDisplay=true प्रविष्टि शामिल करें"
+
+#~ msgid "Invalid desktop file ID"
+#~ msgstr "अवैध डेस्कटॉप फ़ाइल आईडी"
+
+#~ msgid "[Invalid Filename]"
+#~ msgstr "[अवैध फ़ाइलनाम]"
+
+#~ msgid " <excluded>"
+#~ msgstr " <निकाली गई>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menu changed, reloading ====\n"
+#~ "\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== मेन्यू परिवर्तित, फिर लोड कर रहा है ====\n"
+#~ "\n"
+#~ "\n"
+
+#~ msgid "Menu tree is empty"
+#~ msgstr "मेन्यू तरू रिक्त है"
+
+#~ msgid "- test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr "- डेस्कटॉप मेन्यू विनिर्दिष्टता के ग्नोम कार्यान्वयन की जाँच करें"

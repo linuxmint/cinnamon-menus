@@ -1,0 +1,274 @@
+# Vietnamese Translation for Gnome Menus.
+# Copyright © 2007 Gnome i18n Project for Vietnamese.
+# This file is distributed under the same license as the gnome-menus package.
+# Trinh Minh Thanh <tmthanh@yahoo.com>, 2004.
+# Clytie Siddall <clytie@riverland.net.au>, 2005-2007.
+# Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus 2.19.4\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"menus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-05-14 13:29+0000\n"
+"PO-Revision-Date: 2012-09-01 22:04+0700\n"
+"Last-Translator: Nguyễn Thái Ngọc Duy <pclouds@gmail.com>\n"
+"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.6.4a3\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "Âm thanh và Ảnh động"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "Trình đơn Đa phương tiện"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "Lập trình"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "Công cụ phát triển phần mềm"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "Giáo dục"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "Trò chơi"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "Trò chơi và giải trí"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "Đồ họa"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "Ứng dụng đồ họa"
+
+#: ../desktop-directories/Hardware.directory.in.h:1
+msgid "Hardware"
+msgstr "Phần cứng"
+
+#: ../desktop-directories/Hardware.directory.in.h:2
+msgid "Settings for several hardware devices"
+msgstr "Các thiết lập cho một số thiết bị phần cứng"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "Internet"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr ""
+"Các chương trình dùng để truy cập các dịch vụ Internet như web và thư điện tử"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "Văn phòng"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "Ứng dụng văn phòng"
+
+#. Translators: this is Personal as in "Personal settings"
+#: ../desktop-directories/Personal.directory.in.h:2
+msgid "Personal"
+msgstr "Cá nhân"
+
+#: ../desktop-directories/Personal.directory.in.h:3
+msgid "Personal settings"
+msgstr "Thiết lập cá nhân"
+
+#: ../desktop-directories/System.directory.in.h:1
+msgid "System"
+msgstr "Hệ thống"
+
+#: ../desktop-directories/System.directory.in.h:2
+msgid "System settings"
+msgstr "Thiết lập hệ thống"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "Công cụ hệ thống"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "Cấu hình và theo dõi hệ thống"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "Hỗ trợ truy cập"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "Thiết lập Hỗ trợ truy cập"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "Tiện ích"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "Công cụ tiện ích"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "Ứng dụng"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "Khác"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr "Những ứng dụng không thuộc các nhóm khác"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+#| msgid "Applications"
+msgid "Web Applications"
+msgstr "Ứng dụng Web"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr "Ứng dụng lưu từ Web hoặc các trang Web"
+
+#: ../simple-editor/gmenu-simple-editor.desktop.in.h:1
+msgid "Menu Editor"
+msgstr "Bộ hiệu chỉnh trình đơn"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:1
+msgid "Edit Menus"
+msgstr "Sửa trình đơn"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:2
+msgid "_Defaults"
+msgstr "_Mặc định"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:3
+msgid "_Menus:"
+msgstr "_Trình đơn:"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:4
+msgid "_Applications:"
+msgstr "Ứ_ng dụng:"
+
+#. Translators: %s is the version number
+#: ../simple-editor/GMenuSimpleEditor/main.py:44
+#, python-format
+msgid "Simple Menu Editor %s"
+msgstr "Bộ hiệu chỉnh trình đơn %s"
+
+#: ../simple-editor/GMenuSimpleEditor/maindialog.py:97
+#: ../simple-editor/GMenuSimpleEditor/maindialog.py:124
+msgid "Name"
+msgstr "Tên"
+
+#: ../simple-editor/GMenuSimpleEditor/maindialog.py:116
+msgid "Show"
+msgstr "Hiện"
+
+#: ../simple-editor/GMenuSimpleEditor/menufilewriter.py:44
+msgid ""
+"Cannot find home directory: not set in /etc/passwd and no value for $HOME in "
+"environment"
+msgstr ""
+"Không tìm thấy thư mục chính: chưa lập trong tập tin /etc/passwd và không có "
+"giá trị cho biến $HOME trong môi trường"
+
+#~ msgid "Personal preferences and administration settings"
+#~ msgstr "Thiết lập quản lý và Tùy thích cá nhân"
+
+#~ msgid "Internet and Network"
+#~ msgstr "Internet và mạng"
+
+#~ msgid "Network-related settings"
+#~ msgstr "Thiết lập mạng"
+
+#~ msgid "Look and Feel"
+#~ msgstr "Sắc thái"
+
+#~ msgid "Settings controlling the desktop appearance and behavior"
+#~ msgstr "Thiết lập điều khiển diện mạo và cách ứng xử của hệ thống"
+
+#~ msgid "Personal preferences"
+#~ msgstr "Tùy thích cá nhân"
+
+#~ msgid "Preferences"
+#~ msgstr "Tùy thích"
+
+#~ msgid "Universal access related preferences"
+#~ msgstr "Tùy thích liên quan đến khả năng truy cập"
+
+#~ msgid "Personal preferences and settings"
+#~ msgstr "Thiết lập và tùy thích cá nhân"
+
+#~ msgid "Administration"
+#~ msgstr "Quản lý"
+
+#~ msgid "Change system-wide settings (affects all users)"
+#~ msgstr "Thay đổi thiết lập cho toàn hệ thống (cho mọi người dùng)"
+
+#~ msgid "Menu file"
+#~ msgstr "Tập tin trình đơn"
+
+#~ msgid "MENU_FILE"
+#~ msgstr "TẬP_TIN_TRÌNH_ĐƠN"
+
+#~ msgid "Monitor for menu changes"
+#~ msgstr "Bộ theo dõi thay đổi trình đơn"
+
+#~ msgid "Include <Exclude>d entries"
+#~ msgstr "Gồm các mục nhập bị <loại trừ>"
+
+#~ msgid "Include NoDisplay=true entries"
+#~ msgstr "Gồm các mục nhập « NoDisplay=true » (không hiển thị là đúng)"
+
+#~ msgid "Invalid desktop file ID"
+#~ msgstr "ID tập tin màn hình nền không hợp lệ"
+
+#~ msgid "[Invalid Filename]"
+#~ msgstr "[Tên tập tin không hợp lệ]"
+
+#~ msgid " <excluded>"
+#~ msgstr " <bị loại trừ>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menu changed, reloading ====\n"
+#~ "\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Trình đơn đã thay đổi nên đang nạp lại ====\n"
+#~ "\n"
+#~ "\n"
+
+#~ msgid "Menu tree is empty"
+#~ msgstr "Cây trình đơn rỗng"
+
+#~ msgid "- test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr "— kiểm tra sự thực hiện GNOME của Đặc tả Trình đơn Môi trường"
+
+#~ msgid "Accessibility"
+#~ msgstr "Khả năng truy cập"
+
+#~ msgid "Desktop"
+#~ msgstr "Màn hình nền"
+
+#~ msgid "Accessibility Settings"
+#~ msgstr "Thiết lập khả năng truy cập"

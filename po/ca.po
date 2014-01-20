@@ -1,0 +1,267 @@
+# Catalan translation of GNOME Menus.
+# Copyright © 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gnome-menus package.
+# Jordi Mallach <jordi@sindominio.net>, 2004, 2005, 2006, 2007.
+# Gil Forcada <gilforcada@guifi.net>, 2008, 2009, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus 2.12\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"menus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-03-02 12:48+0000\n"
+"PO-Revision-Date: 2013-03-02 19:22+0100\n"
+"Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
+"Language-Team: Catalan <tradgnome@softcatala.org>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bits\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "So i vídeo"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "Menú multimèdia"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "Programació"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "Eines per desenvolupar programari"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "Educació"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "Jocs"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "Jocs i entreteniments"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "Gràfics"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "Aplicacions de gràfics"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "Internet"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "Programes per accedir a Internet, com la web i el correu"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "Ofimàtica"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "Aplicacions ofimàtiques"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "Eines del sistema"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "Configuració i supervisió del sistema"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "Accés universal"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "Paràmetres d'accés universal"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "Accessoris"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "Accessoris de l'escriptori"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "Aplicacions"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "Altres"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr "Aplicacions que no encaixaven en d'altres categories"
+
+#: ../desktop-directories/X-GNOME-Sundry.directory.in.h:1
+msgid "Sundry"
+msgstr "Diversos"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:1
+msgid "Utilities"
+msgstr "Utilitats"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:2
+msgid "Small but useful GNOME tools"
+msgstr "Eines petites, però útils, del GNOME"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+msgid "Web Applications"
+msgstr "Aplicacions web"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr "Aplicacions i llocs desats del Web"
+
+#~ msgid "Hardware"
+#~ msgstr "Maquinari"
+
+#~ msgid "Settings for several hardware devices"
+#~ msgstr "Paràmetres per a diferents dispositius de maquinari"
+
+#~ msgid "Personal"
+#~ msgstr "Personal"
+
+#~ msgid "Personal settings"
+#~ msgstr "Paràmetres personals"
+
+#~ msgid "System"
+#~ msgstr "Sistema"
+
+#~ msgid "System settings"
+#~ msgstr "Paràmetres del sistema"
+
+#~ msgid "Menu Editor"
+#~ msgstr "Editor del menú"
+
+#~ msgid "Edit Menus"
+#~ msgstr "Edita els menús"
+
+#~ msgid "_Defaults"
+#~ msgstr "_Predeterminats"
+
+#~ msgid "_Menus:"
+#~ msgstr "_Menús:"
+
+#~ msgid "_Applications:"
+#~ msgstr "_Aplicacions:"
+
+#~ msgid "Simple Menu Editor %s"
+#~ msgstr "Editor del menú (versió %s)"
+
+#~ msgid "Name"
+#~ msgstr "Nom"
+
+#~ msgid "Show"
+#~ msgstr "Mostra"
+
+#~ msgid ""
+#~ "Cannot find home directory: not set in /etc/passwd and no value for $HOME "
+#~ "in environment"
+#~ msgstr ""
+#~ "No s'ha trobat el directori d'inici: no està establert al fitxer /etc/"
+#~ "passwd i no hi ha cap valor per a $HOME a l'entorn"
+
+#~ msgid "Internet and Network"
+#~ msgstr "Internet i xarxa"
+
+#~ msgid "Network-related settings"
+#~ msgstr "Paràmetres de xarxa"
+
+# Termcat (josep)
+#~ msgid "Look and Feel"
+#~ msgstr "Aspecte i comportament"
+
+#~ msgid "Settings controlling the desktop appearance and behavior"
+#~ msgstr ""
+#~ "Paràmetres que controlen l'aspecte i el comportament de l'escriptori"
+
+#~ msgid "Administration"
+#~ msgstr "Administració"
+
+#~ msgid "Change system-wide settings (affects all users)"
+#~ msgstr "Canvia els paràmetres del sistema (afecta tots els usuaris)"
+
+#~ msgid "Personal preferences"
+#~ msgstr "Preferències personals"
+
+#~ msgid "Preferences"
+#~ msgstr "Preferències"
+
+#~ msgid "Personal preferences and administration settings"
+#~ msgstr "Preferències personals i paràmetres d'administració"
+
+#~ msgid "Menu file"
+#~ msgstr "Fitxer de menú"
+
+#~ msgid "MENU_FILE"
+#~ msgstr "FITXER_MENU"
+
+#~ msgid "Monitor for menu changes"
+#~ msgstr "Fes un seguiment dels canvis del menú"
+
+#~ msgid "Include <Exclude>d entries"
+#~ msgstr "Inclou entrades excloses amb <Exclude>"
+
+#~ msgid "Include NoDisplay=true entries"
+#~ msgstr "Inclou entrades amb NoDisplay=true"
+
+#~ msgid "Invalid desktop file ID"
+#~ msgstr "L'ID del fitxer desktop és invàlid"
+
+#~ msgid "[Invalid Filename]"
+#~ msgstr "[Nom de fitxer invàlid]"
+
+#~ msgid " <excluded>"
+#~ msgstr " <exclòs>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menu changed, reloading ====\n"
+#~ "\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "=== El menú ha canviat, s'està tornant a carregar ===\n"
+#~ "\n"
+
+#~ msgid "Menu tree is empty"
+#~ msgstr "L'arbre del menú és buit"
+
+#~ msgid "- test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr ""
+#~ "- proveu la implementació del GNOME de l'especificació del menú "
+#~ "d'escriptori"
+
+#~ msgid "Universal access related preferences"
+#~ msgstr "Preferències relacionades amb l'accés universal"
+
+#~ msgid "Personal preferences and settings"
+#~ msgstr "Preferències i paràmetres personals"
+
+#~ msgid "Accessibility"
+#~ msgstr "Accessibilitat"
+
+#~ msgid "Accessibility Settings"
+#~ msgstr "Paràmetres d'accessibilitat"
+
+#~ msgid "Desktop"
+#~ msgstr "Escriptori"

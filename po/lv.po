@@ -1,0 +1,253 @@
+# translation of lv.po to Latvian
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Raivis Dejus <orvils@gmail.com>, 2006, 2007, 2009.
+# Peteris Krisjanis <pecisk@gmail.com>, 2010.
+# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2012, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lv\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-20 11:32+0200\n"
+"PO-Revision-Date: 2013-02-20 11:33+0200\n"
+"Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
+"Language-Team: Latviešu <lata-l10n@googlegroups.com>\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Gtranslator 2.91.5\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "Skaņa un video"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "Multimediju izvēlne"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "Programmēšana"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "Programmatūras izstrādes rīki"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "Izglītība"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "Spēles"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "Spēles un izklaides lietotnes"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "Grafika"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "Grafikas lietotnes"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "Internets"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "Programmas darbam internetā, piemēram, tīmekļa pārlūkošana un e-pasts"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "Birojs"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "Biroja lietotnes"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "Sistēma rīki"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "Sistēmas konfigurācija un pārraudzība"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "Universālā piekļuve"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "Universālās piekļuves iestatījumi"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "Piederumi"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "Darbvirsmas piederumi"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "Lietotnes"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "Citas lietotnes"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr "Lietotnes, kas neiederas nevienā citā kategorijā"
+
+#: ../desktop-directories/X-GNOME-Sundry.directory.in.h:1
+msgid "Sundry"
+msgstr "Dažādi"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:1
+msgid "Utilities"
+msgstr "Utilītas"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:2
+msgid "Small but useful GNOME tools"
+msgstr "Mazi, bet noderīgi GNOME rīki"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+msgid "Web Applications"
+msgstr "Tīmekļa lietotnes"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr "Lietotnes un vietnes, kas saglabātas no tīmekļa"
+
+#~ msgid "Hardware"
+#~ msgstr "Aparatūra"
+
+#~ msgid "Settings for several hardware devices"
+#~ msgstr "Dažu aparatūras ierīču iestatījumi"
+
+#~ msgid "Personal"
+#~ msgstr "Personīgie"
+
+#~ msgid "Personal settings"
+#~ msgstr "Personīgie iestatījumi"
+
+#~ msgid "System"
+#~ msgstr "Sistēma"
+
+#~ msgid "System settings"
+#~ msgstr "Sistēmas iestatījumi"
+
+#~ msgid "Menu Editor"
+#~ msgstr "Izvēļņu redaktors"
+
+#~ msgid "Edit Menus"
+#~ msgstr "Rediģēt izvēlnes"
+
+#~ msgid "_Defaults"
+#~ msgstr "_Noklusējuma"
+
+#~ msgid "_Menus:"
+#~ msgstr "_Izvēlnes:"
+
+#~ msgid "_Applications:"
+#~ msgstr "_Lietotnes:"
+
+#~ msgid "Simple Menu Editor %s"
+#~ msgstr "Vienkāršs izvēļņu redaktors %s"
+
+#~ msgid "Name"
+#~ msgstr "Nosaukums"
+
+#~ msgid "Show"
+#~ msgstr "Rādīt"
+
+#~ msgid ""
+#~ "Cannot find home directory: not set in /etc/passwd and no value for $HOME "
+#~ "in environment"
+#~ msgstr ""
+#~ "Neizdodas atrast mājas direktoriju — tā nav norādīta /etc/passwd un nav "
+#~ "arī $HOME vides mainīgajā"
+
+#~ msgid "Internet and Network"
+#~ msgstr "Internets un tīkli"
+
+#~ msgid "Network-related settings"
+#~ msgstr "Ar tīklu saistīti iestatījumi"
+
+#~ msgid "Look and Feel"
+#~ msgstr "Izskats un uzvedība"
+
+#~ msgid "Settings controlling the desktop appearance and behavior"
+#~ msgstr "Iestatījumi, kas nosaka darbvirsmas izskatu un uzvedību"
+
+#~ msgid "Administration"
+#~ msgstr "Administrēšana"
+
+#~ msgid "Change system-wide settings (affects all users)"
+#~ msgstr "Sistēmas iestatījumu maiņa (ietekmē visus lietotājus)"
+
+#~ msgid "Personal preferences"
+#~ msgstr "Personīgie iestatījumi"
+
+#~ msgid "Preferences"
+#~ msgstr "Iestatījumi"
+
+#~ msgid "Personal preferences and administration settings"
+#~ msgstr "Personīgie un administrācijas iestatījumi"
+
+#~ msgid "Menu file"
+#~ msgstr "Izvēlnes fails"
+
+#~ msgid "MENU_FILE"
+#~ msgstr "MENU_FILE"
+
+#~ msgid "Monitor for menu changes"
+#~ msgstr "Izvēlņu izmaiņu pārraugs"
+
+#~ msgid "Include <Exclude>d entries"
+#~ msgstr "Pievienot <Exclude> ierakstus"
+
+#~ msgid "Include NoDisplay=true entries"
+#~ msgstr "Pievienot NoDisplay=true ierakstus"
+
+#~ msgid "Invalid desktop file ID"
+#~ msgstr "Nederīgs darbvirsmas faila ID"
+
+#~ msgid "[Invalid Filename]"
+#~ msgstr "[Nederīgs faila nosaukums]"
+
+#~ msgid " <excluded>"
+#~ msgstr " <excluded>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menu changed, reloading ====\n"
+#~ "\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Izvēlne izmainīta, pārlādēju ==== \n"
+#~ "\n"
+#~ "\n"
+
+#~ msgid "Menu tree is empty"
+#~ msgstr "Izvēlņu koks ir tukšs"
+
+#~ msgid "- test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr ""
+#~ "- pārbaudiet GNOME darbvirsmas izvēlņu specifikācijas implementāciju"

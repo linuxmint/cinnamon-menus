@@ -1,0 +1,256 @@
+# translation of gnome-menus.HEAD.po to Punjabi
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# A S Alam <aalam@users.sf.net>, 2005,2006,2007,2008,2009.
+# Amanpreet Singh Alam <aalam@users.sf.net>, 2009, 2012, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus.HEAD\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"menus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-02-19 22:31+0000\n"
+"PO-Revision-Date: 2013-02-22 14:50+0000\n"
+"Last-Translator: A S Alam <aalam@users.sf.net>\n"
+"Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
+"Language: pa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "ਸੰਗੀਤ ਅਤੇ ਵੀਡਿਓ"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "ਮਲਟੀਮੀਡਿਆ ਮੇਨੂ"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "ਪਰੋਗਰਾਮਿੰਗ"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "ਸਾਫਟਵੇਅਰ ਦੇ ਡਿਵੈਲਪਮੈਂਟ ਲਈ ਟੂਲ"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "ਸਿੱਖਿਆ"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "ਖੇਡਾਂ"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "ਖੇਡਾਂ ਅਤੇ ਮਨੋਰੰਜਨ"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "ਚਿੱਤਰਕਾਰੀ"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "ਚਿੱਤਰਕਾਰੀ ਕਾਰਜ"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "ਇੰਟਰਨੈੱਟ"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "ਇੰਟਰਨੈੱਟ ਇਸਤੇਮਾਲ ਕਰਨ ਲਈ ਕਾਰਜ, ਜਿਵੇਂ ਕਿ ਵੈੱਬ ਤੇ ਈ-ਮੇਲ"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "ਦਫ਼ਤਰ"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "ਦਫ਼ਤਰ ਕਾਰਜ"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "ਸਿਸਟਮ ਟੂਲ"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "ਸਿਸਟਮ ਸੰਰਚਨਾ ਅਤੇ ਨਿਗਰਾਨੀ"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "ਵਿਆਪਕ ਪਹੁੰਚ"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "ਵਿਆਪਕ ਪਹੁੰਚ ਸਥਾਪਨ"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "ਸਹਾਇਕ"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "ਡੈਸਕਟਾਪ ਸਹਾਇਕ"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "ਐਪਲੀਕੇਸ਼ਨ"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "ਹੋਰ"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr "ਕਾਰਜ, ਜੋ ਕਿ ਕਿਸੇ ਵਰਗ ਵਿੱਚ ਨਹੀਂ ਆਉਦੇ।"
+
+#: ../desktop-directories/X-GNOME-Sundry.directory.in.h:1
+msgid "Sundry"
+msgstr "ਫੁਟਕਲ"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:1
+msgid "Utilities"
+msgstr "ਸਹੂਲਤਾਂ"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:2
+msgid "Small but useful GNOME tools"
+msgstr "ਛੋਟੇ, ਪਰ ਫਾਇਦੇਮੰਦ ਗਨੋਮ ਟੂਲ"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+msgid "Web Applications"
+msgstr "ਵੈੱਬ ਐਪਲੀਕੇਸ਼ਨ"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr "ਵੈੱਬ ਤੋਂ ਸੰਭਾਲੀਆਂ ਐਪਲੀਕੇਸ਼ਨ ਅਤੇ ਸਾਈਟਾਂ"
+
+#~ msgid "Hardware"
+#~ msgstr "ਜੰਤਰ"
+
+#~ msgid "Settings for several hardware devices"
+#~ msgstr "ਕਈ ਜੰਤਰਾਂ ਲਈ ਸਥਾਪਨ"
+
+#~ msgid "Personal"
+#~ msgstr "ਨਿੱਜੀ"
+
+#~ msgid "Personal settings"
+#~ msgstr "ਨਿੱਜੀ ਸੈਟਿੰਗ"
+
+#~ msgid "System"
+#~ msgstr "ਸਿਸਟਮ"
+
+#~ msgid "System settings"
+#~ msgstr "ਸਿਸਟਮ ਸੈਟਿੰਗ"
+
+#~ msgid "Menu Editor"
+#~ msgstr "ਮੇਨੂ ਸੰਪਾਦਕ"
+
+#~ msgid "Edit Menus"
+#~ msgstr "ਮੇਨੂ ਸੋਧ"
+
+#~ msgid "_Defaults"
+#~ msgstr "ਮੂਲ(_D)"
+
+#~ msgid "_Menus:"
+#~ msgstr "ਮੇਨੂ(_M):"
+
+#~ msgid "_Applications:"
+#~ msgstr "ਕਾਰਜ(_A):"
+
+#~ msgid "Simple Menu Editor %s"
+#~ msgstr "ਸੌਖਾ ਜਿਹਾ ਮੇਨੂ ਸੰਪਾਦਕ %s"
+
+#~ msgid "Name"
+#~ msgstr "ਨਾਂ"
+
+#~ msgid "Show"
+#~ msgstr "ਵੇਖੋ"
+
+#~ msgid ""
+#~ "Cannot find home directory: not set in /etc/passwd and no value for $HOME "
+#~ "in environment"
+#~ msgstr ""
+#~ "ਘਰ ਡਾਇਰੈਕਟਰੀ ਨਹੀਂ ਮਿਲੀ: /etc/passwd ਵਿੱਚ ਕੁਝ ਦਿੱਤਾ ਨਹੀਂ ਹੈ ਅਤੇ ਮਾਹੌਲ ਵਿੱਚ $HOME ਲਈ "
+#~ "ਕੋਈ ਮੁੱਲ ਨਹੀਂ ਹੈ।"
+
+#~ msgid "Internet and Network"
+#~ msgstr "ਇੰਟਰਨੈੱਟ ਅਤੇ ਨੈੱਟਵਰਕ"
+
+#~ msgid "Network-related settings"
+#~ msgstr "ਨੈੱਟਵਰਕ ਨਾਲ ਸਬੰਧਤ ਸਥਾਪਨ"
+
+#~ msgid "Look and Feel"
+#~ msgstr "ਦਿੱਖ ਅਤੇ ਵਰਤੋਂ"
+
+#~ msgid "Settings controlling the desktop appearance and behavior"
+#~ msgstr "ਡੈਸਕਟਾਪ ਦਿੱਖ ਅਤੇ ਰਵੱਈਆ ਕੰਟਰੋਲ ਕਰਨ ਲਈ ਸਥਾਪਨ"
+
+#~ msgid "Administration"
+#~ msgstr "ਪਰਸ਼ਾਸਨ"
+
+#~ msgid "Change system-wide settings (affects all users)"
+#~ msgstr "ਪੂਰੇ ਸਿਸਟਮ ਲਈ ਸਥਾਪਨ ਬਦਲਾਅ (ਸਭ ਯੂਜ਼ਰਾਂ ਨੂੰ)"
+
+#~ msgid "Personal preferences"
+#~ msgstr "ਨਿੱਜੀ ਪਸੰਦ"
+
+#~ msgid "Preferences"
+#~ msgstr "ਮੇਰੀ ਪਸੰਦ"
+
+#~ msgid "Personal preferences and administration settings"
+#~ msgstr "ਨਿੱਜੀ ਪਸੰਦ ਅਤੇ ਪਰਸ਼ਾਸਨੀ ਸਥਾਪਨ"
+
+#~ msgid "Menu file"
+#~ msgstr "ਮੇਨੂ ਫਾਇਲ"
+
+#~ msgid "MENU_FILE"
+#~ msgstr "MENU_FILE"
+
+#~ msgid "Monitor for menu changes"
+#~ msgstr "ਮੇਨੂ ਤਬਦੀਲੀਆਂ ਲਈ ਨਿਗਰਾਨ"
+
+#~ msgid "Include <Exclude>d entries"
+#~ msgstr "<Exclude> ਐਂਟਰੀ ਸ਼ਾਮਲ"
+
+#~ msgid "Include NoDisplay=true entries"
+#~ msgstr "NoDisplay=true entries ਸ਼ਾਮਲ"
+
+#~ msgid "Invalid desktop file ID"
+#~ msgstr "ਗਲਤ ਡੈਸਕਟਾਪ ਫਾਇਲ ID"
+
+#~ msgid "[Invalid Filename]"
+#~ msgstr "[ਗਲਤ ਫਾਇਲ ਨਾਂ]"
+
+#~ msgid " <excluded>"
+#~ msgstr " <excluded>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menu changed, reloading ====\n"
+#~ "\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== ਮੇਨੂ ਬਦਲਿਆ ਗਿਆ, ਮੁੜ ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ ====\n"
+#~ "\n"
+#~ "\n"
+
+#~ msgid "Menu tree is empty"
+#~ msgstr "ਮੇਨੂ ਲੜੀ ਖਾਲੀ ਹੈ"
+
+#~ msgid "- test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr "- ਜਾਂਚ ਡੈਸਕਟਾਪ ਮੇਨੂ ਨਿਰਧਾਰਨ ਦਾ ਗਨੋਮ ਸਥਾਪਨ"
+
+#~ msgid "Universal access related preferences"
+#~ msgstr "ਯੂਨੀਵਰਸਲ ਪਹੁੰਚ ਨਾਲ ਸਬੰਧੀ ਪਸੰਦ"
+
+#~ msgid "Personal preferences and settings"
+#~ msgstr "ਨਿੱਜੀ ਪਸੰਦ ਅਤੇ ਸੈਟਿੰਗ"

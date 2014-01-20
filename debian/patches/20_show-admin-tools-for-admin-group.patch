@@ -1,0 +1,218 @@
+--- gnome-menus-2.19.6.orig/libmenu/desktop-entries.c	2007-07-30 22:06:51.000000000 +0200
++++ gnome-menus-2.19.6/libmenu/desktop-entries.c	2007-08-03 11:38:29.000000000 +0200
+@@ -24,6 +24,7 @@
+ #include <string.h>
+ 
+ #include "menu-util.h"
++#include "user-is-sudoer.h"
+ 
+ #define DESKTOP_ENTRY_GROUP     "Desktop Entry"
+ #define KDE_DESKTOP_ENTRY_GROUP "KDE Desktop Entry"
+@@ -33,7 +34,8 @@
+   DESKTOP_ENTRY_NO_DISPLAY     = 1 << 0,
+   DESKTOP_ENTRY_HIDDEN         = 1 << 1,
+   DESKTOP_ENTRY_SHOW_IN_GNOME  = 1 << 2,
+-  DESKTOP_ENTRY_TRYEXEC_FAILED = 1 << 3
++  DESKTOP_ENTRY_TRYEXEC_FAILED = 1 << 3,
++  DESKTOP_ENTRY_ROOT_REQUIRED  = 1 << 4
+ };
+ 
+ struct DesktopEntry
+@@ -50,7 +52,7 @@
+   gboolean terminal;
+ 
+   guint type : 2;
+-  guint flags : 4;
++  guint flags : 5;
+   guint refcount : 24;
+ };
+ 
+@@ -75,9 +77,20 @@
+   gboolean   hidden;
+   gboolean   show_in_gnome;
+   gboolean   tryexec_failed;
++  gboolean   root_required_flag;
+   char      *tryexec;
+   guint      flags;
+   int        i;
++  
++  static gboolean sudoer_flag_set = FALSE;
++  static gboolean sudoer_flag     = TRUE;
++
++  /* If we don't know yet whether the user is sudoer or not, let's see */
++  if (!sudoer_flag_set)
++    {
++      sudoer_flag = user_is_sudoer ();
++      sudoer_flag_set = TRUE;
++    }
+ 
+   error = NULL;
+   no_display = g_key_file_get_boolean (key_file,
+@@ -157,6 +170,47 @@
+       g_free (tryexec);
+     }
+ 
++  error = NULL;
++  root_required_flag = g_key_file_get_boolean (key_file,
++                                       desktop_entry_group,
++                                       "X-KDE-SubstituteUID",
++                                       &error);
++
++  if (error)
++    {
++      root_required_flag = FALSE;
++      g_error_free (error);
++    }
++  else {
++    if (root_required_flag) {
++	    char *username = NULL;
++	    username = g_key_file_get_value (key_file,
++					     desktop_entry_group,
++					     "X-KDE-Username",
++					     NULL);
++
++	    if (!username || (username && !strcmp (username, "root")))
++		    root_required_flag = TRUE;	  
++	    else 
++		    root_required_flag = FALSE;
++	    g_free (username);
++    }
++    else
++	    root_required_flag = FALSE;
++  }
++
++ /* 
++   * If the desktop entry has the field and indeed requires root 
++   * privilege and the user isn't sudoer, then the entry needs to be
++   * hidden.
++   */
++
++  if (root_required_flag
++  && (!sudoer_flag))
++    {
++      no_display = TRUE;
++    }
++  
+   flags = 0;
+   if (no_display)
+     flags |= DESKTOP_ENTRY_NO_DISPLAY;
+@@ -166,6 +220,8 @@
+     flags |= DESKTOP_ENTRY_SHOW_IN_GNOME;
+   if (tryexec_failed)
+     flags |= DESKTOP_ENTRY_TRYEXEC_FAILED;
++  if (root_required_flag)
++    flags |= DESKTOP_ENTRY_ROOT_REQUIRED;
+ 
+   return flags;
+ }
+@@ -297,13 +353,14 @@
+   
+ #undef GET_LOCALE_STRING
+ 
+-  menu_verbose ("Desktop entry \"%s\" (%s, %s, %s) flags: NoDisplay=%s, Hidden=%s, ShowInGNOME=%s, TryExecFailed=%s\n",
++  menu_verbose ("Desktop entry \"%s\" (%s, %s, %s) flags: NoDisplay=%s, Hidden=%s, RootRequired: %s, ShowInGNOME=%s, TryExecFailed=%s\n",
+                 retval->basename,
+                 retval->name,
+                 retval->comment ? retval->comment : "(null)",
+                 retval->icon ? retval->icon : "(null)",
+                 retval->flags & DESKTOP_ENTRY_NO_DISPLAY     ? "(true)" : "(false)",
+                 retval->flags & DESKTOP_ENTRY_HIDDEN         ? "(true)" : "(false)",
++                retval->flags & DESKTOP_ENTRY_ROOT_REQUIRED  ? "(true)" : "(false)",
+                 retval->flags & DESKTOP_ENTRY_SHOW_IN_GNOME  ? "(true)" : "(false)",
+                 retval->flags & DESKTOP_ENTRY_TRYEXEC_FAILED ? "(true)" : "(false)");
+ 
+--- gnome-menus-2.19.6.orig/libmenu/Makefile.am	2007-08-03 11:38:07.000000000 +0200
++++ gnome-menus-2.19.6/libmenu/Makefile.am	2007-08-03 11:38:29.000000000 +0200
+@@ -35,6 +35,8 @@
+ 	menu-monitor-backend.h		\
+ 	menu-util.c			\
+ 	menu-util.h			\
++	user-is-sudoer.c		\
++	user-is-sudoer.h		\
+ 	$(MONITOR_BACKEND_SOURCES)	\
+ 	$(NULL)
+ 
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gnome-menus-2.19.6/libmenu/user-is-sudoer.c	2007-08-03 11:38:29.000000000 +0200
+@@ -0,0 +1,58 @@
++/*
++ * user-is-sudoer.c:
++ *
++ * Copyright (C) 2005 Manu Cornet
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Authors:
++ *      Manu Cornet <manu@manucornet.net>
++ */
++
++#include <glib.h>
++#include <string.h>
++#include <unistd.h>
++#include <sys/types.h>
++#include <grp.h>
++#include "user-is-sudoer.h"
++
++#define ADMIN_GROUP_NAME "admin"
++
++gboolean
++user_is_sudoer (void)
++{
++  const gchar  *user_name;
++  int           i = 0;
++  struct group *group;
++
++  if (getuid() == 0 || g_getenv ("USER_IS_ADMIN"))
++    return TRUE;
++
++  group = getgrnam (ADMIN_GROUP_NAME);
++
++  if (!group)
++	  return TRUE;
++  else {
++	  user_name = g_get_user_name ();
++	  
++	  while (group->gr_mem[i]) {
++		  if (!strcmp (user_name, group->gr_mem[i++]))
++			  return TRUE;
++	  }
++  }
++
++  return FALSE;
++}
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gnome-menus-2.19.6/libmenu/user-is-sudoer.h	2007-08-03 11:38:29.000000000 +0200
+@@ -0,0 +1,20 @@
++/*
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the
++ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
++ * Boston, MA 02111-1307, USA.
++ */
++
++#include <glib.h>
++
++gboolean user_is_sudoer (void);

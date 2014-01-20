@@ -1,0 +1,6 @@
+[Desktop Entry]
+_Name=Debian
+_Comment=The Debian menu
+Icon=debian-logo
+Type=Directory
+NoDisplay=true

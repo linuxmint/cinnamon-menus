@@ -1,0 +1,6 @@
+etc
+usr/share/locale
+usr/share/desktop-directories
+debian/gnome-menus-blacklist /usr/sbin
+debian/menus.blacklist /etc/gnome
+debian/desktop-files/*.directory /usr/share/desktop-directories

@@ -1,0 +1,13 @@
+Index: gnome-menus-3.4.2/libmenu/desktop-entries.c
+===================================================================
+--- gnome-menus-3.4.2.orig/libmenu/desktop-entries.c	2011-10-24 13:48:12.000000000 +0200
++++ gnome-menus-3.4.2/libmenu/desktop-entries.c	2013-01-02 21:11:23.617525227 +0100
+@@ -250,6 +250,8 @@ desktop_entry_load_directory (DesktopEnt
+ static gboolean
+ desktop_entry_load (DesktopEntry *entry)
+ {
++  if (strstr (entry->path, "/menu-xdg/"))
++    return FALSE;
+   if (entry->type == DESKTOP_ENTRY_DESKTOP)
+     {
+       DesktopEntryDesktop *entry_desktop = (DesktopEntryDesktop*)entry;

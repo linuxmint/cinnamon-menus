@@ -1,0 +1,268 @@
+# Ukrainian translation of gnome-menus.
+# Copyright (C) Free Software Foundation Inc., 2005
+# This file is distributed under the same license as the gnome-menus package.
+# Maxim Dziumanenko <dziumanenko@gmail.com>, 2005-2007.
+# Korostil Daniel <ted.korostiled@gmail.com>, 2011.
+# Re. <ted.korostiled@gmail.com>, 2012.
+# Daniel Korostil <ted.korostiled@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-23 12:40+0200\n"
+"PO-Revision-Date: 2013-03-23 12:41+0300\n"
+"Last-Translator: Daniel Korostil <ted.korostiled@gmail.com>\n"
+"Language-Team: linux.org.ua\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "Звук та відео"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "Мультимедіа"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "Програмування"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "Засоби розробки програм"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "Навчання"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "Ігри"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "Ігри та розваги"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "Графіка"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "Графічні програми"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "Інтернет"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "Такі програми для роботи з інтернетом, як пошта, веб-переглядач тощо"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "Офіс"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "Офісні програми"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "Системні засоби"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "Засоби налаштовування та контролю системи"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "Універсальний доступ"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "Параметри універсального доступу"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "Стандартні"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "Стандартні програми"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "Програми"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "Інші"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr "Програми, що не належать до жодної категорії"
+
+#: ../desktop-directories/X-GNOME-Sundry.directory.in.h:1
+msgid "Sundry"
+msgstr "Різне"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:1
+msgid "Utilities"
+msgstr "Засоби"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:2
+msgid "Small but useful GNOME tools"
+msgstr "Маленькі, проте корисні програмки GNOME"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+msgid "Web Applications"
+msgstr "Веб-програми"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr "Програми і сайти, збережені з інтернету"
+
+#~ msgid "Hardware"
+#~ msgstr "Обладнання"
+
+#~ msgid "Settings for several hardware devices"
+#~ msgstr "Параметри деяких апаратних пристроїв"
+
+#~ msgid "Personal"
+#~ msgstr "Особисті"
+
+#~ msgid "Personal settings"
+#~ msgstr "Персональні параметри"
+
+#~ msgid "System"
+#~ msgstr "Системна"
+
+#~ msgid "System settings"
+#~ msgstr "Системні параметри"
+
+#~ msgid "Menu Editor"
+#~ msgstr "Редактор меню"
+
+#~ msgid "Edit Menus"
+#~ msgstr "Зміна меню"
+
+#~ msgid "_Defaults"
+#~ msgstr "_Типові"
+
+#~ msgid "_Menus:"
+#~ msgstr "_Меню:"
+
+#~ msgid "_Applications:"
+#~ msgstr "_Програми:"
+
+#~ msgid "Simple Menu Editor %s"
+#~ msgstr "Простий редактор меню %s"
+
+#~ msgid "Name"
+#~ msgstr "Назва"
+
+#~ msgid "Show"
+#~ msgstr "Показувати"
+
+#~ msgid ""
+#~ "Cannot find home directory: not set in /etc/passwd and no value for $HOME "
+#~ "in environment"
+#~ msgstr ""
+#~ "Не вдалось знайти домашній каталог: не встановлено у /etc/passwd та не "
+#~ "визначено у змінній оточення $HOME"
+
+#~ msgid "Internet and Network"
+#~ msgstr "Інтернет та мережа"
+
+#~ msgid "Network-related settings"
+#~ msgstr "Параметри, що відносяться до налаштовування мережі"
+
+#~ msgid "Look and Feel"
+#~ msgstr "Оформлення"
+
+#~ msgid "Settings controlling the desktop appearance and behavior"
+#~ msgstr ""
+#~ "Параметри, що впливають на зовнішній вигляд та поведінку робочого столу"
+
+#~ msgid "Administration"
+#~ msgstr "Адміністрування"
+
+#~ msgid "Change system-wide settings (affects all users)"
+#~ msgstr "Зміна системних параметрів (впливає на усіх користувачів)"
+
+#~ msgid "Personal preferences"
+#~ msgstr "Особисті уподобання"
+
+#~ msgid "Preferences"
+#~ msgstr "Параметри"
+
+#~ msgid "Personal preferences and administration settings"
+#~ msgstr "Особисті параметри та адміністративні параметри"
+
+#~ msgid "Menu file"
+#~ msgstr "Файл меню"
+
+#~ msgid "MENU_FILE"
+#~ msgstr "ФАЙЛ_МЕНЮ"
+
+#~ msgid "Monitor for menu changes"
+#~ msgstr "Контролювати зміни у меню"
+
+#~ msgid "Include <Exclude>d entries"
+#~ msgstr "Включати елементи з <Exclude>"
+
+#~ msgid "Include NoDisplay=true entries"
+#~ msgstr "Включати елементи з NoDisplay=true"
+
+#~ msgid "Invalid desktop file ID"
+#~ msgstr "Неправильний ідентифікатор desktop-файлу"
+
+#~ msgid "[Invalid Filename]"
+#~ msgstr "[Неправильна назва файлу]"
+
+#~ msgid " <excluded>"
+#~ msgstr " <excluded>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menu changed, reloading ====\n"
+#~ "\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Меню змінено, перезавантаження ====\n"
+#~ "\n"
+#~ "\n"
+
+#~ msgid "Menu tree is empty"
+#~ msgstr "Дерево меню порожнє"
+
+#~ msgid "- test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr "- перевірка реалізації у GNOME специфікації з меню робочого столу"
+
+#~ msgid "Universal access related preferences"
+#~ msgstr "Параметри пов'язані з універсальним доступом"
+
+#~ msgid "Personal preferences and settings"
+#~ msgstr "Особисті параметри"
+
+#~ msgid "Accessibility"
+#~ msgstr "Спеціальні можливості"
+
+#~ msgid "Accessibility Settings"
+#~ msgstr "Налаштовування спеціальних можливостей"
+
+#~ msgid "Desktop"
+#~ msgstr "Робочий стіл"

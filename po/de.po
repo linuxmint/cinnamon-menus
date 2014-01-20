@@ -1,0 +1,272 @@
+# German translation of gnome-menus.
+# Copyright (C) 2004 THE gnome-menus'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-menus package.
+# Hendrik Brandt <heb@gnome-de.org>, 2004-2005.
+# Hendrik Richter <hendrikr@gnome.org>, 2006, 2007.
+# Mario Blättermann <mariobl@gnome.org>, 2009.
+# Tobias Endrigkeit <tobiasendrigkeit@googlemail.com>, 2012.
+# Christian Kirbach <christian.kirbach@gmail.com>, 2010, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus HEAD\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"menus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-03-03 00:21+0000\n"
+"PO-Revision-Date: 2013-03-03 17:36+0100\n"
+"Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
+"Language-Team: Deutsch <gnome-de@gnome.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 2.91.6\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "Multimedia"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "Multimedia-Menü"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "Entwicklung"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "Werkzeuge zur Software-Entwicklung"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "Bildung"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "Spiele"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "Spiel und Spaß"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "Grafik"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "Anwendungen zur Grafikbearbeitung"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "Internet"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "Programme um Internet-Dienste wie E-Mail oder das WWW zu nutzen"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "Büro"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "Büroanwendungen"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "Systemwerkzeuge"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "Systemkonfiguration und -überwachung"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "Barrierefreiheit"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "Einstellungen zur Barrierefreiheit"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "Zubehör"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "Desktop-Zubehör"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "Anwendungen"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "Sonstige"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr ""
+"Anwendungen, welche in keine andere Kategorie eingeordnet werden können"
+
+# oder nur »Sonstiges«
+#: ../desktop-directories/X-GNOME-Sundry.directory.in.h:1
+msgid "Sundry"
+msgstr "Verschiedenes"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:1
+msgid "Utilities"
+msgstr "Hilfsprogramme"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:2
+msgid "Small but useful GNOME tools"
+msgstr "Kleine, nützliche GNOME Werkzeuge"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+msgid "Web Applications"
+msgstr "Internetanwendungen"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr "Anwendungen und Webseiten, welche aus dem Internet stammen"
+
+#~ msgid "Hardware"
+#~ msgstr "Hardware"
+
+#~ msgid "Settings for several hardware devices"
+#~ msgstr "Einstellungen für Hardware"
+
+#~ msgid "Personal"
+#~ msgstr "Persönlich"
+
+#~ msgid "Personal settings"
+#~ msgstr "Persönliche Vorlieben und Einstellungen"
+
+#~ msgid "System"
+#~ msgstr "System"
+
+#~ msgid "System settings"
+#~ msgstr "Systemeinstellungen"
+
+#~ msgid "Menu Editor"
+#~ msgstr "Menüeditor"
+
+#~ msgid "Edit Menus"
+#~ msgstr "Menüs bearbeiten"
+
+#~ msgid "_Defaults"
+#~ msgstr "_Vorgaben"
+
+#~ msgid "_Menus:"
+#~ msgstr "_Menüs:"
+
+#~ msgid "_Applications:"
+#~ msgstr "_Anwendungen:"
+
+#~ msgid "Simple Menu Editor %s"
+#~ msgstr "Einfacher Menüeditor %s"
+
+#~ msgid "Name"
+#~ msgstr "Name"
+
+#~ msgid "Show"
+#~ msgstr "Anzeigen"
+
+#~ msgid ""
+#~ "Cannot find home directory: not set in /etc/passwd and no value for $HOME "
+#~ "in environment"
+#~ msgstr ""
+#~ "Das Heimatverzeichnis des Benutzers konnte nicht gefunden werden: es ist "
+#~ "weder in /etc/passwd angegeben, noch gibt es einen Wert für die "
+#~ "Umgebungsvariable $HOME"
+
+#~ msgid "Internet and Network"
+#~ msgstr "Internet und Netzwerk"
+
+#~ msgid "Network-related settings"
+#~ msgstr "Netzwerkbezogene Einstellungen"
+
+#~ msgid "Look and Feel"
+#~ msgstr "Darstellung"
+
+#~ msgid "Settings controlling the desktop appearance and behavior"
+#~ msgstr ""
+#~ "Einstellungen für das Aussehen und das Verhalten der Arbeitsoberfläche"
+
+#~ msgid "Administration"
+#~ msgstr "Systemverwaltung"
+
+#~ msgid "Change system-wide settings (affects all users)"
+#~ msgstr "Systemweite Einstellungen ändern (dies betrifft alle Benutzer)"
+
+#~ msgid "Personal preferences"
+#~ msgstr "Persönliche Einstellungen"
+
+#~ msgid "Preferences"
+#~ msgstr "Einstellungen"
+
+#~ msgid "Personal preferences and administration settings"
+#~ msgstr "Persönliche Anpassungen und Administratoreinstellungen"
+
+#~ msgid "Menu file"
+#~ msgstr "Menüdatei"
+
+#~ msgid "MENU_FILE"
+#~ msgstr "MENÜ_DATEI"
+
+#~ msgid "Monitor for menu changes"
+#~ msgstr "Menüänderungen überwachen"
+
+#~ msgid "Include <Exclude>d entries"
+#~ msgstr "Mit »<ausschließen>« markierte Einträge einbeziehen"
+
+#~ msgid "Include NoDisplay=true entries"
+#~ msgstr "Mit »NoDisplay=true« markierte Einträge einbeziehen"
+
+#~ msgid "Invalid desktop file ID"
+#~ msgstr "Ungültige Desktop-Dateikennung"
+
+#~ msgid "[Invalid Filename]"
+#~ msgstr "[Ungültiger Dateiname]"
+
+#~ msgid " <excluded>"
+#~ msgstr " <ausschließen>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menu changed, reloading ====\n"
+#~ "\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menü wurde geändert, wird neu geladen ====\n"
+#~ "\n"
+#~ "\n"
+
+#~ msgid "Menu tree is empty"
+#~ msgstr "Der Menübaum ist leer"
+
+#~ msgid "- test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr "- testen der GNOME-Implementation der Desktop-Menü-Spezifikation"
+
+#~ msgid "Universal access related preferences"
+#~ msgstr "Einstellungen zur Barrierefreiheit"
+
+#~ msgid "Personal preferences and settings"
+#~ msgstr "Persönliche Vorlieben und Einstellungen"
+
+#~ msgid "Accessibility"
+#~ msgstr "Barrierefreiheit"
+
+#~ msgid "Accessibility Settings"
+#~ msgstr "Einstellungen zur Barrierefreiheit"
+
+#~ msgid "Desktop"
+#~ msgstr "Desktop"

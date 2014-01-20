@@ -1,0 +1,20 @@
+Package: libgnome-menu-3-0-dbg
+Source: gnome-menus
+Version: 3.8.0-1ubuntu5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 243
+Depends: libgnome-menu-3-0 (= 3.8.0-1ubuntu5)
+Section: debug
+Priority: extra
+Description: GNOME implementation of the freedesktop menu specification
+ The package contains an implementation of the draft
+ "Desktop Menu Specification" from freedesktop.org:
+ .
+ http://www.freedesktop.org/Standards/menu-spec
+ .
+ Also contained here are the GNOME menu layout configuration files, .directory
+ files and assorted menu related utility programs.
+ .
+ This package contains debugging symbols.
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>

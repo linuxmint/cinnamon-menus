@@ -1,0 +1,291 @@
+# Frisian translation for gnome-menus
+#
+# This file is distributed under the same license as the gnome-menus package.
+# Sense Hofstede <sense@ubuntu.com, 2011.
+# Dooitze de Jong <dooitzedejong@gmail.com>, 2009-2010.
+# Jaap Haitsma <jaap@haitsma.org>, 2007.
+# Peter Hoogsteen <p.hoogsteen@chello.nl >, 2008.
+# Sietse <>, 2009.
+# berend <berendy@gmail.com>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-18 19:49+0100\n"
+"PO-Revision-Date: 2011-03-18 18:39+0000\n"
+"Last-Translator: Sense Hofstede <sense@ubuntu.com>\n"
+"Language-Team: Frisian <fy@li.org>\n"
+"Language: fy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-03-18 18:40+0000\n"
+"X-Generator: Launchpad (build 12617)\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Multimedia menu"
+msgstr "Multimediamenu"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Sound & Video"
+msgstr "Lûd & fideo"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "Programmeare"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "Arken foar software-ûntwikkeling"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "Ûnderwiis"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "Spultsjes"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "Spultsjes en ferdiverdaasje"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "Grafysk"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "Grafyske applikaasjes"
+
+#: ../desktop-directories/Hardware.directory.in.h:1
+msgid "Hardware"
+msgstr "Hardware"
+
+#: ../desktop-directories/Hardware.directory.in.h:2
+msgid "Settings for several hardware devices"
+msgstr "Ynstellings foar ferskillende hardware-apparaten"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "Ynternet"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "Programma's foar ynternet-tagong, sa as it web en e-mail"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "Kantoar"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "Kantoarapplikaasjes"
+
+#. Translators: this is Personal as in "Personal settings"
+#: ../desktop-directories/Personal.directory.in.h:2
+msgid "Personal"
+msgstr "Persoanlik"
+
+#: ../desktop-directories/Personal.directory.in.h:3
+msgid "Personal settings"
+msgstr "Pearoanlike ynstellingen"
+
+#: ../desktop-directories/System.directory.in.h:1
+msgid "System"
+msgstr "Systeem"
+
+#: ../desktop-directories/System.directory.in.h:2
+msgid "System settings"
+msgstr "Systeemynstellingen"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "Systeemarken"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "Systeemkonfiguraasje en -kontrôle"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "Algemiene tagong"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "Algemiene-tagongsynstellingen"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "Assesoires"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "Bureaublêdassesoires"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "Applikaasjes"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Applications that did not fit in other categories"
+msgstr "Applikaasjes hokker net yn oare kategoryen passe"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Other"
+msgstr "Oare"
+
+#: ../simple-editor/gmenu-simple-editor.desktop.in.h:1
+msgid "Menu Editor"
+msgstr "Menubewurker"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:1
+msgid "Edit Menus"
+msgstr "Menus bewurkje"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:2
+msgid "_Applications:"
+msgstr "_Applikaasjes:"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:3
+msgid "_Defaults"
+msgstr "_Standertynstellingen"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:4
+msgid "_Menus:"
+msgstr "_Menu's:"
+
+#. Translators: %s is the version number
+#: ../simple-editor/GMenuSimpleEditor/main.py:47
+#, python-format
+msgid "Simple Menu Editor %s"
+msgstr "Simpele menubewurker %s"
+
+#: ../simple-editor/GMenuSimpleEditor/maindialog.py:97
+#: ../simple-editor/GMenuSimpleEditor/maindialog.py:124
+msgid "Name"
+msgstr "Namme"
+
+#: ../simple-editor/GMenuSimpleEditor/maindialog.py:116
+msgid "Show"
+msgstr "Sjen litte"
+
+#: ../simple-editor/GMenuSimpleEditor/menufilewriter.py:44
+msgid ""
+"Cannot find home directory: not set in /etc/passwd and no value for $HOME in "
+"environment"
+msgstr ""
+"Kin thúsmap net fine: net ynsteld yn /etc/passwd en gjin wearde foar $HOME "
+"yn de omkriten"
+
+#~ msgid "Action"
+#~ msgstr "Aksje"
+
+#~ msgid "Action games"
+#~ msgstr "Aksjespultsjes"
+
+#~ msgid "Adventure"
+#~ msgstr "Aventoer"
+
+#~ msgid "Adventure style games"
+#~ msgstr "Aventoerspultsjes"
+
+#~ msgid "Arcade"
+#~ msgstr "Arkade"
+
+#~ msgid "Arcade style games"
+#~ msgstr "Arkadespultsjes"
+
+#~ msgid "Falling blocks"
+#~ msgstr "Fallende blokken"
+
+#~ msgid "Falling blocks games"
+#~ msgstr "Fallende-blokkenspultsjes"
+
+#~ msgid "Board"
+#~ msgstr "Boerd"
+
+#~ msgid "Board games"
+#~ msgstr "Boerdspultsjes"
+
+#~ msgid "Card games"
+#~ msgstr "Kaartspultsjes"
+
+#~ msgid "Cards"
+#~ msgstr "Kaarten"
+
+#~ msgid "Debian"
+#~ msgstr "Debian"
+
+#~ msgid "The Debian menu"
+#~ msgstr "It Debian-menu"
+
+#~ msgid "Science"
+#~ msgstr "Wittenskip"
+
+#~ msgid "Scientific applications"
+#~ msgstr "Wittenskiplike applikaasjes"
+
+#~ msgid "Games for kids"
+#~ msgstr "Bernespultsjes"
+
+#~ msgid "Kids"
+#~ msgstr "Bern"
+
+#~ msgid "Logic"
+#~ msgstr "Logika"
+
+#~ msgid "Logic and puzzle games"
+#~ msgstr "Logyske spultsjes en puzzels"
+
+#~ msgid "Role playing"
+#~ msgstr "Rollen spylje"
+
+#~ msgid "Role playing games"
+#~ msgstr "Rollespultsjes"
+
+#~ msgid "Simulation"
+#~ msgstr "Simulaasje"
+
+#~ msgid "Simulation games"
+#~ msgstr "Simulaasjespultsjes"
+
+#~ msgid "Sports"
+#~ msgstr "Sport"
+
+#~ msgid "Sports games"
+#~ msgstr "Sportspultsjes"
+
+#~ msgid "Strategy"
+#~ msgstr "Strategy"
+
+#~ msgid "Strategy games"
+#~ msgstr "Strategyske spultsjes"
+
+#~ msgid "Internet and Network"
+#~ msgstr "Ynternet en netwurk"
+
+#~ msgid "Network-related settings"
+#~ msgstr "Netwurk-relevante ynstellingen"
+
+#~ msgid "Look and Feel"
+#~ msgstr "Foarkommen"
+
+#~ msgid "Settings controlling the desktop appearance and behavior"
+#~ msgstr "Ynstellingen foar"
+
+#~ msgid "Administration"
+#~ msgstr "Behear"
+
+#~ msgid "Change system-wide settings (affects all users)"
+#~ msgstr "Systeem-wide ynstellingen feroare (rekket alle brûkers)"
+
+#~ msgid "Personal preferences"
+#~ msgstr "Persoanlike foarkarren"
+
+#~ msgid "Preferences"
+#~ msgstr "Foarkarren"
+
+#~ msgid "Personal preferences and administration settings"
+#~ msgstr "Persoanlike foarkarren en behearynstellingen"

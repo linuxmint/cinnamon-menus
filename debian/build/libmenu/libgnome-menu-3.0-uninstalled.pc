@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libgnome-menu
+Description: Desktop Menu Specification Implementation
+Requires: gio-unix-2.0
+Version: 3.8.0
+Libs: ${pc_top_builddir}/${pcfiledir}/libgnome-menu-3.la
+Cflags: -I${pc_top_builddir}/${pcfiledir}

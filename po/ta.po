@@ -1,0 +1,262 @@
+# translation of gnome-menus.HEAD.po to TAMIL
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Shakthi Kannan <shaks@shakthimaan.com>, 2006.
+# Jayaradha N <jayaradhaa@gmail.com>, 2006.
+# Dr.T.Vasudevan <agnihot3@gmail.com>, 2007, 2009, 2012.
+# Shantha kumar <shkumar@redhat.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus.HEAD\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
+"cgi?product=gnome-menus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-03-18 10:33+0000\n"
+"PO-Revision-Date: 2013-03-22 15:44+0530\n"
+"Last-Translator: Shantha kumar <shkumar@redhat.com>\n"
+"Language-Team: Tamil <>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"\n"
+"\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "ஒலி மற்றும் படக்காட்சி"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "பல்முனை ஊடகப் பட்டியல்"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "நிரலாக்கம்"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "மென்பொருள் உற்பத்திக்கான கருவிகள்"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "கல்வி"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "விளையாட்டுகள்"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "விளையாட்டுகள் மற்றும் பொழுதுப்போக்குகள்"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "வரைகலை"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "வரைகலை பயன்பாடுகள்"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "இணையம்"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "வலைப்பின்னல் மற்றும் மின்னஞ்சல் போன்ற இணைய அணுகலுக்கான நிரல்கள் "
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "அலுவலகம்"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "அலுவலகப் பயன்பாடுகள்"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "கணிப்பொறிக் கருவிகள்"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "கணிப்பொறி அமைப்பு மற்றும் கண்காணித்தல்"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "உலகளாவிய அணுகல்"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "உலகளாவிய அணுகல் அமைப்புகள்"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "துணைப்பொருள்கள்"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "மேஜை துணைப்பொருள்கள்"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "பயன்பாடுகள்"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "மற்றவை"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr "இதர இனங்களில் பொருந்தாத பயன்பாடுகள்"
+
+#: ../desktop-directories/X-GNOME-Sundry.directory.in.h:1
+msgid "Sundry"
+msgstr "சன்ட்ரை"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:1
+msgid "Utilities"
+msgstr "கருவிகள்"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:2
+msgid "Small but useful GNOME tools"
+msgstr "சிறிய, ஆனால் பயன்மிக்க GNOME கருவிகள்"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+msgid "Web Applications"
+msgstr "வலை பயன்பாடுகள்"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr "வலையில் இருந்து சேமித்த பயன்பாடுகள் மற்றும் தளங்கள்"
+
+#~ msgid "Hardware"
+#~ msgstr "வண் பொருட்கள்"
+
+#~ msgid "Settings for several hardware devices"
+#~ msgstr "பல வண் பொருட்களுக்கான அமைப்புகள்"
+
+#~ msgid "Personal"
+#~ msgstr "தனிப்பயன்"
+
+#~ msgid "Personal settings"
+#~ msgstr "தனிப்பயன் அமைப்புகள்"
+
+#~ msgid "System"
+#~ msgstr "கணிப்பொறி"
+
+#~ msgid "System settings"
+#~ msgstr "கணினி அமைப்புகள்"
+
+#~ msgid "Menu Editor"
+#~ msgstr "பட்டியல் திருத்தி"
+
+#~ msgid "Edit Menus"
+#~ msgstr "பட்டியலைத் திருத்த"
+
+#~ msgid "_Applications:"
+#~ msgstr "பயன்பாடுகள்(_A):"
+
+#~ msgid "_Defaults"
+#~ msgstr "முன்னிருப்பு மதிப்புகள்(_D)"
+
+#~ msgid "_Menus:"
+#~ msgstr "பட்டியல்கள்(_M)"
+
+#~ msgid "Simple Menu Editor %s"
+#~ msgstr "எளிய பட்டியல் திருத்தி %s"
+
+#~ msgid "Name"
+#~ msgstr "பெயர்"
+
+#~ msgid "Show"
+#~ msgstr "காட்டு"
+
+#~ msgid ""
+#~ "Cannot find home directory: not set in /etc/passwd and no value for $HOME "
+#~ "in environment"
+#~ msgstr ""
+#~ "இல்ல அடைவு காண முடியவில்லை: /etc/passwd-ல் அமைக்கப்படவில்லை, மற்றும் சுற்றுச்சூழலில் "
+#~ "$HOME மதிப்பு ஏதும் அமைக்கப்படவில்லை"
+
+#~ msgid "Internet and Network"
+#~ msgstr "இணையம் மற்றும் வலையமைப்பு"
+
+#~ msgid "Network-related settings"
+#~ msgstr "வலையமைப்பு சார்ந்த வடிவமைப்புகள்"
+
+#~ msgid "Look and Feel"
+#~ msgstr "பார்வையும் உணர்வும்"
+
+#~ msgid "Settings controlling the desktop appearance and behavior"
+#~ msgstr "மேல்மேசையின் தோற்றம் மற்றும் நடத்தைகளை கட்டுப்படுத்தும் வடிவமைப்பு"
+
+#~ msgid "Administration"
+#~ msgstr "நிர்வாகம்"
+
+#~ msgid "Change system-wide settings (affects all users)"
+#~ msgstr ""
+#~ "கணிப்பொறியின் அனைத்து அமைப்புகளை மாற்றுக (பயன்படுத்துவோர் அனைவரையும் பாதிக்கும்)"
+
+#~ msgid "Personal preferences"
+#~ msgstr "தனிப்பயன் விருப்பங்கள்"
+
+#~ msgid "Preferences"
+#~ msgstr "விருப்பங்கள்"
+
+#~ msgid "Personal preferences and administration settings"
+#~ msgstr "தனிநபர் விருப்பங்கள் மற்றும் நிர்வாக அமைப்புகள்"
+
+#~ msgid "Menu file"
+#~ msgstr "பட்டியல் கோப்பு"
+
+#~ msgid "MENU_FILE"
+#~ msgstr "MENU_FILE"
+
+#~ msgid "Monitor for menu changes"
+#~ msgstr "பட்டியல் மாற்றங்களுக்கான கண்காணிப்பு"
+
+#~ msgid "Include <Exclude>d entries"
+#~ msgstr "<Exclude>d என்ற உள்ளீடுகளை சேர்க்க"
+
+#~ msgid "Include NoDisplay=true entries"
+#~ msgstr "NoDisplay=true உள்ளீடுகளை சேர்க்க"
+
+#~ msgid "Invalid desktop file ID"
+#~ msgstr "செல்லுபடியாகாத  மேஜைக் கோப்பு ஐடி"
+
+#~ msgid "[Invalid Filename]"
+#~ msgstr "[செல்லுபடியாகாத  கோப்புப் பெயர்]"
+
+#~ msgid " <excluded>"
+#~ msgstr " <சேர்க்காதவை>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menu changed, reloading ====\n"
+#~ "\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "=== பட்டியல் மாற்றப்பட்டுள்ளது, மீண்டும் ஏற்றப்படுகிறது ===\n"
+#~ "\n"
+#~ "\n"
+
+#~ msgid "Menu tree is empty"
+#~ msgstr "பட்டியல் தூண் காலியாக உள்ளது"
+
+#~ msgid "- test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr ""
+#~ "- கணோம் உடைய மேஜைப் பட்டியல் விவரக்குறிப்பின் கணோம் செயல்பாட்டைப் பரிசோதிக்கவும்"
+
+#~ msgid "Universal access related preferences"
+#~ msgstr "உலகளாவிய அணுகல் சார்ந்த விருப்பங்கள்"
+
+#~ msgid "Personal preferences and settings"
+#~ msgstr "தனிநபர் விருப்பங்கள் மற்றும் அமைப்புகள்"

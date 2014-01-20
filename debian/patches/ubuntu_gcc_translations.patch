@@ -1,0 +1,101 @@
+# Description: revert dropping of gnome-control-center categories, they got
+# deprecated in g-c-c 3.8 but we are still using 3.6. We can drop those 
+# changes once we do the update.
+# Ubuntu: https://bugs.launchpad.net/ubuntu/+source/gnome-menus/+bug/1232534
+Index: gnome-menus-3.8.0/desktop-directories/Hardware.directory.in
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gnome-menus-3.8.0/desktop-directories/Hardware.directory.in	2013-10-09 15:21:15.269679845 +0200
+@@ -0,0 +1,5 @@
++[Desktop Entry]
++_Name=Hardware
++_Comment=Settings for several hardware devices
++Icon=preferences-desktop-peripherals
++Type=Directory
+Index: gnome-menus-3.8.0/desktop-directories/Makefile.am
+===================================================================
+--- gnome-menus-3.8.0.orig/desktop-directories/Makefile.am	2013-10-09 15:21:15.277679844 +0200
++++ gnome-menus-3.8.0/desktop-directories/Makefile.am	2013-10-09 15:21:15.269679845 +0200
+@@ -1,5 +1,11 @@
+ directorydir = $(datadir)/desktop-directories
+ 
++# Should be moved to gnome-control-center:
++directory_in_controlcenterfiles =		\
++	Hardware.directory.in			\
++	Personal.directory.in			\
++	System.directory.in
++
+ directory_in_files =				\
+ 	AudioVideo.directory.in			\
+ 	Development.directory.in		\
+@@ -16,7 +22,8 @@
+ 	X-GNOME-Sundry.directory.in 		\
+ 	X-GNOME-Utilities.directory.in 		\
+ 	X-GNOME-WebApplications.directory.in 	\
+-	X-GNOME-SystemSettings.directory.in
++	X-GNOME-SystemSettings.directory.in	\
++	$(directory_in_controlcenterfiles)
+ 
+ directory_DATA = $(directory_in_files:.directory.in=.directory)
+ 
+Index: gnome-menus-3.8.0/desktop-directories/Makefile.in
+===================================================================
+--- gnome-menus-3.8.0.orig/desktop-directories/Makefile.in	2013-10-09 15:21:15.277679844 +0200
++++ gnome-menus-3.8.0/desktop-directories/Makefile.in	2013-10-09 15:21:15.273679844 +0200
+@@ -277,6 +277,13 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ directorydir = $(datadir)/desktop-directories
++
++# Should be moved to gnome-control-center:
++directory_in_controlcenterfiles = \
++	Hardware.directory.in			\
++	Personal.directory.in			\
++	System.directory.in
++
+ directory_in_files = \
+ 	AudioVideo.directory.in			\
+ 	Development.directory.in		\
+@@ -293,7 +300,8 @@
+ 	X-GNOME-Sundry.directory.in 		\
+ 	X-GNOME-Utilities.directory.in 		\
+ 	X-GNOME-WebApplications.directory.in 	\
+-	X-GNOME-SystemSettings.directory.in
++	X-GNOME-SystemSettings.directory.in	\
++	$(directory_in_controlcenterfiles)
+ 
+ directory_DATA = $(directory_in_files:.directory.in=.directory)
+ EXTRA_DIST = $(directory_in_files)
+Index: gnome-menus-3.8.0/desktop-directories/Personal.directory.in
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gnome-menus-3.8.0/desktop-directories/Personal.directory.in	2013-10-09 15:21:15.273679844 +0200
+@@ -0,0 +1,6 @@
++[Desktop Entry]
++# Translators: this is Personal as in "Personal settings"
++_Name=Personal
++_Comment=Personal settings
++Icon=preferences-desktop-personal
++Type=Directory
+Index: gnome-menus-3.8.0/desktop-directories/System.directory.in
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gnome-menus-3.8.0/desktop-directories/System.directory.in	2013-10-09 15:21:15.273679844 +0200
+@@ -0,0 +1,5 @@
++[Desktop Entry]
++_Name=System
++_Comment=System settings
++Icon=preferences-system
++Type=Directory
+Index: gnome-menus-3.8.0/po/POTFILES.in
+===================================================================
+--- gnome-menus-3.8.0.orig/po/POTFILES.in	2013-10-09 15:21:15.277679844 +0200
++++ gnome-menus-3.8.0/po/POTFILES.in	2013-10-09 15:21:15.273679844 +0200
+@@ -31,3 +31,7 @@
+ debian/desktop-files/SimulationGames.directory.in
+ debian/desktop-files/SportsGames.directory.in
+ debian/desktop-files/StrategyGames.directory.in
++desktop-directories/Hardware.directory.in
++desktop-directories/Personal.directory.in
++desktop-directories/System.directory.in
++

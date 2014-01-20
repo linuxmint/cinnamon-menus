@@ -1,0 +1,318 @@
+# Swedish messages for gnome-menus.
+# Copyright (C) 2004, 2005, 2006, 2007, 2009, 2012 Free Software Foundation, Inc.
+# Christian Rose <menthos@menthos.com>, 2004, 2005, 2006.
+# Daniel Nylander <po@danielnylander.se>, 2007, 2009, 2012.
+#
+# $Id: sv.po,v 1.7 2006/01/08 20:42:48 menthos Exp $
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-02 11:58+0200\n"
+"PO-Revision-Date: 2012-09-02 11:59+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "Ljud och video"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "Multimediameny"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "Programmering"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "Verktyg för programutveckling"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "Utbildning"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "Spel"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "Spel och underhållning"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "Grafik"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "Grafikprogram"
+
+#: ../desktop-directories/Hardware.directory.in.h:1
+msgid "Hardware"
+msgstr "Hårdvara"
+
+#: ../desktop-directories/Hardware.directory.in.h:2
+msgid "Settings for several hardware devices"
+msgstr "Inställningar för ett flertal hårdvaruenheter"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "Internet"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "Program för internetåtkomst som till exempel webb och e-post"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "Kontor"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "Kontorsprogram"
+
+#. Translators: this is Personal as in "Personal settings"
+#: ../desktop-directories/Personal.directory.in.h:2
+msgid "Personal"
+msgstr "Personligt"
+
+#: ../desktop-directories/Personal.directory.in.h:3
+msgid "Personal settings"
+msgstr "Personliga inställningar"
+
+#: ../desktop-directories/System.directory.in.h:1
+msgid "System"
+msgstr "System"
+
+#: ../desktop-directories/System.directory.in.h:2
+msgid "System settings"
+msgstr "Systeminställningar"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "Systemverktyg"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "Systemkonfiguration och systemövervakning"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "Allmän åtkomst"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "Inställningar för allmän åtkomst"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "Tillbehör"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "Skrivbordstillbehör"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "Program"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "Övrigt"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr "Program som inte passar in i någon annan kategori"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+msgid "Web Applications"
+msgstr "Webbapplikationer"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr "Program och webbplatser sparade från webben"
+
+#: ../simple-editor/gmenu-simple-editor.desktop.in.h:1
+msgid "Menu Editor"
+msgstr "Menyredigerare"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:1
+msgid "Edit Menus"
+msgstr "Redigera menyer"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:2
+msgid "_Defaults"
+msgstr "_Standardalternativ"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:3
+msgid "_Menus:"
+msgstr "_Menyer:"
+
+#: ../simple-editor/gmenu-simple-editor.ui.h:4
+msgid "_Applications:"
+msgstr "_Program:"
+
+#. Translators: %s is the version number
+#: ../simple-editor/GMenuSimpleEditor/main.py:44
+#, python-format
+msgid "Simple Menu Editor %s"
+msgstr "Enkel menyredigerare %s"
+
+#: ../simple-editor/GMenuSimpleEditor/maindialog.py:97
+#: ../simple-editor/GMenuSimpleEditor/maindialog.py:124
+msgid "Name"
+msgstr "Namn"
+
+#: ../simple-editor/GMenuSimpleEditor/maindialog.py:116
+msgid "Show"
+msgstr "Visa"
+
+#: ../simple-editor/GMenuSimpleEditor/menufilewriter.py:44
+msgid "Cannot find home directory: not set in /etc/passwd and no value for $HOME in environment"
+msgstr "Kan inte hitta hemkatalogen: inte angiven i /etc/passwd och inget värde för $HOME i miljön"
+
+#~ msgid "Internet and Network"
+#~ msgstr "Internet och nätverk"
+
+#~ msgid "Network-related settings"
+#~ msgstr "Nätverksrelaterade inställningar"
+
+#~ msgid "Look and Feel"
+#~ msgstr "Utseende och beteende"
+
+#~ msgid "Settings controlling the desktop appearance and behavior"
+#~ msgstr "Inställningar som styr skrivbordets utseende och beteende"
+
+#~ msgid "Administration"
+#~ msgstr "Administration"
+
+#~ msgid "Change system-wide settings (affects all users)"
+#~ msgstr "Ändra inställningar för hela systemet (påverkar alla användare)"
+
+#~ msgid "Personal preferences"
+#~ msgstr "Personliga inställningar"
+
+#~ msgid "Preferences"
+#~ msgstr "Inställningar"
+
+#~ msgid "Personal preferences and administration settings"
+#~ msgstr "Personliga inställningar och administrationsinställningar"
+
+#~ msgid "Menu file"
+#~ msgstr "Menyfil"
+
+#~ msgid "MENU_FILE"
+#~ msgstr "MENYFIL"
+
+#~ msgid "Monitor for menu changes"
+#~ msgstr "Övervaka menyändringar"
+
+#~ msgid "Include <Exclude>d entries"
+#~ msgstr "Inkludera exkluderade poster"
+
+#~ msgid "Include NoDisplay=true entries"
+#~ msgstr "Inkludera poster med NoDisplay=true"
+
+#~ msgid "Invalid desktop file ID"
+#~ msgstr "Ogiltigt id på desktop-fil"
+
+#~ msgid "[Invalid Filename]"
+#~ msgstr "[Ogiltigt filnamn]"
+
+#~ msgid " <excluded>"
+#~ msgstr " <exkluderad>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menu changed, reloading ====\n"
+#~ "\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menyn ändrad, läser om ====\n"
+#~ "\n"
+#~ "\n"
+
+#~ msgid "Menu tree is empty"
+#~ msgstr "Menyträdet är tomt"
+
+#~ msgid "- test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr ""
+#~ "- testa GNOME:s implementation av specifikationen för skrivbordsmenyer"
+
+#~ msgid "Universal access related preferences"
+#~ msgstr "Inställningar relaterade till allmän åtkomst"
+
+#~ msgid "Personal preferences and settings"
+#~ msgstr "Personliga inställningar"
+
+#~ msgid "Accessibility"
+#~ msgstr "Tillgänglighet"
+
+#~ msgid "Accessibility Settings"
+#~ msgstr "Tillgänglighetsinställningar"
+
+#~ msgid "Desktop"
+#~ msgstr "Skrivbord"
+
+#~ msgid "Personal Preferences"
+#~ msgstr "Personliga inställningar"
+
+#~ msgid "Applications:"
+#~ msgstr "Program"
+
+#~ msgid "Invalid Filename"
+#~ msgstr "Ogiltigt filnamn"
+
+#~ msgid "<excluded>"
+#~ msgstr "<exkluderad>"
+
+#~ msgid "excluded"
+#~ msgstr "exkluderad"
+
+#~ msgid "Excluded"
+#~ msgstr "Exkluderad"
+
+#~ msgid "==== Menu changed, reloading ===="
+#~ msgstr "==== Menyn ändrad, läser om ===="
+
+#~ msgid "Menu changed, reloading"
+#~ msgstr "Menyn ändrad, läser om"
+
+#~ msgid "test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr "testa GNOMEs implementation av specifikationen för skrivbordsmenyer"
+
+#~ msgid "Test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr "Testa GNOMEs implementation av specifikationen för skrivbordsmenyer"
+
+#~ msgid "Desktop Accessories"
+#~ msgstr "Skrivbordstillbehör"
+
+#~ msgid "Software development"
+#~ msgstr "Programutveckling"
+
+#~ msgid "Software Development"
+#~ msgstr "Programutveckling"
+
+#~ msgid "Games and Amusements"
+#~ msgstr "Spel och underhållning"
+
+#~ msgid "Graphics Applications"
+#~ msgstr "Grafikprogram"
+
+#~ msgid "Multimedia"
+#~ msgstr "Multimedia"
+
+#~ msgid "Office applications"
+#~ msgstr "Kontorsprogram"

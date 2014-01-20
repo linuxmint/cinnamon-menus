@@ -1,0 +1,250 @@
+# translation of gnome-menus to Kazakh
+# Copyright (C) 2008 Free Software Foundation, Inc.
+#
+# Moldabekov Margulan <moldabekov@gmail.com>, 2008
+# Erzhan Shaniev <erzhan.jktl@gmail.com>, 2008
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2010-2013
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus trunk\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"menus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-02-19 22:31+0000\n"
+"PO-Revision-Date: 2013-03-08 17:16+0600\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "Аудио және видео"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "Мультимедиа"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "Бағдарламалау"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "Бағдарламалауға арналған құралдар"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "Оқыту"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "Ойындар"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "Ойын-сауық"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "Графика"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "Графикалық қолданбалар"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "Интернет"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "Интернетті қолдануға арналған бағдарламалар (пошта, браузер, т.б.)"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "Кеңселік"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "Кеңселік қолданбалар"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "Жүйелік саймандар"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "Жүйені баптау мен бақылау"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "Арнайы мүмкіндіктер"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "Арнайы мүмкіндіктер баптаулары"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "Қалыпты"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "Қалыпты қолданбалар"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "Қолданбалар"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "Басқалар"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr "Басқа санаттарға жатпайтын қолданбалар"
+
+#: ../desktop-directories/X-GNOME-Sundry.directory.in.h:1
+msgid "Sundry"
+msgstr "Әр түрлі"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:1
+msgid "Utilities"
+msgstr "Утилиталар"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:2
+msgid "Small but useful GNOME tools"
+msgstr "GNOME пайдалы саймандары"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+msgid "Web Applications"
+msgstr "Веб қолданбалары"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr "Вебтен сақталған қолданбалар мен сайттар"
+
+#~ msgid "Hardware"
+#~ msgstr "Құрылғылар"
+
+#~ msgid "Settings for several hardware devices"
+#~ msgstr "Құрылғылардың баптаулары"
+
+#~ msgid "Personal"
+#~ msgstr "Жеке"
+
+#~ msgid "Personal settings"
+#~ msgstr "Жеке баптаулар"
+
+#~ msgid "System"
+#~ msgstr "Жүйелік"
+
+#~ msgid "System settings"
+#~ msgstr "Жүйелік баптаулар"
+
+#~ msgid "Menu Editor"
+#~ msgstr "Мәзір түзетушісі"
+
+#~ msgid "Edit Menus"
+#~ msgstr "Мәзірді түзету"
+
+#~ msgid "_Defaults"
+#~ msgstr "_Бастапқы қалпы"
+
+#~ msgid "_Menus:"
+#~ msgstr "_Мәзірлер:"
+
+#~ msgid "_Applications:"
+#~ msgstr "Қ_олданбалар:"
+
+#~ msgid "Simple Menu Editor %s"
+#~ msgstr "Қарапайым мәзір түзетушісі %s"
+
+#~ msgid "Name"
+#~ msgstr "Аты"
+
+#~ msgid "Show"
+#~ msgstr "Көрсету"
+
+#~ msgid ""
+#~ "Cannot find home directory: not set in /etc/passwd and no value for $HOME "
+#~ "in environment"
+#~ msgstr ""
+#~ "Үй бумасы табылмады: /etc/passwd ішінде жоқ және $HOME айнымалысы "
+#~ "орнатылмаған"
+
+#~ msgid "Internet and Network"
+#~ msgstr "Интернет пен желі"
+
+#~ msgid "Network-related settings"
+#~ msgstr "Желілік баптаулар"
+
+#~ msgid "Look and Feel"
+#~ msgstr "Сыртқы түрі"
+
+#~ msgid "Settings controlling the desktop appearance and behavior"
+#~ msgstr "Жұмыс үстелін көркейтетін баптаулар"
+
+#~ msgid "Administration"
+#~ msgstr "Әкімшілік"
+
+#~ msgid "Change system-wide settings (affects all users)"
+#~ msgstr "Жүйелік баптауларды өзгерту (барлық пайдаланушылар үшін)"
+
+#~ msgid "Personal preferences"
+#~ msgstr "Жеке баптаулар"
+
+#~ msgid "Preferences"
+#~ msgstr "Баптаулар"
+
+#~ msgid "Personal preferences and administration settings"
+#~ msgstr "Жеке мен әкімшілік баптаулар"
+
+#~ msgid "Menu file"
+#~ msgstr "Мәзір файлы"
+
+#~ msgid "MENU_FILE"
+#~ msgstr "МӘЗІР_ФАЙЛЫ"
+
+#~ msgid "Monitor for menu changes"
+#~ msgstr "Мәзірде болған өзгерістерді бақылау"
+
+#~ msgid "Include <Exclude>d entries"
+#~ msgstr "Шығарылған элементтерді іске келтіру"
+
+#~ msgid "Include NoDisplay=true entries"
+#~ msgstr "NoDisplay=true элементтерін іске келтіру"
+
+#~ msgid "Invalid desktop file ID"
+#~ msgstr "Desktop-файлдың ID-і қате"
+
+#~ msgid "[Invalid Filename]"
+#~ msgstr "[файлдың аты дұрыс емес]"
+
+#~ msgid " <excluded>"
+#~ msgstr " <excluded>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menu changed, reloading ====\n"
+#~ "\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Мәзір өзгертілді, жаңадан қосылуда ====\n"
+#~ "\n"
+#~ "\n"
+
+#~ msgid "Menu tree is empty"
+#~ msgstr "Мәзір ағашы бос"
+
+#~ msgid "- test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr "- GNOME-да қолданылған Desktop Menu-дің тексерісі"

@@ -1,0 +1,266 @@
+# Finnish messages for gnome-menus
+# Copyright (C) 2004-2005 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gail package.
+#
+# Tommi Vainikainen <Tommi.Vainikainen@iki.fi>, 2004-2005.
+# Ilkka Tuohela <hile@iki.fi>, 2005.
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2012, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-menus\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"menus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-02-19 22:31+0000\n"
+"PO-Revision-Date: 2013-03-05 21:27+0200\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
+"Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.5\n"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:1
+msgid "Sound & Video"
+msgstr "Ääni & video"
+
+#: ../desktop-directories/AudioVideo.directory.in.h:2
+msgid "Multimedia menu"
+msgstr "Multimediavalikko"
+
+#: ../desktop-directories/Development.directory.in.h:1
+msgid "Programming"
+msgstr "Ohjelmointi"
+
+#: ../desktop-directories/Development.directory.in.h:2
+msgid "Tools for software development"
+msgstr "Työkaluja sovelluskehitykseen"
+
+#: ../desktop-directories/Education.directory.in.h:1
+msgid "Education"
+msgstr "Opetusohjelmat"
+
+#: ../desktop-directories/Game.directory.in.h:1
+msgid "Games"
+msgstr "Pelit"
+
+#: ../desktop-directories/Game.directory.in.h:2
+msgid "Games and amusements"
+msgstr "Pelit ja viihde"
+
+#: ../desktop-directories/Graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "Grafiikka"
+
+#: ../desktop-directories/Graphics.directory.in.h:2
+msgid "Graphics applications"
+msgstr "Grafiikkasovellukset"
+
+#: ../desktop-directories/Network.directory.in.h:1
+msgid "Internet"
+msgstr "Internet"
+
+#: ../desktop-directories/Network.directory.in.h:2
+msgid "Programs for Internet access such as web and email"
+msgstr "Internet-sovellukset kuten selain ja sähköposti"
+
+#: ../desktop-directories/Office.directory.in.h:1
+msgid "Office"
+msgstr "Toimisto"
+
+#: ../desktop-directories/Office.directory.in.h:2
+msgid "Office Applications"
+msgstr "Toimistosovellukset"
+
+#: ../desktop-directories/System-Tools.directory.in.h:1
+msgid "System Tools"
+msgstr "Järjestelmätyökalut"
+
+#: ../desktop-directories/System-Tools.directory.in.h:2
+msgid "System configuration and monitoring"
+msgstr "Järjestelmäasetukset ja -seuranta"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:1
+msgid "Universal Access"
+msgstr "Esteettömyys"
+
+#: ../desktop-directories/Utility-Accessibility.directory.in.h:2
+msgid "Universal Access Settings"
+msgstr "Esteettömän käytön asetukset"
+
+#: ../desktop-directories/Utility.directory.in.h:1
+msgid "Accessories"
+msgstr "Apuohjelmat"
+
+#: ../desktop-directories/Utility.directory.in.h:2
+msgid "Desktop accessories"
+msgstr "Työpöydän apuohjelmat"
+
+#: ../desktop-directories/X-GNOME-Menu-Applications.directory.in.h:1
+msgid "Applications"
+msgstr "Sovellukset"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:1
+msgid "Other"
+msgstr "Muut"
+
+#: ../desktop-directories/X-GNOME-Other.directory.in.h:2
+msgid "Applications that did not fit in other categories"
+msgstr "Muihin luokkiin sopimattomat sovellukset"
+
+#: ../desktop-directories/X-GNOME-Sundry.directory.in.h:1
+msgid "Sundry"
+msgstr "Sekalaiset"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:1
+msgid "Utilities"
+msgstr "Työkalut"
+
+#: ../desktop-directories/X-GNOME-Utilities.directory.in.h:2
+msgid "Small but useful GNOME tools"
+msgstr "Pieniä mutta hyödyllisiä Gnome-työkaluja"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:1
+msgid "Web Applications"
+msgstr "Verkkosovellukset"
+
+#: ../desktop-directories/X-GNOME-WebApplications.directory.in.h:2
+msgid "Applications and sites saved from Web"
+msgstr "Internetistä tallennetut sovellukset ja sivustot"
+
+#~ msgid "Hardware"
+#~ msgstr "Laitteisto"
+
+#~ msgid "Settings for several hardware devices"
+#~ msgstr "Laitteiston asetukset"
+
+#~ msgid "Personal"
+#~ msgstr "Henkilökohtaiset"
+
+#~ msgid "Personal settings"
+#~ msgstr "Henkilökohtaiset asetukset"
+
+#~ msgid "System"
+#~ msgstr "Järjestelmä"
+
+#~ msgid "System settings"
+#~ msgstr "Järjestelmän asetukset"
+
+#~ msgid "Menu Editor"
+#~ msgstr "Valikkomuokkain"
+
+#~ msgid "Edit Menus"
+#~ msgstr "Muokkaa valikkoja"
+
+#~ msgid "_Defaults"
+#~ msgstr "_Oletukset"
+
+#~ msgid "_Menus:"
+#~ msgstr "_Valikot:"
+
+#~ msgid "_Applications:"
+#~ msgstr "_Sovellukset:"
+
+#~ msgid "Simple Menu Editor %s"
+#~ msgstr "Valikkomuokkain %s"
+
+#~ msgid "Name"
+#~ msgstr "Nimi"
+
+#~ msgid "Show"
+#~ msgstr "Näytä"
+
+#~ msgid ""
+#~ "Cannot find home directory: not set in /etc/passwd and no value for $HOME "
+#~ "in environment"
+#~ msgstr ""
+#~ "Kotihakemistoa ei löydy: ei asetettu tiedostossa /etc/passwd eikä $HOME "
+#~ "muuttujalla ole arvoa"
+
+#~ msgid "Internet and Network"
+#~ msgstr "Internet ja verkko"
+
+#~ msgid "Network-related settings"
+#~ msgstr "Verkkoon liittyvät asetukset"
+
+#~ msgid "Look and Feel"
+#~ msgstr "Ulkoasu ja käyttötuntuma"
+
+#~ msgid "Settings controlling the desktop appearance and behavior"
+#~ msgstr "Työpöytäympäristön ulkoasua ja toimintaa ohjaavat asetukset"
+
+#~ msgid "Administration"
+#~ msgstr "Ylläpito"
+
+#~ msgid "Change system-wide settings (affects all users)"
+#~ msgstr "Muuta järjestelmänlaajuisia asetuksia (vaikuttaa joka käyttäjään)"
+
+#~ msgid "Personal preferences"
+#~ msgstr "Henkilökohtaiset valinnat"
+
+#~ msgid "Preferences"
+#~ msgstr "Asetukset"
+
+#~ msgid "Personal preferences and administration settings"
+#~ msgstr "Henkilökohtaiset ja järjestelmän asetukset"
+
+#~ msgid "Menu file"
+#~ msgstr "Valikkotiedosto"
+
+#~ msgid "MENU_FILE"
+#~ msgstr "MENU_FILE"
+
+#~ msgid "Monitor for menu changes"
+#~ msgstr "Tarkkaile valikkomuutoksia"
+
+#~ msgid "Include <Exclude>d entries"
+#~ msgstr "Näytä myös piilotetut (<Exclude>) kohdat"
+
+#~ msgid "Include NoDisplay=true entries"
+#~ msgstr "Näytä myös \"NoDisplay=true\"-kohdat"
+
+#~ msgid "Invalid desktop file ID"
+#~ msgstr "Virheellinen työpöytätiedoston tunniste"
+
+#~ msgid "[Invalid Filename]"
+#~ msgstr "[Virheellinen tiedostonimi]"
+
+#~ msgid " <excluded>"
+#~ msgstr "<piilotettu>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Menu changed, reloading ====\n"
+#~ "\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "==== Valikko on muuttunut, ladataan uudelleen ====\n"
+#~ "\n"
+#~ "\n"
+
+#~ msgid "Menu tree is empty"
+#~ msgstr "Valikkopuu on tyhjä"
+
+#~ msgid "- test GNOME's implementation of the Desktop Menu Specification"
+#~ msgstr "- testaa Gnomen toteutusta Työpöytävalikkojen määrittelystä"
+
+#~ msgid "Universal access related preferences"
+#~ msgstr "Esteettömyyteen liittyvät asetukset"
+
+#~ msgid "Personal preferences and settings"
+#~ msgstr "Henkilökohtaiset asetukset"
+
+#~ msgid "Accessibility"
+#~ msgstr "Esteettömyys"
+
+#~ msgid "Accessibility Settings"
+#~ msgstr "Esteettömyysasetukset"
+
+#~ msgid "Desktop"
+#~ msgstr "Työpöytä"

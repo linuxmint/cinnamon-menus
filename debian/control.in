@@ -1,0 +1,101 @@
+Source: gnome-menus
+Section: gnome
+Priority: optional
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Uploaders: @GNOME_TEAM@
+Build-Depends: debhelper (>= 9),
+               cdbs (>= 0.4.73),
+               libglib2.0-dev (>= 2.30.0),
+               gnome-pkg-tools,
+               python3 (>= 3.1),
+               intltool (>= 0.40.0),
+               libgirepository1.0-dev (>= 0.10.7-1~),
+               gobject-introspection (>= 0.9.12-4~)
+Standards-Version: 3.9.3
+X-Python3-Version: >= 3.1
+Vcs-Bzr: https://code.launchpad.net/~ubuntu-desktop/gnome-menus/ubuntu
+
+Package: gnome-menus
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         ${python3:Depends}
+Breaks: gnome-panel (<< 2.91),
+        gnome-control-center (<< 2.91),
+        alacarte (<< 0.13.2-2)
+Description: GNOME implementation of the freedesktop menu specification
+ The package contains an implementation of the draft
+ "Desktop Menu Specification" from freedesktop.org:
+ .
+ http://www.freedesktop.org/Standards/menu-spec
+ .
+ Also contained here are the GNOME menu layout configuration files, .directory
+ files and assorted menu related utility programs.
+
+Package: libgnome-menu-3-0
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: GNOME implementation of the freedesktop menu specification
+ The package contains an implementation of the draft
+ "Desktop Menu Specification" from freedesktop.org:
+ .
+ http://www.freedesktop.org/Standards/menu-spec
+ .
+ Also contained here are the GNOME menu layout configuration files, .directory
+ files and assorted menu related utility programs.
+ .
+ This package contains the shared library.
+
+Package: libgnome-menu-3-0-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends: libgnome-menu-3-0 (= ${binary:Version}),
+         ${misc:Depends}
+Description: GNOME implementation of the freedesktop menu specification
+ The package contains an implementation of the draft
+ "Desktop Menu Specification" from freedesktop.org:
+ .
+ http://www.freedesktop.org/Standards/menu-spec
+ .
+ Also contained here are the GNOME menu layout configuration files, .directory
+ files and assorted menu related utility programs.
+ .
+ This package contains debugging symbols.
+
+Package: libgnome-menu-3-dev
+Architecture: any
+Section: libdevel
+Depends: ${misc:Depends},
+         libgnome-menu-3-0 (= ${binary:Version}),
+         gir1.2-gmenu-3.0 (= ${binary:Version}),
+         libglib2.0-dev (>= 2.30.0)
+Replaces: gir-repository-dev (<< 0.6.5-6)
+Description: GNOME implementation of the freedesktop menu specification
+ The package contains an implementation of the draft
+ "Desktop Menu Specification" from freedesktop.org:
+ .
+ http://www.freedesktop.org/Standards/menu-spec
+ .
+ Also contained here are the GNOME menu layout configuration files, .directory
+ files and assorted menu related utility programs.
+ .
+ This package contains the development headers.
+
+Package: gir1.2-gmenu-3.0
+Section: introspection
+Architecture: any
+Depends: ${gir:Depends},
+         ${shlibs:Depends},
+         ${misc:Depends}
+Conflicts: gobject-introspection-repository
+Description: GObject introspection data for the GNOME menu library
+ This package contains introspection data for GNOME menu, an
+ implementation of the desktop menu specification from freedesktop.org.
+ .
+ It can be used by languages supporting dynamic bindings with
+ the GIRepository format.
+

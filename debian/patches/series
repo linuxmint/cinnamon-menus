@@ -1,0 +1,11 @@
+01_default_prefix.patch
+02_kill_debian_menu.patch
+03_kde-legacydirs.patch
+08_settings-menus.patch
+09_app_install_entry.patch
+09_games-menu.patch
+11_science-menu.patch
+50_add-gcc-apps.patch
+70_ubuntu-directories.patch
+git_restore_calculator.patch
+ubuntu_gcc_translations.patch

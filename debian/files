@@ -1,0 +1,5 @@
+gnome-menus_3.8.0-1ubuntu5_amd64.deb gnome optional
+libgnome-menu-3-0_3.8.0-1ubuntu5_amd64.deb gnome optional
+libgnome-menu-3-0-dbg_3.8.0-1ubuntu5_amd64.deb debug extra
+libgnome-menu-3-dev_3.8.0-1ubuntu5_amd64.deb libdevel optional
+gir1.2-gmenu-3.0_3.8.0-1ubuntu5_amd64.deb introspection optional
