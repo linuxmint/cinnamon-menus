@@ -20,24 +20,6 @@ Standards-Version: 3.9.3
 X-Python3-Version: >= 3.1
 Vcs-Bzr: https://code.launchpad.net/~ubuntu-desktop/gnome-menus/ubuntu
 
-Package: cinnamon-menus
-Architecture: any
-Pre-Depends: ${misc:Pre-Depends}
-Depends: ${shlibs:Depends},
-         ${misc:Depends},
-         ${python3:Depends}
-Breaks: gnome-panel (<< 2.91),
-        gnome-control-center (<< 2.91),
-        alacarte (<< 0.13.2-2)
-Description: GNOME implementation of the freedesktop menu specification
- The package contains an implementation of the draft
- "Desktop Menu Specification" from freedesktop.org:
- .
- http://www.freedesktop.org/Standards/menu-spec
- .
- Also contained here are the GNOME menu layout configuration files, .directory
- files and assorted menu related utility programs.
-
 Package: libcinnamon-menu-3-0
 Architecture: any
 Depends: ${shlibs:Depends},
