@@ -2,12 +2,12 @@
 # 
 # Modifications should be made to debian/control.in instead.
 # This file is regenerated automatically in the clean target.
-Source: gnome-menus
+Source: cinnamon-menus
 Section: gnome
 Priority: optional
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Andreas Henriksson <andreas@fatal.se>, Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Jeremy Bicha <jbicha@ubuntu.com>, Josselin Mouette <joss@debian.org>, Sjoerd Simons <sjoerd@debian.org>
+Uploaders: Andreas Henriksson <andreas@fatal.se>, Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Jeremy Bicha <jbicha@ubuntu.com>, Sjoerd Simons <sjoerd@debian.org>
 Build-Depends: debhelper (>= 9),
                cdbs (>= 0.4.73),
                libglib2.0-dev (>= 2.30.0),
@@ -20,7 +20,7 @@ Standards-Version: 3.9.3
 X-Python3-Version: >= 3.1
 Vcs-Bzr: https://code.launchpad.net/~ubuntu-desktop/gnome-menus/ubuntu
 
-Package: gnome-menus
+Package: cinnamon-menus
 Architecture: any
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends},
@@ -38,7 +38,7 @@ Description: GNOME implementation of the freedesktop menu specification
  Also contained here are the GNOME menu layout configuration files, .directory
  files and assorted menu related utility programs.
 
-Package: libgnome-menu-3-0
+Package: libcinnamon-menu-3-0
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends}
@@ -53,11 +53,11 @@ Description: GNOME implementation of the freedesktop menu specification
  .
  This package contains the shared library.
 
-Package: libgnome-menu-3-0-dbg
+Package: libcinnamon-menu-3-0-dbg
 Section: debug
 Priority: extra
 Architecture: any
-Depends: libgnome-menu-3-0 (= ${binary:Version}),
+Depends: libcinnamon-menu-3-0 (= ${binary:Version}),
          ${misc:Depends}
 Description: GNOME implementation of the freedesktop menu specification
  The package contains an implementation of the draft
@@ -70,12 +70,12 @@ Description: GNOME implementation of the freedesktop menu specification
  .
  This package contains debugging symbols.
 
-Package: libgnome-menu-3-dev
+Package: libcinnamon-menu-3-dev
 Architecture: any
 Section: libdevel
 Depends: ${misc:Depends},
-         libgnome-menu-3-0 (= ${binary:Version}),
-         gir1.2-gmenu-3.0 (= ${binary:Version}),
+         libcinnamon-menu-3-0 (= ${binary:Version}),
+         gir1.2-cmenu-3.0 (= ${binary:Version}),
          libglib2.0-dev (>= 2.30.0)
 Replaces: gir-repository-dev (<< 0.6.5-6)
 Description: GNOME implementation of the freedesktop menu specification
@@ -89,7 +89,7 @@ Description: GNOME implementation of the freedesktop menu specification
  .
  This package contains the development headers.
 
-Package: gir1.2-gmenu-3.0
+Package: gir1.2-cmenu-3.0
 Section: introspection
 Architecture: any
 Depends: ${gir:Depends},

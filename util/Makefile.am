@@ -1,4 +1,4 @@
-noinst_PROGRAMS = gnome-menu-spec-test
+noinst_PROGRAMS = cinnamon-menu-spec-test
 
 AM_CPPFLAGS =							\
 	$(GIO_UNIX_CFLAGS)					\
@@ -10,13 +10,13 @@ AM_CPPFLAGS =							\
 
 AM_CFLAGS = $(WARN_CFLAGS)
 
-gnome_menu_spec_test_SOURCES =		\
+cinnamon_menu_spec_test_SOURCES =		\
 	test-menu-spec.c
 
-gnome_menu_spec_test_LDADD =		\
+cinnamon_menu_spec_test_LDADD =		\
 	$(GIO_UNIX_LIBS)		\
-	../libmenu/libgnome-menu-3.la
+	../libmenu/libcinnamon-menu-3.la
 
-EXTRA_DIST = gnome-menus-ls.js
+EXTRA_DIST = cinnamon-menus-ls.js
 
 -include $(top_srcdir)/git.mk

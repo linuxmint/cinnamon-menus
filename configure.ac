@@ -74,10 +74,8 @@ GOBJECT_INTROSPECTION_CHECK([0.9.5])
 AC_OUTPUT([
 Makefile
 libmenu/Makefile
-libmenu/libgnome-menu-3.0.pc
-libmenu/libgnome-menu-3.0-uninstalled.pc
-layout/Makefile
-desktop-directories/Makefile
+libmenu/libcinnamon-menu-3.0.pc
+libmenu/libcinnamon-menu-3.0-uninstalled.pc
 util/Makefile
 po/Makefile.in
 ])

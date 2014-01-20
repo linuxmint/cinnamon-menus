@@ -1,3 +1,9 @@
+cinnamon-menus (2.1) petra; urgency=low
+
+  * Rename
+
+ -- Michael Webster <miketwebster@gmail.com>  Mon, 20 Jan 2014 10:19:41 -0500
+
 gnome-menus (3.8.0-1ubuntu5) saucy; urgency=low
 
   * debian/patches/ubuntu_gcc_translations.patch: revert dropping of 

@@ -14,10 +14,10 @@ OUTFILES := $(INFILES:.directory.in=.directory)
 %.directory: %.directory.in
 	intltool-merge -d debian/po-up $< $@
 
-build/gnome-menus:: $(OUTFILES)
+build/cinnamon-menus:: $(OUTFILES)
 
-binary-install/gnome-menus::
-	dh_python3 -pgnome-menus
+binary-install/cinnamon-menus::
+	dh_python3 -pcinnamon-menus
 
 clean::
 	-rm -f $(OUTFILES)

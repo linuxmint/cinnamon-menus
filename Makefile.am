@@ -1,4 +1,4 @@
-SUBDIRS = libmenu desktop-directories layout util po
+SUBDIRS = libmenu util po
 
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 
