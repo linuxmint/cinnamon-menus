@@ -230,348 +230,11 @@ configure:4355: checking for locale.h
 configure:4355: result: yes
 configure:4366: checking for LC_MESSAGES
 configure:4382: gcc -o conftest -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 -Wl,-Bsymbolic-functions -Wl,-z,relro conftest.c  >&5
-configure:4382: $? = 0
-configure:4390: result: yes
-configure:4407: checking libintl.h usability
-configure:4407: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:4407: $? = 0
-configure:4407: result: yes
-configure:4407: checking libintl.h presence
-configure:4407: gcc -E -D_FORTIFY_SOURCE=2 conftest.c
-configure:4407: $? = 0
-configure:4407: result: yes
-configure:4407: checking for libintl.h
-configure:4407: result: yes
-configure:4415: checking for ngettext in libc
-configure:4433: gcc -o conftest -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 -Wl,-Bsymbolic-functions -Wl,-z,relro conftest.c  >&5
-configure:4433: $? = 0
-configure:4442: result: yes
-configure:4446: checking for dgettext in libc
-configure:4464: gcc -o conftest -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 -Wl,-Bsymbolic-functions -Wl,-z,relro conftest.c  >&5
-configure:4464: $? = 0
-configure:4473: result: yes
-configure:4480: checking for bind_textdomain_codeset
-configure:4480: gcc -o conftest -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 -Wl,-Bsymbolic-functions -Wl,-z,relro conftest.c  >&5
-configure:4480: $? = 0
-configure:4480: result: yes
-configure:4756: checking for msgfmt
-configure:4783: result: /usr/bin/msgfmt
-configure:4794: checking for dcgettext
-configure:4794: gcc -o conftest -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 -Wl,-Bsymbolic-functions -Wl,-z,relro conftest.c   >&5
-conftest.c:49:6: warning: conflicting types for built-in function 'dcgettext' [enabled by default]
- char dcgettext ();
-      ^
-configure:4794: $? = 0
-configure:4794: result: yes
-configure:4804: checking if msgfmt accepts -c
-configure:4819: $MSGFMT -c -o /dev/null conftest.foo
-configure:4822: $? = 0
-configure:4824: result: yes
-configure:4834: checking for gmsgfmt
-configure:4865: result: /usr/bin/msgfmt
-configure:4875: checking for xgettext
-configure:4902: result: /usr/bin/xgettext
-configure:4921: gcc -o conftest -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 -Wl,-Bsymbolic-functions -Wl,-z,relro conftest.c   >&5
-configure:4921: $? = 0
-configure:5062: checking whether NLS is requested
-configure:5071: result: yes
-configure:5089: checking for intltool >= 0.40.0
-configure:5091: result: 0.50.2 found
-configure:5099: checking for intltool-update
-configure:5117: found /usr/bin/intltool-update
-configure:5129: result: /usr/bin/intltool-update
-configure:5139: checking for intltool-merge
-configure:5157: found /usr/bin/intltool-merge
-configure:5169: result: /usr/bin/intltool-merge
-configure:5179: checking for intltool-extract
-configure:5197: found /usr/bin/intltool-extract
-configure:5209: result: /usr/bin/intltool-extract
-configure:5363: checking for xgettext
-configure:5393: result: /usr/bin/xgettext
-configure:5403: checking for msgmerge
-configure:5421: found /usr/bin/msgmerge
-configure:5433: result: /usr/bin/msgmerge
-configure:5443: checking for msgfmt
-configure:5473: result: /usr/bin/msgfmt
-configure:5483: checking for gmsgfmt
-configure:5514: result: /usr/bin/msgfmt
-configure:5534: checking for perl
-configure:5552: found /usr/bin/perl
-configure:5564: result: /usr/bin/perl
-configure:5575: checking for perl >= 5.8.1
-configure:5582: result: 5.14.2
-configure:5586: checking for XML::Parser
-configure:5589: result: ok
-configure:5641: checking for library containing strerror
-configure:5672: gcc -o conftest -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 -Wl,-Bsymbolic-functions -Wl,-z,relro conftest.c  >&5
-configure:5672: $? = 0
-configure:5689: result: none required
-configure:5745: checking for gcc
-configure:5772: result: gcc
-configure:6001: checking for C compiler version
-configure:6010: gcc --version >&5
-gcc-4.8.real (Ubuntu/Linaro 4.8.1-10ubuntu9) 4.8.1
-Copyright (C) 2013 Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-configure:6021: $? = 0
-configure:6010: gcc -v >&5
-Using built-in specs.
-COLLECT_GCC=/usr/bin/gcc-4.8.real
-COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper
-Target: x86_64-linux-gnu
-Configured with: ../src/configure -v --with-pkgversion='Ubuntu/Linaro 4.8.1-10ubuntu9' --with-bugurl=file:///usr/share/doc/gcc-4.8/README.Bugs --enable-languages=c,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.8 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.8 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-4.8-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
-Thread model: posix
-gcc version 4.8.1 (Ubuntu/Linaro 4.8.1-10ubuntu9) 
-configure:6021: $? = 0
-configure:6010: gcc -V >&5
-gcc-4.8.real: error: unrecognized command line option '-V'
-gcc-4.8.real: fatal error: no input files
-compilation terminated.
-configure:6021: $? = 4
-configure:6010: gcc -qversion >&5
-gcc-4.8.real: error: unrecognized command line option '-qversion'
-gcc-4.8.real: fatal error: no input files
-compilation terminated.
-configure:6021: $? = 4
-configure:6025: checking whether we are using the GNU C compiler
-configure:6053: result: yes
-configure:6062: checking whether gcc accepts -g
-configure:6123: result: yes
-configure:6140: checking for gcc option to accept ISO C89
-configure:6216: result: none needed
-configure:6238: checking dependency style of gcc
-configure:6349: result: none
-configure:6364: checking for ANSI C header files
-configure:6468: result: yes
-configure:6481: checking build system type
-configure:6495: result: x86_64-pc-linux-gnu
-configure:6515: checking host system type
-configure:6528: result: x86_64-pc-linux-gnu
-configure:6897: checking how to print strings
-configure:6924: result: printf
-configure:6945: checking for a sed that does not truncate output
-configure:7009: result: /bin/sed
-configure:7027: checking for fgrep
-configure:7089: result: /bin/grep -F
-configure:7124: checking for ld used by gcc
-configure:7191: result: /usr/bin/ld
-configure:7198: checking if the linker (/usr/bin/ld) is GNU ld
-configure:7213: result: yes
-configure:7225: checking for BSD- or MS-compatible name lister (nm)
-configure:7274: result: /usr/bin/nm -B
-configure:7404: checking the name lister (/usr/bin/nm -B) interface
-configure:7411: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:7414: /usr/bin/nm -B "conftest.o"
-configure:7417: output
-0000000000000000 B some_variable
-configure:7424: result: BSD nm
-configure:7427: checking whether ln -s works
-configure:7431: result: yes
-configure:7439: checking the maximum length of command line arguments
-configure:7569: result: 3458764513820540925
-configure:7586: checking whether the shell understands some XSI constructs
-configure:7596: result: yes
-configure:7600: checking whether the shell understands "+="
-configure:7606: result: yes
-configure:7641: checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format
-configure:7681: result: func_convert_file_noop
-configure:7688: checking how to convert x86_64-pc-linux-gnu file names to toolchain format
-configure:7708: result: func_convert_file_noop
-configure:7715: checking for /usr/bin/ld option to reload object files
-configure:7722: result: -r
-configure:7796: checking for objdump
-configure:7823: result: objdump
-configure:7852: checking how to recognize dependent libraries
-configure:8054: result: pass_all
-configure:8139: checking for dlltool
-configure:8166: result: dlltool
-configure:8196: checking how to associate runtime and link libraries
-configure:8223: result: printf %s\n
-configure:8283: checking for ar
-configure:8299: found /usr/bin/ar
-configure:8310: result: ar
-configure:8347: checking for archiver @FILE support
-configure:8364: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:8364: $? = 0
-configure:8367: ar cru libconftest.a @conftest.lst >&5
-configure:8370: $? = 0
-configure:8375: ar cru libconftest.a @conftest.lst >&5
-ar: conftest.o: No such file or directory
-configure:8378: $? = 1
-configure:8390: result: @
-configure:8448: checking for strip
-configure:8464: found /usr/bin/strip
-configure:8475: result: strip
-configure:8547: checking for ranlib
-configure:8563: found /usr/bin/ranlib
-configure:8574: result: ranlib
-configure:8676: checking command to parse /usr/bin/nm -B output from gcc object
-configure:8796: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:8799: $? = 0
-configure:8803: /usr/bin/nm -B conftest.o \| sed -n -e 's/^.*[ ]\([ABCDGIRSTW][ABCDGIRSTW]*\)[ ][ ]*\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2 \2/p' | sed '/ __gnu_lto/d' \> conftest.nm
-configure:8806: $? = 0
-configure:8872: gcc -o conftest -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 -Wl,-Bsymbolic-functions -Wl,-z,relro conftest.c conftstm.o >&5
-configure:8875: $? = 0
-configure:8913: result: ok
-configure:8950: checking for sysroot
-configure:8980: result: no
-configure:9057: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:9060: $? = 0
-configure:9236: checking for mt
-configure:9252: found /bin/mt
-configure:9263: result: mt
-configure:9286: checking if mt is a manifest tool
-configure:9292: mt '-?'
-configure:9300: result: no
-configure:9939: checking for dlfcn.h
-configure:9939: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:9939: $? = 0
-configure:9939: result: yes
-configure:10143: checking for objdir
-configure:10158: result: .libs
-configure:10429: checking if gcc supports -fno-rtti -fno-exceptions
-configure:10447: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 -fno-rtti -fno-exceptions conftest.c >&5
-cc1: warning: command line option '-fno-rtti' is valid for C++/ObjC++ but not for C [enabled by default]
-configure:10451: $? = 0
-configure:10464: result: no
-configure:10791: checking for gcc option to produce PIC
-configure:10798: result: -fPIC -DPIC
-configure:10806: checking if gcc PIC flag -fPIC -DPIC works
-configure:10824: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 -fPIC -DPIC -DPIC conftest.c >&5
-configure:10828: $? = 0
-configure:10841: result: yes
-configure:10870: checking if gcc static flag -static works
-configure:10898: result: yes
-configure:10913: checking if gcc supports -c -o file.o
-configure:10934: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 -o out/conftest2.o conftest.c >&5
-configure:10938: $? = 0
-configure:10960: result: yes
-configure:10968: checking if gcc supports -c -o file.o
-configure:11015: result: yes
-configure:11048: checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries
-configure:12201: result: yes
-configure:12238: checking whether -lc should be explicitly linked in
-configure:12246: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:12249: $? = 0
-configure:12264: gcc -shared  -fPIC -DPIC conftest.o  -v -Wl,-soname -Wl,conftest -o conftest 2\>\&1 \| /bin/grep  -lc  \>/dev/null 2\>\&1
-configure:12267: $? = 0
-configure:12281: result: no
-configure:12441: checking dynamic linker characteristics
-configure:12952: gcc -o conftest -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -D_FORTIFY_SOURCE=2 -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-rpath -Wl,/foo conftest.c  >&5
-configure:12952: $? = 0
-configure:13178: result: GNU/Linux ld.so
-configure:13285: checking how to hardcode library paths into programs
-configure:13310: result: immediate
-configure:13850: checking whether stripping libraries is possible
-configure:13855: result: yes
-configure:13890: checking if libtool supports shared libraries
-configure:13892: result: yes
-configure:13895: checking whether to build shared libraries
-configure:13916: result: yes
-configure:13919: checking whether to build static libraries
-configure:13923: result: yes
-configure:14015: checking for pkg-config
-configure:14033: found /usr/bin/pkg-config
-configure:14045: result: /usr/bin/pkg-config
-configure:14070: checking pkg-config is at least version 0.9.0
-configure:14073: result: yes
-configure:14083: checking for GIO_UNIX
-configure:14090: $PKG_CONFIG --exists --print-errors "gio-unix-2.0 >= 2.29.15"
-configure:14093: $? = 0
-configure:14107: $PKG_CONFIG --exists --print-errors "gio-unix-2.0 >= 2.29.15"
-configure:14110: $? = 0
-configure:14168: result: yes
-configure:14233: checking whether gcc understands -Wall
-configure:14246: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -Wall -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:14246: $? = 0
-configure:14253: result: yes
-configure:14233: checking whether gcc understands -Wstrict-prototypes
-configure:14246: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 conftest.c >&5
-conftest.c:33:1: warning: function declaration isn't a prototype [-Wstrict-prototypes]
- main ()
- ^
-configure:14246: $? = 0
-configure:14253: result: yes
-configure:14233: checking whether gcc understands -Wnested-externs
-configure:14246: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -Wnested-externs -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:14246: $? = 0
-configure:14253: result: yes
-configure:14233: checking whether gcc understands -Werror=missing-prototypes
-configure:14246: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -Werror=missing-prototypes -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:14246: $? = 0
-configure:14253: result: yes
-configure:14233: checking whether gcc understands -Werror=implicit-function-declaration
-configure:14246: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -Werror=implicit-function-declaration -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:14246: $? = 0
-configure:14253: result: yes
-configure:14233: checking whether gcc understands -Werror=pointer-arith
-configure:14246: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -Werror=pointer-arith -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:14246: $? = 0
-configure:14253: result: yes
-configure:14233: checking whether gcc understands -Werror=init-self
-configure:14246: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -Werror=init-self -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:14246: $? = 0
-configure:14253: result: yes
-configure:14233: checking whether gcc understands -Werror=format-security
-configure:14246: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -Werror=format-security -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:14246: $? = 0
-configure:14253: result: yes
-configure:14233: checking whether gcc understands -Werror=format=2
-configure:14246: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -Werror=format=2 -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:14246: $? = 0
-configure:14253: result: yes
-configure:14233: checking whether gcc understands -Werror=missing-include-dirs
-configure:14246: gcc -c -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall -Werror=missing-include-dirs -D_FORTIFY_SOURCE=2 conftest.c >&5
-configure:14246: $? = 0
-configure:14253: result: yes
-configure:14263: checking what warning flags to pass to the C compiler
-configure:14265: result:  -Wall -Wstrict-prototypes -Wnested-externs -Werror=missing-prototypes -Werror=implicit-function-declaration -Werror=pointer-arith -Werror=init-self -Werror=format-security -Werror=format=2 -Werror=missing-include-dirs
-configure:14276: checking what language compliance flags to pass to the C compiler
-configure:14291: result: 
-configure:14340: checking for gobject-introspection
-configure:14371: $PKG_CONFIG --exists --print-errors "gobject-introspection-1.0 >= 0.9.5"
-configure:14374: $? = 0
-configure:14386: result: yes
-configure:14535: checking that generated files are newer than configure
-configure:14541: result: done
-configure:14580: creating ./config.status
-
-## ---------------------- ##
-## Running config.status. ##
-## ---------------------- ##
-
-This file was extended by gnome-menus config.status 3.8.0, which was
-generated by GNU Autoconf 2.69.  Invocation command line was
-
-  CONFIG_FILES    = 
-  CONFIG_HEADERS  = 
-  CONFIG_LINKS    = 
-  CONFIG_COMMANDS = 
-  $ ./config.status 
-
-on mint16
-
-config.status:1191: creating Makefile
-config.status:1191: creating libmenu/Makefile
-config.status:1191: creating libmenu/libgnome-menu-3.0.pc
-config.status:1191: creating libmenu/libgnome-menu-3.0-uninstalled.pc
-config.status:1191: creating layout/Makefile
-config.status:1191: creating desktop-directories/Makefile
-config.status:1191: creating util/Makefile
-config.status:1191: creating po/Makefile.in
-config.status:1191: creating config.h
-config.status:1405: executing depfiles commands
-config.status:1405: executing default-1 commands
-config.status:1405: executing libtool commands
-config.status:1405: executing po/stamp-it commands
 
 ## ---------------- ##
 ## Cache variables. ##
 ## ---------------- ##
 
-ac_cv_build=x86_64-pc-linux-gnu
 ac_cv_c_compiler_gnu=yes
 ac_cv_env_CC_set=
 ac_cv_env_CC_value=
@@ -601,11 +264,7 @@ ac_cv_env_host_alias_set=
 ac_cv_env_host_alias_value=
 ac_cv_env_target_alias_set=
 ac_cv_env_target_alias_value=
-ac_cv_func_bind_textdomain_codeset=yes
-ac_cv_func_dcgettext=yes
-ac_cv_header_dlfcn_h=yes
 ac_cv_header_inttypes_h=yes
-ac_cv_header_libintl_h=yes
 ac_cv_header_locale_h=yes
 ac_cv_header_memory_h=yes
 ac_cv_header_stdc=yes
@@ -616,71 +275,19 @@ ac_cv_header_strings_h=yes
 ac_cv_header_sys_stat_h=yes
 ac_cv_header_sys_types_h=yes
 ac_cv_header_unistd_h=yes
-ac_cv_host=x86_64-pc-linux-gnu
 ac_cv_objext=o
 ac_cv_path_EGREP='/bin/grep -E'
-ac_cv_path_FGREP='/bin/grep -F'
-ac_cv_path_GMSGFMT=/usr/bin/msgfmt
 ac_cv_path_GREP=/bin/grep
-ac_cv_path_INTLTOOL_EXTRACT=/usr/bin/intltool-extract
-ac_cv_path_INTLTOOL_MERGE=/usr/bin/intltool-merge
-ac_cv_path_INTLTOOL_PERL=/usr/bin/perl
-ac_cv_path_INTLTOOL_UPDATE=/usr/bin/intltool-update
-ac_cv_path_MSGFMT=/usr/bin/msgfmt
-ac_cv_path_MSGMERGE=/usr/bin/msgmerge
-ac_cv_path_SED=/bin/sed
-ac_cv_path_XGETTEXT=/usr/bin/xgettext
-ac_cv_path_ac_pt_PKG_CONFIG=/usr/bin/pkg-config
 ac_cv_path_install='/usr/bin/install -c'
 ac_cv_path_mkdir=/bin/mkdir
 ac_cv_prog_AWK=gawk
 ac_cv_prog_CPP='gcc -E'
-ac_cv_prog_ac_ct_AR=ar
 ac_cv_prog_ac_ct_CC=gcc
-ac_cv_prog_ac_ct_DLLTOOL=dlltool
-ac_cv_prog_ac_ct_MANIFEST_TOOL=mt
-ac_cv_prog_ac_ct_OBJDUMP=objdump
-ac_cv_prog_ac_ct_RANLIB=ranlib
-ac_cv_prog_ac_ct_STRIP=strip
 ac_cv_prog_cc_c89=
 ac_cv_prog_cc_g=yes
 ac_cv_prog_make_make_set=yes
-ac_cv_search_strerror='none required'
 am_cv_CC_dependencies_compiler_type=none
 am_cv_make_support_nested_variables=yes
-am_cv_val_LC_MESSAGES=yes
-gt_cv_func_dgettext_libc=yes
-gt_cv_func_dgettext_libintl=no
-gt_cv_func_ngettext_libc=yes
-gt_cv_have_gettext=yes
-lt_cv_ar_at_file=@
-lt_cv_archive_cmds_need_lc=no
-lt_cv_deplibs_check_method=pass_all
-lt_cv_file_magic_cmd='$MAGIC_CMD'
-lt_cv_file_magic_test_file=
-lt_cv_ld_reload_flag=-r
-lt_cv_nm_interface='BSD nm'
-lt_cv_objdir=.libs
-lt_cv_path_LD=/usr/bin/ld
-lt_cv_path_NM='/usr/bin/nm -B'
-lt_cv_path_mainfest_tool=no
-lt_cv_prog_compiler_c_o=yes
-lt_cv_prog_compiler_pic='-fPIC -DPIC'
-lt_cv_prog_compiler_pic_works=yes
-lt_cv_prog_compiler_rtti_exceptions=no
-lt_cv_prog_compiler_static_works=yes
-lt_cv_prog_gnu_ld=yes
-lt_cv_sharedlib_from_linklib_cmd='printf %s\n'
-lt_cv_shlibpath_overrides_runpath=no
-lt_cv_sys_global_symbol_pipe='sed -n -e '\''s/^.*[	 ]\([ABCDGIRSTW][ABCDGIRSTW]*\)[	 ][	 ]*\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2 \2/p'\'' | sed '\''/ __gnu_lto/d'\'''
-lt_cv_sys_global_symbol_to_c_name_address='sed -n -e '\''s/^: \([^ ]*\)[ ]*$/  {\"\1\", (void *) 0},/p'\'' -e '\''s/^[ABCDGIRSTW]* \([^ ]*\) \([^ ]*\)$/  {"\2", (void *) \&\2},/p'\'''
-lt_cv_sys_global_symbol_to_c_name_address_lib_prefix='sed -n -e '\''s/^: \([^ ]*\)[ ]*$/  {\"\1\", (void *) 0},/p'\'' -e '\''s/^[ABCDGIRSTW]* \([^ ]*\) \(lib[^ ]*\)$/  {"\2", (void *) \&\2},/p'\'' -e '\''s/^[ABCDGIRSTW]* \([^ ]*\) \([^ ]*\)$/  {"lib\2", (void *) \&\2},/p'\'''
-lt_cv_sys_global_symbol_to_cdecl='sed -n -e '\''s/^T .* \(.*\)$/extern int \1();/p'\'' -e '\''s/^[ABCDGIRSTW]* .* \(.*\)$/extern char \1;/p'\'''
-lt_cv_sys_max_cmd_len=3458764513820540925
-lt_cv_to_host_file_cmd=func_convert_file_noop
-lt_cv_to_tool_file_cmd=func_convert_file_noop
-pkg_cv_GIO_UNIX_CFLAGS='-pthread -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include  '
-pkg_cv_GIO_UNIX_LIBS='-lgio-2.0 -lgobject-2.0 -lglib-2.0  '
 
 ## ----------------- ##
 ## Output variables. ##
@@ -696,27 +303,27 @@ AM_BACKSLASH='\'
 AM_DEFAULT_V='$(AM_DEFAULT_VERBOSITY)'
 AM_DEFAULT_VERBOSITY='1'
 AM_V='$(V)'
-AR='ar'
-AS='as'
+AR=''
+AS=''
 AUTOCONF='${SHELL} /home/mtwebster/bin/gnome-menus/missing autoconf'
 AUTOHEADER='${SHELL} /home/mtwebster/bin/gnome-menus/missing autoheader'
 AUTOMAKE='${SHELL} /home/mtwebster/bin/gnome-menus/missing automake-1.13'
 AWK='gawk'
 CATALOGS=''
-CATOBJEXT='.gmo'
+CATOBJEXT=''
 CC='gcc'
 CCDEPMODE='depmode=none'
 CFLAGS='-g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wall'
 CPP='gcc -E'
 CPPFLAGS='-D_FORTIFY_SOURCE=2'
 CYGPATH_W='echo'
-DATADIRNAME='share'
-DEBUG_CFLAGS='-DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS'
-DEFS='-DHAVE_CONFIG_H'
+DATADIRNAME=''
+DEBUG_CFLAGS=''
+DEFS=''
 DEPDIR='.deps'
 DISABLE_DEPRECATED=''
 DISABLE_DEPRECATED_CFLAGS=''
-DLLTOOL='dlltool'
+DLLTOOL=''
 DSYMUTIL=''
 DUMPBIN=''
 ECHO_C=''
@@ -724,78 +331,78 @@ ECHO_N='-n'
 ECHO_T=''
 EGREP='/bin/grep -E'
 EXEEXT=''
-FGREP='/bin/grep -F'
+FGREP=''
 GETTEXT_PACKAGE='gnome-menus-3.0'
-GIO_UNIX_CFLAGS='-pthread -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include  '
-GIO_UNIX_LIBS='-lgio-2.0 -lgobject-2.0 -lglib-2.0  '
+GIO_UNIX_CFLAGS=''
+GIO_UNIX_LIBS=''
 GMOFILES=''
-GMSGFMT='/usr/bin/msgfmt'
+GMSGFMT=''
 GREP='/bin/grep'
-HAVE_INTROSPECTION_FALSE='#'
+HAVE_INTROSPECTION_FALSE=''
 HAVE_INTROSPECTION_TRUE=''
 INSTALL_DATA='${INSTALL} -m 644'
 INSTALL_PROGRAM='${INSTALL}'
 INSTALL_SCRIPT='${INSTALL}'
 INSTALL_STRIP_PROGRAM='$(install_sh) -c -s'
-INSTOBJEXT='.mo'
+INSTOBJEXT=''
 INTLLIBS=''
-INTLTOOL_CAVES_RULE='%.caves:     %.caves.in     $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_DESKTOP_RULE='%.desktop:   %.desktop.in   $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_DIRECTORY_RULE='%.directory: %.directory.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_EXTRACT='/usr/bin/intltool-extract'
-INTLTOOL_KBD_RULE='%.kbd:       %.kbd.in       $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u -m -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_KEYS_RULE='%.keys:      %.keys.in      $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -k -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_MERGE='/usr/bin/intltool-merge'
-INTLTOOL_OAF_RULE='%.oaf:       %.oaf.in       $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -o -p $(top_srcdir)/po $< $@'
-INTLTOOL_PERL='/usr/bin/perl'
-INTLTOOL_POLICY_RULE='%.policy:    %.policy.in    $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_PONG_RULE='%.pong:      %.pong.in      $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_PROP_RULE='%.prop:      %.prop.in      $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_SCHEMAS_RULE='%.schemas:   %.schemas.in   $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -s -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_SERVER_RULE='%.server:    %.server.in    $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -o -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_SERVICE_RULE='%.service: %.service.in   $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_SHEET_RULE='%.sheet:     %.sheet.in     $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_SOUNDLIST_RULE='%.soundlist: %.soundlist.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_THEME_RULE='%.theme:     %.theme.in     $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -d -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_UI_RULE='%.ui:        %.ui.in        $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_UPDATE='/usr/bin/intltool-update'
-INTLTOOL_V_MERGE='$(INTLTOOL__v_MERGE_$(V))'
-INTLTOOL_V_MERGE_OPTIONS='$(intltool__v_merge_options_$(V))'
-INTLTOOL_XAM_RULE='%.xam:       %.xml.in       $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL_XML_NOMERGE_RULE='%.xml:       %.xml.in       $(INTLTOOL_MERGE) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u --no-translations $< $@'
-INTLTOOL_XML_RULE='%.xml:       %.xml.in       $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po) ; $(INTLTOOL_V_MERGE)LC_ALL=C $(INTLTOOL_MERGE) $(INTLTOOL_V_MERGE_OPTIONS) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@'
-INTLTOOL__v_MERGE_0='@echo "  ITMRG " $@;'
-INTLTOOL__v_MERGE_='$(INTLTOOL__v_MERGE_$(AM_DEFAULT_VERBOSITY))'
-INTROSPECTION_CFLAGS='-pthread -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/gobject-introspection-1.0  '
-INTROSPECTION_COMPILER='/usr/bin/g-ir-compiler'
-INTROSPECTION_GENERATE='/usr/bin/g-ir-generate'
-INTROSPECTION_GIRDIR='/usr/share/gir-1.0'
-INTROSPECTION_LIBS='-lgirepository-1.0 -lgobject-2.0 -lglib-2.0  '
-INTROSPECTION_MAKEFILE='/usr/share/gobject-introspection-1.0/Makefile.introspection'
-INTROSPECTION_SCANNER='/usr/bin/g-ir-scanner'
-INTROSPECTION_TYPELIBDIR='/usr/lib/girepository-1.0'
-LD='/usr/bin/ld -m elf_x86_64'
+INTLTOOL_CAVES_RULE=''
+INTLTOOL_DESKTOP_RULE=''
+INTLTOOL_DIRECTORY_RULE=''
+INTLTOOL_EXTRACT=''
+INTLTOOL_KBD_RULE=''
+INTLTOOL_KEYS_RULE=''
+INTLTOOL_MERGE=''
+INTLTOOL_OAF_RULE=''
+INTLTOOL_PERL=''
+INTLTOOL_POLICY_RULE=''
+INTLTOOL_PONG_RULE=''
+INTLTOOL_PROP_RULE=''
+INTLTOOL_SCHEMAS_RULE=''
+INTLTOOL_SERVER_RULE=''
+INTLTOOL_SERVICE_RULE=''
+INTLTOOL_SHEET_RULE=''
+INTLTOOL_SOUNDLIST_RULE=''
+INTLTOOL_THEME_RULE=''
+INTLTOOL_UI_RULE=''
+INTLTOOL_UPDATE=''
+INTLTOOL_V_MERGE=''
+INTLTOOL_V_MERGE_OPTIONS=''
+INTLTOOL_XAM_RULE=''
+INTLTOOL_XML_NOMERGE_RULE=''
+INTLTOOL_XML_RULE=''
+INTLTOOL__v_MERGE_0=''
+INTLTOOL__v_MERGE_=''
+INTROSPECTION_CFLAGS=''
+INTROSPECTION_COMPILER=''
+INTROSPECTION_GENERATE=''
+INTROSPECTION_GIRDIR=''
+INTROSPECTION_LIBS=''
+INTROSPECTION_MAKEFILE=''
+INTROSPECTION_SCANNER=''
+INTROSPECTION_TYPELIBDIR=''
+LD=''
 LDFLAGS='-Wl,-Bsymbolic-functions -Wl,-z,relro'
 LIBOBJS=''
 LIBS=''
-LIBTOOL='$(SHELL) $(top_builddir)/libtool'
+LIBTOOL=''
 LIB_MENU_LT_VERSION='0:1:0'
 LIPO=''
-LN_S='ln -s'
+LN_S=''
 LTLIBOBJS=''
 MAINT='#'
 MAINTAINER_MODE_FALSE=''
 MAINTAINER_MODE_TRUE='#'
 MAKEINFO='${SHELL} /home/mtwebster/bin/gnome-menus/missing makeinfo'
-MANIFEST_TOOL=':'
+MANIFEST_TOOL=''
 MKDIR_P='/bin/mkdir -p'
-MKINSTALLDIRS='/home/mtwebster/bin/gnome-menus/./mkinstalldirs'
-MSGFMT='/usr/bin/msgfmt'
-MSGFMT_OPTS='-c'
-MSGMERGE='/usr/bin/msgmerge'
-NM='/usr/bin/nm -B'
+MKINSTALLDIRS=''
+MSGFMT=''
+MSGFMT_OPTS=''
+MSGMERGE=''
+NM=''
 NMEDIT=''
-OBJDUMP='objdump'
+OBJDUMP=''
 OBJEXT='o'
 OTOOL64=''
 OTOOL=''
@@ -807,27 +414,27 @@ PACKAGE_TARNAME='gnome-menus'
 PACKAGE_URL=''
 PACKAGE_VERSION='3.8.0'
 PATH_SEPARATOR=':'
-PKG_CONFIG='/usr/bin/pkg-config'
+PKG_CONFIG=''
 PKG_CONFIG_LIBDIR=''
 PKG_CONFIG_PATH=''
 POFILES=''
-POSUB='po'
+POSUB=''
 PO_IN_DATADIR_FALSE=''
 PO_IN_DATADIR_TRUE=''
-RANLIB='ranlib'
-SED='/bin/sed'
+RANLIB=''
+SED=''
 SET_MAKE=''
 SHELL='/bin/bash'
-STRIP='strip'
-USE_NLS='yes'
+STRIP=''
+USE_NLS=''
 VERSION='3.8.0'
-WARN_CFLAGS=' -Wall -Wstrict-prototypes -Wnested-externs -Werror=missing-prototypes -Werror=implicit-function-declaration -Werror=pointer-arith -Werror=init-self -Werror=format-security -Werror=format=2 -Werror=missing-include-dirs '
-XGETTEXT='/usr/bin/xgettext'
-ac_ct_AR='ar'
+WARN_CFLAGS=''
+XGETTEXT=''
+ac_ct_AR=''
 ac_ct_CC='gcc'
 ac_ct_DUMPBIN=''
 am__EXEEXT_FALSE=''
-am__EXEEXT_TRUE='#'
+am__EXEEXT_TRUE=''
 am__fastdepCC_FALSE=''
 am__fastdepCC_TRUE='#'
 am__include='include'
@@ -838,27 +445,27 @@ am__quote=''
 am__tar='$${TAR-tar} chof - "$$tardir"'
 am__untar='$${TAR-tar} xf -'
 bindir='${exec_prefix}/bin'
-build='x86_64-pc-linux-gnu'
+build='x86_64-linux-gnu'
 build_alias='x86_64-linux-gnu'
-build_cpu='x86_64'
-build_os='linux-gnu'
-build_vendor='pc'
+build_cpu=''
+build_os=''
+build_vendor=''
 datadir='${datarootdir}'
 datarootdir='${prefix}/share'
 docdir='${datarootdir}/doc/${PACKAGE_TARNAME}'
 dvidir='${docdir}'
-exec_prefix='${prefix}'
-host='x86_64-pc-linux-gnu'
+exec_prefix='NONE'
+host=''
 host_alias=''
-host_cpu='x86_64'
-host_os='linux-gnu'
-host_vendor='pc'
+host_cpu=''
+host_os=''
+host_vendor=''
 htmldir='${docdir}'
 includedir='${prefix}/include'
 infodir='${prefix}/share/info'
 install_sh='${SHELL} /home/mtwebster/bin/gnome-menus/install-sh'
-intltool__v_merge_options_0='-q'
-intltool__v_merge_options_='$(intltool__v_merge_options_$(AM_DEFAULT_VERBOSITY))'
+intltool__v_merge_options_0=''
+intltool__v_merge_options_=''
 libdir='${exec_prefix}/lib'
 libexecdir='${prefix}/lib/gnome-menus'
 localedir='${datarootdir}/locale'
@@ -900,13 +507,6 @@ target_alias=''
 #define HAVE_STDINT_H 1
 #define HAVE_UNISTD_H 1
 #define HAVE_LOCALE_H 1
-#define HAVE_LC_MESSAGES 1
-#define HAVE_BIND_TEXTDOMAIN_CODESET 1
-#define HAVE_GETTEXT 1
-#define HAVE_DCGETTEXT 1
-#define ENABLE_NLS 1
-#define STDC_HEADERS 1
-#define HAVE_DLFCN_H 1
-#define LT_OBJDIR ".libs/"
 
-configure: exit 0
+configure: caught signal 2
+configure: exit 1

@@ -1,2 +1,0 @@
-gir:Depends=gir1.2-glib-2.0, libgnome-menu-3-0 (>= 3.6.0)
-misc:Depends=
