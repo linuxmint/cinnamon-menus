@@ -45,6 +45,7 @@ typedef struct
 
   GDesktopAppInfo *appinfo;
   GQuark          *categories;
+  guint            showin : 1;
 } DesktopEntryDesktop;
 
 typedef struct
@@ -168,9 +169,12 @@ key_file_get_show_in (GKeyFile *key_file)
                                 "Exec",
                                 NULL);
 
-  if (g_str_has_prefix (exec, "gnome-control-center")) {
-    g_free (exec);
-    return FALSE;
+  if (exec) {
+      if (g_str_has_prefix (exec, "gnome-control-center")) {
+        g_free (exec);
+        return FALSE;
+      }
+      g_free (exec);
   }
 
   strv = g_key_file_get_string_list (key_file,
@@ -266,6 +270,7 @@ desktop_entry_load (DesktopEntry *entry)
     return FALSE;
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
     {
+      GKeyFile *key_file = NULL;
       DesktopEntryDesktop *entry_desktop = (DesktopEntryDesktop*)entry;
       const char *categories_str;
 
@@ -292,6 +297,15 @@ desktop_entry_load (DesktopEntry *entry)
 
           g_strfreev (categories);
         }
+
+      key_file = g_key_file_new ();
+
+      if (!g_key_file_load_from_file (key_file, entry->path, 0, NULL))
+        entry_desktop->showin = TRUE;
+      else
+        entry_desktop->showin = key_file_get_show_in (key_file);
+
+      g_key_file_free (key_file);
 
       return TRUE;
     }
@@ -601,11 +615,7 @@ desktop_entry_get_show_in (DesktopEntry *entry)
       if (current_desktop == NULL)
         return TRUE;
       else {
-        const char *exec = g_app_info_get_executable (G_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo));
-        if (g_str_has_prefix (exec, "gnome-control-center"))
-            return FALSE;
-        else
-            return g_strcmp0 (current_desktop, "GNOME") == 0 || g_strcmp0 (current_desktop, "X-Cinnamon") == 0;
+        return ((DesktopEntryDesktop *)entry)->showin;
       }
     }
   return ((DesktopEntryDirectory*)entry)->showin;
