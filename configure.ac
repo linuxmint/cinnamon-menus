@@ -74,8 +74,8 @@ dnl - Show summary
 dnl ---------------------------------------------------------------------------
 
 echo "
-              gnome-menus $VERSION
-              `echo gnome-menus $VERSION | sed "s/./=/g"`
+              cinnamon-menus $VERSION
+              `echo cinnamon-menus $VERSION | sed "s/./=/g"`
 
         prefix:                       ${prefix}
         exec_prefix:                  ${exec_prefix}
