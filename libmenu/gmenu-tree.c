@@ -395,7 +395,7 @@ static char *
 prefix_menu_name (const char *orig_name)
 {
   char *prefix;
-  prefix = g_getenv ("XDG_MENU_PREFIX");
+  prefix = (char *) g_getenv ("XDG_MENU_PREFIX");
   if (prefix == NULL)
     prefix = "gnome-";
   return g_strconcat (prefix, orig_name, NULL);
