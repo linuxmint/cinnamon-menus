@@ -1,9 +1,7 @@
 Source: cinnamon-menus
 Section: gnome
 Priority: optional
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: @GNOME_TEAM@
+Maintainer: Linux Mint <root@linuxmint.com>
 Build-Depends: debhelper (>= 9),
                cdbs (>= 0.4.73),
                libglib2.0-dev (>= 2.30.0),
@@ -14,19 +12,18 @@ Build-Depends: debhelper (>= 9),
                gobject-introspection (>= 0.9.12-4~)
 Standards-Version: 3.9.3
 X-Python3-Version: >= 3.1
-Vcs-Bzr: https://code.launchpad.net/~ubuntu-desktop/gnome-menus/ubuntu
 
 Package: libcinnamon-menu-3-0
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends}
-Description: GNOME implementation of the freedesktop menu specification
+Description: Cinnamon implementation of the freedesktop menu specification
  The package contains an implementation of the draft
  "Desktop Menu Specification" from freedesktop.org:
  .
  http://www.freedesktop.org/Standards/menu-spec
  .
- Also contained here are the GNOME menu layout configuration files, .directory
+ Also contained here are the Cinnamon menu layout configuration files, .directory
  files and assorted menu related utility programs.
  .
  This package contains the shared library.
@@ -37,13 +34,13 @@ Priority: extra
 Architecture: any
 Depends: libcinnamon-menu-3-0 (= ${binary:Version}),
          ${misc:Depends}
-Description: GNOME implementation of the freedesktop menu specification
+Description: Cinnamon implementation of the freedesktop menu specification
  The package contains an implementation of the draft
  "Desktop Menu Specification" from freedesktop.org:
  .
  http://www.freedesktop.org/Standards/menu-spec
  .
- Also contained here are the GNOME menu layout configuration files, .directory
+ Also contained here are the Cinnamon menu layout configuration files, .directory
  files and assorted menu related utility programs.
  .
  This package contains debugging symbols.
@@ -56,13 +53,13 @@ Depends: ${misc:Depends},
          gir1.2-cmenu-3.0 (= ${binary:Version}),
          libglib2.0-dev (>= 2.30.0)
 Replaces: gir-repository-dev (<< 0.6.5-6)
-Description: GNOME implementation of the freedesktop menu specification
+Description: Cinnamon implementation of the freedesktop menu specification
  The package contains an implementation of the draft
  "Desktop Menu Specification" from freedesktop.org:
  .
  http://www.freedesktop.org/Standards/menu-spec
  .
- Also contained here are the GNOME menu layout configuration files, .directory
+ Also contained here are the Cinnamon menu layout configuration files, .directory
  files and assorted menu related utility programs.
  .
  This package contains the development headers.
@@ -74,8 +71,8 @@ Depends: ${gir:Depends},
          ${shlibs:Depends},
          ${misc:Depends}
 Conflicts: gobject-introspection-repository
-Description: GObject introspection data for the GNOME menu library
- This package contains introspection data for GNOME menu, an
+Description: GObject introspection data for the Cinnamon menu library
+ This package contains introspection data for Cinnamon menu, an
  implementation of the desktop menu specification from freedesktop.org.
  .
  It can be used by languages supporting dynamic bindings with
