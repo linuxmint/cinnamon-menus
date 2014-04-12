@@ -1,3 +1,9 @@
+cinnamon-menus (2.2.0) qiana; urgency=medium
+
+  * 2.2.0
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sat, 12 Apr 2014 11:09:28 +0100
+
 cinnamon-menus (2.1) petra; urgency=low
 
   * Rename
