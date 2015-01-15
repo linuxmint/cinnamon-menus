@@ -5,6 +5,7 @@ Maintainer: Clement Lefebvre <root@linuxmint.com>
 Build-Depends: debhelper (>= 9),
                dh-autoreconf,
                dh-python,
+               gnome-common,
                gnome-pkg-tools,
                gobject-introspection (>= 0.9.12-4~),
                intltool (>= 0.40.0),
