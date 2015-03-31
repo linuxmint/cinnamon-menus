@@ -1,3 +1,9 @@
+cinnamon-menus (2.4.2) rebecca; urgency=medium
+
+  * Added missing gnome-common in build-dependencies (needed by GNOME_COMPILE_WARNINGS in configure.ac)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 31 Mar 2015 12:26:33 +0200
+
 cinnamon-menus (2.4.1) rebecca; urgency=medium
 
   * Merge debian folder improvements from debian git
