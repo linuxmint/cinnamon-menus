@@ -1,3 +1,9 @@
+cinnamon-menus (2.5.0) unstable; urgency=medium
+
+  * Bump for development
+
+ -- Michael Webster <miketwebster@gmail.com>  Sat, 11 Apr 2015 09:07:20 -0400
+
 cinnamon-menus (2.4.2) rebecca; urgency=medium
 
   * Added missing gnome-common in build-dependencies (needed by GNOME_COMPILE_WARNINGS in configure.ac)
