@@ -1,6 +1,6 @@
 AC_PREREQ(2.62)
 
-AC_INIT([cinnamon-menus], [2.6.0])
+AC_INIT([cinnamon-menus], [2.8.0])
 AC_CONFIG_SRCDIR(libmenu/gmenu-tree.h)
 
 AM_INIT_AUTOMAKE([1.11 foreign no-dist-gzip dist-xz])
