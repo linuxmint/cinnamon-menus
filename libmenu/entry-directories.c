@@ -36,10 +36,8 @@ typedef struct CachedDirMonitor CachedDirMonitor;
 struct EntryDirectory
 {
   CachedDir *dir;
-  char      *legacy_prefix;
 
   guint entry_type : 2;
-  guint is_legacy : 1;
   guint refcount : 24;
 };
 
@@ -829,18 +827,14 @@ cached_dir_remove_reference (CachedDir *dir)
  * Entry directories
  */
 
-static EntryDirectory *
-entry_directory_new_full (DesktopEntryType  entry_type,
-                          const char       *path,
-                          gboolean          is_legacy,
-                          const char       *legacy_prefix)
+EntryDirectory *
+entry_directory_new (DesktopEntryType  entry_type,
+                     const char       *path)
 {
   EntryDirectory *ed;
   char           *canonical;
 
-  menu_verbose ("Loading entry directory \"%s\" (legacy %s)\n",
-                path,
-                is_legacy ? "<yes>" : "<no>");
+  menu_verbose ("Loading entry directory \"%s\"\n", path);
 
   canonical = menu_canonicalize_file_name (path, FALSE);
   if (canonical == NULL)
@@ -858,29 +852,12 @@ entry_directory_new_full (DesktopEntryType  entry_type,
   cached_dir_add_reference (ed->dir);
   cached_dir_load_entries_recursive (ed->dir, canonical);
 
-  ed->legacy_prefix = g_strdup (legacy_prefix);
   ed->entry_type    = entry_type;
-  ed->is_legacy     = is_legacy != FALSE;
   ed->refcount      = 1;
 
   g_free (canonical);
 
   return ed;
-}
-
-EntryDirectory *
-entry_directory_new (DesktopEntryType  entry_type,
-                     const char       *path)
-{
-  return entry_directory_new_full (entry_type, path, FALSE, NULL);
-}
-
-EntryDirectory *
-entry_directory_new_legacy (DesktopEntryType  entry_type,
-                            const char       *path,
-                            const char       *legacy_prefix)
-{
-  return entry_directory_new_full (entry_type, path, TRUE, legacy_prefix);
 }
 
 EntryDirectory *
@@ -906,10 +883,6 @@ entry_directory_unref (EntryDirectory *ed)
 
       ed->dir        = NULL;
       ed->entry_type = DESKTOP_ENTRY_INVALID;
-      ed->is_legacy  = FALSE;
-
-      g_free (ed->legacy_prefix);
-      ed->legacy_prefix = NULL;
 
       g_free (ed);
     }
@@ -958,26 +931,7 @@ get_desktop_file_id_from_path (EntryDirectory   *ed,
 
   if (entry_type == DESKTOP_ENTRY_DESKTOP)
     {
-      if (!ed->is_legacy)
-	{
-	  retval = g_strdelimit (g_strdup (relative_path), "/", '-');
-	}
-      else
-	{
-	  char *basename;
-
-	  basename = g_path_get_basename (relative_path);
-
-	  if (ed->legacy_prefix)
-	    {
-	      retval = g_strjoin ("-", ed->legacy_prefix, basename, NULL);
-	      g_free (basename);
-	    }
-	  else
-	    {
-	      retval = basename;
-	    }
-	}
+      retval = g_strdelimit (g_strdup (relative_path), "/", '-');
     }
   else
     {
@@ -1285,15 +1239,7 @@ get_all_func (EntryDirectory   *ed,
               DesktopEntrySet  *set,
               gpointer          user_data)
 {
-  if (ed->is_legacy && !desktop_entry_has_categories (entry))
-    {
-      entry = desktop_entry_copy (entry);
-      desktop_entry_add_legacy_category (entry);
-    }
-  else
-    {
-      entry = desktop_entry_ref (entry);
-    }
+  entry = desktop_entry_ref (entry);
 
   desktop_entry_set_add_entry (set, entry, file_id);
   desktop_entry_unref (entry);
