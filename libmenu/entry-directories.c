@@ -318,13 +318,18 @@ cached_dir_add_entry (CachedDir  *dir,
                       const char *path)
 {
   DesktopEntry *entry;
+  DesktopEntryResultCode code;
 
-  entry = desktop_entry_new (path);
+  entry = desktop_entry_new (path, &code);
   if (entry == NULL)
     {
-      menu_verbose ("Adding %s to the retry list (mimeinfo.cache maybe isn't done getting updated yet\n", path);
+      if (code == DESKTOP_ENTRY_LOAD_FAIL_APPINFO)
+        {
+          menu_verbose ("Adding %s to the retry list (mimeinfo.cache maybe isn't done getting updated yet\n", path);
 
-      dir->retry_later_desktop_entries = g_slist_prepend (dir->retry_later_desktop_entries, g_strdup (path));
+          dir->retry_later_desktop_entries = g_slist_prepend (dir->retry_later_desktop_entries, g_strdup (path));
+        }
+
       return FALSE;
     }
 

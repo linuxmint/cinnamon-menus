@@ -31,9 +31,17 @@ typedef enum
   DESKTOP_ENTRY_DIRECTORY
 } DesktopEntryType;
 
+typedef enum
+{
+  DESKTOP_ENTRY_LOAD_SUCCESS = 0,
+  DESKTOP_ENTRY_LOAD_FAIL_OTHER,
+  DESKTOP_ENTRY_LOAD_FAIL_APPINFO
+} DesktopEntryResultCode;
+
 typedef struct DesktopEntry DesktopEntry;
 
-DesktopEntry *desktop_entry_new (const char   *path);
+DesktopEntry *desktop_entry_new (const char             *path,
+                                 DesktopEntryResultCode *res_code);
 
 DesktopEntry *desktop_entry_ref    (DesktopEntry *entry);
 DesktopEntry *desktop_entry_copy   (DesktopEntry *entry);
