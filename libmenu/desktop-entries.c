@@ -266,54 +266,65 @@ desktop_entry_load_directory (DesktopEntry  *entry,
 static DesktopEntryResultCode
 desktop_entry_load (DesktopEntry *entry)
 {
+  DesktopEntryResultCode rescode = DESKTOP_ENTRY_LOAD_FAIL_OTHER;
+
   if (strstr (entry->path, "/menu-xdg/"))
-    return DESKTOP_ENTRY_LOAD_FAIL_OTHER;
+    return rescode;
+
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
     {
       GKeyFile *key_file = NULL;
       DesktopEntryDesktop *entry_desktop = (DesktopEntryDesktop*)entry;
-      const char *categories_str;
-
-      entry_desktop->appinfo = g_desktop_app_info_new_from_filename (entry->path);
-      if (!entry_desktop->appinfo ||
-          !g_app_info_get_name (G_APP_INFO (entry_desktop->appinfo)) ||
-          !g_app_info_get_executable (G_APP_INFO (entry_desktop->appinfo)))
-        {
-          menu_verbose ("Failed to load \"%s\"\n", entry->path);
-          return DESKTOP_ENTRY_LOAD_FAIL_APPINFO;
-        }
-
-      categories_str = g_desktop_app_info_get_categories (entry_desktop->appinfo);
-      if (categories_str)
-        {
-          char **categories;
-          int i;
-
-          categories = g_strsplit (categories_str, ";", -1);
-          entry_desktop->categories = g_new0 (GQuark, g_strv_length (categories) + 1);
-
-          for (i = 0; categories[i]; i++)
-            entry_desktop->categories[i] = g_quark_from_string (categories[i]);
-
-          g_strfreev (categories);
-        }
 
       key_file = g_key_file_new ();
 
-      if (!g_key_file_load_from_file (key_file, entry->path, 0, NULL))
-        entry_desktop->showin = TRUE;
+      if (g_key_file_load_from_file (key_file, entry->path, 0, NULL))
+        {
+          entry_desktop->appinfo = g_desktop_app_info_new_from_keyfile (key_file);
+
+          if (!entry_desktop->appinfo ||
+              !g_app_info_get_name (G_APP_INFO (entry_desktop->appinfo)) ||
+              !g_app_info_get_executable (G_APP_INFO (entry_desktop->appinfo)))
+            {
+              menu_verbose ("Failed to load appinfo for \"%s\"\n", entry->path);
+              rescode = DESKTOP_ENTRY_LOAD_FAIL_APPINFO;
+            }
+          else
+            {
+              const char *categories_str;
+              categories_str = g_desktop_app_info_get_categories (entry_desktop->appinfo);
+
+              if (categories_str)
+                {
+                  char **categories;
+                  int i;
+
+                  categories = g_strsplit (categories_str, ";", -1);
+                  entry_desktop->categories = g_new0 (GQuark, g_strv_length (categories) + 1);
+
+                  for (i = 0; categories[i]; i++)
+                    entry_desktop->categories[i] = g_quark_from_string (categories[i]);
+
+                  g_strfreev (categories);
+                }
+
+              entry_desktop->showin = key_file_get_show_in (key_file);
+
+              rescode = DESKTOP_ENTRY_LOAD_SUCCESS;
+            }
+        }
       else
-        entry_desktop->showin = key_file_get_show_in (key_file);
-
+        {
+          menu_verbose ("Failed to read contents of \"%s\"\n", entry->path);
+          rescode = DESKTOP_ENTRY_LOAD_FAIL_OTHER;
+        }
       g_key_file_free (key_file);
-
-      return DESKTOP_ENTRY_LOAD_SUCCESS;
     }
   else if (entry->type == DESKTOP_ENTRY_DIRECTORY)
     {
       GKeyFile *key_file = NULL;
       GError   *error = NULL;
-      DesktopEntryResultCode rescode = DESKTOP_ENTRY_LOAD_SUCCESS;
+      rescode = DESKTOP_ENTRY_LOAD_SUCCESS;
 
       key_file = g_key_file_new ();
 
@@ -344,13 +355,11 @@ desktop_entry_load (DesktopEntry *entry)
           else
             menu_verbose ("Failed to load \"%s\"\n", entry->path);
         }
-
-      return rescode;
     }
   else
     g_assert_not_reached ();
 
-  return DESKTOP_ENTRY_LOAD_FAIL_OTHER;
+  return rescode;
 }
 
 static gboolean
