@@ -1,3 +1,12 @@
+cinnamon-menus (3.0.1) sarah; urgency=medium
+
+  [ Michael Webster ]
+  * entry-directories.c: Monitor mimeinfo.cache file and re-attempt failed .desktop files when it changes (which is usually just after the .desktop file is added, causing loading to fail due to unavailable GAppInfo).  See inline comments.
+  * Follow-up to previous commit - retry only those desktop files that failed because of appinfo problems.
+  * desktop-entries.c: Refactor to eliminate double-loading of desktop file. Use g_key_file_load_from_file, followed by g_desktop_app_info_new_from_keyfile.
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 23 May 2016 12:54:12 +0100
+
 cinnamon-menus (3.0.0) sarah; urgency=medium
 
   [ monsta ]
