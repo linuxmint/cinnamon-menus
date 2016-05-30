@@ -1,3 +1,11 @@
+cinnamon-menus (3.0.2) sarah; urgency=medium
+
+  [ Michael Webster ]
+  * Fix a couple issues with incorrect result evaluations when loading desktop files caused by 44ee2de737e53b0
+  * Revert 44ee2de737e53b and go back to loading .desktop files *as* GDesktopAppInfo - this is the only way g_desktop_app_info_get_filename() will work properly.
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 30 May 2016 15:45:57 +0100
+
 cinnamon-menus (3.0.1) sarah; urgency=medium
 
   [ Michael Webster ]
