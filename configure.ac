@@ -2,14 +2,15 @@ AC_PREREQ(2.62)
 
 AC_INIT([cinnamon-menus], [3.0.2])
 AC_CONFIG_SRCDIR(libmenu/gmenu-tree.h)
+AX_IS_RELEASE([git-directory])
 
 AM_INIT_AUTOMAKE([1.11 foreign no-dist-gzip dist-xz])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CONFIG_MACRO_DIR([m4])
+AC_SUBST([ACLOCAL_AMFLAGS], ["-I $ac_macro_dir \${ACLOCAL_FLAGS}"])
 AC_CONFIG_HEADERS(config.h)
 
 AM_MAINTAINER_MODE
-GNOME_MAINTAINER_MODE_DEFINES
 
 # Before making a release, the LT_VERSION string should be modified.
 # The string is of the form C:R:A.
@@ -32,7 +33,7 @@ PKG_CHECK_MODULES(GIO_UNIX, gio-unix-2.0 >= 2.29.15)
 AC_SUBST(GIO_UNIX_CFLAGS)
 AC_SUBST(GIO_UNIX_LIBS)
 
-GNOME_COMPILE_WARNINGS(yes)
+AX_COMPILER_FLAGS([WARN_CFLAGS],[WARN_LDFLAGS])
 
 AC_ARG_ENABLE(deprecation_flags,
               [AC_HELP_STRING([--enable-deprecation-flags],

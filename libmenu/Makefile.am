@@ -2,6 +2,7 @@ lib_LTLIBRARIES = libcinnamon-menu-3.la
 
 AM_CPPFLAGS =				\
 	$(GIO_UNIX_CFLAGS)		\
+	$(WARN_CFLAGS)			\
 	-DGMENU_I_KNOW_THIS_IS_UNSTABLE	\
 	$(DISABLE_DEPRECATED_CFLAGS)	\
 	$(DEBUG_CFLAGS)
@@ -35,6 +36,7 @@ libcinnamon_menu_3_la_LIBADD = 		\
 	$(GIO_UNIX_LIBS)
 
 libcinnamon_menu_3_la_LDFLAGS =			\
+	$(WARN_LDFLAGS)				\
 	-version-info $(LIB_MENU_LT_VERSION)	\
 	-no-undefined				\
 	-export-symbols-regex gmenu_tree
@@ -61,7 +63,7 @@ CMenu-3.0.gir: libcinnamon-menu-3.la
 CMenu_3_0_gir_INCLUDES = Gio-2.0
 CMenu_3_0_gir_CFLAGS = $(AM_CPPFLAGS)
 CMenu_3_0_gir_LIBS = libcinnamon-menu-3.la
-CMenu_3_0_gir_SCANNERFLAGS = --identifier-prefix=GMenu --symbol-prefix=gmenu --pkg-export=libcinnamon-menu-3.0 --c-include=gmenu-tree.h
+CMenu_3_0_gir_SCANNERFLAGS = $(WARN_SCANNERFLAGS) --identifier-prefix=GMenu --symbol-prefix=gmenu --pkg-export=libcinnamon-menu-3.0 --c-include=gmenu-tree.h
 CMenu_3_0_gir_FILES = $(addprefix $(srcdir)/,$(introspection_sources))
 INTROSPECTION_GIRS += CMenu-3.0.gir
 
