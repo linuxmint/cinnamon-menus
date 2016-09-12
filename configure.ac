@@ -2,7 +2,7 @@ AC_PREREQ(2.62)
 
 AC_INIT([cinnamon-menus], [3.0.2])
 AC_CONFIG_SRCDIR(libmenu/gmenu-tree.h)
-AX_IS_RELEASE([git-directory])
+AX_IS_RELEASE([always])
 
 AM_INIT_AUTOMAKE([1.11 foreign no-dist-gzip dist-xz])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])

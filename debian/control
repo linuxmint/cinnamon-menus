@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Clement Lefebvre <root@linuxmint.com>
 Build-Depends: debhelper (>= 9),
                dh-autoreconf,
+               autoconf-archive,
                dh-python,
                gnome-common,
                gnome-pkg-tools,
