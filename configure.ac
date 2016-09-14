@@ -2,7 +2,8 @@ AC_PREREQ(2.62)
 
 AC_INIT([cinnamon-menus], [3.0.2])
 AC_CONFIG_SRCDIR(libmenu/gmenu-tree.h)
-AX_IS_RELEASE([always])
+
+m4_ifdef([AX_IS_RELEASE], [AX_IS_RELEASE([always])])
 
 AM_INIT_AUTOMAKE([1.11 foreign no-dist-gzip dist-xz])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
@@ -33,7 +34,8 @@ PKG_CHECK_MODULES(GIO_UNIX, gio-unix-2.0 >= 2.29.15)
 AC_SUBST(GIO_UNIX_CFLAGS)
 AC_SUBST(GIO_UNIX_LIBS)
 
-AX_COMPILER_FLAGS([WARN_CFLAGS],[WARN_LDFLAGS])
+m4_ifdef([AX_COMPILER_FLAGS],
+         [AX_COMPILER_FLAGS([WARN_CFLAGS],[WARN_LDFLAGS])])
 
 AC_ARG_ENABLE(deprecation_flags,
               [AC_HELP_STRING([--enable-deprecation-flags],
