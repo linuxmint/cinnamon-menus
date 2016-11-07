@@ -1,3 +1,17 @@
+cinnamon-menus (3.2.0) serena; urgency=medium
+
+  [ Maximiliano Curia ]
+  * Migrate away from gnome-common deprecated vars and macros
+
+  [ Clement Lefebvre ]
+  * Fixed build
+
+  [ Maximiliano Curia ]
+  * Drop gtkdocize invocation
+  * Make AX_ macros optional
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 07 Nov 2016 10:36:18 +0000
+
 cinnamon-menus (3.0.2) sarah; urgency=medium
 
   [ Michael Webster ]
