@@ -1,6 +1,6 @@
 AC_PREREQ(2.62)
 
-AC_INIT([cinnamon-menus], [3.2.0])
+AC_INIT([cinnamon-menus], [3.4.0])
 AC_CONFIG_SRCDIR(libmenu/gmenu-tree.h)
 
 m4_ifdef([AX_IS_RELEASE], [AX_IS_RELEASE([always])])
