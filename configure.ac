@@ -62,6 +62,12 @@ else
 fi
 AC_SUBST(DEBUG_CFLAGS)
 
+#gtkdocize greps for '^GTK_DOC_CHECK'
+m4_ifdef([GTK_DOC_CHECK], [
+GTK_DOC_CHECK([1.18],[--flavour no-tmpl])],
+          [AM_CONDITIONAL([ENABLE_GTK_DOC], [false])
+           enable_gtk_doc=no])
+
 GOBJECT_INTROSPECTION_CHECK([0.9.5])
 
 AC_OUTPUT([
