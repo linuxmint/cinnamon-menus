@@ -55,7 +55,6 @@ struct CachedDir
 
   GSList *entries;
   GSList *subdirs;
-  GSList *retry_later_desktop_entries;
 
   MenuMonitor *dir_monitor;
   GSList      *monitors;
@@ -160,9 +159,6 @@ cached_dir_free (CachedDir *dir)
                    NULL);
   g_slist_free (dir->subdirs);
   dir->subdirs = NULL;
-
-  g_slist_free_full (dir->retry_later_desktop_entries, g_free);
-  dir->retry_later_desktop_entries = NULL;
 
   g_free (dir->name);
   g_free (dir);
@@ -323,12 +319,7 @@ cached_dir_add_entry (CachedDir  *dir,
 
   entry = desktop_entry_new (path);
   if (entry == NULL)
-    {
-      menu_verbose ("Adding %s to the retry list (mimeinfo.cache maybe isn't done getting updated yet\n", path);
-
-      dir->retry_later_desktop_entries = g_slist_prepend (dir->retry_later_desktop_entries, g_strdup (path));
-      return FALSE;
-    }
+    return FALSE;
 
   dir->entries = g_slist_prepend (dir->entries, entry);
 
@@ -528,8 +519,6 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
                            CachedDir        *dir)
 {
   gboolean  handled = FALSE;
-  gboolean  retry_changes = FALSE;
-
   char     *basename;
   char     *dirname;
 
@@ -557,58 +546,6 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
           g_assert_not_reached ();
           break;
         }
-    }
-  else if (g_strcmp0 (basename, "mimeinfo.cache") == 0)
-    {
-        /* The observed file notifies when a new desktop file is added
-         * (but fails to load) go something like:
-         *
-         * NOTIFY: foo.desktop
-         * NOTIFY: mimeinfo.cache.tempfile
-         * NOTIFY: mimeinfo.cache.tempfile
-         * NOTIFY: mimeinfo.cache
-         *
-         * Additionally, the failure is not upon trying to read the file,
-         * but attempting to get its GAppInfo (g_desktop_app_info_new_from_filename()
-         * in desktop-entries.c ln 277).  If you jigger desktop_entry_load() around 
-         * and read the file as a keyfile *first*, it succeeds.  If you then try
-         * to run g_desktop_app_info_new_from_keyfile(), *then* it fails.
-         *
-         * The theory here is there is a race condition where app info (which includes
-         * mimetype stuff) is unavailable because mimeinfo.cache is updated immediately
-         * after the app is installed.
-         *
-         * What we do here is, when a desktop fails to load, we add it to a temporary
-         * list.  We wait until mimeinfo.cache changes, then retry that desktop file,
-         * which succeeds this second time.
-         *
-         * Note: An alternative fix (presented more as a proof than a suggestion) is to
-         * change line 151 in menu-monitor.c to use g_timeout_add_seconds, and delay
-         * for one second.  This also avoids the issue (but it remains a race condition).
-         */
-
-        GSList *iter;
-
-        menu_verbose ("mimeinfo changed, checking for failed entries\n");
-
-        for (iter = dir->retry_later_desktop_entries; iter != NULL; iter = iter->next)
-          {
-            const gchar *retry_path = iter->data;
-
-            menu_verbose ("retrying %s\n", retry_path);
-
-            char *retry_basename = g_path_get_basename (retry_path);
-
-            if (cached_dir_update_entry (dir, retry_basename, retry_path))
-              retry_changes = TRUE;
-
-            g_free (retry_basename);
-          }
-
-        g_slist_free_full (dir->retry_later_desktop_entries, g_free);
-        dir->retry_later_desktop_entries = NULL;
-
-        handled = retry_changes;
     }
   else /* Try recursing */
     {
@@ -642,8 +579,8 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
                     event == MENU_MONITOR_EVENT_CREATED ? ("created") :
                     event == MENU_MONITOR_EVENT_DELETED ? ("deleted") : ("changed"));
 
-      /* CHANGED events don't change the set of desktop entries, unless it's the mimeinfo.cache file changing */
-      if (retry_changes || (event == MENU_MONITOR_EVENT_CREATED || event == MENU_MONITOR_EVENT_DELETED))
+      /* CHANGED events don't change the set of desktop entries */
+      if (event == MENU_MONITOR_EVENT_CREATED || event == MENU_MONITOR_EVENT_DELETED)
         {
           _entry_directory_list_empty_desktop_cache ();
         }
