@@ -263,11 +263,11 @@ desktop_entry_load_directory (DesktopEntry  *entry,
   return TRUE;
 }
 
-static DesktopEntryResultCode
+static gboolean
 desktop_entry_load (DesktopEntry *entry)
 {
   if (strstr (entry->path, "/menu-xdg/"))
-    return DESKTOP_ENTRY_LOAD_FAIL_OTHER;
+    return FALSE;
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
     {
       GKeyFile *key_file = NULL;
@@ -280,7 +280,7 @@ desktop_entry_load (DesktopEntry *entry)
           !g_app_info_get_executable (G_APP_INFO (entry_desktop->appinfo)))
         {
           menu_verbose ("Failed to load \"%s\"\n", entry->path);
-          return DESKTOP_ENTRY_LOAD_FAIL_APPINFO;
+          return FALSE;
         }
 
       categories_str = g_desktop_app_info_get_categories (entry_desktop->appinfo);
@@ -307,34 +307,28 @@ desktop_entry_load (DesktopEntry *entry)
 
       g_key_file_free (key_file);
 
-      return DESKTOP_ENTRY_LOAD_SUCCESS;
+      return TRUE;
     }
   else if (entry->type == DESKTOP_ENTRY_DIRECTORY)
     {
       GKeyFile *key_file = NULL;
       GError   *error = NULL;
-      DesktopEntryResultCode rescode = DESKTOP_ENTRY_LOAD_SUCCESS;
+      gboolean  retval = FALSE;
 
       key_file = g_key_file_new ();
 
       if (!g_key_file_load_from_file (key_file, entry->path, 0, &error))
-        {
-          rescode = DESKTOP_ENTRY_LOAD_FAIL_OTHER;
-          goto out;
-        }
+        goto out;
 
       if (!desktop_entry_load_directory (entry, key_file, &error))
-        {
-          rescode = DESKTOP_ENTRY_LOAD_FAIL_OTHER;
-          goto out;
-        }
+        goto out;
 
-      rescode = DESKTOP_ENTRY_LOAD_SUCCESS;
+      retval = TRUE;
 
     out:
       g_key_file_free (key_file);
 
-      if (rescode == DESKTOP_ENTRY_LOAD_FAIL_OTHER)
+      if (!retval)
         {
           if (error)
             {
@@ -345,28 +339,19 @@ desktop_entry_load (DesktopEntry *entry)
             menu_verbose ("Failed to load \"%s\"\n", entry->path);
         }
 
-      return rescode;
+      return retval;
     }
   else
     g_assert_not_reached ();
 
-  return DESKTOP_ENTRY_LOAD_FAIL_OTHER;
-}
-
-static gboolean
-code_failed (DesktopEntryResultCode code)
-{
-    return code == DESKTOP_ENTRY_LOAD_FAIL_OTHER ||
-           code == DESKTOP_ENTRY_LOAD_FAIL_APPINFO;
+  return FALSE;
 }
 
 DesktopEntry *
-desktop_entry_new (const char             *path,
-                   DesktopEntryResultCode *res_code)
+desktop_entry_new (const char *path)
 {
   DesktopEntryType  type;
   DesktopEntry     *retval;
-  DesktopEntryResultCode code;
 
   menu_verbose ("Loading desktop entry \"%s\"\n", path);
 
@@ -384,7 +369,6 @@ desktop_entry_new (const char             *path,
     {
       menu_verbose ("Unknown desktop entry suffix in \"%s\"\n",
                     path);
-      *res_code = DESKTOP_ENTRY_LOAD_FAIL_OTHER;
       return NULL;
     }
 
@@ -393,10 +377,7 @@ desktop_entry_new (const char             *path,
   retval->path     = g_strdup (path);
   retval->basename = unix_basename_from_path (retval->path);
 
-  code = desktop_entry_load (retval);
-  *res_code = code;
-
-  if (code_failed (code))
+  if (!desktop_entry_load (retval))
     {
       desktop_entry_unref (retval);
       return NULL;
@@ -438,7 +419,7 @@ desktop_entry_reload (DesktopEntry *entry)
   else
     g_assert_not_reached ();
 
-  if (code_failed (desktop_entry_load (entry)))
+  if (!desktop_entry_load (entry))
     {
       desktop_entry_unref (entry);
       return NULL;
