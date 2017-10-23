@@ -352,7 +352,7 @@ cached_dir_update_entry (CachedDir  *dir,
     {
       if (strcmp (desktop_entry_get_basename (tmp->data), basename) == 0)
         {
-          if (desktop_entry_reload (tmp->data) == NULL)
+          if (!desktop_entry_reload (tmp->data))
 	    {
 	      dir->entries = g_slist_delete_link (dir->entries, tmp);
 	    }
@@ -648,7 +648,7 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
                     event == MENU_MONITOR_EVENT_DELETED ? ("deleted") : ("changed"));
 
       /* CHANGED events don't change the set of desktop entries, unless it's the mimeinfo.cache file changing */
-      if ((event == MENU_MONITOR_EVENT_CREATED || event == MENU_MONITOR_EVENT_DELETED))
+      if (retry_changes || (event == MENU_MONITOR_EVENT_CREATED || event == MENU_MONITOR_EVENT_DELETED))
         {
           _entry_directory_list_empty_desktop_cache ();
         }

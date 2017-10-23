@@ -324,6 +324,7 @@ desktop_entry_load (DesktopEntry *entry)
     {
       GKeyFile *key_file = NULL;
       GError   *error = NULL;
+      rescode = DESKTOP_ENTRY_LOAD_SUCCESS;
 
       key_file = g_key_file_new ();
 
@@ -359,6 +360,13 @@ desktop_entry_load (DesktopEntry *entry)
     g_assert_not_reached ();
 
   return rescode;
+}
+
+static gboolean
+code_failed (DesktopEntryResultCode code)
+{
+    return code == DESKTOP_ENTRY_LOAD_FAIL_OTHER ||
+           code == DESKTOP_ENTRY_LOAD_FAIL_APPINFO;
 }
 
 DesktopEntry *
@@ -397,7 +405,7 @@ desktop_entry_new (const char             *path,
   code = desktop_entry_load (retval);
   *res_code = code;
 
-  if (code < DESKTOP_ENTRY_LOAD_SUCCESS)
+  if (code_failed (code))
     {
       desktop_entry_unref (retval);
       return NULL;
@@ -439,7 +447,7 @@ desktop_entry_reload (DesktopEntry *entry)
   else
     g_assert_not_reached ();
 
-  if (desktop_entry_load (entry) < DESKTOP_ENTRY_LOAD_SUCCESS)
+  if (code_failed (desktop_entry_load (entry)))
     {
       desktop_entry_unref (entry);
       return NULL;
