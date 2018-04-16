@@ -1,3 +1,9 @@
+cinnamon-menus (3.8.0) tara; urgency=medium
+
+  * Add CI configuration
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 16 Apr 2018 12:17:38 +0100
+
 cinnamon-menus (3.6.0) sylvia; urgency=medium
 
   [ Jasper St. Pierre ]
