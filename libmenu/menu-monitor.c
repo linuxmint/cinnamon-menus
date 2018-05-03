@@ -146,10 +146,12 @@ menu_monitor_queue_event (MenuMonitorEventInfo *event_info)
 {
   pending_events = g_slist_append (pending_events, event_info);
 
-  if (events_idle_handler == 0)
+  if (events_idle_handler > 0)
     {
-      events_idle_handler = g_idle_add ((GSourceFunc) emit_events_in_idle, NULL);
+      g_source_remove (events_idle_handler);
     }
+
+  events_idle_handler = g_timeout_add (100, (GSourceFunc) emit_events_in_idle, NULL);
 }
 
 static inline char *

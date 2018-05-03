@@ -353,9 +353,9 @@ cached_dir_update_entry (CachedDir  *dir,
       if (strcmp (desktop_entry_get_basename (tmp->data), basename) == 0)
         {
           if (!desktop_entry_reload (tmp->data))
-	    {
-	      dir->entries = g_slist_delete_link (dir->entries, tmp);
-	    }
+            {
+              dir->entries = g_slist_delete_link (dir->entries, tmp);
+            }
 
           return TRUE;
         }
@@ -363,7 +363,7 @@ cached_dir_update_entry (CachedDir  *dir,
       tmp = tmp->next;
     }
 
-  return cached_dir_add_entry (dir, basename, path);
+  return FALSE;
 }
 
 static gboolean
@@ -520,10 +520,12 @@ cached_dir_queue_monitor_event (CachedDir *dir)
       cached_dir_queue_monitor_event (dir->parent);
     }
 
-  if (monitors_idle_handler == 0)
+  if (monitors_idle_handler > 0)
     {
-      monitors_idle_handler = g_idle_add ((GSourceFunc) emit_monitors_in_idle, NULL);
+      g_source_remove (monitors_idle_handler);
     }
+
+    monitors_idle_handler = g_timeout_add (100, (GSourceFunc) emit_monitors_in_idle, NULL);
 }
 
 static void
@@ -550,6 +552,8 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
       switch (event)
         {
         case MENU_MONITOR_EVENT_CREATED:
+          handled = cached_dir_add_entry (dir, basename, path);
+          break;
         case MENU_MONITOR_EVENT_CHANGED:
           handled = cached_dir_update_entry (dir, basename, path);
           break;

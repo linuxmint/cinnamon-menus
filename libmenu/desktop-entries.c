@@ -275,9 +275,7 @@ desktop_entry_load (DesktopEntry *entry)
       const char *categories_str;
 
       entry_desktop->appinfo = g_desktop_app_info_new_from_filename (entry->path);
-      if (!entry_desktop->appinfo ||
-          !g_app_info_get_name (G_APP_INFO (entry_desktop->appinfo)) ||
-          !g_app_info_get_executable (G_APP_INFO (entry_desktop->appinfo)))
+      if (!G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo))
         {
           menu_verbose ("Failed to load \"%s\"\n", entry->path);
           return DESKTOP_ENTRY_LOAD_FAIL_APPINFO;
@@ -573,7 +571,11 @@ const char *
 desktop_entry_get_name (DesktopEntry *entry)
 {
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
-    return g_app_info_get_name (G_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo));
+    {
+      g_return_val_if_fail (G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo), NULL);
+      return g_app_info_get_name (G_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo));
+    }
+
   return ((DesktopEntryDirectory*)entry)->name;
 }
 
@@ -581,7 +583,11 @@ const char *
 desktop_entry_get_generic_name (DesktopEntry *entry)
 {
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
-    return g_desktop_app_info_get_generic_name (((DesktopEntryDesktop*)entry)->appinfo);
+    {
+      g_return_val_if_fail (G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo), NULL);
+      return g_desktop_app_info_get_generic_name (((DesktopEntryDesktop*)entry)->appinfo);
+    }
+
   return ((DesktopEntryDirectory*)entry)->generic_name;
 }
 
@@ -589,7 +595,11 @@ const char *
 desktop_entry_get_comment (DesktopEntry *entry)
 {
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
-    return g_app_info_get_description (G_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo));
+    {
+      g_return_val_if_fail (G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo), NULL);
+      return g_app_info_get_description (G_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo));
+    }
+
   return ((DesktopEntryDirectory*)entry)->comment;
 }
 
@@ -597,7 +607,11 @@ GIcon *
 desktop_entry_get_icon (DesktopEntry *entry)
 {
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
-    return g_app_info_get_icon (G_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo));
+    {
+      g_return_val_if_fail (G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo), NULL);
+      return g_app_info_get_icon (G_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo));
+    }
+
   return ((DesktopEntryDirectory*)entry)->icon;
 }
 
@@ -605,7 +619,11 @@ gboolean
 desktop_entry_get_no_display (DesktopEntry *entry)
 {
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
-    return g_desktop_app_info_get_nodisplay (((DesktopEntryDesktop*)entry)->appinfo);
+    {
+      g_return_val_if_fail (G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo), FALSE);
+      return g_desktop_app_info_get_nodisplay (((DesktopEntryDesktop*)entry)->appinfo);
+    }
+
   return ((DesktopEntryDirectory*)entry)->nodisplay;
 }
 
@@ -613,7 +631,11 @@ gboolean
 desktop_entry_get_hidden (DesktopEntry *entry)
 {
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
-    return g_desktop_app_info_get_is_hidden (((DesktopEntryDesktop*)entry)->appinfo);
+    {
+      g_return_val_if_fail (G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo), FALSE);
+      return g_desktop_app_info_get_is_hidden (((DesktopEntryDesktop*)entry)->appinfo);
+    }
+
   return ((DesktopEntryDirectory*)entry)->hidden;
 }
 
