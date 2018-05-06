@@ -1,3 +1,10 @@
+cinnamon-menus (3.8.1) tara; urgency=medium
+
+  [ Michael Webster ]
+  * Check for a valid GDesktopAppInfo before calling GDesktopAppInfo methods. Fix retry handling to only apply to new entries. Use g_timeout_add instead of g_idle_add for change signal accumulation.
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun, 06 May 2018 14:38:48 +0100
+
 cinnamon-menus (3.8.0) tara; urgency=medium
 
   * Add CI configuration
