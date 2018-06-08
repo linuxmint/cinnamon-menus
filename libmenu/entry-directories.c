@@ -363,7 +363,7 @@ cached_dir_update_entry (CachedDir  *dir,
       tmp = tmp->next;
     }
 
-  return FALSE;
+  return cached_dir_add_entry (dir, basename, path);
 }
 
 static gboolean
@@ -552,8 +552,6 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
       switch (event)
         {
         case MENU_MONITOR_EVENT_CREATED:
-          handled = cached_dir_add_entry (dir, basename, path);
-          break;
         case MENU_MONITOR_EVENT_CHANGED:
           handled = cached_dir_update_entry (dir, basename, path);
           break;
