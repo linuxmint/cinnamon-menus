@@ -22,6 +22,8 @@
 #ifndef __MENU_UTIL_H__
 #define __MENU_UTIL_H__
 
+#include "config.h"
+
 #include <glib.h>
 
 #include "menu-layout.h"
