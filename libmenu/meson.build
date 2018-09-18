@@ -14,7 +14,8 @@ libcinnamon_menu_headers = [
 ]
 
 
-libcinnamon_menu = library('cinnamon-menu-3',
+libcinnamon_menu_name = 'cinnamon-menu-3'
+libcinnamon_menu = library(libcinnamon_menu_name,
   libcinnamon_menu_sources,
   include_directories: rootInclude,
   dependencies: [
@@ -28,7 +29,7 @@ libcinnamon_menu = library('cinnamon-menu-3',
 
 install_headers(
   libcinnamon_menu_headers,
-  subdir: 'cinnamon-menus-3.0',
+  subdir: libcinnamon_menu_name,
 )
 
 gnome.generate_gir(libcinnamon_menu,
@@ -48,6 +49,6 @@ pkgconfig.generate(
   version: meson.project_version(),
   description: 'Desktop Menu Specification Implementation',
   requires: gio_unix,
-  libraries: [ libcinnamon_menu, ],
-  subdirs: 'cinnamon-menus-3.0',
+  libraries: libcinnamon_menu_name,
+  subdirs: libcinnamon_menu_name,
 )
