@@ -43,7 +43,7 @@ gnome.generate_gir(libcinnamon_menu,
   install: true,
 )
 
-pkgconfig.generate(libcinnamon_menu,
+pkgconfig.generate(
   name: 'libcinnamon-menu',
   version: meson.project_version(),
   description: 'Desktop Menu Specification Implementation',

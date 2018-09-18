@@ -2,7 +2,7 @@
 project('cinnamon-menus',
   'c',
   version: '3.8.2',
-  meson_version: '>=0.47.0',
+  meson_version: '>=0.45.0',
 )
 
 pkgconfig = import('pkgconfig')
