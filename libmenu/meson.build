@@ -48,7 +48,7 @@ pkgconfig.generate(
   name: 'libcinnamon-menu',
   version: meson.project_version(),
   description: 'Desktop Menu Specification Implementation',
-  requires: gio_unix,
+  requires: [ 'gio-unix-2.0 >= 2.29.15' ],
   libraries: libcinnamon_menu_name,
   subdirs: libcinnamon_menu_name,
 )
