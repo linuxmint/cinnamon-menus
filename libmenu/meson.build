@@ -37,7 +37,7 @@ gnome.generate_gir(libcinnamon_menu,
   nsversion: '3.0',
   identifier_prefix: 'GMenu',
   symbol_prefix: 'gmenu',
-  sources: [ libcinnamon_menu_headers, 'gmenu-tree.c', ],
+  sources: libcinnamon_menu_headers + [ 'gmenu-tree.c', ],
   extra_args: [
     '-DGMENU_I_KNOW_THIS_IS_UNSTABLE',
   ],
