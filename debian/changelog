@@ -1,3 +1,9 @@
+cinnamon-menus (4.0.0) tessa; urgency=medium
+
+  * CI: Remove Mint 18
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 30 Oct 2018 14:07:22 +0000
+
 cinnamon-menus (3.8.2) tara; urgency=medium
 
   [ Michael Webster ]
