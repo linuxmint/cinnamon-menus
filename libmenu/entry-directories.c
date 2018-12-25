@@ -25,10 +25,10 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include <stdlib.h>
 
 #include "menu-util.h"
 #include "menu-monitor.h"
-#include "canonicalize.h"
 
 typedef struct CachedDir CachedDir;
 typedef struct CachedDirMonitor CachedDirMonitor;
@@ -838,7 +838,7 @@ entry_directory_new (DesktopEntryType  entry_type,
 
   menu_verbose ("Loading entry directory \"%s\"\n", path);
 
-  canonical = menu_canonicalize_file_name (path, FALSE);
+  canonical = realpath (path, NULL);
   if (canonical == NULL)
     {
       menu_verbose ("Failed to canonicalize \"%s\": %s\n",
