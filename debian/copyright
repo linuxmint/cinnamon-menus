@@ -41,27 +41,6 @@ Copyright: 2006, Mark McLoughlin
            2008, Vincent Untz
 License: LGPL-2+
 
-Files: libmenu/canonicalize.*
-Copyright: 1996-2002, Free Software Foundation, Inc
-           2002, Red Hat, Inc. (trivial port to GLib)
-License: LGPL-2.1+
- The GNU C Library is free software; you can redistribute it and/or modify it
- under the terms of the GNU Lesser General Public License as published by the
- Free Software Foundation; either version 2.1 of the License, or (at your
- option) any later version.
- .
- The GNU C Library is distributed in the hope that it will be useful, but
- WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License
- for more details.
- .
- You should have received a copy of the GNU Lesser General Public License
- along with the GNU C Library; if not, write to the Free Software Foundation,
- Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA.
- .
- On Debian systems, the complete text of the GNU Lesser General Public License
- version 2.1 can be found in `/usr/share/common-licenses/LGPL-2.1'.
-
 Files: ltmain.sh
 Copyright: 1996-2011, Free Software Foundation, Inc.
 License: GPL-2+ or license of distributed software

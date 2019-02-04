@@ -14,7 +14,6 @@ libcinnamon_menu_3_include_HEADERS =		\
 	gmenu-tree.h
 
 libcinnamon_menu_3_sources =			\
-	canonicalize.c			\
 	desktop-entries.c		\
 	entry-directories.c		\
 	gmenu-tree.c			\
@@ -24,7 +23,6 @@ libcinnamon_menu_3_sources =			\
 
 libcinnamon_menu_3_la_SOURCES =		\
 	$(libcinnamon_menu_3_sources)	\
-	canonicalize.h			\
 	desktop-entries.h		\
 	entry-directories.h		\
 	gmenu-tree.h			\
