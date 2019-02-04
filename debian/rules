@@ -5,7 +5,7 @@ DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 TYPELIBDIR=$(shell pkg-config gobject-introspection-1.0 --variable libdir | sed -e 's/.//')
 
 %:
-	dh $@ --parallel --with=autoreconf,python3
+	dh $@ --parallel --with=python3
 
 override_dh_strip:
 	dh_strip --dbg-package=libcinnamon-menu-3-0-dbg
@@ -14,5 +14,18 @@ override_dh_install:
 	sed 's@TYPELIBDIR@${TYPELIBDIR}@' debian/gir1.2-cmenu-3.0.install.in > debian/gir1.2-cmenu-3.0.install
 	dh_install --list-missing
 
+override_dh_auto_configure:
+	meson debian/build \
+		--prefix=/usr \
+		--buildtype=plain \
+		-D deprecated_warnings=false
+
 override_dh_auto_clean:
 	-dh_auto_clean
+
+override_dh_auto_install:
+	DESTDIR=${CURDIR}/debian/tmp \
+	ninja -C debian/build install
+
+override_dh_auto_build:
+	ninja -C debian/build
