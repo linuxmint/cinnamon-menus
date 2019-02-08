@@ -1,10 +1,10 @@
 option('deprecated_warnings',
 	type: 'boolean',
-	value: false,
+	value: true,
 	description: 'Show build warnings for deprecations'
 )
-option('debug',
+option('enable_debug',
 	type: 'boolean',
-	value: false,
+	value: true,
 	description: 'Enable debugging'
 )
