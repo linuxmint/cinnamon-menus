@@ -7,18 +7,27 @@ public_sources = [
     public_headers,
 ]
 
+libmenu_private_headers = [
+    'desktop-entries.h',
+    'entry-directories.h',
+    'menu-layout.h',
+    'menu-monitor.h',
+    'menu-util.h',
+]
+
 libmenu_sources = [
     'desktop-entries.c',
-    'desktop-entries.h',
     'entry-directories.c',
-    'entry-directories.h',
     'menu-layout.c',
-    'menu-layout.h',
     'menu-monitor.c',
-    'menu-monitor.h',
     'menu-util.c',
-    'menu-util.h',
     public_sources,
+    libmenu_private_headers,
+]
+
+libmenu_deps = [
+    gio,
+    config_h,
 ]
 
 libcinnamon_menus = library(
@@ -27,9 +36,16 @@ libcinnamon_menus = library(
     soversion: binary_major_version,
     version: binary_version,
     include_directories: include_root,
-    dependencies: [gio, config_h],
+    dependencies: libmenu_deps,
     install: true,
     build_by_default: false,
+)
+
+cmenu_dep = declare_dependency(
+    include_directories: include_directories('.'),
+    link_with: libcinnamon_menus,
+    dependencies: libmenu_deps,
+    link_args: ['-Wl,-Bsymbolic', '-Wl,-z,relro', '-Wl,-z,now'],
 )
 
 install_headers(
