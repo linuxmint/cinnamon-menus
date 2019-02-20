@@ -18,7 +18,8 @@ override_dh_auto_configure:
 	meson debian/build \
 		--prefix=/usr \
 		--buildtype=plain \
-		-D deprecated_warnings=false
+		-D deprecated_warnings=false \
+		-D enable_debug=false
 
 override_dh_auto_clean:
 	-dh_auto_clean
