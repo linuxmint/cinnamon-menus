@@ -36,6 +36,20 @@ c_args = [
     '-DGMENU_I_KNOW_THIS_IS_UNSTABLE',
 ]
 
+if get_option('enable_debug')
+    c_args += '-DG_ENABLE_DEBUG'
+else
+    c_args += '-DG_DISABLE_ASSERT'
+    c_args += '-DG_DISABLE_CHECKS'
+    c_args += '-DG_DISABLE_CAST_CHECKS'
+endif
+
+if not get_option('deprecated_warnings')
+    c_args += '-Wno-deprecated-declarations'
+    c_args += '-Wno-deprecated'
+    c_args += '-Wno-declaration-after-statement'
+endif
+
 add_global_arguments(c_args, language: 'c')
 
 gio = dependency('gio-unix-2.0', version: '>= 2.29.15')
