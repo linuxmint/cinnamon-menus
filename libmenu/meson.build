@@ -1,9 +1,9 @@
 public_headers = [
-	'gmenu-tree.h',
+	'cmenu-tree.h',
 ]
 
 public_sources = [
-    'gmenu-tree.c',
+    'cmenu-tree.c',
     public_headers,
 ]
 
@@ -73,10 +73,10 @@ libdocument_gir = gnome.generate_gir(
     namespace: 'CMenu',
     nsversion: '3.0',
     sources: public_sources,
-    identifier_prefix: 'GMenu',
-    symbol_prefix: 'gmenu',
+    identifier_prefix: 'CMenu',
+    symbol_prefix: 'cmenu',
     includes: 'Gio-2.0',
-    header: 'gmenu-tree.h',
+    header: 'cmenu-tree.h',
     install: true,
     install_dir_gir: join_paths(datadir, 'gir-1.0'),
     export_packages: 'libcinnamon-menu-3.0',
