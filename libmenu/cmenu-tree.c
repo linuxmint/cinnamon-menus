@@ -34,7 +34,6 @@ typedef struct CMenuTreeItem CMenuTreeItem;
 #define CMENU_TREE_ITEM(i)      ((CMenuTreeItem *)(i))
 #define CMENU_TREE_DIRECTORY(i) ((CMenuTreeDirectory *)(i))
 #define CMENU_TREE_ENTRY(i)     ((CMenuTreeEntry *)(i))
-#define CMENU_TREE_SEPARATOR(i) ((CMenuTreeSeparator *)(i))
 #define CMENU_TREE_HEADER(i)    ((CMenuTreeHeader *)(i))
 #define CMENU_TREE_ALIAS(i)     ((CMenuTreeAlias *)(i))
 
@@ -113,7 +112,6 @@ struct CMenuTreeDirectory
 
     guint only_unallocated : 1;
     guint is_nodisplay : 1;
-    guint layout_pending_separator : 1;
     guint preprocessed : 1;
 
     /* 16 bits should be more than enough; G_MAXUINT16 means no inline header */
@@ -129,11 +127,6 @@ struct CMenuTreeEntry
 
     guint is_excluded : 1;
     guint is_unallocated : 1;
-};
-
-struct CMenuTreeSeparator
-{
-    CMenuTreeItem item;
 };
 
 struct CMenuTreeHeader
@@ -935,18 +928,6 @@ cmenu_tree_header_get_parent (CMenuTreeHeader *header)
     return get_parent ((CMenuTreeItem *)header);
 }
 
-/**
- * cmenu_tree_separator_get_parent:
- * @separator: a #CMenuTreeSeparator
- *
- * Returns: (transfer full): The parent directory, or %NULL if none
- */
-CMenuTreeDirectory *
-cmenu_tree_separator_get_parent (CMenuTreeSeparator *separator)
-{
-    return get_parent ((CMenuTreeItem *)separator);
-}
-
 static void
 cmenu_tree_item_set_parent (CMenuTreeItem      *item,
                             CMenuTreeDirectory *parent)
@@ -1108,25 +1089,6 @@ cmenu_tree_iter_get_alias (CMenuTreeIter *iter)
     g_return_val_if_fail (iter->item->type == CMENU_TREE_ITEM_ALIAS, NULL);
 
     return (CMenuTreeAlias*)cmenu_tree_item_ref (iter->item);
-}
-
-/**
- * cmenu_tree_iter_get_separator:
- * @iter: iter
- *
- * This method may only be called if cmenu_tree_iter_next()
- * returned #CMENU_TREE_ITEM_SEPARATOR.
- *
- * Returns: (transfer full): A separator
- */
-CMenuTreeSeparator *
-cmenu_tree_iter_get_separator (CMenuTreeIter *iter)
-{
-    g_return_val_if_fail (iter != NULL, NULL);
-    g_return_val_if_fail (iter->item != NULL, NULL);
-    g_return_val_if_fail (iter->item->type == CMENU_TREE_ITEM_SEPARATOR, NULL);
-
-    return (CMenuTreeSeparator*)cmenu_tree_item_ref (iter->item);
 }
 
 const char *
@@ -1403,22 +1365,6 @@ cmenu_tree_alias_get_tree (CMenuTreeAlias *alias)
 }
 
 /**
- * cmenu_tree_separator_get_tree:
- * @separator: A #CMenuTreeSeparator
- *
- * Grab the tree associated with a #CMenuTreeSeparator.
- *
- * Returns: (transfer full): The #CMenuTree
- */
-CMenuTree *
-cmenu_tree_separator_get_tree (CMenuTreeSeparator *separator)
-{
-    g_return_val_if_fail (separator != NULL, NULL);
-
-    return g_object_ref (separator->item.tree);
-}
-
-/**
  * cmenu_tree_alias_get_aliased_directory:
  * @alias: alias
  *
@@ -1471,7 +1417,6 @@ cmenu_tree_directory_new (CMenuTree          *tree,
     retval->contents            = NULL;
     retval->only_unallocated    = FALSE;
     retval->is_nodisplay        = FALSE;
-    retval->layout_pending_separator = FALSE;
     retval->preprocessed        = FALSE;
     retval->will_inline_header  = G_MAXUINT16;
 
@@ -1528,29 +1473,6 @@ cmenu_tree_directory_finalize (CMenuTreeDirectory *directory)
     directory->name = NULL;
 
     g_slice_free (CMenuTreeDirectory, directory);
-}
-
-static CMenuTreeSeparator *
-cmenu_tree_separator_new (CMenuTreeDirectory *parent)
-{
-    CMenuTreeSeparator *retval;
-
-    retval = g_slice_new0 (CMenuTreeSeparator);
-
-    retval->item.type     = CMENU_TREE_ITEM_SEPARATOR;
-    retval->item.parent   = parent;
-    retval->item.refcount = 1;
-    retval->item.tree     = parent->item.tree;
-
-    return retval;
-}
-
-static void
-cmenu_tree_separator_finalize (CMenuTreeSeparator *separator)
-{
-    g_assert (separator->item.refcount == 0);
-
-    g_slice_free (CMenuTreeSeparator, separator);
 }
 
 static CMenuTreeHeader *
@@ -1727,7 +1649,6 @@ cmenu_tree_item_unref (gpointer itemp)
                 break;
 
             case CMENU_TREE_ITEM_SEPARATOR:
-                cmenu_tree_separator_finalize (CMENU_TREE_SEPARATOR (item));
                 break;
 
             case CMENU_TREE_ITEM_HEADER:
@@ -3075,7 +2996,6 @@ collect_layout_info (MenuLayoutNode  *layout,
         {
             case MENU_LAYOUT_NODE_MENUNAME:
             case MENU_LAYOUT_NODE_FILENAME:
-            case MENU_LAYOUT_NODE_SEPARATOR:
             case MENU_LAYOUT_NODE_MERGE:
                 *layout_info = g_slist_prepend (*layout_info, menu_layout_node_ref (iter));
                 break;
@@ -3928,19 +3848,6 @@ static void process_layout_info (CMenuTree          *tree,
                                  CMenuTreeDirectory *directory);
 
 static void
-check_pending_separator (CMenuTreeDirectory *directory)
-{
-    if (directory->layout_pending_separator)
-    {
-        menu_verbose ("Adding pending separator in '%s'\n", directory->name);
-
-        directory->contents = g_slist_append (directory->contents,
-                              cmenu_tree_separator_new (directory));
-        directory->layout_pending_separator = FALSE;
-    }
-}
-
-static void
 merge_alias (CMenuTree          *tree,
              CMenuTreeDirectory *directory,
              CMenuTreeAlias     *alias)
@@ -3952,8 +3859,6 @@ merge_alias (CMenuTree          *tree,
     {
         process_layout_info (tree, CMENU_TREE_DIRECTORY (alias->aliased_item));
     }
-
-    check_pending_separator (directory);
 
     directory->contents = g_slist_append (directory->contents,
                                           cmenu_tree_item_ref (alias));
@@ -3968,8 +3873,6 @@ merge_subdir (CMenuTree          *tree,
                   subdir->name, directory->name);
 
     process_layout_info (tree, subdir);
-
-    check_pending_separator (directory);
 
     if (subdir->will_inline_header == 0 ||
         (subdir->will_inline_header != G_MAXUINT16 &&
@@ -4037,7 +3940,6 @@ merge_entry (CMenuTree          *tree,
     menu_verbose ("Merging entry '%s' in directory '%s'\n",
                   entry->desktop_file_id, directory->name);
 
-    check_pending_separator (directory);
     directory->contents = g_slist_append (directory->contents,
                                           cmenu_tree_item_ref (entry));
 }
@@ -4319,7 +4221,6 @@ process_layout_info (CMenuTree          *tree,
                      NULL);
     g_slist_free (directory->contents);
     directory->contents = NULL;
-    directory->layout_pending_separator = FALSE;
 
     layout_info = get_layout_info (directory, NULL);
 
@@ -4352,28 +4253,6 @@ process_layout_info (CMenuTree          *tree,
                     break;
 
                 case MENU_LAYOUT_NODE_SEPARATOR:
-                    /* Unless explicitly told to show all separators, do not show a
-                     * separator at the beginning of a menu. Note that we don't add
-                     * the separators now, and instead make it pending. This way, we
-                     * won't show two consecutive separators nor will we show a
-                     * separator at the end of a menu. */
-                    if (tree->flags & CMENU_TREE_FLAGS_SHOW_ALL_SEPARATORS)
-                    {
-                        directory->layout_pending_separator = TRUE;
-                        check_pending_separator (directory);
-                    }
-                    else if (directory->contents)
-                    {
-                        menu_verbose ("Adding a potential separator in '%s'\n",
-                                      directory->name);
-
-                        directory->layout_pending_separator = TRUE;
-                    }
-                    else
-                    {
-                        menu_verbose ("Skipping separator at the beginning of '%s'\n",
-                                      directory->name);
-                    }
                     break;
 
                 case MENU_LAYOUT_NODE_MERGE:
@@ -4616,19 +4495,6 @@ cmenu_tree_entry_get_type (void)
     if (gtype == G_TYPE_INVALID)
     {
         gtype = g_boxed_type_register_static ("CMenuTreeEntry",
-                                              (GBoxedCopyFunc) cmenu_tree_item_ref,
-                                              (GBoxedFreeFunc) cmenu_tree_item_unref);
-    }
-    return gtype;
-}
-
-GType
-cmenu_tree_separator_get_type (void)
-{
-    static GType gtype = G_TYPE_INVALID;
-    if (gtype == G_TYPE_INVALID)
-    {
-        gtype = g_boxed_type_register_static ("CMenuTreeSeparator",
                                               (GBoxedCopyFunc) cmenu_tree_item_ref,
                                               (GBoxedFreeFunc) cmenu_tree_item_unref);
     }

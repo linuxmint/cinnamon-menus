@@ -48,7 +48,6 @@ GType cmenu_tree_get_type (void) G_GNUC_CONST;
 typedef struct CMenuTreeIter      CMenuTreeIter;
 typedef struct CMenuTreeDirectory CMenuTreeDirectory;
 typedef struct CMenuTreeEntry     CMenuTreeEntry;
-typedef struct CMenuTreeSeparator CMenuTreeSeparator;
 typedef struct CMenuTreeHeader    CMenuTreeHeader;
 typedef struct CMenuTreeAlias     CMenuTreeAlias;
 
@@ -67,7 +66,6 @@ GType cmenu_tree_iter_get_type (void);
 /* Explicitly skip item, it's a "hidden" base class */
 GType cmenu_tree_directory_get_type (void);
 GType cmenu_tree_entry_get_type (void);
-GType cmenu_tree_separator_get_type (void);
 GType cmenu_tree_header_get_type (void);
 GType cmenu_tree_alias_get_type (void);
 
@@ -128,7 +126,6 @@ CMenuTreeDirectory *cmenu_tree_iter_get_directory       (CMenuTreeIter *iter);
 CMenuTreeEntry     *cmenu_tree_iter_get_entry           (CMenuTreeIter *iter);
 CMenuTreeHeader    *cmenu_tree_iter_get_header          (CMenuTreeIter *iter);
 CMenuTreeAlias     *cmenu_tree_iter_get_alias           (CMenuTreeIter *iter);
-CMenuTreeSeparator *cmenu_tree_iter_get_separator       (CMenuTreeIter *iter);
 
 char *cmenu_tree_directory_make_path                    (CMenuTreeDirectory *directory,
                                                          CMenuTreeEntry     *entry);
@@ -155,9 +152,6 @@ CMenuTreeDirectory *cmenu_tree_alias_get_aliased_directory (CMenuTreeAlias *alia
 CMenuTreeEntry     *cmenu_tree_alias_get_aliased_entry     (CMenuTreeAlias *alias);
 CMenuTree          *cmenu_tree_alias_get_tree              (CMenuTreeAlias *alias);
 CMenuTreeDirectory *cmenu_tree_alias_get_parent            (CMenuTreeAlias *alias);
-
-CMenuTree          *cmenu_tree_separator_get_tree   (CMenuTreeSeparator *separator);
-CMenuTreeDirectory *cmenu_tree_separator_get_parent (CMenuTreeSeparator *separator);
 
 G_END_DECLS
 
