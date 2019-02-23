@@ -34,8 +34,6 @@ typedef struct CMenuTreeItem CMenuTreeItem;
 #define CMENU_TREE_ITEM(i)      ((CMenuTreeItem *)(i))
 #define CMENU_TREE_DIRECTORY(i) ((CMenuTreeDirectory *)(i))
 #define CMENU_TREE_ENTRY(i)     ((CMenuTreeEntry *)(i))
-#define CMENU_TREE_HEADER(i)    ((CMenuTreeHeader *)(i))
-#define CMENU_TREE_ALIAS(i)     ((CMenuTreeAlias *)(i))
 
 enum {
     PROP_0,
@@ -105,17 +103,12 @@ struct CMenuTreeDirectory
     GSList         *entries;
     GSList         *subdirs;
 
-    MenuLayoutValues  default_layout_values;
     GSList           *default_layout_info;
     GSList           *layout_info;
     GSList           *contents;
 
     guint only_unallocated : 1;
     guint is_nodisplay : 1;
-    guint preprocessed : 1;
-
-    /* 16 bits should be more than enough; G_MAXUINT16 means no inline header */
-    guint will_inline_header : 16;
 };
 
 struct CMenuTreeEntry
@@ -127,21 +120,6 @@ struct CMenuTreeEntry
 
     guint is_excluded : 1;
     guint is_unallocated : 1;
-};
-
-struct CMenuTreeHeader
-{
-    CMenuTreeItem item;
-
-    CMenuTreeDirectory *directory;
-};
-
-struct CMenuTreeAlias
-{
-    CMenuTreeItem item;
-
-    CMenuTreeDirectory *directory;
-    CMenuTreeItem      *aliased_item;
 };
 
 static gboolean  cmenu_tree_load_layout          (CMenuTree       *tree,
@@ -904,30 +882,6 @@ cmenu_tree_entry_get_parent (CMenuTreeEntry *entry)
     return get_parent ((CMenuTreeItem *)entry);
 }
 
-/**
- * cmenu_tree_alias_get_parent:
- * @alias: a #CMenuTreeAlias
- *
- * Returns: (transfer full): The parent directory, or %NULL if none
- */
-CMenuTreeDirectory *
-cmenu_tree_alias_get_parent (CMenuTreeAlias *alias)
-{
-    return get_parent ((CMenuTreeItem *)alias);
-}
-
-/**
- * cmenu_tree_header_get_parent:
- * @header: a #CMenuTreeHeader
- *
- * Returns: (transfer full): The parent directory, or %NULL if none
- */
-CMenuTreeDirectory *
-cmenu_tree_header_get_parent (CMenuTreeHeader *header)
-{
-    return get_parent ((CMenuTreeItem *)header);
-}
-
 static void
 cmenu_tree_item_set_parent (CMenuTreeItem      *item,
                             CMenuTreeDirectory *parent)
@@ -1051,44 +1005,6 @@ cmenu_tree_iter_get_entry (CMenuTreeIter *iter)
     g_return_val_if_fail (iter->item->type == CMENU_TREE_ITEM_ENTRY, NULL);
 
     return (CMenuTreeEntry*)cmenu_tree_item_ref (iter->item);
-}
-
-/**
- * cmenu_tree_iter_get_header:
- * @iter: iter
- *
- * This method may only be called if cmenu_tree_iter_next()
- * returned CMENU_TREE_ITEM_HEADER.
- *
- * Returns: (transfer full): A header
- */
-CMenuTreeHeader *
-cmenu_tree_iter_get_header (CMenuTreeIter *iter)
-{
-    g_return_val_if_fail (iter != NULL, NULL);
-    g_return_val_if_fail (iter->item != NULL, NULL);
-    g_return_val_if_fail (iter->item->type == CMENU_TREE_ITEM_HEADER, NULL);
-
-    return (CMenuTreeHeader*)cmenu_tree_item_ref (iter->item);
-}
-
-/**
- * cmenu_tree_iter_get_alias:
- * @iter: iter
- *
- * This method may only be called if cmenu_tree_iter_next()
- * returned CMENU_TREE_ITEM_ALIAS.
- *
- * Returns: (transfer full): An alias
- */
-CMenuTreeAlias *
-cmenu_tree_iter_get_alias (CMenuTreeIter *iter)
-{
-    g_return_val_if_fail (iter != NULL, NULL);
-    g_return_val_if_fail (iter->item != NULL, NULL);
-    g_return_val_if_fail (iter->item->type == CMENU_TREE_ITEM_ALIAS, NULL);
-
-    return (CMenuTreeAlias*)cmenu_tree_item_ref (iter->item);
 }
 
 const char *
@@ -1307,93 +1223,6 @@ cmenu_tree_entry_get_tree (CMenuTreeEntry *entry)
     return g_object_ref (entry->item.tree);
 }
 
-CMenuTreeDirectory *
-cmenu_tree_header_get_directory (CMenuTreeHeader *header)
-{
-    g_return_val_if_fail (header != NULL, NULL);
-
-    return cmenu_tree_item_ref (header->directory);
-}
-
-/**
- * cmenu_tree_header_get_tree:
- * @header: A #CMenuTreeHeader
- *
- * Grab the tree associated with a #CMenuTreeHeader.
- *
- * Returns: (transfer full): The #CMenuTree
- */
-CMenuTree *
-cmenu_tree_header_get_tree (CMenuTreeHeader *header)
-{
-    g_return_val_if_fail (header != NULL, NULL);
-
-    return g_object_ref (header->item.tree);
-}
-
-CMenuTreeItemType
-cmenu_tree_alias_get_aliased_item_type (CMenuTreeAlias *alias)
-{
-    g_return_val_if_fail (alias != NULL, CMENU_TREE_ITEM_INVALID);
-
-    g_assert (alias->aliased_item != NULL);
-    return alias->aliased_item->type;
-}
-
-CMenuTreeDirectory *
-cmenu_tree_alias_get_directory (CMenuTreeAlias *alias)
-{
-    g_return_val_if_fail (alias != NULL, NULL);
-
-    return cmenu_tree_item_ref (alias->directory);
-}
-
-/**
- * cmenu_tree_alias_get_tree:
- * @alias: A #CMenuTreeAlias
- *
- * Grab the tree associated with a #CMenuTreeAlias.
- *
- * Returns: (transfer full): The #CMenuTree
- */
-CMenuTree *
-cmenu_tree_alias_get_tree (CMenuTreeAlias *alias)
-{
-    g_return_val_if_fail (alias != NULL, NULL);
-
-    return g_object_ref (alias->item.tree);
-}
-
-/**
- * cmenu_tree_alias_get_aliased_directory:
- * @alias: alias
- *
- * Returns: (transfer full): The aliased directory entry
- */
-CMenuTreeDirectory *
-cmenu_tree_alias_get_aliased_directory (CMenuTreeAlias *alias)
-{
-    g_return_val_if_fail (alias != NULL, NULL);
-    g_return_val_if_fail (alias->aliased_item->type == CMENU_TREE_ITEM_DIRECTORY, NULL);
-
-    return (CMenuTreeDirectory *) cmenu_tree_item_ref (alias->aliased_item);
-}
-
-/**
- * cmenu_tree_alias_get_aliased_entry:
- * @alias: alias
- *
- * Returns: (transfer full): The aliased entry
- */
-CMenuTreeEntry *
-cmenu_tree_alias_get_aliased_entry (CMenuTreeAlias *alias)
-{
-    g_return_val_if_fail (alias != NULL, NULL);
-    g_return_val_if_fail (alias->aliased_item->type == CMENU_TREE_ITEM_ENTRY, NULL);
-
-    return (CMenuTreeEntry *) cmenu_tree_item_ref (alias->aliased_item);
-}
-
 static CMenuTreeDirectory *
 cmenu_tree_directory_new (CMenuTree          *tree,
                           CMenuTreeDirectory *parent,
@@ -1417,15 +1246,6 @@ cmenu_tree_directory_new (CMenuTree          *tree,
     retval->contents            = NULL;
     retval->only_unallocated    = FALSE;
     retval->is_nodisplay        = FALSE;
-    retval->preprocessed        = FALSE;
-    retval->will_inline_header  = G_MAXUINT16;
-
-    retval->default_layout_values.mask          = MENU_LAYOUT_VALUES_NONE;
-    retval->default_layout_values.show_empty    = FALSE;
-    retval->default_layout_values.inline_menus  = FALSE;
-    retval->default_layout_values.inline_limit  = 4;
-    retval->default_layout_values.inline_header = FALSE;
-    retval->default_layout_values.inline_alias  = FALSE;
 
     return retval;
 }
@@ -1475,83 +1295,6 @@ cmenu_tree_directory_finalize (CMenuTreeDirectory *directory)
     g_slice_free (CMenuTreeDirectory, directory);
 }
 
-static CMenuTreeHeader *
-cmenu_tree_header_new (CMenuTreeDirectory *parent,
-                   CMenuTreeDirectory *directory)
-{
-    CMenuTreeHeader *retval;
-
-    retval = g_slice_new0 (CMenuTreeHeader);
-
-    retval->item.type     = CMENU_TREE_ITEM_HEADER;
-    retval->item.parent   = parent;
-    retval->item.refcount = 1;
-    retval->item.tree     = parent->item.tree;
-
-    retval->directory = cmenu_tree_item_ref (directory);
-
-    cmenu_tree_item_set_parent (CMENU_TREE_ITEM (retval->directory), NULL);
-
-    return retval;
-}
-
-static void
-cmenu_tree_header_finalize (CMenuTreeHeader *header)
-{
-    g_assert (header->item.refcount == 0);
-
-    if (header->directory != NULL)
-        cmenu_tree_item_unref (header->directory);
-    header->directory = NULL;
-
-    g_slice_free (CMenuTreeHeader, header);
-}
-
-static CMenuTreeAlias *
-cmenu_tree_alias_new (CMenuTreeDirectory *parent,
-                      CMenuTreeDirectory *directory,
-                      CMenuTreeItem      *item)
-{
-    CMenuTreeAlias *retval;
-
-    retval = g_slice_new0 (CMenuTreeAlias);
-
-    retval->item.type     = CMENU_TREE_ITEM_ALIAS;
-    retval->item.parent   = parent;
-    retval->item.refcount = 1;
-    retval->item.tree     = parent->item.tree;
-
-    retval->directory    = cmenu_tree_item_ref (directory);
-    if (item->type != CMENU_TREE_ITEM_ALIAS)
-        retval->aliased_item = cmenu_tree_item_ref (item);
-    else
-    {
-        CMenuTreeAlias *alias = CMENU_TREE_ALIAS (item);
-        retval->aliased_item = cmenu_tree_item_ref (alias->aliased_item);
-    }
-
-    cmenu_tree_item_set_parent (CMENU_TREE_ITEM (retval->directory), NULL);
-    cmenu_tree_item_set_parent (retval->aliased_item, NULL);
-
-    return retval;
-}
-
-static void
-cmenu_tree_alias_finalize (CMenuTreeAlias *alias)
-{
-    g_assert (alias->item.refcount == 0);
-
-    if (alias->directory != NULL)
-        cmenu_tree_item_unref (alias->directory);
-    alias->directory = NULL;
-
-    if (alias->aliased_item != NULL)
-        cmenu_tree_item_unref (alias->aliased_item);
-    alias->aliased_item = NULL;
-
-    g_slice_free (CMenuTreeAlias, alias);
-}
-
 static CMenuTreeEntry *
 cmenu_tree_entry_new (CMenuTreeDirectory *parent,
                       DesktopEntry       *desktop_entry,
@@ -1595,12 +1338,6 @@ static int
 cmenu_tree_entry_compare_by_id (CMenuTreeItem *a,
                                 CMenuTreeItem *b)
 {
-    if (a->type == CMENU_TREE_ITEM_ALIAS)
-        a = CMENU_TREE_ALIAS (a)->aliased_item;
-
-    if (b->type == CMENU_TREE_ITEM_ALIAS)
-        b = CMENU_TREE_ALIAS (b)->aliased_item;
-
     return strcmp (CMENU_TREE_ENTRY (a)->desktop_file_id,
                    CMENU_TREE_ENTRY (b)->desktop_file_id);
 }
@@ -1648,17 +1385,6 @@ cmenu_tree_item_unref (gpointer itemp)
                 cmenu_tree_entry_finalize (CMENU_TREE_ENTRY (item));
                 break;
 
-            case CMENU_TREE_ITEM_SEPARATOR:
-                break;
-
-            case CMENU_TREE_ITEM_HEADER:
-                cmenu_tree_header_finalize (CMENU_TREE_HEADER (item));
-                break;
-
-            case CMENU_TREE_ITEM_ALIAS:
-                cmenu_tree_alias_finalize (CMENU_TREE_ALIAS (item));
-                break;
-
             default:
                 g_assert_not_reached ();
                 break;
@@ -1703,16 +1429,6 @@ cmenu_tree_item_compare_get_name_helper (CMenuTreeItem    *item,
                 name = desktop_entry_get_name (CMENU_TREE_ENTRY (item)->desktop_entry);
             break;
 
-        case CMENU_TREE_ITEM_ALIAS:
-            {
-                CMenuTreeItem *dir;
-                dir = CMENU_TREE_ITEM (CMENU_TREE_ALIAS (item)->directory);
-                name = cmenu_tree_item_compare_get_name_helper (dir, flags);
-            }
-            break;
-
-        case CMENU_TREE_ITEM_SEPARATOR:
-        case CMENU_TREE_ITEM_HEADER:
         default:
             g_assert_not_reached ();
             break;
@@ -3052,34 +2768,6 @@ unallocated_entries_listify_foreach (const char         *desktop_file_id,
                                                TRUE));
 }
 
-static void
-set_default_layout_values (CMenuTreeDirectory *parent,
-                           CMenuTreeDirectory *child)
-{
-    GSList *tmp;
-
-    /* if the child has a defined default layout, we don't want to override its
-     * values. The parent might have a non-defined layout info (ie, no child of
-     * the DefaultLayout node) but it doesn't meant the default layout values
-     * (ie, DefaultLayout attributes) aren't different from the global defaults.
-     */
-    if (child->default_layout_info != NULL ||
-        child->default_layout_values.mask != MENU_LAYOUT_VALUES_NONE)
-        return;
-
-    child->default_layout_values = parent->default_layout_values;
-
-    tmp = child->subdirs;
-    while (tmp != NULL)
-    {
-        CMenuTreeDirectory *subdir = tmp->data;
-
-        set_default_layout_values (child, subdir);
-
-        tmp = tmp->next;
-   }
-}
-
 static CMenuTreeDirectory *
 process_layout (CMenuTree          *tree,
                 CMenuTreeDirectory *parent,
@@ -3263,8 +2951,6 @@ process_layout (CMenuTree          *tree,
                 break;
 
             case MENU_LAYOUT_NODE_DEFAULT_LAYOUT:
-                menu_layout_node_default_layout_get_values (layout_iter,
-                                                            &directory->default_layout_values);
                 collect_layout_info (layout_iter, &directory->default_layout_info);
                 menu_verbose ("Processed <DefaultLayout/>\n");
                 break;
@@ -3333,16 +3019,6 @@ process_layout (CMenuTree          *tree,
                                    directory);
         desktop_entry_set_unref (excluded_set);
     }
-
-    tmp = directory->subdirs;
-    while (tmp != NULL)
-    {
-        CMenuTreeDirectory *subdir = tmp->data;
-
-        set_default_layout_values (directory, subdir);
-
-        tmp = tmp->next;
-   }
 
     tmp = directory->entries;
     while (tmp != NULL)
@@ -3499,8 +3175,6 @@ get_layout_info (CMenuTreeDirectory *directory,
     iter = directory;
     while (iter != NULL)
     {
-        /* FIXME: this is broken: we might skip real parent in the
-         * XML structure, that are hidden because of inlining. */
         if (iter->default_layout_info != NULL)
         {
             return iter->default_layout_info;
@@ -3513,59 +3187,9 @@ get_layout_info (CMenuTreeDirectory *directory,
 }
 
 static void
-get_values_with_defaults (MenuLayoutNode   *node,
-                          MenuLayoutValues *layout_values,
-                          MenuLayoutValues *default_layout_values)
-{
-    menu_layout_node_menuname_get_values (node, layout_values);
-
-    if (!(layout_values->mask & MENU_LAYOUT_VALUES_SHOW_EMPTY))
-        layout_values->show_empty = default_layout_values->show_empty;
-
-    if (!(layout_values->mask & MENU_LAYOUT_VALUES_INLINE_MENUS))
-        layout_values->inline_menus = default_layout_values->inline_menus;
-
-    if (!(layout_values->mask & MENU_LAYOUT_VALUES_INLINE_LIMIT))
-        layout_values->inline_limit = default_layout_values->inline_limit;
-
-    if (!(layout_values->mask & MENU_LAYOUT_VALUES_INLINE_HEADER))
-        layout_values->inline_header = default_layout_values->inline_header;
-
-    if (!(layout_values->mask & MENU_LAYOUT_VALUES_INLINE_ALIAS))
-        layout_values->inline_alias = default_layout_values->inline_alias;
-}
-
-static guint
-get_real_subdirs_len (CMenuTreeDirectory *directory)
-{
-    guint   len;
-    GSList *tmp;
-
-    len = 0;
-
-    tmp = directory->subdirs;
-    while (tmp != NULL)
-    {
-        CMenuTreeDirectory *subdir = tmp->data;
-
-        tmp = tmp->next;
-
-        if (subdir->will_inline_header != G_MAXUINT16)
-        {
-            len += get_real_subdirs_len (subdir) + g_slist_length (subdir->entries) + 1;
-        }
-        else
-            len += 1;
-    }
-
-    return len;
-}
-
-static void
 preprocess_layout_info_subdir_helper (CMenuTree          *tree,
                                       CMenuTreeDirectory *directory,
                                       CMenuTreeDirectory *subdir,
-                                      MenuLayoutValues   *layout_values,
                                       gboolean           *contents_added,
                                       gboolean           *should_remove)
 {
@@ -3576,95 +3200,10 @@ preprocess_layout_info_subdir_helper (CMenuTree          *tree,
 
     if (subdir->subdirs == NULL && subdir->entries == NULL)
     {
-        if (!(tree->flags & CMENU_TREE_FLAGS_SHOW_EMPTY) &&
-            !layout_values->show_empty)
+        if (!(tree->flags & CMENU_TREE_FLAGS_SHOW_EMPTY))
         {
             menu_verbose ("Not showing empty menu '%s'\n", subdir->name);
             *should_remove = TRUE;
-        }
-    }
-
-    else if (layout_values->inline_menus)
-    {
-        guint real_subdirs_len;
-
-        real_subdirs_len = get_real_subdirs_len (subdir);
-
-        if (layout_values->inline_alias &&
-            real_subdirs_len + g_slist_length (subdir->entries) == 1)
-        {
-            CMenuTreeAlias *alias;
-            CMenuTreeItem  *item;
-            GSList         *list;
-
-            if (subdir->subdirs != NULL)
-                list = subdir->subdirs;
-            else
-                list = subdir->entries;
-
-            item = CMENU_TREE_ITEM (list->data);
-
-            menu_verbose ("Inline aliasing '%s' to '%s'\n",
-                          item->type == CMENU_TREE_ITEM_ENTRY ?
-                            g_app_info_get_name (G_APP_INFO (cmenu_tree_entry_get_app_info (CMENU_TREE_ENTRY (item)))) :
-                            (item->type == CMENU_TREE_ITEM_DIRECTORY ?
-                               cmenu_tree_directory_get_name (CMENU_TREE_DIRECTORY (item)) :
-                               cmenu_tree_directory_get_name (CMENU_TREE_ALIAS (item)->directory)), subdir->name);
-
-            alias = cmenu_tree_alias_new (directory, subdir, item);
-
-            g_slist_foreach (list,
-                             (GFunc) cmenu_tree_item_unref_and_unset_parent,
-                             NULL);
-            g_slist_free (list);
-            subdir->subdirs = NULL;
-            subdir->entries = NULL;
-
-            if (item->type == CMENU_TREE_ITEM_DIRECTORY)
-                directory->subdirs = g_slist_append (directory->subdirs, alias);
-            else
-                directory->entries = g_slist_append (directory->entries, alias);
-
-            *contents_added = TRUE;
-            *should_remove = TRUE;
-        }
-
-        else if (layout_values->inline_limit == 0 ||
-                 layout_values->inline_limit >= real_subdirs_len + g_slist_length (subdir->entries))
-        {
-            if (layout_values->inline_header)
-            {
-                menu_verbose ("Creating inline header with name '%s'\n", subdir->name);
-                /* we're limited to 16-bits to spare some memory; if the limit is
-                 * higher than that (would be crazy), we just consider it's
-                 * unlimited */
-                if (layout_values->inline_limit < G_MAXUINT16)
-                    subdir->will_inline_header = layout_values->inline_limit;
-                else
-                    subdir->will_inline_header = 0;
-            }
-            else
-            {
-                g_slist_foreach (subdir->subdirs,
-                                 (GFunc) cmenu_tree_item_set_parent,
-                                 directory);
-                directory->subdirs = g_slist_concat (directory->subdirs,
-                                                     subdir->subdirs);
-                subdir->subdirs = NULL;
-
-                g_slist_foreach (subdir->entries,
-                                 (GFunc) cmenu_tree_item_set_parent,
-                                 directory);
-                directory->entries = g_slist_concat (directory->entries,
-                                                     subdir->entries);
-                subdir->entries = NULL;
-
-                *contents_added = TRUE;
-                *should_remove = TRUE;
-            }
-
-            menu_verbose ("Inlining directory contents of '%s' to '%s'\n",
-                          subdir->name, directory->name);
         }
     }
 }
@@ -3687,97 +3226,9 @@ preprocess_layout_info (CMenuTree          *tree,
      * and the layout mask can be different for a submenu anyway */
 
     menu_verbose ("Processing menu layout inline hints for %s\n", directory->name);
-    g_assert (!directory->preprocessed);
 
     strip_duplicates = FALSE;
-    /* we use last_subdir to track the last non-inlined subdirectory */
-    last_subdir = g_slist_last (directory->subdirs);
 
-    /*
-     * First process subdirectories with explicit layout
-     */
-    layout_info = get_layout_info (directory, &using_default_layout);
-    tmp = layout_info;
-    /* see comment below about Menuname to understand why we leave the loop if
-     * last_subdir is NULL */
-    while (tmp != NULL && last_subdir != NULL)
-    {
-        MenuLayoutNode     *node = tmp->data;
-        MenuLayoutValues    layout_values;
-        const char         *name;
-        CMenuTreeDirectory *subdir;
-        GSList             *subdir_l;
-
-        tmp = tmp->next;
-
-        /* only Menuname nodes are relevant here */
-        if (menu_layout_node_get_type (node) != MENU_LAYOUT_NODE_MENUNAME)
-            continue;
-
-        get_values_with_defaults (node,
-                                  &layout_values,
-                                  &directory->default_layout_values);
-
-        /* find the subdirectory that is affected by those attributes */
-        name = menu_layout_node_get_content (node);
-        subdir = NULL;
-        subdir_l = directory->subdirs;
-        while (subdir_l != NULL)
-        {
-            subdir = subdir_l->data;
-
-            if (!strcmp (subdir->name, name))
-              break;
-
-            subdir = NULL;
-            subdir_l = subdir_l->next;
-
-            /* We do not want to use Menuname on a menu that appeared via
-             * inlining: without inlining, the Menuname wouldn't have matched
-             * anything, and we want to keep the same behavior.
-             * Unless the layout is a default layout, in which case the Menuname
-             * does match the subdirectory. */
-            if (!using_default_layout && subdir_l == last_subdir)
-            {
-                subdir_l = NULL;
-                break;
-            }
-        }
-
-        if (subdir == NULL)
-            continue;
-
-        preprocess_layout_info_subdir_helper (tree, directory,
-                                              subdir, &layout_values,
-                                              &contents_added, &should_remove);
-        strip_duplicates = strip_duplicates || contents_added;
-        if (should_remove)
-        {
-            if (last_subdir == subdir_l)
-            {
-                /* we need to recompute last_subdir since we'll remove it from
-                 * the list */
-                GSList *buf;
-
-                if (subdir_l == directory->subdirs)
-                    last_subdir = NULL;
-                else
-                {
-                    buf = directory->subdirs;
-                    while (buf != NULL && buf->next != subdir_l)
-                        buf = buf->next;
-                    last_subdir = buf;
-                }
-            }
-
-            directory->subdirs = g_slist_remove (directory->subdirs, subdir);
-            cmenu_tree_item_unref_and_unset_parent (CMENU_TREE_ITEM (subdir));
-        }
-    }
-
-    /*
-     * Now process the subdirectories with no explicit layout
-     */
     /* this is bogus data, but we just need the pointer anyway */
     subdirs_sentinel = g_slist_prepend (directory->subdirs, PACKAGE);
     directory->subdirs = subdirs_sentinel;
@@ -3787,15 +3238,7 @@ preprocess_layout_info (CMenuTree          *tree,
     {
         CMenuTreeDirectory *subdir = tmp->next->data;
 
-        if (subdir->preprocessed)
-        {
-            tmp = tmp->next;
-            continue;
-        }
-
-        preprocess_layout_info_subdir_helper (tree, directory,
-                                              subdir, &directory->default_layout_values,
-                                              &contents_added, &should_remove);
+        preprocess_layout_info_subdir_helper (tree, directory, subdir, &contents_added, &should_remove);
         strip_duplicates = strip_duplicates || contents_added;
         if (should_remove)
         {
@@ -3824,12 +3267,6 @@ preprocess_layout_info (CMenuTree          *tree,
             CMenuTreeItem *a = tmp->data;
             CMenuTreeItem *b = tmp->next->data;
 
-            if (a->type == CMENU_TREE_ITEM_ALIAS)
-                a = CMENU_TREE_ALIAS (a)->aliased_item;
-
-            if (b->type == CMENU_TREE_ITEM_ALIAS)
-                b = CMENU_TREE_ALIAS (b)->aliased_item;
-
             if (strcmp (CMENU_TREE_ENTRY (a)->desktop_file_id,
                         CMENU_TREE_ENTRY (b)->desktop_file_id) == 0)
             {
@@ -3840,29 +3277,10 @@ preprocess_layout_info (CMenuTree          *tree,
                 tmp = tmp->next;
         }
     }
-
-    directory->preprocessed = TRUE;
 }
 
 static void process_layout_info (CMenuTree          *tree,
                                  CMenuTreeDirectory *directory);
-
-static void
-merge_alias (CMenuTree          *tree,
-             CMenuTreeDirectory *directory,
-             CMenuTreeAlias     *alias)
-{
-    menu_verbose ("Merging alias '%s' in directory '%s'\n",
-                  alias->directory->name, directory->name);
-
-    if (alias->aliased_item->type == CMENU_TREE_ITEM_DIRECTORY)
-    {
-        process_layout_info (tree, CMENU_TREE_DIRECTORY (alias->aliased_item));
-    }
-
-    directory->contents = g_slist_append (directory->contents,
-                                          cmenu_tree_item_ref (alias));
-}
 
 static void
 merge_subdir (CMenuTree          *tree,
@@ -3874,30 +3292,8 @@ merge_subdir (CMenuTree          *tree,
 
     process_layout_info (tree, subdir);
 
-    if (subdir->will_inline_header == 0 ||
-        (subdir->will_inline_header != G_MAXUINT16 &&
-         g_slist_length (subdir->contents) <= subdir->will_inline_header))
-    {
-        CMenuTreeHeader *header;
-
-        header = cmenu_tree_header_new (directory, subdir);
-        directory->contents = g_slist_append (directory->contents, header);
-
-        g_slist_foreach (subdir->contents,
-                         (GFunc) cmenu_tree_item_set_parent,
-                         directory);
-        directory->contents = g_slist_concat (directory->contents,
-                                              subdir->contents);
-        subdir->contents = NULL;
-        subdir->will_inline_header = G_MAXUINT16;
-
-        cmenu_tree_item_set_parent (CMENU_TREE_ITEM (subdir), NULL);
-    }
-    else
-    {
-        directory->contents = g_slist_append (directory->contents,
-                                              cmenu_tree_item_ref (subdir));
-    }
+    directory->contents = g_slist_append (directory->contents,
+                                          cmenu_tree_item_ref (subdir));
 }
 
 static void
@@ -3915,11 +3311,6 @@ merge_subdir_by_name (CMenuTree          *tree,
     {
         CMenuTreeDirectory *subdir = tmp->data;
         GSList             *next = tmp->next;
-
-        /* if it's an alias, then it cannot be affected by
-         * the Merge nodes in the layout */
-        if (CMENU_TREE_ITEM (subdir)->type == CMENU_TREE_ITEM_ALIAS)
-            continue;
 
         if (!strcmp (subdir->name, subdir_name))
         {
@@ -3959,11 +3350,6 @@ merge_entry_by_id (CMenuTree          *tree,
     {
         CMenuTreeEntry *entry = tmp->data;
         GSList         *next = tmp->next;
-
-        /* if it's an alias, then it cannot be affected by
-         * the Merge nodes in the layout */
-        if (CMENU_TREE_ITEM (entry)->type == CMENU_TREE_ITEM_ALIAS)
-            continue;
 
         if (!strcmp (entry->desktop_file_id, file_id))
         {
@@ -4013,12 +3399,7 @@ merge_subdirs (CMenuTree          *tree,
     {
         CMenuTreeDirectory *subdir = tmp->data;
 
-        if (CMENU_TREE_ITEM (subdir)->type == CMENU_TREE_ITEM_ALIAS)
-        {
-            merge_alias (tree, directory, CMENU_TREE_ALIAS (subdir));
-            cmenu_tree_item_unref (subdir);
-        }
-        else if (!find_name_in_list (subdir->name, except))
+        if (!find_name_in_list (subdir->name, except))
         {
             merge_subdir (tree, directory, subdir);
             cmenu_tree_item_unref (subdir);
@@ -4058,12 +3439,7 @@ merge_entries (CMenuTree          *tree,
     {
         CMenuTreeEntry *entry = tmp->data;
 
-        if (CMENU_TREE_ITEM (entry)->type == CMENU_TREE_ITEM_ALIAS)
-        {
-            merge_alias (tree, directory, CMENU_TREE_ALIAS (entry));
-            cmenu_tree_item_unref (entry);
-        }
-        else if (!find_name_in_list (entry->desktop_file_id, except))
+        if (!find_name_in_list (entry->desktop_file_id, except))
         {
             merge_entry (tree, directory, entry);
             cmenu_tree_item_unref (entry);
@@ -4110,12 +3486,7 @@ merge_subdirs_and_entries (CMenuTree          *tree,
 
         type = item->type;
 
-        if (type == CMENU_TREE_ITEM_ALIAS)
-        {
-            merge_alias (tree, directory, CMENU_TREE_ALIAS (item));
-            cmenu_tree_item_unref (item);
-        }
-        else if (type == CMENU_TREE_ITEM_DIRECTORY)
+        if (type == CMENU_TREE_ITEM_DIRECTORY)
         {
             if (!find_name_in_list (CMENU_TREE_DIRECTORY (item)->name, except_subdirs))
             {
@@ -4495,32 +3866,6 @@ cmenu_tree_entry_get_type (void)
     if (gtype == G_TYPE_INVALID)
     {
         gtype = g_boxed_type_register_static ("CMenuTreeEntry",
-                                              (GBoxedCopyFunc) cmenu_tree_item_ref,
-                                              (GBoxedFreeFunc) cmenu_tree_item_unref);
-    }
-    return gtype;
-}
-
-GType
-cmenu_tree_header_get_type (void)
-{
-    static GType gtype = G_TYPE_INVALID;
-    if (gtype == G_TYPE_INVALID)
-    {
-        gtype = g_boxed_type_register_static ("CMenuTreeHeader",
-                                              (GBoxedCopyFunc) cmenu_tree_item_ref,
-                                              (GBoxedFreeFunc) cmenu_tree_item_unref);
-    }
-    return gtype;
-}
-
-GType
-cmenu_tree_alias_get_type (void)
-{
-    static GType gtype = G_TYPE_INVALID;
-    if (gtype == G_TYPE_INVALID)
-    {
-        gtype = g_boxed_type_register_static ("CMenuTreeAlias",
                                               (GBoxedCopyFunc) cmenu_tree_item_ref,
                                               (GBoxedFreeFunc) cmenu_tree_item_unref);
     }

@@ -48,8 +48,6 @@ GType cmenu_tree_get_type (void) G_GNUC_CONST;
 typedef struct CMenuTreeIter      CMenuTreeIter;
 typedef struct CMenuTreeDirectory CMenuTreeDirectory;
 typedef struct CMenuTreeEntry     CMenuTreeEntry;
-typedef struct CMenuTreeHeader    CMenuTreeHeader;
-typedef struct CMenuTreeAlias     CMenuTreeAlias;
 
 typedef enum
 {
@@ -66,8 +64,6 @@ GType cmenu_tree_iter_get_type (void);
 /* Explicitly skip item, it's a "hidden" base class */
 GType cmenu_tree_directory_get_type (void);
 GType cmenu_tree_entry_get_type (void);
-GType cmenu_tree_header_get_type (void);
-GType cmenu_tree_alias_get_type (void);
 
 typedef enum
 {
@@ -124,8 +120,6 @@ void                cmenu_tree_iter_unref               (CMenuTreeIter *iter);
 CMenuTreeItemType   cmenu_tree_iter_next                (CMenuTreeIter *iter);
 CMenuTreeDirectory *cmenu_tree_iter_get_directory       (CMenuTreeIter *iter);
 CMenuTreeEntry     *cmenu_tree_iter_get_entry           (CMenuTreeIter *iter);
-CMenuTreeHeader    *cmenu_tree_iter_get_header          (CMenuTreeIter *iter);
-CMenuTreeAlias     *cmenu_tree_iter_get_alias           (CMenuTreeIter *iter);
 
 char *cmenu_tree_directory_make_path                    (CMenuTreeDirectory *directory,
                                                          CMenuTreeEntry     *entry);
@@ -141,17 +135,6 @@ const char *cmenu_tree_entry_get_desktop_file_id        (CMenuTreeEntry *entry);
 gboolean cmenu_tree_entry_get_is_nodisplay_recurse      (CMenuTreeEntry *entry);
 gboolean cmenu_tree_entry_get_is_excluded               (CMenuTreeEntry *entry);
 gboolean cmenu_tree_entry_get_is_unallocated            (CMenuTreeEntry *entry);
-
-CMenuTreeDirectory *cmenu_tree_header_get_directory     (CMenuTreeHeader *header);
-CMenuTree          *cmenu_tree_header_get_tree          (CMenuTreeHeader *header);
-CMenuTreeDirectory *cmenu_tree_header_get_parent        (CMenuTreeHeader *header);
-
-CMenuTreeDirectory *cmenu_tree_alias_get_directory         (CMenuTreeAlias *alias);
-CMenuTreeItemType   cmenu_tree_alias_get_aliased_item_type (CMenuTreeAlias *alias);
-CMenuTreeDirectory *cmenu_tree_alias_get_aliased_directory (CMenuTreeAlias *alias);
-CMenuTreeEntry     *cmenu_tree_alias_get_aliased_entry     (CMenuTreeAlias *alias);
-CMenuTree          *cmenu_tree_alias_get_tree              (CMenuTreeAlias *alias);
-CMenuTreeDirectory *cmenu_tree_alias_get_parent            (CMenuTreeAlias *alias);
 
 G_END_DECLS
 
