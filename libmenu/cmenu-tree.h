@@ -49,6 +49,20 @@ typedef struct CMenuTreeIter      CMenuTreeIter;
 typedef struct CMenuTreeDirectory CMenuTreeDirectory;
 typedef struct CMenuTreeEntry     CMenuTreeEntry;
 
+/**
+ * CMenuTreeItemType:
+ * @CMENU_TREE_ITEM_INVALID: Indicates a non-valid tree item.
+ * @CMENU_TREE_ITEM_DIRECTORY: A container type tree item that holds a reference to other items.
+ * @CMENU_TREE_ITEM_ENTRY: An entry type tree item representing a single node in the tree.
+ * @CMENU_TREE_ITEM_SEPARATOR: A separator type tree item. This is no longer used and is only kept
+ * for backwards compatibility.
+ * @CMENU_TREE_ITEM_HEADER: An in-line header type tree item. This is no longer used and is only
+ * kept for backwards compatibility.
+ * @CMENU_TREE_ITEM_ALIAS: An in-line alias type tree item. This is no longer used and is only kept
+ * for backwards compatibility.
+ *
+ * The type of tree item.
+ */
 typedef enum
 {
     CMENU_TREE_ITEM_INVALID = 0,
@@ -65,6 +79,23 @@ GType cmenu_tree_iter_get_type (void);
 GType cmenu_tree_directory_get_type (void);
 GType cmenu_tree_entry_get_type (void);
 
+/**
+ * CMenuTreeFlags:
+ * @CMENU_TREE_FLAGS_NONE: No tree flags specified.
+ * @CMENU_TREE_FLAGS_INCLUDE_EXCLUDED: When this flag is passed, entries and directories are
+ * included in the tree, even if they are marked as excluded.
+ * @CMENU_TREE_FLAGS_INCLUDE_NODISPLAY: When this flag is passed, entries and directories are
+ * included in the tree, even if they are marked as nodisplay.
+ * @CMENU_TREE_FLAGS_INCLUDE_UNALLOCATED: When this flag is passed, entries and directories are
+ * included in the tree, even if they are marked as unallocated.
+ * @CMENU_TREE_FLAGS_SHOW_EMPTY: Show categories even if they are empty.
+ * @CMENU_TREE_FLAGS_SHOW_ALL_SEPARATORS: Show separators. This does nothing any more, and is kept
+ * solely for backwards compatibility.
+ * @CMENU_TREE_FLAGS_SORT_DISPLAY_NAME: When this flag is passed, entries are sorted by display
+ * name rather than by installed name.
+ *
+ * Flags to pass to the cmenu tree.
+ */
 typedef enum
 {
     CMENU_TREE_FLAGS_NONE                = 0,
@@ -77,10 +108,6 @@ typedef enum
     /* leave some space for more show flags */
     CMENU_TREE_FLAGS_SORT_DISPLAY_NAME   = 1 << 16
 } CMenuTreeFlags;
-
-GType cmenu_tree_flags_get_type (void);
-
-#define CMENU_TYPE_TREE_FLAGS (cmenu_tree_flags_get_type ())
 
 CMenuTree *cmenu_tree_new (const char     *menu_basename,
                            CMenuTreeFlags  flags);

@@ -29,6 +29,8 @@
 #include "menu-monitor.h"
 #include "menu-util.h"
 
+#include "cmenu-tree-enums.h"
+
 /* private */
 typedef struct CMenuTreeItem CMenuTreeItem;
 #define CMENU_TREE_ITEM(i)      ((CMenuTreeItem *)(i))
@@ -3870,25 +3872,4 @@ cmenu_tree_entry_get_type (void)
                                               (GBoxedFreeFunc) cmenu_tree_item_unref);
     }
     return gtype;
-}
-
-GType
-cmenu_tree_flags_get_type (void)
-{
-    static GType enum_type_id = 0;
-    if (G_UNLIKELY (!enum_type_id))
-    {
-        static const GFlagsValue values[] = {
-            { CMENU_TREE_FLAGS_NONE, "CMENU_TREE_FLAGS_NONE", "none" },
-            { CMENU_TREE_FLAGS_INCLUDE_EXCLUDED, "CMENU_TREE_FLAGS_INCLUDE_EXCLUDED", "include-excluded" },
-            { CMENU_TREE_FLAGS_SHOW_EMPTY, "CMENU_TREE_FLAGS_SHOW_EMPTY", "show-empty" },
-            { CMENU_TREE_FLAGS_INCLUDE_NODISPLAY, "CMENU_TREE_FLAGS_INCLUDE_NODISPLAY", "include-nodisplay" },
-            { CMENU_TREE_FLAGS_SHOW_ALL_SEPARATORS, "CMENU_TREE_FLAGS_SHOW_ALL_SEPARATORS", "show-all-separators" },
-            { CMENU_TREE_FLAGS_SORT_DISPLAY_NAME, "CMENU_TREE_FLAGS_SORT_DISPLAY_NAME", "sort-display-name" },
-            { CMENU_TREE_FLAGS_INCLUDE_UNALLOCATED, "CMENU_TREE_FLAGS_INCLUDE_UNALLOCATED,", "include-unallocated" },
-            { 0, NULL, NULL }
-        };
-        enum_type_id = g_flags_register_static ("CMenuTreeFlags", values);
-    }
-    return enum_type_id;
 }

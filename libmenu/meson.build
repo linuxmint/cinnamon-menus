@@ -1,11 +1,22 @@
+header_subdir = 'cinnamon-menus-3.0'
+
 public_headers = [
-	'cmenu-tree.h',
+    'cmenu-tree.h',
 ]
 
 public_sources = [
     'cmenu-tree.c',
     public_headers,
 ]
+
+public_sources += gnome.mkenums_simple(
+    'cmenu-tree-enums',
+    sources: public_headers,
+    install_headers: true,
+    install_dir: header_subdir,
+    identifier_prefix: 'CMenu',
+    symbol_prefix: 'cmenu',
+)
 
 libmenu_private_headers = [
     'desktop-entries.h',
@@ -50,7 +61,7 @@ cmenu_dep = declare_dependency(
 
 install_headers(
     public_headers,
-    subdir: 'cinnamon-menus-3.0'
+    subdir: header_subdir,
 )
 
 pc_conf = configuration_data()
