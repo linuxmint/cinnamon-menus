@@ -53,19 +53,16 @@ install_headers(
     subdir: 'cinnamon-menus-3.0'
 )
 
-pc_conf = configuration_data()
-pc_conf.set('prefix', prefix)
-pc_conf.set('exec_prefix', '${prefix}')
-pc_conf.set('libdir', join_paths('${prefix}', libdir))
-pc_conf.set('includedir', join_paths('${prefix}', includedir))
-pc_conf.set('VERSION', version)
+pkgconfig = import('pkgconfig')
 
-pc = configure_file(
-    input: 'libcinnamon-menu-3.0.pc.in',
-    output: 'libcinnamon-menu-3.0.pc',
-    configuration: pc_conf,
-    install: true,
-    install_dir: join_paths(libdir, 'pkgconfig'),
+# meson 0.46.0 can drop the version keyword and move libraries to a
+# positional argument
+pkgconfig.generate(
+    name: 'libcinnamon-menu-3.0',
+    description: 'Desktop Menu Specification Implementation',
+    version: version,
+    libraries: libcinnamon_menus,
+    subdirs: 'cinnamon-menus-3.0'
 )
 
 libdocument_gir = gnome.generate_gir(
