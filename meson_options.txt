@@ -8,3 +8,8 @@ option('enable_debug',
 	value: true,
 	description: 'Enable debugging'
 )
+ option('docs',
+    type: 'boolean',
+    value: false,
+    description: 'Build the API references (requires gtk-doc)'
+)
