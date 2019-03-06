@@ -7,8 +7,8 @@ version = meson.project_version()
 binary_version = '0.0.1'
 binary_major_version = binary_version.split('.')[0]
 
-xreader_conf = configuration_data()
-xreader_conf.set_quoted('PACKAGE', meson.project_name())
+cmenu_conf = configuration_data()
+cmenu_conf.set_quoted('PACKAGE', meson.project_name())
 
 # directories
 prefix = get_option('prefix')
@@ -19,7 +19,7 @@ includedir = get_option('includedir')
 # generate config.h
 config_h_file = configure_file(
     output : 'config.h',
-    configuration : xreader_conf
+    configuration : cmenu_conf
 )
 
 config_h = declare_dependency(

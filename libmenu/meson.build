@@ -65,7 +65,7 @@ pkgconfig.generate(
     subdirs: 'cinnamon-menus-3.0'
 )
 
-libdocument_gir = gnome.generate_gir(
+gnome.generate_gir(
     libcinnamon_menus,
     namespace: 'CMenu',
     nsversion: '3.0',
