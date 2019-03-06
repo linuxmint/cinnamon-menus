@@ -3,10 +3,6 @@ project('cinnamon-menus', 'c', version : '4.0.0', meson_version: '>=0.40.0')
 gnome = import('gnome')
 
 version = meson.project_version()
-version_list = version.split('.')
-major_version = version_list[0]
-minor_version = version_list[1]
-micro_version = version_list[2]
 
 binary_version = '0.0.1'
 binary_major_version = binary_version.split('.')[0]
