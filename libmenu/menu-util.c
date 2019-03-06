@@ -19,8 +19,6 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <config.h>
-
 #include "menu-util.h"
 
 #include <stdio.h>
@@ -239,11 +237,11 @@ append_merge (MenuLayoutNode      *node,
     case MENU_LAYOUT_MERGE_MENUS:
       merge_type_str = "menus";
       break;
-      
+
     case MENU_LAYOUT_MERGE_FILES:
       merge_type_str = "files";
       break;
-      
+
     case MENU_LAYOUT_MERGE_ALL:
       merge_type_str = "all";
       break;
@@ -252,7 +250,7 @@ append_merge (MenuLayoutNode      *node,
       g_assert_not_reached ();
       break;
     }
-      
+
   append_simple_with_attr (node, depth, node_name, "type", merge_type_str, str);
 }
 

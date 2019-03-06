@@ -17,8 +17,6 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <config.h>
-
 #include "entry-directories.h"
 
 #include <string.h>
@@ -577,7 +575,7 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
          *
          * Additionally, the failure is not upon trying to read the file,
          * but attempting to get its GAppInfo (g_desktop_app_info_new_from_filename()
-         * in desktop-entries.c ln 277).  If you jigger desktop_entry_load() around 
+         * in desktop-entries.c ln 277).  If you jigger desktop_entry_load() around
          * and read the file as a keyfile *first*, it succeeds.  If you then try
          * to run g_desktop_app_info_new_from_keyfile(), *then* it fails.
          *
@@ -928,7 +926,7 @@ get_desktop_file_id_from_path (EntryDirectory   *ed,
 			       const char       *relative_path)
 {
   char *retval;
-  
+
   retval = NULL;
 
   if (entry_type == DESKTOP_ENTRY_DESKTOP)

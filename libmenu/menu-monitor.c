@@ -20,8 +20,6 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <config.h>
-
 #include "menu-monitor.h"
 
 #include <gio/gio.h>
@@ -113,7 +111,7 @@ emit_events_in_idle (void)
 
       tmp = tmp->next;
     }
-  
+
   tmp = events_to_emit;
   while (tmp != NULL)
     {
