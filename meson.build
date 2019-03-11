@@ -55,6 +55,7 @@ add_global_arguments(c_args, language: 'c')
 gio = dependency('gio-unix-2.0', version: '>= 2.29.15')
 
 subdir('libmenu')
+subdir('test')
 if get_option('enable_docs')
-subdir('docs/reference')
+    subdir('docs/reference')
 endif
