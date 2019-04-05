@@ -2,10 +2,12 @@ header_subdir = 'cinnamon-menus-3.0'
 
 public_headers = [
     'cmenu-tree.h',
+    'cmenu-tree-item.h',
 ]
 
 public_sources = [
     'cmenu-tree.c',
+    'cmenu-tree-item.c',
     public_headers,
 ]
 
@@ -19,6 +21,7 @@ public_sources += gnome.mkenums_simple(
 )
 
 libmenu_private_headers = [
+    'cmenu-tree-item-private.h',
     'desktop-entries.h',
     'entry-directories.h',
     'menu-layout.h',

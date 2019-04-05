@@ -24,7 +24,7 @@
 #error "libgnome-menu should only be used if you understand that it's subject to frequent change, and is not supported as a fixed API/ABI or as part of the platform"
 #endif
 
-#include <gio/gdesktopappinfo.h>
+#include "cmenu-tree-item.h"
 
 G_BEGIN_DECLS
 
@@ -44,40 +44,6 @@ struct _CMenuTreeClass
 };
 
 GType cmenu_tree_get_type (void) G_GNUC_CONST;
-
-typedef struct CMenuTreeIter      CMenuTreeIter;
-typedef struct CMenuTreeDirectory CMenuTreeDirectory;
-typedef struct CMenuTreeEntry     CMenuTreeEntry;
-
-/**
- * CMenuTreeItemType:
- * @CMENU_TREE_ITEM_INVALID: Indicates a non-valid tree item.
- * @CMENU_TREE_ITEM_DIRECTORY: A container type tree item that holds a reference to other items.
- * @CMENU_TREE_ITEM_ENTRY: An entry type tree item representing a single node in the tree.
- * @CMENU_TREE_ITEM_SEPARATOR: A separator type tree item. This is no longer used and is only kept
- * for backwards compatibility.
- * @CMENU_TREE_ITEM_HEADER: An in-line header type tree item. This is no longer used and is only
- * kept for backwards compatibility.
- * @CMENU_TREE_ITEM_ALIAS: An in-line alias type tree item. This is no longer used and is only kept
- * for backwards compatibility.
- *
- * The type of tree item.
- */
-typedef enum
-{
-    CMENU_TREE_ITEM_INVALID = 0,
-    CMENU_TREE_ITEM_DIRECTORY,
-    CMENU_TREE_ITEM_ENTRY,
-    CMENU_TREE_ITEM_SEPARATOR,
-    CMENU_TREE_ITEM_HEADER,
-    CMENU_TREE_ITEM_ALIAS
-} CMenuTreeItemType;
-
-GType cmenu_tree_iter_get_type (void);
-
-/* Explicitly skip item, it's a "hidden" base class */
-GType cmenu_tree_directory_get_type (void);
-GType cmenu_tree_entry_get_type (void);
 
 /**
  * CMenuTreeFlags:
@@ -124,44 +90,6 @@ CMenuTreeDirectory *cmenu_tree_get_directory_from_path  (CMenuTree  *tree,
                                                          const char *path);
 CMenuTreeEntry     *cmenu_tree_get_entry_by_id          (CMenuTree  *tree,
                                                          const char *id);
-
-gpointer cmenu_tree_item_ref   (gpointer item);
-void     cmenu_tree_item_unref (gpointer item);
-
-CMenuTreeDirectory *cmenu_tree_directory_get_parent     (CMenuTreeDirectory *directory);
-const char *cmenu_tree_directory_get_name               (CMenuTreeDirectory *directory);
-const char *cmenu_tree_directory_get_generic_name       (CMenuTreeDirectory *directory);
-const char *cmenu_tree_directory_get_comment            (CMenuTreeDirectory *directory);
-GIcon      *cmenu_tree_directory_get_icon               (CMenuTreeDirectory *directory);
-const char *cmenu_tree_directory_get_desktop_file_path  (CMenuTreeDirectory *directory);
-const char *cmenu_tree_directory_get_menu_id            (CMenuTreeDirectory *directory);
-CMenuTree  *cmenu_tree_directory_get_tree               (CMenuTreeDirectory *directory);
-
-gboolean cmenu_tree_directory_get_is_nodisplay          (CMenuTreeDirectory *directory);
-
-CMenuTreeIter      *cmenu_tree_directory_iter           (CMenuTreeDirectory *directory);
-
-CMenuTreeIter      *cmenu_tree_iter_ref                 (CMenuTreeIter *iter);
-void                cmenu_tree_iter_unref               (CMenuTreeIter *iter);
-
-CMenuTreeItemType   cmenu_tree_iter_next                (CMenuTreeIter *iter);
-CMenuTreeDirectory *cmenu_tree_iter_get_directory       (CMenuTreeIter *iter);
-CMenuTreeEntry     *cmenu_tree_iter_get_entry           (CMenuTreeIter *iter);
-
-char *cmenu_tree_directory_make_path                    (CMenuTreeDirectory *directory,
-                                                         CMenuTreeEntry     *entry);
-
-
-GDesktopAppInfo    *cmenu_tree_entry_get_app_info       (CMenuTreeEntry *entry);
-CMenuTreeDirectory *cmenu_tree_entry_get_parent         (CMenuTreeEntry *entry);
-CMenuTree          *cmenu_tree_entry_get_tree           (CMenuTreeEntry *entry);
-
-const char *cmenu_tree_entry_get_desktop_file_path      (CMenuTreeEntry *entry);
-const char *cmenu_tree_entry_get_desktop_file_id        (CMenuTreeEntry *entry);
-
-gboolean cmenu_tree_entry_get_is_nodisplay_recurse      (CMenuTreeEntry *entry);
-gboolean cmenu_tree_entry_get_is_excluded               (CMenuTreeEntry *entry);
-gboolean cmenu_tree_entry_get_is_unallocated            (CMenuTreeEntry *entry);
 
 G_END_DECLS
 

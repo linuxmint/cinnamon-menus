@@ -30,12 +30,7 @@
 #include "menu-util.h"
 
 #include "cmenu-tree-enums.h"
-
-/* private */
-typedef struct CMenuTreeItem CMenuTreeItem;
-#define CMENU_TREE_ITEM(i)      ((CMenuTreeItem *)(i))
-#define CMENU_TREE_DIRECTORY(i) ((CMenuTreeDirectory *)(i))
-#define CMENU_TREE_ENTRY(i)     ((CMenuTreeEntry *)(i))
+#include "cmenu-tree-item-private.h"
 
 enum {
     PROP_0,
@@ -76,54 +71,6 @@ struct _CMenuTree
 
 G_DEFINE_TYPE (CMenuTree, cmenu_tree, G_TYPE_OBJECT)
 
-struct CMenuTreeItem
-{
-    volatile gint refcount;
-
-    CMenuTreeItemType type;
-
-    CMenuTreeDirectory *parent;
-    CMenuTree *tree;
-};
-
-struct CMenuTreeIter
-{
-    volatile gint refcount;
-
-    CMenuTreeItem *item;
-    GSList        *contents;
-    GSList        *contents_iter;
-};
-
-struct CMenuTreeDirectory
-{
-    CMenuTreeItem   item;
-
-    DesktopEntry   *directory_entry;
-    char           *name;
-
-    GSList         *entries;
-    GSList         *subdirs;
-
-    GSList           *default_layout_info;
-    GSList           *layout_info;
-    GSList           *contents;
-
-    guint only_unallocated : 1;
-    guint is_nodisplay : 1;
-};
-
-struct CMenuTreeEntry
-{
-    CMenuTreeItem item;
-
-    DesktopEntry *desktop_entry;
-    char         *desktop_file_id;
-
-    guint is_excluded : 1;
-    guint is_unallocated : 1;
-};
-
 static gboolean  cmenu_tree_load_layout          (CMenuTree       *tree,
                                                   GError         **error);
 static void      cmenu_tree_force_reload         (CMenuTree       *tree);
@@ -136,7 +83,10 @@ static void      cmenu_tree_resolve_files        (CMenuTree       *tree,
 static void      cmenu_tree_force_recanonicalize (CMenuTree       *tree);
 static void      cmenu_tree_invoke_monitors      (CMenuTree       *tree);
 
-static void cmenu_tree_item_unref_and_unset_parent (gpointer itemp);
+static void      process_layout_info             (CMenuTree          *tree,
+                                                  CMenuTreeDirectory *directory);
+static void      preprocess_layout_info          (CMenuTree          *tree,
+                                                  CMenuTreeDirectory *directory);
 
 typedef enum
 {
@@ -776,13 +726,13 @@ find_path (CMenuTreeDirectory *directory,
     {
         CMenuTreeItem *item = tmp->data;
 
-        if (item->type != CMENU_TREE_ITEM_DIRECTORY)
+        if (cmenu_tree_item_get_item_type (item) != CMENU_TREE_ITEM_DIRECTORY)
         {
             tmp = tmp->next;
             continue;
         }
 
-        if (!strcmp (name, CMENU_TREE_DIRECTORY (item)->name))
+        if (!strcmp (name, cmenu_tree_directory_get_name (CMENU_TREE_DIRECTORY (item))))
         {
             g_free (freeme);
 
@@ -851,609 +801,6 @@ static void
 cmenu_tree_invoke_monitors (CMenuTree *tree)
 {
     g_signal_emit (tree, cmenu_tree_signals[CHANGED], 0);
-}
-
-static CMenuTreeDirectory *
-get_parent (CMenuTreeItem *item)
-{
-    g_return_val_if_fail (item != NULL, NULL);
-    return item->parent ? cmenu_tree_item_ref (item->parent) : NULL;
-}
-
-/**
- * cmenu_tree_directory_get_parent:
- * @directory: a #CMenuTreeDirectory
- *
- * Returns: (transfer full): The parent directory, or %NULL if none
- */
-CMenuTreeDirectory *
-cmenu_tree_directory_get_parent (CMenuTreeDirectory *directory)
-{
-    return get_parent ((CMenuTreeItem *)directory);
-}
-
-/**
- * cmenu_tree_entry_get_parent:
- * @entry: a #CMenuTreeEntry
- *
- * Returns: (transfer full): The parent directory, or %NULL if none
- */
-CMenuTreeDirectory *
-cmenu_tree_entry_get_parent (CMenuTreeEntry *entry)
-{
-    return get_parent ((CMenuTreeItem *)entry);
-}
-
-static void
-cmenu_tree_item_set_parent (CMenuTreeItem      *item,
-                            CMenuTreeDirectory *parent)
-{
-    g_return_if_fail (item != NULL);
-
-    item->parent = parent;
-}
-
-/**
- * cmenu_tree_iter_ref: (skip)
- * @iter: iter
- *
- * Increment the reference count of @iter
- */
-CMenuTreeIter *
-cmenu_tree_iter_ref (CMenuTreeIter *iter)
-{
-    g_atomic_int_inc (&iter->refcount);
-    return iter;
-}
-
-/**
- * cmenu_tree_iter_unref: (skip)
- * @iter: iter
- *
- * Decrement the reference count of @iter
- */
-void
-cmenu_tree_iter_unref (CMenuTreeIter *iter)
-{
-    if (!g_atomic_int_dec_and_test (&iter->refcount))
-        return;
-
-    g_slist_foreach (iter->contents, (GFunc)cmenu_tree_item_unref, NULL);
-    g_slist_free (iter->contents);
-
-    g_slice_free (CMenuTreeIter, iter);
-}
-
-/**
- * cmenu_tree_directory_iter:
- * @directory: directory
- *
- * Returns: (transfer full): A new iterator over the directory contents
- */
-CMenuTreeIter *
-cmenu_tree_directory_iter (CMenuTreeDirectory *directory)
-{
-    CMenuTreeIter *iter;
-
-    g_return_val_if_fail (directory != NULL, NULL);
-
-    iter = g_slice_new0 (CMenuTreeIter);
-    iter->refcount = 1;
-
-    iter->contents = g_slist_copy (directory->contents);
-    iter->contents_iter = iter->contents;
-    g_slist_foreach (iter->contents, (GFunc) cmenu_tree_item_ref, NULL);
-
-    return iter;
-}
-
-/**
- * cmenu_tree_iter_next:
- * @iter: iter
- *
- * Change the iterator to the next item, and return its type.  If
- * there are no more items, %CMENU_TREE_ITEM_INVALID is returned.
- *
- * Returns: The type of the next item that can be retrived from the iterator
- */
-CMenuTreeItemType
-cmenu_tree_iter_next (CMenuTreeIter *iter)
-{
-    g_return_val_if_fail (iter != NULL, CMENU_TREE_ITEM_INVALID);
-
-    if (iter->contents_iter)
-    {
-        iter->item = iter->contents_iter->data;
-        iter->contents_iter = iter->contents_iter->next;
-        return iter->item->type;
-    }
-    else
-        return CMENU_TREE_ITEM_INVALID;
-}
-
-/**
- * cmenu_tree_iter_get_directory:
- * @iter: iter
- *
- * This method may only be called if cmenu_tree_iter_next()
- * returned CMENU_TREE_ITEM_DIRECTORY.
- *
- * Returns: (transfer full): A directory
- */
-CMenuTreeDirectory *
-cmenu_tree_iter_get_directory (CMenuTreeIter *iter)
-{
-    g_return_val_if_fail (iter != NULL, NULL);
-    g_return_val_if_fail (iter->item != NULL, NULL);
-    g_return_val_if_fail (iter->item->type == CMENU_TREE_ITEM_DIRECTORY, NULL);
-
-    return (CMenuTreeDirectory*)cmenu_tree_item_ref (iter->item);
-}
-
-/**
- * cmenu_tree_iter_get_entry:
- * @iter: iter
- *
- * This method may only be called if cmenu_tree_iter_next()
- * returned CMENU_TREE_ITEM_ENTRY.
- *
- * Returns: (transfer full): An entry
- */
-CMenuTreeEntry *
-cmenu_tree_iter_get_entry (CMenuTreeIter *iter)
-{
-    g_return_val_if_fail (iter != NULL, NULL);
-    g_return_val_if_fail (iter->item != NULL, NULL);
-    g_return_val_if_fail (iter->item->type == CMENU_TREE_ITEM_ENTRY, NULL);
-
-    return (CMenuTreeEntry*)cmenu_tree_item_ref (iter->item);
-}
-
-const char *
-cmenu_tree_directory_get_name (CMenuTreeDirectory *directory)
-{
-    g_return_val_if_fail (directory != NULL, NULL);
-
-    if (!directory->directory_entry)
-        return directory->name;
-
-    return desktop_entry_get_name (directory->directory_entry);
-}
-
-const char *
-cmenu_tree_directory_get_generic_name (CMenuTreeDirectory *directory)
-{
-    g_return_val_if_fail (directory != NULL, NULL);
-
-    if (!directory->directory_entry)
-        return NULL;
-
-    return desktop_entry_get_generic_name (directory->directory_entry);
-}
-
-const char *
-cmenu_tree_directory_get_comment (CMenuTreeDirectory *directory)
-{
-    g_return_val_if_fail (directory != NULL, NULL);
-
-    if (!directory->directory_entry)
-        return NULL;
-
-    return desktop_entry_get_comment (directory->directory_entry);
-}
-
-/**
- * cmenu_tree_directory_get_icon:
- * @directory: a #CMenuTreeDirectory
- *
- * Gets the icon for the directory.
- *
- * Returns: (transfer none): The #GIcon for this directory
- */
-GIcon *
-cmenu_tree_directory_get_icon (CMenuTreeDirectory *directory)
-{
-    g_return_val_if_fail (directory != NULL, NULL);
-
-    if (!directory->directory_entry)
-        return NULL;
-
-    return desktop_entry_get_icon (directory->directory_entry);
-}
-
-const char *
-cmenu_tree_directory_get_desktop_file_path (CMenuTreeDirectory *directory)
-{
-    g_return_val_if_fail (directory != NULL, NULL);
-
-    if (!directory->directory_entry)
-        return NULL;
-
-    return desktop_entry_get_path (directory->directory_entry);
-}
-
-const char *
-cmenu_tree_directory_get_menu_id (CMenuTreeDirectory *directory)
-{
-    g_return_val_if_fail (directory != NULL, NULL);
-
-    return directory->name;
-}
-
-gboolean
-cmenu_tree_directory_get_is_nodisplay (CMenuTreeDirectory *directory)
-{
-    g_return_val_if_fail (directory != NULL, FALSE);
-
-    return directory->is_nodisplay;
-}
-
-/**
- * cmenu_tree_directory_get_tree:
- * @directory: A #CMenuTreeDirectory
- *
- * Grab the tree associated with a #CMenuTreeItem.
- *
- * Returns: (transfer full): The #CMenuTree
- */
-CMenuTree *
-cmenu_tree_directory_get_tree (CMenuTreeDirectory *directory)
-{
-    g_return_val_if_fail (directory != NULL, NULL);
-
-    return g_object_ref (directory->item.tree);
-}
-
-static void
-append_directory_path (CMenuTreeDirectory *directory,
-                       GString            *path)
-{
-    if (!directory->item.parent)
-    {
-        g_string_append_c (path, G_DIR_SEPARATOR);
-        return;
-    }
-
-    append_directory_path (directory->item.parent, path);
-
-    g_string_append (path, directory->name);
-    g_string_append_c (path, G_DIR_SEPARATOR);
-}
-
-char *
-cmenu_tree_directory_make_path (CMenuTreeDirectory *directory,
-                                CMenuTreeEntry     *entry)
-{
-    GString *path;
-
-    g_return_val_if_fail (directory != NULL, NULL);
-
-    path = g_string_new (NULL);
-
-    append_directory_path (directory, path);
-
-    if (entry != NULL)
-        g_string_append (path, desktop_entry_get_basename (entry->desktop_entry));
-
-    return g_string_free (path, FALSE);
-}
-
-/**
- * cmenu_tree_entry_get_app_info:
- * @entry: a #CMenuTreeEntry
- *
- * Returns: (transfer none): The #GDesktopAppInfo for this entry
- */
-GDesktopAppInfo *
-cmenu_tree_entry_get_app_info (CMenuTreeEntry *entry)
-{
-    g_return_val_if_fail (entry != NULL, NULL);
-
-    return desktop_entry_get_app_info (entry->desktop_entry);
-}
-
-const char *
-cmenu_tree_entry_get_desktop_file_path (CMenuTreeEntry *entry)
-{
-    g_return_val_if_fail (entry != NULL, NULL);
-
-    return desktop_entry_get_path (entry->desktop_entry);
-}
-
-const char *
-cmenu_tree_entry_get_desktop_file_id (CMenuTreeEntry *entry)
-{
-    g_return_val_if_fail (entry != NULL, NULL);
-
-    return entry->desktop_file_id;
-}
-
-gboolean
-cmenu_tree_entry_get_is_nodisplay_recurse (CMenuTreeEntry *entry)
-{
-    CMenuTreeDirectory *directory;
-    GDesktopAppInfo *app_info;
-
-    g_return_val_if_fail (entry != NULL, FALSE);
-
-    app_info = cmenu_tree_entry_get_app_info (entry);
-
-    if (g_desktop_app_info_get_nodisplay (app_info))
-        return TRUE;
-
-    directory = entry->item.parent;
-    while (directory != NULL)
-    {
-        if (directory->is_nodisplay)
-            return TRUE;
-
-        directory = directory->item.parent;
-    }
-
-    return FALSE;
-}
-
-gboolean
-cmenu_tree_entry_get_is_excluded (CMenuTreeEntry *entry)
-{
-    g_return_val_if_fail (entry != NULL, FALSE);
-
-    return entry->is_excluded;
-}
-
-gboolean
-cmenu_tree_entry_get_is_unallocated (CMenuTreeEntry *entry)
-{
-    g_return_val_if_fail (entry != NULL, FALSE);
-
-    return entry->is_unallocated;
-}
-
-/**
- * cmenu_tree_entry_get_tree:
- * @entry: A #CMenuTreeEntry
- *
- * Grab the tree associated with a #CMenuTreeEntry.
- *
- * Returns: (transfer full): The #CMenuTree
- */
-CMenuTree *
-cmenu_tree_entry_get_tree (CMenuTreeEntry *entry)
-{
-    g_return_val_if_fail (entry != NULL, NULL);
-
-    return g_object_ref (entry->item.tree);
-}
-
-static CMenuTreeDirectory *
-cmenu_tree_directory_new (CMenuTree          *tree,
-                          CMenuTreeDirectory *parent,
-                          const char         *name)
-{
-    CMenuTreeDirectory *retval;
-
-    retval = g_slice_new0 (CMenuTreeDirectory);
-
-    retval->item.type     = CMENU_TREE_ITEM_DIRECTORY;
-    retval->item.parent   = parent;
-    retval->item.refcount = 1;
-    retval->item.tree     = tree;
-
-    retval->name                = g_strdup (name);
-    retval->directory_entry     = NULL;
-    retval->entries             = NULL;
-    retval->subdirs             = NULL;
-    retval->default_layout_info = NULL;
-    retval->layout_info         = NULL;
-    retval->contents            = NULL;
-    retval->only_unallocated    = FALSE;
-    retval->is_nodisplay        = FALSE;
-
-    return retval;
-}
-
-static void
-cmenu_tree_directory_finalize (CMenuTreeDirectory *directory)
-{
-    g_assert (directory->item.refcount == 0);
-
-    g_slist_foreach (directory->contents,
-                     (GFunc) cmenu_tree_item_unref_and_unset_parent,
-                     NULL);
-    g_slist_free (directory->contents);
-    directory->contents = NULL;
-
-    g_slist_foreach (directory->default_layout_info,
-                     (GFunc) menu_layout_node_unref,
-                     NULL);
-    g_slist_free (directory->default_layout_info);
-    directory->default_layout_info = NULL;
-
-    g_slist_foreach (directory->layout_info,
-                     (GFunc) menu_layout_node_unref,
-                     NULL);
-    g_slist_free (directory->layout_info);
-    directory->layout_info = NULL;
-
-    g_slist_foreach (directory->subdirs,
-                     (GFunc) cmenu_tree_item_unref_and_unset_parent,
-                     NULL);
-    g_slist_free (directory->subdirs);
-    directory->subdirs = NULL;
-
-    g_slist_foreach (directory->entries,
-                     (GFunc) cmenu_tree_item_unref_and_unset_parent,
-                     NULL);
-    g_slist_free (directory->entries);
-    directory->entries = NULL;
-
-    if (directory->directory_entry)
-    desktop_entry_unref (directory->directory_entry);
-    directory->directory_entry = NULL;
-
-    g_free (directory->name);
-    directory->name = NULL;
-
-    g_slice_free (CMenuTreeDirectory, directory);
-}
-
-static CMenuTreeEntry *
-cmenu_tree_entry_new (CMenuTreeDirectory *parent,
-                      DesktopEntry       *desktop_entry,
-                      const char         *desktop_file_id,
-                      gboolean            is_excluded,
-                      gboolean            is_unallocated)
-{
-    CMenuTreeEntry *retval;
-
-    retval = g_slice_new0 (CMenuTreeEntry);
-
-    retval->item.type     = CMENU_TREE_ITEM_ENTRY;
-    retval->item.parent   = parent;
-    retval->item.refcount = 1;
-    retval->item.tree     = parent->item.tree;
-
-    retval->desktop_entry   = desktop_entry_ref (desktop_entry);
-    retval->desktop_file_id = g_strdup (desktop_file_id);
-    retval->is_excluded     = is_excluded != FALSE;
-    retval->is_unallocated  = is_unallocated != FALSE;
-
-    return retval;
-}
-
-static void
-cmenu_tree_entry_finalize (CMenuTreeEntry *entry)
-{
-    g_assert (entry->item.refcount == 0);
-
-    g_free (entry->desktop_file_id);
-    entry->desktop_file_id = NULL;
-
-    if (entry->desktop_entry)
-        desktop_entry_unref (entry->desktop_entry);
-    entry->desktop_entry = NULL;
-
-    g_slice_free (CMenuTreeEntry, entry);
-}
-
-static int
-cmenu_tree_entry_compare_by_id (CMenuTreeItem *a,
-                                CMenuTreeItem *b)
-{
-    return strcmp (CMENU_TREE_ENTRY (a)->desktop_file_id,
-                   CMENU_TREE_ENTRY (b)->desktop_file_id);
-}
-
-/**
- * cmenu_tree_item_ref:
- * @item: a #CMenuTreeItem
- *
- * Returns: (transfer full): The same @item, or %NULL if @item is not a valid #CMenuTreeItem
- */
-gpointer
-cmenu_tree_item_ref (gpointer itemp)
-{
-    CMenuTreeItem *item;
-
-    item = (CMenuTreeItem *) itemp;
-
-    g_return_val_if_fail (item != NULL, NULL);
-    g_return_val_if_fail (item->refcount > 0, NULL);
-
-    g_atomic_int_inc (&item->refcount);
-
-    return item;
-}
-
-void
-cmenu_tree_item_unref (gpointer itemp)
-{
-    CMenuTreeItem *item;
-
-    item = (CMenuTreeItem *) itemp;
-
-    g_return_if_fail (item != NULL);
-    g_return_if_fail (item->refcount > 0);
-
-    if (g_atomic_int_dec_and_test (&(item->refcount)))
-    {
-        switch (item->type)
-        {
-            case CMENU_TREE_ITEM_DIRECTORY:
-                cmenu_tree_directory_finalize (CMENU_TREE_DIRECTORY (item));
-                break;
-
-            case CMENU_TREE_ITEM_ENTRY:
-                cmenu_tree_entry_finalize (CMENU_TREE_ENTRY (item));
-                break;
-
-            default:
-                g_assert_not_reached ();
-                break;
-        }
-    }
-}
-
-static void
-cmenu_tree_item_unref_and_unset_parent (gpointer itemp)
-{
-    CMenuTreeItem *item;
-
-    item = (CMenuTreeItem *) itemp;
-
-    g_return_if_fail (item != NULL);
-
-    cmenu_tree_item_set_parent (item, NULL);
-    cmenu_tree_item_unref (item);
-}
-
-static inline const char *
-cmenu_tree_item_compare_get_name_helper (CMenuTreeItem    *item,
-                                         CMenuTreeFlags    flags)
-{
-    const char *name;
-
-    name = NULL;
-
-    switch (item->type)
-    {
-        case CMENU_TREE_ITEM_DIRECTORY:
-            if (CMENU_TREE_DIRECTORY (item)->directory_entry)
-                name = desktop_entry_get_name (CMENU_TREE_DIRECTORY (item)->directory_entry);
-            else
-                name = CMENU_TREE_DIRECTORY (item)->name;
-            break;
-
-        case CMENU_TREE_ITEM_ENTRY:
-            if (flags & CMENU_TREE_FLAGS_SORT_DISPLAY_NAME)
-                name = g_app_info_get_display_name (G_APP_INFO (cmenu_tree_entry_get_app_info (CMENU_TREE_ENTRY (item))));
-            else
-                name = desktop_entry_get_name (CMENU_TREE_ENTRY (item)->desktop_entry);
-            break;
-
-        default:
-            g_assert_not_reached ();
-            break;
-    }
-
-    return name;
-}
-
-static int
-cmenu_tree_item_compare (CMenuTreeItem *a,
-                         CMenuTreeItem *b,
-                         gpointer       flags_p)
-{
-    const char       *name_a;
-    const char       *name_b;
-    CMenuTreeFlags    flags;
-
-    flags = GPOINTER_TO_INT (flags_p);
-
-    name_a = cmenu_tree_item_compare_get_name_helper (a, flags);
-    name_b = cmenu_tree_item_compare_get_name_helper (b, flags);
-
-    return g_utf8_collate (name_a, name_b);
 }
 
 static MenuLayoutNode *
@@ -2695,17 +2042,11 @@ process_include_rules (MenuLayoutNode  *layout,
     return set;
 }
 
-static void
-collect_layout_info (MenuLayoutNode  *layout,
-                     GSList         **layout_info)
+GSList *
+collect_layout_info (MenuLayoutNode  *layout)
 {
+    GSList *layout_info = NULL;
     MenuLayoutNode *iter;
-
-    g_slist_foreach (*layout_info,
-                     (GFunc) menu_layout_node_unref,
-                     NULL);
-    g_slist_free (*layout_info);
-    *layout_info = NULL;
 
     iter = menu_layout_node_get_children (layout);
     while (iter != NULL)
@@ -2715,7 +2056,7 @@ collect_layout_info (MenuLayoutNode  *layout,
             case MENU_LAYOUT_NODE_MENUNAME:
             case MENU_LAYOUT_NODE_FILENAME:
             case MENU_LAYOUT_NODE_MERGE:
-                *layout_info = g_slist_prepend (*layout_info, menu_layout_node_ref (iter));
+                layout_info = g_slist_prepend (layout_info, menu_layout_node_ref (iter));
                 break;
 
             default:
@@ -2725,7 +2066,7 @@ collect_layout_info (MenuLayoutNode  *layout,
         iter = menu_layout_node_get_next (iter);
     }
 
-    *layout_info = g_slist_reverse (*layout_info);
+    return g_slist_reverse (layout_info);
 }
 
 static void
@@ -2782,6 +2123,7 @@ process_layout (CMenuTree          *tree,
     DesktopEntrySet    *entries;
     DesktopEntrySet    *allocated_set;
     DesktopEntrySet    *excluded_set;
+    DesktopEntry       *directory_entry;
     gboolean            deleted;
     gboolean            only_unallocated;
     GSList             *tmp;
@@ -2789,10 +2131,9 @@ process_layout (CMenuTree          *tree,
     g_assert (menu_layout_node_get_type (layout) == MENU_LAYOUT_NODE_MENU);
     g_assert (menu_layout_node_menu_get_name (layout) != NULL);
 
-    directory = cmenu_tree_directory_new (tree, parent,
-                                          menu_layout_node_menu_get_name (layout));
+    directory = cmenu_tree_directory_new (parent, menu_layout_node_menu_get_name (layout));
 
-    menu_verbose ("=== Menu name = %s ===\n", directory->name);
+    menu_verbose ("=== Menu name = %s ===\n", cmenu_tree_directory_get_name (directory));
 
 
     deleted = FALSE;
@@ -2901,7 +2242,6 @@ process_layout (CMenuTree          *tree,
 
             case MENU_LAYOUT_NODE_DIRECTORY:
                 {
-                    DesktopEntry *entry;
 
                     menu_verbose ("Processing <Directory>%s</Directory>\n",
                                   menu_layout_node_get_content (layout_iter));
@@ -2909,26 +2249,23 @@ process_layout (CMenuTree          *tree,
                     /*
                      * The last <Directory> to exist wins, so we always try overwriting
                      */
-                    entry = entry_directory_list_get_directory (menu_layout_node_menu_get_directory_dirs (layout),
+                    directory_entry = entry_directory_list_get_directory (menu_layout_node_menu_get_directory_dirs (layout),
                                                                 menu_layout_node_get_content (layout_iter));
 
-                    if (entry != NULL)
+                    if (directory_entry != NULL)
                     {
-                        if (!desktop_entry_get_hidden (entry))
+                        if (!desktop_entry_get_hidden (directory_entry))
                         {
-                            if (directory->directory_entry)
-                                desktop_entry_unref (directory->directory_entry);
-                            directory->directory_entry = entry; /* pass ref ownership */
-                         }
+                            cmenu_tree_directory_set_directory_entry (directory, directory_entry); /* pass ref ownership */
+                        }
                         else
                         {
-                            desktop_entry_unref (entry);
+                            desktop_entry_unref (directory_entry);
                         }
                     }
 
                     menu_verbose ("Processed <Directory> new directory entry = %p (%s)\n",
-                                  directory->directory_entry,
-                                  directory->directory_entry? desktop_entry_get_path (directory->directory_entry) : "null");
+                                  directory_entry, directory_entry ? desktop_entry_get_path (directory_entry) : "null");
                 }
                 break;
 
@@ -2953,12 +2290,12 @@ process_layout (CMenuTree          *tree,
                 break;
 
             case MENU_LAYOUT_NODE_DEFAULT_LAYOUT:
-                collect_layout_info (layout_iter, &directory->default_layout_info);
+                cmenu_tree_directory_set_default_layout_info (directory, collect_layout_info (layout_iter));
                 menu_verbose ("Processed <DefaultLayout/>\n");
                 break;
 
             case MENU_LAYOUT_NODE_LAYOUT:
-                collect_layout_info (layout_iter, &directory->layout_info);
+                cmenu_tree_directory_set_layout_info (directory, collect_layout_info (layout_iter));
                 menu_verbose ("Processed <Layout/>\n");
                 break;
 
@@ -2971,31 +2308,32 @@ process_layout (CMenuTree          *tree,
 
     desktop_entry_set_unref (entry_pool);
 
-    directory->only_unallocated = only_unallocated;
+    cmenu_tree_directory_set_only_unallocated (directory, only_unallocated);
 
-    if (!directory->only_unallocated)
+    if (!only_unallocated)
         desktop_entry_set_union (allocated, allocated_set);
 
     desktop_entry_set_unref (allocated_set);
 
-    if (directory->directory_entry)
+    directory_entry = cmenu_tree_directory_get_directory_entry (directory);
+    if (directory_entry)
     {
-        if (desktop_entry_get_no_display (directory->directory_entry))
+        if (desktop_entry_get_no_display (directory_entry))
         {
-            directory->is_nodisplay = TRUE;
+            cmenu_tree_directory_set_is_nodisplay (directory, TRUE);
 
             if (!(tree->flags & CMENU_TREE_FLAGS_INCLUDE_NODISPLAY))
             {
                 menu_verbose ("Not showing menu %s because NoDisplay=true\n",
-                              desktop_entry_get_name (directory->directory_entry));
+                              desktop_entry_get_name (directory_entry));
                 deleted = TRUE;
             }
         }
 
-        if (!desktop_entry_get_show_in (directory->directory_entry))
+        if (!desktop_entry_get_show_in (directory_entry))
         {
             menu_verbose ("Not showing menu %s because OnlyShowIn!=$DESKTOP or NotShowIn=$DESKTOP (with $DESKTOP=${XDG_CURRENT_DESKTOP:-GNOME})\n",
-                          desktop_entry_get_name (directory->directory_entry));
+                          desktop_entry_get_name (directory_entry));
             deleted = TRUE;
         }
     }
@@ -3032,25 +2370,25 @@ process_layout (CMenuTree          *tree,
         /* If adding a new condition to delete here, it has to be added to
          * get_still_unallocated_foreach() too */
 
-        if (desktop_entry_get_hidden (entry->desktop_entry))
+        if (desktop_entry_get_hidden (cmenu_tree_entry_get_desktop_entry (entry)))
         {
             menu_verbose ("Deleting %s because Hidden=true\n",
-                          desktop_entry_get_name (entry->desktop_entry));
+                          desktop_entry_get_name (cmenu_tree_entry_get_desktop_entry (entry)));
             delete = TRUE;
         }
 
         if (!(tree->flags & CMENU_TREE_FLAGS_INCLUDE_NODISPLAY) &&
-            desktop_entry_get_no_display (entry->desktop_entry))
+            desktop_entry_get_no_display (cmenu_tree_entry_get_desktop_entry (entry)))
         {
             menu_verbose ("Deleting %s because NoDisplay=true\n",
-                          desktop_entry_get_name (entry->desktop_entry));
+                          desktop_entry_get_name (cmenu_tree_entry_get_desktop_entry (entry)));
             delete = TRUE;
         }
 
-        if (!desktop_entry_get_show_in (entry->desktop_entry))
+        if (!desktop_entry_get_show_in (cmenu_tree_entry_get_desktop_entry (entry)))
         {
             menu_verbose ("Deleting %s because OnlyShowIn!=$DESKTOP or NotShowIn=$DESKTOP (with $DESKTOP=${XDG_CURRENT_DESKTOP:-GNOME})\n",
-                          desktop_entry_get_name (entry->desktop_entry));
+                          desktop_entry_get_name (cmenu_tree_entry_get_desktop_entry (entry)));
             delete = TRUE;
         }
 
@@ -3066,7 +2404,7 @@ process_layout (CMenuTree          *tree,
         tmp = next;
     }
 
-    g_assert (directory->name != NULL);
+    g_assert (cmenu_tree_directory_get_name (directory) != NULL);
 
     return directory;
 }
@@ -3083,7 +2421,7 @@ process_only_unallocated (CMenuTree          *tree,
      * entries that were in fact allocated.
      */
 
-    if (directory->only_unallocated)
+    if (cmenu_tree_directory_get_only_unallocated (directory))
     {
         tmp = directory->entries;
         while (tmp != NULL)
@@ -3091,14 +2429,16 @@ process_only_unallocated (CMenuTree          *tree,
             CMenuTreeEntry *entry = tmp->data;
             GSList         *next  = tmp->next;
 
-            if (desktop_entry_set_lookup (allocated, entry->desktop_file_id))
+            if (desktop_entry_set_lookup (allocated, cmenu_tree_entry_get_desktop_file_id (entry)))
             {
                 directory->entries = g_slist_delete_link (directory->entries, tmp);
                 cmenu_tree_item_unref_and_unset_parent (entry);
             }
             else
             {
-                desktop_entry_set_add_entry (unallocated_used, entry->desktop_entry, entry->desktop_file_id);
+                desktop_entry_set_add_entry (unallocated_used,
+                                             cmenu_tree_entry_get_desktop_entry (entry),
+                                             cmenu_tree_entry_get_desktop_file_id (entry));
             }
 
             tmp = next;
@@ -3149,45 +2489,6 @@ get_still_unallocated_foreach (const char                     *file_id,
     desktop_entry_set_add_entry (data->still_unallocated, entry, file_id);
 }
 
-static void preprocess_layout_info (CMenuTree          *tree,
-                                    CMenuTreeDirectory *directory);
-
-static GSList *
-get_layout_info (CMenuTreeDirectory *directory,
-                 gboolean           *is_default_layout)
-{
-    CMenuTreeDirectory *iter;
-
-    if (directory->layout_info != NULL)
-    {
-        if (is_default_layout)
-        {
-            *is_default_layout = FALSE;
-        }
-        return directory->layout_info;
-    }
-
-    /* Even if there's no layout information at all, the result will be an
-     * implicit default layout */
-    if (is_default_layout)
-    {
-        *is_default_layout = TRUE;
-    }
-
-    iter = directory;
-    while (iter != NULL)
-    {
-        if (iter->default_layout_info != NULL)
-        {
-            return iter->default_layout_info;
-        }
-
-        iter = CMENU_TREE_ITEM (iter)->parent;
-    }
-
-    return NULL;
-}
-
 static void
 preprocess_layout_info_subdir_helper (CMenuTree          *tree,
                                       CMenuTreeDirectory *directory,
@@ -3204,7 +2505,7 @@ preprocess_layout_info_subdir_helper (CMenuTree          *tree,
     {
         if (!(tree->flags & CMENU_TREE_FLAGS_SHOW_EMPTY))
         {
-            menu_verbose ("Not showing empty menu '%s'\n", subdir->name);
+            menu_verbose ("Not showing empty menu '%s'\n", cmenu_tree_directory_get_name (subdir));
             *should_remove = TRUE;
         }
     }
@@ -3227,7 +2528,7 @@ preprocess_layout_info (CMenuTree          *tree,
      * is MENU_LAYOUT_VALUES_NONE: in this case, we need to remove empty menus;
      * and the layout mask can be different for a submenu anyway */
 
-    menu_verbose ("Processing menu layout inline hints for %s\n", directory->name);
+    menu_verbose ("Processing menu layout inline hints for %s\n", cmenu_tree_directory_get_name (directory));
 
     strip_duplicates = FALSE;
 
@@ -3269,8 +2570,8 @@ preprocess_layout_info (CMenuTree          *tree,
             CMenuTreeItem *a = tmp->data;
             CMenuTreeItem *b = tmp->next->data;
 
-            if (strcmp (CMENU_TREE_ENTRY (a)->desktop_file_id,
-                        CMENU_TREE_ENTRY (b)->desktop_file_id) == 0)
+            if (strcmp (cmenu_tree_entry_get_desktop_file_id (CMENU_TREE_ENTRY (a)),
+                        cmenu_tree_entry_get_desktop_file_id (CMENU_TREE_ENTRY (b))) == 0)
             {
                 tmp = g_slist_delete_link (tmp, tmp->next);
                 cmenu_tree_item_unref (b);
@@ -3281,16 +2582,13 @@ preprocess_layout_info (CMenuTree          *tree,
     }
 }
 
-static void process_layout_info (CMenuTree          *tree,
-                                 CMenuTreeDirectory *directory);
-
 static void
 merge_subdir (CMenuTree          *tree,
               CMenuTreeDirectory *directory,
               CMenuTreeDirectory *subdir)
 {
     menu_verbose ("Merging subdir '%s' in directory '%s'\n",
-                  subdir->name, directory->name);
+                  cmenu_tree_directory_get_name (subdir), cmenu_tree_directory_get_name (directory));
 
     process_layout_info (tree, subdir);
 
@@ -3306,7 +2604,7 @@ merge_subdir_by_name (CMenuTree          *tree,
     GSList *tmp;
 
     menu_verbose ("Attempting to merge subdir '%s' in directory '%s'\n",
-                  subdir_name, directory->name);
+                  subdir_name, cmenu_tree_directory_get_name (directory));
 
     tmp = directory->subdirs;
     while (tmp != NULL)
@@ -3314,7 +2612,7 @@ merge_subdir_by_name (CMenuTree          *tree,
         CMenuTreeDirectory *subdir = tmp->data;
         GSList             *next = tmp->next;
 
-        if (!strcmp (subdir->name, subdir_name))
+        if (!strcmp (cmenu_tree_directory_get_name (subdir), subdir_name))
         {
             directory->subdirs = g_slist_delete_link (directory->subdirs, tmp);
             merge_subdir (tree, directory, subdir);
@@ -3331,7 +2629,7 @@ merge_entry (CMenuTree          *tree,
              CMenuTreeEntry     *entry)
 {
     menu_verbose ("Merging entry '%s' in directory '%s'\n",
-                  entry->desktop_file_id, directory->name);
+                  cmenu_tree_entry_get_desktop_file_id (entry), cmenu_tree_directory_get_name (directory));
 
     directory->contents = g_slist_append (directory->contents,
                                           cmenu_tree_item_ref (entry));
@@ -3345,7 +2643,7 @@ merge_entry_by_id (CMenuTree          *tree,
     GSList *tmp;
 
     menu_verbose ("Attempting to merge entry '%s' in directory '%s'\n",
-                  file_id, directory->name);
+                  file_id, cmenu_tree_directory_get_name (directory));
 
     tmp = directory->entries;
     while (tmp != NULL)
@@ -3353,7 +2651,7 @@ merge_entry_by_id (CMenuTree          *tree,
         CMenuTreeEntry *entry = tmp->data;
         GSList         *next = tmp->next;
 
-        if (!strcmp (entry->desktop_file_id, file_id))
+        if (!strcmp (cmenu_tree_entry_get_desktop_file_id (entry), file_id))
         {
             directory->entries = g_slist_delete_link (directory->entries, tmp);
             merge_entry (tree, directory, entry);
@@ -3387,28 +2685,28 @@ merge_subdirs (CMenuTree          *tree,
     GSList *subdirs;
     GSList *tmp;
 
-    menu_verbose ("Merging subdirs in directory '%s'\n", directory->name);
+    menu_verbose ("Merging subdirs in directory '%s'\n", cmenu_tree_directory_get_name (directory));
 
     subdirs = directory->subdirs;
     directory->subdirs = NULL;
 
     subdirs = g_slist_sort_with_data (subdirs,
                                       (GCompareDataFunc) cmenu_tree_item_compare,
-                                      GINT_TO_POINTER (CMENU_TREE_FLAGS_NONE));
+                                      GINT_TO_POINTER (FALSE));
 
     tmp = subdirs;
     while (tmp != NULL)
     {
         CMenuTreeDirectory *subdir = tmp->data;
 
-        if (!find_name_in_list (subdir->name, except))
+        if (!find_name_in_list (cmenu_tree_directory_get_name (subdir), except))
         {
             merge_subdir (tree, directory, subdir);
             cmenu_tree_item_unref (subdir);
         }
         else
         {
-            menu_verbose ("Not merging directory '%s' yet\n", subdir->name);
+            menu_verbose ("Not merging directory '%s' yet\n", cmenu_tree_directory_get_name (subdir));
             directory->subdirs = g_slist_append (directory->subdirs, subdir);
         }
 
@@ -3427,28 +2725,28 @@ merge_entries (CMenuTree          *tree,
     GSList *entries;
     GSList *tmp;
 
-    menu_verbose ("Merging entries in directory '%s'\n", directory->name);
+    menu_verbose ("Merging entries in directory '%s'\n", cmenu_tree_directory_get_name (directory));
 
     entries = directory->entries;
     directory->entries = NULL;
 
     entries = g_slist_sort_with_data (entries,
                                       (GCompareDataFunc) cmenu_tree_item_compare,
-                                      GINT_TO_POINTER (tree->flags));
+                                      GINT_TO_POINTER (tree->flags & CMENU_TREE_FLAGS_SORT_DISPLAY_NAME));
 
     tmp = entries;
     while (tmp != NULL)
     {
         CMenuTreeEntry *entry = tmp->data;
 
-        if (!find_name_in_list (entry->desktop_file_id, except))
+        if (!find_name_in_list (cmenu_tree_entry_get_desktop_file_id (entry), except))
         {
             merge_entry (tree, directory, entry);
             cmenu_tree_item_unref (entry);
         }
         else
         {
-            menu_verbose ("Not merging entry '%s' yet\n", entry->desktop_file_id);
+            menu_verbose ("Not merging entry '%s' yet\n", cmenu_tree_entry_get_desktop_file_id (entry));
             directory->entries = g_slist_append (directory->entries, entry);
         }
 
@@ -3469,7 +2767,7 @@ merge_subdirs_and_entries (CMenuTree          *tree,
     GSList *tmp;
 
     menu_verbose ("Merging subdirs and entries together in directory %s\n",
-                  directory->name);
+                  cmenu_tree_directory_get_name (directory));
 
     items = g_slist_concat (directory->subdirs, directory->entries);
 
@@ -3478,7 +2776,7 @@ merge_subdirs_and_entries (CMenuTree          *tree,
 
     items = g_slist_sort_with_data (items,
                                     (GCompareDataFunc) cmenu_tree_item_compare,
-                                    GINT_TO_POINTER (tree->flags));
+                                    GINT_TO_POINTER (tree->flags & CMENU_TREE_FLAGS_SORT_DISPLAY_NAME));
 
     tmp = items;
     while (tmp != NULL)
@@ -3486,11 +2784,11 @@ merge_subdirs_and_entries (CMenuTree          *tree,
         CMenuTreeItem     *item = tmp->data;
         CMenuTreeItemType  type;
 
-        type = item->type;
+        type = cmenu_tree_item_get_item_type (item);
 
         if (type == CMENU_TREE_ITEM_DIRECTORY)
         {
-            if (!find_name_in_list (CMENU_TREE_DIRECTORY (item)->name, except_subdirs))
+            if (!find_name_in_list (cmenu_tree_directory_get_name (CMENU_TREE_DIRECTORY (item)), except_subdirs))
             {
                 merge_subdir (tree,
                               directory,
@@ -3500,13 +2798,13 @@ merge_subdirs_and_entries (CMenuTree          *tree,
             else
             {
                 menu_verbose ("Not merging directory '%s' yet\n",
-                              CMENU_TREE_DIRECTORY (item)->name);
+                              cmenu_tree_directory_get_name (CMENU_TREE_DIRECTORY (item)));
                 directory->subdirs = g_slist_append (directory->subdirs, item);
             }
         }
         else if (type == CMENU_TREE_ITEM_ENTRY)
         {
-            if (!find_name_in_list (CMENU_TREE_ENTRY (item)->desktop_file_id, except_entries))
+            if (!find_name_in_list (cmenu_tree_entry_get_desktop_file_id (CMENU_TREE_ENTRY (item)), except_entries))
             {
                 merge_entry (tree, directory, CMENU_TREE_ENTRY (item));
                 cmenu_tree_item_unref (item);
@@ -3514,7 +2812,7 @@ merge_subdirs_and_entries (CMenuTree          *tree,
             else
             {
                 menu_verbose ("Not merging entry '%s' yet\n",
-                              CMENU_TREE_ENTRY (item)->desktop_file_id);
+                              cmenu_tree_entry_get_desktop_file_id (CMENU_TREE_ENTRY (item)));
                 directory->entries = g_slist_append (directory->entries, item);
             }
         }
@@ -3587,7 +2885,7 @@ process_layout_info (CMenuTree          *tree,
 {
     GSList *layout_info;
 
-    menu_verbose ("Processing menu layout hints for %s\n", directory->name);
+    menu_verbose ("Processing menu layout hints for %s\n", cmenu_tree_directory_get_name (directory));
 
     g_slist_foreach (directory->contents,
                      (GFunc) cmenu_tree_item_unref_and_unset_parent,
@@ -3595,7 +2893,7 @@ process_layout_info (CMenuTree          *tree,
     g_slist_free (directory->contents);
     directory->contents = NULL;
 
-    layout_info = get_layout_info (directory, NULL);
+    layout_info = cmenu_tree_directory_get_layout (directory);
 
     if (layout_info == NULL)
     {
@@ -3680,17 +2978,8 @@ process_layout_info (CMenuTree          *tree,
     g_slist_free (directory->entries);
     directory->entries = NULL;
 
-    g_slist_foreach (directory->default_layout_info,
-                     (GFunc) menu_layout_node_unref,
-                     NULL);
-    g_slist_free (directory->default_layout_info);
-    directory->default_layout_info = NULL;
-
-    g_slist_foreach (directory->layout_info,
-                     (GFunc) menu_layout_node_unref,
-                     NULL);
-    g_slist_free (directory->layout_info);
-    directory->layout_info = NULL;
+    cmenu_tree_directory_set_default_layout_info (directory, NULL);
+    cmenu_tree_directory_set_layout_info (directory, NULL);
 }
 
 static void
@@ -3833,43 +3122,4 @@ cmenu_tree_force_rebuild (CMenuTree *tree)
                                                       (MenuLayoutNodeEntriesChangedFunc) handle_entries_changed,
                                                       tree);
     }
-}
-
-GType
-cmenu_tree_iter_get_type (void)
-{
-    static GType gtype = G_TYPE_INVALID;
-    if (gtype == G_TYPE_INVALID)
-    {
-        gtype = g_boxed_type_register_static ("CMenuTreeIter",
-                                              (GBoxedCopyFunc) cmenu_tree_iter_ref,
-                                              (GBoxedFreeFunc) cmenu_tree_iter_unref);
-    }
-    return gtype;
-}
-
-GType
-cmenu_tree_directory_get_type (void)
-{
-    static GType gtype = G_TYPE_INVALID;
-    if (gtype == G_TYPE_INVALID)
-    {
-        gtype = g_boxed_type_register_static ("CMenuTreeDirectory",
-                                              (GBoxedCopyFunc) cmenu_tree_item_ref,
-                                              (GBoxedFreeFunc) cmenu_tree_item_unref);
-    }
-    return gtype;
-}
-
-GType
-cmenu_tree_entry_get_type (void)
-{
-    static GType gtype = G_TYPE_INVALID;
-    if (gtype == G_TYPE_INVALID)
-    {
-        gtype = g_boxed_type_register_static ("CMenuTreeEntry",
-                                              (GBoxedCopyFunc) cmenu_tree_item_ref,
-                                              (GBoxedFreeFunc) cmenu_tree_item_unref);
-    }
-    return gtype;
 }
