@@ -1,18 +1,14 @@
-project('cinnamon-menus', 'c', version : '4.0.0')
+project('cinnamon-menus', 'c', version : '4.0.0', meson_version: '>=0.40.0')
 
 gnome = import('gnome')
 
 version = meson.project_version()
-version_list = version.split('.')
-major_version = version_list[0]
-minor_version = version_list[1]
-micro_version = version_list[2]
 
 binary_version = '0.0.1'
 binary_major_version = binary_version.split('.')[0]
 
-xreader_conf = configuration_data()
-xreader_conf.set_quoted('PACKAGE', meson.project_name())
+cmenu_conf = configuration_data()
+cmenu_conf.set_quoted('PACKAGE', meson.project_name())
 
 # directories
 prefix = get_option('prefix')
@@ -23,7 +19,7 @@ includedir = get_option('includedir')
 # generate config.h
 config_h_file = configure_file(
     output : 'config.h',
-    configuration : xreader_conf
+    configuration : cmenu_conf
 )
 
 config_h = declare_dependency(
