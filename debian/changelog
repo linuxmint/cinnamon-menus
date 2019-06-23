@@ -1,3 +1,30 @@
+cinnamon-menus (4.2.0) tina; urgency=medium
+
+  [ Pino Toscano ]
+  * Switch to modern realpath() (#20)
+
+  [ Stephen Collins ]
+  * Port to meson (#21)
+
+  [ Leigh Scott ]
+  * Update for meson changes and also adapt for cinnamon (#23)
+
+  [ Stephen Collins ]
+  * Build: fix the build options (#22)
+  * Add devhelp docs to cinnamon menus for easier reference (#24)
+
+  [ Clement Lefebvre ]
+  * Build: Set enable_debug to false
+
+  [ Leigh Scott ]
+  * Add option to disable docs (#25)
+
+  [ Eli Schwartz ]
+  * Cleanup (#26)
+  * Meson simplification (#27)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun, 23 Jun 2019 15:33:32 +0200
+
 cinnamon-menus (4.0.0) tessa; urgency=medium
 
   * CI: Remove Mint 18
