@@ -1,0 +1,12 @@
+# Specify filepatterns you want git to ignore.
+debian/.debhelper/
+debian/build/
+debian/tmp/
+debian/files
+debian/*.log
+debian/*.install
+debian/*.substvars
+debian/gir1.2-cmenu-3.0/
+debian/libcinnamon-menu-3-0-dbg/
+debian/libcinnamon-menu-3-0/
+debian/libcinnamon-menu-3-dev/
