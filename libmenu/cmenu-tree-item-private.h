@@ -48,10 +48,7 @@ struct CMenuTreeDirectory
 
     GSList         *entries;
     GSList         *subdirs;
-
-    GSList           *default_layout_info;
-    GSList           *layout_info;
-    GSList           *contents;
+    GSList         *contents;
 
     guint only_unallocated : 1;
     guint is_nodisplay : 1;
@@ -80,29 +77,22 @@ struct CMenuTreeIter
 
 // tree item
 void                cmenu_tree_item_unref_and_unset_parent       (gpointer           itemp);
-const char         *cmenu_tree_item_compare_get_name_helper      (CMenuTreeItem     *item,
-                                                                  gboolean           sort_display_name);
-int                 cmenu_tree_item_compare                      (CMenuTreeItem     *a,
-                                                                  CMenuTreeItem     *b,
-                                                                  gpointer           sort_display_name);
 
 // tree directory
 CMenuTreeDirectory *cmenu_tree_directory_new                     (CMenuTreeDirectory *parent,
                                                                   const char         *name);
 void                cmenu_tree_directory_finalize                (CMenuTreeDirectory *directory);
-void                cmenu_tree_directory_set_default_layout_info (CMenuTreeDirectory *directory,
-                                                                  GSList             *default_layout_info);
-void                cmenu_tree_directory_set_layout_info         (CMenuTreeDirectory *directory,
-                                                                  GSList             *layout_info);
 void                cmenu_tree_directory_set_is_nodisplay        (CMenuTreeDirectory *directory,
                                                                   gboolean            nodisplay);
-GSList             *cmenu_tree_directory_get_layout              (CMenuTreeDirectory *directory);
 gboolean            cmenu_tree_directory_get_only_unallocated    (CMenuTreeDirectory *directory);
 void                cmenu_tree_directory_set_only_unallocated    (CMenuTreeDirectory *directory,
                                                                   gboolean            only_unallocated);
 DesktopEntry       *cmenu_tree_directory_get_directory_entry     (CMenuTreeDirectory *directory);
 void                cmenu_tree_directory_set_directory_entry     (CMenuTreeDirectory *directory,
                                                                   DesktopEntry       *entry);
+void                cmenu_tree_directory_flatten                 (CMenuTreeDirectory *directory);
+int                 cmenu_tree_directory_compare                 (CMenuTreeItem      *a,
+                                                                  CMenuTreeItem      *b);
 
 // tree entry
 CMenuTreeEntry     *cmenu_tree_entry_new                         (CMenuTreeDirectory *parent,
@@ -112,6 +102,8 @@ CMenuTreeEntry     *cmenu_tree_entry_new                         (CMenuTreeDirec
                                                                   gboolean            is_unallocated);
 void                cmenu_tree_entry_finalize                    (CMenuTreeEntry     *entry);
 int                 cmenu_tree_entry_compare_by_id               (CMenuTreeItem      *a,
+                                                                  CMenuTreeItem      *b);
+int                 cmenu_tree_entry_compare_by_name             (CMenuTreeItem      *a,
                                                                   CMenuTreeItem      *b);
 DesktopEntry       *cmenu_tree_entry_get_desktop_entry           (CMenuTreeEntry     *entry);
 

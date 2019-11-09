@@ -79,6 +79,7 @@ char                   *cmenu_tree_directory_make_path              (CMenuTreeDi
 // tree entry
 GDesktopAppInfo        *cmenu_tree_entry_get_app_info               (CMenuTreeEntry *entry);
 CMenuTreeDirectory     *cmenu_tree_entry_get_parent                 (CMenuTreeEntry *entry);
+const char             *cmenu_tree_entry_get_name                   (CMenuTreeEntry *entry);
 const char             *cmenu_tree_entry_get_desktop_file_path      (CMenuTreeEntry *entry);
 const char             *cmenu_tree_entry_get_desktop_file_id        (CMenuTreeEntry *entry);
 gboolean                cmenu_tree_entry_get_is_nodisplay_recurse   (CMenuTreeEntry *entry);

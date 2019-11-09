@@ -92,52 +92,6 @@ cmenu_tree_item_unref_and_unset_parent (gpointer itemp)
     cmenu_tree_item_unref (item);
 }
 
-const char *
-cmenu_tree_item_compare_get_name_helper (CMenuTreeItem *item,
-                                         gboolean       sort_display_name)
-{
-    const char *name;
-
-    name = NULL;
-
-    switch (item->type)
-    {
-        case CMENU_TREE_ITEM_DIRECTORY:
-            if (CMENU_TREE_DIRECTORY (item)->directory_entry)
-                name = desktop_entry_get_name (CMENU_TREE_DIRECTORY (item)->directory_entry);
-            else
-                name = CMENU_TREE_DIRECTORY (item)->name;
-            break;
-
-        case CMENU_TREE_ITEM_ENTRY:
-            if (sort_display_name)
-                name = g_app_info_get_display_name (G_APP_INFO (cmenu_tree_entry_get_app_info (CMENU_TREE_ENTRY (item))));
-            else
-                name = desktop_entry_get_name (CMENU_TREE_ENTRY (item)->desktop_entry);
-            break;
-
-        default:
-            g_assert_not_reached ();
-            break;
-    }
-
-    return name;
-}
-
-int
-cmenu_tree_item_compare (CMenuTreeItem *a,
-                         CMenuTreeItem *b,
-                         gpointer       sort_display_name)
-{
-    const char       *name_a;
-    const char       *name_b;
-
-    name_a = cmenu_tree_item_compare_get_name_helper (a, GPOINTER_TO_INT (sort_display_name));
-    name_b = cmenu_tree_item_compare_get_name_helper (b, GPOINTER_TO_INT (sort_display_name));
-
-    return g_utf8_collate (name_a, name_b);
-}
-
 CMenuTreeItemType
 cmenu_tree_item_get_item_type (CMenuTreeItem *item)
 {
@@ -322,8 +276,6 @@ cmenu_tree_directory_new (CMenuTreeDirectory *parent,
     retval->directory_entry     = NULL;
     retval->entries             = NULL;
     retval->subdirs             = NULL;
-    retval->default_layout_info = NULL;
-    retval->layout_info         = NULL;
     retval->contents            = NULL;
     retval->only_unallocated    = FALSE;
     retval->is_nodisplay        = FALSE;
@@ -341,18 +293,6 @@ cmenu_tree_directory_finalize (CMenuTreeDirectory *directory)
                      NULL);
     g_slist_free (directory->contents);
     directory->contents = NULL;
-
-    g_slist_foreach (directory->default_layout_info,
-                     (GFunc) menu_layout_node_unref,
-                     NULL);
-    g_slist_free (directory->default_layout_info);
-    directory->default_layout_info = NULL;
-
-    g_slist_foreach (directory->layout_info,
-                     (GFunc) menu_layout_node_unref,
-                     NULL);
-    g_slist_free (directory->layout_info);
-    directory->layout_info = NULL;
 
     g_slist_foreach (directory->subdirs,
                      (GFunc) cmenu_tree_item_unref_and_unset_parent,
@@ -389,54 +329,6 @@ cmenu_tree_directory_get_type (void)
     return gtype;
 }
 
-void
-cmenu_tree_directory_set_default_layout_info (CMenuTreeDirectory *directory,
-                                              GSList             *default_layout_info)
-{
-    g_slist_foreach (directory->default_layout_info,
-                     (GFunc) menu_layout_node_unref,
-                     NULL);
-    g_slist_free (directory->default_layout_info);
-
-    directory->default_layout_info = default_layout_info;
-}
-
-void
-cmenu_tree_directory_set_layout_info (CMenuTreeDirectory *directory,
-                                      GSList             *layout_info)
-{
-    g_slist_foreach (directory->layout_info,
-                     (GFunc) menu_layout_node_unref,
-                     NULL);
-    g_slist_free (directory->layout_info);
-
-    directory->layout_info = layout_info;
-}
-
-GSList *
-cmenu_tree_directory_get_layout (CMenuTreeDirectory *directory)
-{
-    CMenuTreeDirectory *iter;
-
-    if (directory->layout_info != NULL)
-    {
-        return directory->layout_info;
-    }
-
-    iter = directory;
-    while (iter != NULL)
-    {
-        if (iter->default_layout_info != NULL)
-        {
-            return iter->default_layout_info;
-        }
-
-        iter = CMENU_TREE_ITEM (iter)->parent;
-    }
-
-    return NULL;
-}
-
 gboolean
 cmenu_tree_directory_get_only_unallocated (CMenuTreeDirectory *directory)
 {
@@ -465,6 +357,57 @@ cmenu_tree_directory_set_directory_entry (CMenuTreeDirectory *directory,
     directory->directory_entry = desktop_entry_ref (entry);
 }
 
+void
+cmenu_tree_directory_flatten (CMenuTreeDirectory *directory)
+{
+    GSList *tmp;
+
+    tmp = directory->subdirs;
+    while (directory->subdirs != NULL) {
+        CMenuTreeDirectory *subdir = directory->subdirs->data;
+        GSList *tmp;
+
+        cmenu_tree_directory_flatten (subdir);
+
+        directory->entries = g_slist_concat (directory->entries, subdir->entries);
+        subdir->entries = NULL;
+
+        // remove duplicates
+        directory->entries = g_slist_sort (directory->entries, (GCompareFunc) cmenu_tree_entry_compare_by_id);
+        tmp = directory->entries;
+        while (tmp != NULL && tmp->next != NULL)
+        {
+            CMenuTreeEntry *entry = tmp->data;
+
+            if (cmenu_tree_entry_compare_by_id (tmp->data, tmp->next->data) == 0) {
+                cmenu_tree_item_unref (tmp->next->data);
+                tmp = g_slist_delete_link (tmp, tmp->next);
+            }
+
+            tmp = tmp->next;
+        }
+
+        cmenu_tree_item_unref_and_unset_parent (subdir);
+        directory->subdirs = g_slist_delete_link (directory->subdirs, directory->subdirs);
+    }
+}
+
+int
+cmenu_tree_directory_compare (CMenuTreeItem *a,
+                              CMenuTreeItem *b)
+{
+    const char *a_id = cmenu_tree_directory_get_menu_id (CMENU_TREE_DIRECTORY (a));
+    const char *b_id = cmenu_tree_directory_get_menu_id (CMENU_TREE_DIRECTORY (b));
+
+    if (strcmp (a_id, "Preferences") == 0) return 1;
+    if (strcmp (b_id, "Preferences") == 0) return -1;
+
+    if (strcmp (a_id, "Administration") == 0) return 1;
+    if (strcmp (b_id, "Administration") == 0) return -1;
+
+    return strcmp (cmenu_tree_directory_get_name (CMENU_TREE_DIRECTORY (a)), cmenu_tree_directory_get_name (CMENU_TREE_DIRECTORY (b)));
+}
+
 /**
  * cmenu_tree_entry_get_parent:
  * @entry: a #CMenuTreeEntry
@@ -489,6 +432,12 @@ cmenu_tree_entry_get_app_info (CMenuTreeEntry *entry)
     g_return_val_if_fail (entry != NULL, NULL);
 
     return desktop_entry_get_app_info (entry->desktop_entry);
+}
+
+const char *
+cmenu_tree_entry_get_name (CMenuTreeEntry *entry)
+{
+    return g_app_info_get_display_name (G_APP_INFO (cmenu_tree_entry_get_app_info (entry)));
 }
 
 const char *
@@ -592,6 +541,14 @@ cmenu_tree_entry_compare_by_id (CMenuTreeItem *a,
 {
     return strcmp (CMENU_TREE_ENTRY (a)->desktop_file_id,
                    CMENU_TREE_ENTRY (b)->desktop_file_id);
+}
+
+int
+cmenu_tree_entry_compare_by_name (CMenuTreeItem *a,
+                                  CMenuTreeItem *b)
+{
+    return strcmp (cmenu_tree_entry_get_name (CMENU_TREE_ENTRY (a)),
+                   cmenu_tree_entry_get_name (CMENU_TREE_ENTRY (b)));
 }
 
 GType
