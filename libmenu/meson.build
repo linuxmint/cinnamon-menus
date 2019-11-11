@@ -85,7 +85,7 @@ pc = configure_file(
 libdocument_gir = gnome.generate_gir(
     libcinnamon_menus,
     namespace: 'CMenu',
-    nsversion: '3.0',
+    nsversion: '4.0',
     sources: public_sources,
     identifier_prefix: 'CMenu',
     symbol_prefix: 'cmenu',
