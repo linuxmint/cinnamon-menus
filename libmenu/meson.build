@@ -1,13 +1,27 @@
+header_subdir = 'cinnamon-menus-3.0'
+
 public_headers = [
-	'gmenu-tree.h',
+    'cmenu-tree.h',
+    'cmenu-tree-item.h',
 ]
 
 public_sources = [
-    'gmenu-tree.c',
+    'cmenu-tree.c',
+    'cmenu-tree-item.c',
     public_headers,
 ]
 
+public_sources += gnome.mkenums_simple(
+    'cmenu-tree-enums',
+    sources: public_headers,
+    install_headers: true,
+    install_dir: header_subdir,
+    identifier_prefix: 'CMenu',
+    symbol_prefix: 'cmenu',
+)
+
 libmenu_private_headers = [
+    'cmenu-tree-item-private.h',
     'desktop-entries.h',
     'entry-directories.h',
     'menu-layout.h',
@@ -50,7 +64,7 @@ cmenu_dep = declare_dependency(
 
 install_headers(
     public_headers,
-    subdir: 'cinnamon-menus-3.0'
+    subdir: header_subdir,
 )
 
 pkgconfig = import('pkgconfig')
@@ -68,12 +82,12 @@ pkgconfig.generate(
 gnome.generate_gir(
     libcinnamon_menus,
     namespace: 'CMenu',
-    nsversion: '3.0',
+    nsversion: '4.0',
     sources: public_sources,
-    identifier_prefix: 'GMenu',
-    symbol_prefix: 'gmenu',
+    identifier_prefix: 'CMenu',
+    symbol_prefix: 'cmenu',
     includes: 'Gio-2.0',
-    header: 'gmenu-tree.h',
+    header: 'cmenu-tree.h',
     install: true,
     install_dir_gir: join_paths(datadir, 'gir-1.0'),
     export_packages: 'libcinnamon-menu-3.0',

@@ -29,7 +29,7 @@ config_h = declare_dependency(
 include_root = include_directories('.')
 
 c_args = [
-    '-DGMENU_I_KNOW_THIS_IS_UNSTABLE',
+    '-DCMENU_I_KNOW_THIS_IS_UNSTABLE',
 ]
 
 if get_option('enable_debug')
@@ -51,6 +51,7 @@ add_global_arguments(c_args, language: 'c')
 gio = dependency('gio-unix-2.0', version: '>= 2.29.15')
 
 subdir('libmenu')
+subdir('test')
 if get_option('enable_docs')
-subdir('docs/reference')
+    subdir('docs/reference')
 endif

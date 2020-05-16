@@ -15,7 +15,7 @@
         <title>API Reference</title>
         <chapter>
             <title>Classes</title>
-            <xi:include href="xml/gmenu-tree.xml"/>
+            <xi:include href="xml/cmenu-tree.xml"/>
         </chapter>
     </part>
 
