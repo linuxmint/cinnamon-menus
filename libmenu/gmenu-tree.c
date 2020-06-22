@@ -1779,6 +1779,11 @@ gmenu_tree_item_compare_get_name_helper (GMenuTreeItem    *item,
       break;
 
     case GMENU_TREE_ITEM_ENTRY:
+      if (gmenu_tree_entry_get_app_info (GMENU_TREE_ENTRY (item)) == NULL)
+      {
+        return desktop_entry_get_basename (GMENU_TREE_ENTRY (item)->desktop_entry);
+      }
+
       if (flags & GMENU_TREE_FLAGS_SORT_DISPLAY_NAME)
         name = g_app_info_get_display_name (G_APP_INFO (gmenu_tree_entry_get_app_info (GMENU_TREE_ENTRY (item))));
       else
