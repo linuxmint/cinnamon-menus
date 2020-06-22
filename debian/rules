@@ -19,7 +19,6 @@ override_dh_auto_configure:
 		--prefix=/usr \
 		--buildtype=plain \
 		-D deprecated_warnings=false \
-		-D enable_debug=false \
 		-D enable_docs=true
 
 override_dh_auto_clean:
