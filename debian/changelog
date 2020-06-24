@@ -1,3 +1,11 @@
+cinnamon-menus (4.6.1) ulyana; urgency=medium
+
+  [ Michael Webster ]
+  * debian/rules: Don't disable debugging.
+  * gmenu-tree.c: Return a basename if no appinfo is available when sorting.
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 24 Jun 2020 13:44:23 +0100
+
 cinnamon-menus (4.6.0) ulyana; urgency=medium
 
   * 4.6.0
