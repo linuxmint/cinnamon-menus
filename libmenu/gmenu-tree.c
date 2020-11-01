@@ -130,6 +130,7 @@ struct GMenuTreeEntry
 
   guint is_excluded : 1;
   guint is_unallocated : 1;
+  guint is_flatpak : 1;
 };
 
 struct GMenuTreeSeparator
@@ -1265,9 +1266,9 @@ gmenu_tree_directory_make_path (GMenuTreeDirectory *directory,
  * gmenu_tree_entry_get_app_info:
  * @entry: a #GMenuTreeEntry
  *
- * Returns: (transfer none): The #GDesktopAppInfo for this entry
+ * Returns: (transfer none): The #GMenuDesktopAppInfo for this entry
  */
-GDesktopAppInfo *
+GMenuDesktopAppInfo *
 gmenu_tree_entry_get_app_info (GMenuTreeEntry *entry)
 {
   g_return_val_if_fail (entry != NULL, NULL);
@@ -1295,13 +1296,13 @@ gboolean
 gmenu_tree_entry_get_is_nodisplay_recurse (GMenuTreeEntry *entry)
 {
   GMenuTreeDirectory *directory;
-  GDesktopAppInfo *app_info;
+  GMenuDesktopAppInfo *app_info;
 
   g_return_val_if_fail (entry != NULL, FALSE);
 
   app_info = gmenu_tree_entry_get_app_info (entry);
 
-  if (g_desktop_app_info_get_nodisplay (app_info))
+  if (gmenu_desktopappinfo_get_nodisplay (app_info))
     return TRUE;
 
   directory = entry->item.parent;
@@ -1314,6 +1315,17 @@ gmenu_tree_entry_get_is_nodisplay_recurse (GMenuTreeEntry *entry)
     }
 
   return FALSE;
+}
+
+gboolean gmenu_tree_entry_get_is_flatpak (GMenuTreeEntry *entry)
+{
+  GMenuDesktopAppInfo *app_info;
+
+  g_return_val_if_fail (entry != NULL, FALSE);
+  
+  app_info = gmenu_tree_entry_get_app_info (entry);
+  
+  return gmenu_desktopappinfo_get_is_flatpak (app_info);
 }
 
 gboolean
@@ -3466,7 +3478,7 @@ process_layout (GMenuTree          *tree,
           delete = TRUE;
         }
 
-      /* No need to filter out based on TryExec since GDesktopAppInfo cannot
+      /* No need to filter out based on TryExec since GMenuDesktopAppInfo cannot
        * deal with .desktop files with a failed TryExec. */
 
       if (delete)

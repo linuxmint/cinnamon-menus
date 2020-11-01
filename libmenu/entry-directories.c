@@ -574,10 +574,10 @@ handle_cached_dir_changed (MenuMonitor      *monitor,
          * NOTIFY: mimeinfo.cache
          *
          * Additionally, the failure is not upon trying to read the file,
-         * but attempting to get its GAppInfo (g_desktop_app_info_new_from_filename()
+         * but attempting to get its GAppInfo (gmenu_desktopappinfo_new_from_filename()
          * in desktop-entries.c ln 277).  If you jigger desktop_entry_load() around
          * and read the file as a keyfile *first*, it succeeds.  If you then try
-         * to run g_desktop_app_info_new_from_keyfile(), *then* it fails.
+         * to run gmenu_desktopappinfo_new_from_keyfile(), *then* it fails.
          *
          * The theory here is there is a race condition where app info (which includes
          * mimetype stuff) is unavailable because mimeinfo.cache is updated immediately
@@ -1059,17 +1059,9 @@ entry_directory_get_flat_contents (EntryDirectory   *ed,
       if (desktop_entries &&
           desktop_entry_get_type (entry) == DESKTOP_ENTRY_DESKTOP)
         {
-          char *file_id;
-
-          file_id = get_desktop_file_id_from_path (ed,
-						   DESKTOP_ENTRY_DESKTOP,
-						   basename);
-
           desktop_entry_set_add_entry (desktop_entries,
                                        entry,
-                                       file_id);
-
-          g_free (file_id);
+                                       NULL);
         }
 
       if (directory_entries &&
