@@ -18,7 +18,7 @@
  */
 
 #include "desktop-entries.h"
-#include <gio/gdesktopappinfo.h>
+#include "gmenu-desktopappinfo.h"
 
 #include <string.h>
 
@@ -41,7 +41,7 @@ typedef struct
 {
   DesktopEntry     base;
 
-  GDesktopAppInfo *appinfo;
+  GMenuDesktopAppInfo *appinfo;
   GQuark          *categories;
   guint            showin : 1;
 } DesktopEntryDesktop;
@@ -272,14 +272,14 @@ desktop_entry_load (DesktopEntry *entry)
       DesktopEntryDesktop *entry_desktop = (DesktopEntryDesktop*)entry;
       const char *categories_str;
 
-      entry_desktop->appinfo = g_desktop_app_info_new_from_filename (entry->path);
-      if (!G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo))
+      entry_desktop->appinfo = gmenu_desktopappinfo_new_from_filename (entry->path);
+      if (!GMENU_IS_DESKTOPAPPINFO (((DesktopEntryDesktop*)entry)->appinfo))
         {
           menu_verbose ("Failed to load \"%s\"\n", entry->path);
           return DESKTOP_ENTRY_LOAD_FAIL_APPINFO;
         }
 
-      categories_str = g_desktop_app_info_get_categories (entry_desktop->appinfo);
+      categories_str = gmenu_desktopappinfo_get_categories (entry_desktop->appinfo);
       if (categories_str)
         {
           char **categories;
@@ -523,7 +523,10 @@ desktop_entry_unref (DesktopEntry *entry)
       DesktopEntryDesktop *desktop_entry = (DesktopEntryDesktop*) entry;
       g_free (desktop_entry->categories);
       if (desktop_entry->appinfo)
+      {
         g_object_unref (desktop_entry->appinfo);
+        desktop_entry->appinfo = NULL;
+      }
     }
   else if (entry->type == DESKTOP_ENTRY_DIRECTORY)
     {
@@ -570,7 +573,7 @@ desktop_entry_get_name (DesktopEntry *entry)
 {
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
     {
-      g_return_val_if_fail (G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo), NULL);
+      g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (((DesktopEntryDesktop*)entry)->appinfo), NULL);
       return g_app_info_get_name (G_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo));
     }
 
@@ -582,8 +585,8 @@ desktop_entry_get_generic_name (DesktopEntry *entry)
 {
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
     {
-      g_return_val_if_fail (G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo), NULL);
-      return g_desktop_app_info_get_generic_name (((DesktopEntryDesktop*)entry)->appinfo);
+      g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (((DesktopEntryDesktop*)entry)->appinfo), NULL);
+      return gmenu_desktopappinfo_get_generic_name (((DesktopEntryDesktop*)entry)->appinfo);
     }
 
   return ((DesktopEntryDirectory*)entry)->generic_name;
@@ -594,7 +597,7 @@ desktop_entry_get_comment (DesktopEntry *entry)
 {
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
     {
-      g_return_val_if_fail (G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo), NULL);
+      g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (((DesktopEntryDesktop*)entry)->appinfo), NULL);
       return g_app_info_get_description (G_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo));
     }
 
@@ -606,7 +609,7 @@ desktop_entry_get_icon (DesktopEntry *entry)
 {
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
     {
-      g_return_val_if_fail (G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo), NULL);
+      g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (((DesktopEntryDesktop*)entry)->appinfo), NULL);
       return g_app_info_get_icon (G_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo));
     }
 
@@ -618,8 +621,8 @@ desktop_entry_get_no_display (DesktopEntry *entry)
 {
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
     {
-      g_return_val_if_fail (G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo), FALSE);
-      return g_desktop_app_info_get_nodisplay (((DesktopEntryDesktop*)entry)->appinfo);
+      g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (((DesktopEntryDesktop*)entry)->appinfo), FALSE);
+      return gmenu_desktopappinfo_get_nodisplay (((DesktopEntryDesktop*)entry)->appinfo);
     }
 
   return ((DesktopEntryDirectory*)entry)->nodisplay;
@@ -630,8 +633,8 @@ desktop_entry_get_hidden (DesktopEntry *entry)
 {
   if (entry->type == DESKTOP_ENTRY_DESKTOP)
     {
-      g_return_val_if_fail (G_IS_DESKTOP_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo), FALSE);
-      return g_desktop_app_info_get_is_hidden (((DesktopEntryDesktop*)entry)->appinfo);
+      g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (((DesktopEntryDesktop*)entry)->appinfo), FALSE);
+      return gmenu_desktopappinfo_get_is_hidden (((DesktopEntryDesktop*)entry)->appinfo);
     }
 
   return ((DesktopEntryDirectory*)entry)->hidden;
@@ -653,8 +656,20 @@ desktop_entry_get_show_in (DesktopEntry *entry)
   return ((DesktopEntryDirectory*)entry)->showin;
 }
 
+const char *
+desktop_entry_get_id (DesktopEntry *entry)
+{
+  if (entry->type == DESKTOP_ENTRY_DESKTOP)
+    {
+      g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (((DesktopEntryDesktop*)entry)->appinfo), NULL);
+      return g_app_info_get_id (G_APP_INFO (((DesktopEntryDesktop*)entry)->appinfo));
+    }
 
-GDesktopAppInfo  *
+  // this only applies to non-desktop entries
+  return entry->basename;
+}
+
+GMenuDesktopAppInfo  *
 desktop_entry_get_app_info (DesktopEntry *entry)
 {
   g_return_val_if_fail (entry->type == DESKTOP_ENTRY_DESKTOP, NULL);
@@ -752,6 +767,7 @@ desktop_entry_set_add_entry (DesktopEntrySet *set,
                              DesktopEntry    *entry,
                              const char      *file_id)
 {
+  const char *file_id_to_use;
   menu_verbose (" Adding to set %p entry %s\n", set, file_id);
 
   if (set->hash == NULL)
@@ -762,8 +778,14 @@ desktop_entry_set_add_entry (DesktopEntrySet *set,
                                          (GDestroyNotify) desktop_entry_unref);
     }
 
+  if (desktop_entry_get_type (entry) == DESKTOP_ENTRY_DESKTOP) {
+    file_id_to_use = desktop_entry_get_id (entry);
+  }
+  else {
+    file_id_to_use = file_id;
+  }
   g_hash_table_replace (set->hash,
-                        g_strdup (file_id),
+                        g_strdup (file_id_to_use),
                         desktop_entry_ref (entry));
 }
 

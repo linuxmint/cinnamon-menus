@@ -20,7 +20,7 @@
 #ifndef __DESKTOP_ENTRIES_H__
 #define __DESKTOP_ENTRIES_H__
 
-#include <gio/gdesktopappinfo.h>
+#include "gmenu-desktopappinfo.h"
 
 G_BEGIN_DECLS
 
@@ -60,7 +60,7 @@ gboolean          desktop_entry_get_no_display (DesktopEntry *entry);
 gboolean          desktop_entry_get_show_in  (DesktopEntry *entry);
 
 /* Only valid for DESKTOP_ENTRY_DESKTOP */
-GDesktopAppInfo  *desktop_entry_get_app_info (DesktopEntry *entry);
+GMenuDesktopAppInfo  *desktop_entry_get_app_info (DesktopEntry *entry);
 gboolean desktop_entry_has_categories (DesktopEntry *entry);
 gboolean desktop_entry_has_category   (DesktopEntry *entry,
                                        const char   *category);
@@ -87,6 +87,7 @@ void desktop_entry_set_subtract      (DesktopEntrySet *set,
                                       DesktopEntrySet *other);
 void desktop_entry_set_swap_contents (DesktopEntrySet *a,
                                       DesktopEntrySet *b);
+const char * desktop_entry_get_id (DesktopEntry *entry);
 
 typedef void (*DesktopEntrySetForeachFunc) (const char   *file_id,
                                             DesktopEntry *entry,

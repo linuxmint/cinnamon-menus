@@ -24,7 +24,7 @@
 #error "libgnome-menu should only be used if you understand that it's subject to frequent change, and is not supported as a fixed API/ABI or as part of the platform"
 #endif
 
-#include <gio/gdesktopappinfo.h>
+#include "gmenu-desktopappinfo.h"
 
 G_BEGIN_DECLS
 
@@ -132,7 +132,7 @@ char *gmenu_tree_directory_make_path (GMenuTreeDirectory *directory,
 				      GMenuTreeEntry     *entry);
 
 
-GDesktopAppInfo    *gmenu_tree_entry_get_app_info       (GMenuTreeEntry *entry);
+GMenuDesktopAppInfo    *gmenu_tree_entry_get_app_info       (GMenuTreeEntry *entry);
 GMenuTreeDirectory *gmenu_tree_entry_get_parent         (GMenuTreeEntry *entry);
 GMenuTree          *gmenu_tree_entry_get_tree           (GMenuTreeEntry *entry);
 
@@ -142,6 +142,7 @@ const char *gmenu_tree_entry_get_desktop_file_id   (GMenuTreeEntry *entry);
 gboolean gmenu_tree_entry_get_is_nodisplay_recurse  (GMenuTreeEntry *entry);
 gboolean gmenu_tree_entry_get_is_excluded  (GMenuTreeEntry *entry);
 gboolean gmenu_tree_entry_get_is_unallocated  (GMenuTreeEntry *entry);
+gboolean gmenu_tree_entry_get_is_flatpak (GMenuTreeEntry *entry);
 
 GMenuTreeDirectory *gmenu_tree_header_get_directory (GMenuTreeHeader *header);
 GMenuTree          *gmenu_tree_header_get_tree      (GMenuTreeHeader *header);
