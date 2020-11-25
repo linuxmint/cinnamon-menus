@@ -1,3 +1,14 @@
+cinnamon-menus (4.8.0) ulyssa; urgency=medium
+
+  [ Clement Lefebvre ]
+  * CI: Update targets
+
+  [ Lars Mueller ]
+  * Improve integration of flatpak apps
+  * Fixed the license
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 25 Nov 2020 13:03:35 +0000
+
 cinnamon-menus (4.6.1) ulyana; urgency=medium
 
   [ Michael Webster ]
