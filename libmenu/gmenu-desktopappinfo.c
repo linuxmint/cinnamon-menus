@@ -36,9 +36,9 @@ struct _GMenuDesktopAppInfo
 static void
 update_app_data (GMenuDesktopAppInfo *info)
 {
-  const gchar *exec;
-  const gchar *id;
-  const gchar *startup_wm_class;
+  gchar *exec = NULL;
+  gchar *id = NULL;
+  gchar *startup_wm_class = NULL;
 
   g_free (info->desktop_id);
   info->desktop_id = NULL;
@@ -51,11 +51,11 @@ update_app_data (GMenuDesktopAppInfo *info)
 
   if (info->super_appinfo != NULL)
   {
-    exec = g_app_info_get_executable (G_APP_INFO (info->super_appinfo));
-    id = g_app_info_get_id (G_APP_INFO (info->super_appinfo));
-    startup_wm_class = g_desktop_app_info_get_startup_wm_class (info->super_appinfo);
+    exec = (gchar *) g_app_info_get_executable (G_APP_INFO (info->super_appinfo));
+    id = (gchar *) g_app_info_get_id (G_APP_INFO (info->super_appinfo));
+    startup_wm_class = (gchar *) g_desktop_app_info_get_startup_wm_class (info->super_appinfo);
 
-    if (strstr (exec, "flatpak") || strstr (exec, "bwrap"))
+    if (exec && (strstr (exec, "flatpak") || strstr (exec, "bwrap")))
     {
       info->desktop_id = g_strconcat (id, GMENU_DESKTOPAPPINFO_FLATPAK_SUFFIX, NULL);
       if (startup_wm_class)
