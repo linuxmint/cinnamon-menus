@@ -923,7 +923,8 @@ entry_directory_get_directory (EntryDirectory *ed,
 static char *
 get_desktop_file_id_from_path (EntryDirectory   *ed,
 			       DesktopEntryType  entry_type,
-			       const char       *relative_path)
+			       const char       *relative_path,
+             DesktopEntry *entry)
 {
   char *retval;
 
@@ -931,7 +932,16 @@ get_desktop_file_id_from_path (EntryDirectory   *ed,
 
   if (entry_type == DESKTOP_ENTRY_DESKTOP)
     {
+      GMenuDesktopAppInfo *appinfo;
+      appinfo = desktop_entry_get_app_info (entry);
       retval = g_strdelimit (g_strdup (relative_path), "/", '-');
+      if (gmenu_desktopappinfo_get_is_flatpak (appinfo))
+      {
+        char* tmp;
+        tmp = retval;
+        retval = g_strconcat (retval, GMENU_DESKTOPAPPINFO_FLATPAK_SUFFIX, NULL);
+        g_free (tmp);
+      }
     }
   else
     {
@@ -978,7 +988,8 @@ entry_directory_foreach_recursive (EntryDirectory            *ed,
 
 	  file_id = get_desktop_file_id_from_path (ed,
 						   ed->entry_type,
-						   relative_path->str);
+						   relative_path->str,
+               entry);
 
           ret = func (ed, entry, file_id, set, user_data);
 
