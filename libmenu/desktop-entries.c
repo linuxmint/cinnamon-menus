@@ -767,7 +767,7 @@ desktop_entry_set_add_entry (DesktopEntrySet *set,
                              DesktopEntry    *entry,
                              const char      *file_id)
 {
-  const char *file_id_to_use;
+  char *file_id_to_use;
   menu_verbose (" Adding to set %p entry %s\n", set, file_id);
 
   if (set->hash == NULL)
@@ -779,14 +779,29 @@ desktop_entry_set_add_entry (DesktopEntrySet *set,
     }
 
   if (desktop_entry_get_type (entry) == DESKTOP_ENTRY_DESKTOP) {
-    file_id_to_use = desktop_entry_get_id (entry);
+    const char *actual_file_id;
+    actual_file_id = desktop_entry_get_id (entry);
+    // file_id is computed from the path relative to the defining directory entry
+    // actual_file_id is computed from the file basename, potentially having the suffix ":flatpak"
+    if (g_strcmp0 (file_id, actual_file_id) == 0)
+    {
+      file_id_to_use = g_strdup (file_id);
+    } else {
+      if (g_str_has_suffix (actual_file_id, GMENU_DESKTOPAPPINFO_FLATPAK_SUFFIX))
+      {
+        file_id_to_use = g_strconcat (file_id, GMENU_DESKTOPAPPINFO_FLATPAK_SUFFIX, NULL);
+      } else {
+        file_id_to_use = g_strdup(file_id);
+      }
+    }
   }
   else {
-    file_id_to_use = file_id;
+    file_id_to_use = g_strdup(file_id);
   }
   g_hash_table_replace (set->hash,
                         g_strdup (file_id_to_use),
                         desktop_entry_ref (entry));
+  free (file_id_to_use);
 }
 
 DesktopEntry *
