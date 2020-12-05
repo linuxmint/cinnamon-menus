@@ -767,7 +767,6 @@ desktop_entry_set_add_entry (DesktopEntrySet *set,
                              DesktopEntry    *entry,
                              const char      *file_id)
 {
-  const char *file_id_to_use;
   menu_verbose (" Adding to set %p entry %s\n", set, file_id);
 
   if (set->hash == NULL)
@@ -778,14 +777,8 @@ desktop_entry_set_add_entry (DesktopEntrySet *set,
                                          (GDestroyNotify) desktop_entry_unref);
     }
 
-  if (desktop_entry_get_type (entry) == DESKTOP_ENTRY_DESKTOP) {
-    file_id_to_use = desktop_entry_get_id (entry);
-  }
-  else {
-    file_id_to_use = file_id;
-  }
   g_hash_table_replace (set->hash,
-                        g_strdup (file_id_to_use),
+                        g_strdup (file_id),
                         desktop_entry_ref (entry));
 }
 
