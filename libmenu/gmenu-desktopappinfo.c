@@ -80,6 +80,8 @@ update_app_data (GMenuDesktopAppInfo *info)
 static GAppInfo *
 gmenu_desktopappinfo_dup (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   GMenuDesktopAppInfo *new_info;
 
@@ -109,6 +111,8 @@ gmenu_desktopappinfo_equal (GAppInfo *appinfo1,
 static const char *
 gmenu_desktopappinfo_get_id (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
 
   return info->desktop_id;
@@ -117,6 +121,8 @@ gmenu_desktopappinfo_get_id (GAppInfo *appinfo)
 static const char *
 gmenu_desktopappinfo_get_name (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_get_name (G_APP_INFO(info->super_appinfo));
 }
@@ -124,6 +130,8 @@ gmenu_desktopappinfo_get_name (GAppInfo *appinfo)
 static const char *
 gmenu_desktopappinfo_get_description (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_get_description (G_APP_INFO(info->super_appinfo));
 }
@@ -131,6 +139,8 @@ gmenu_desktopappinfo_get_description (GAppInfo *appinfo)
 static const char *
 gmenu_desktopappinfo_get_executable (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_get_executable (G_APP_INFO(info->super_appinfo));
 }
@@ -138,6 +148,8 @@ gmenu_desktopappinfo_get_executable (GAppInfo *appinfo)
 static GIcon *
 gmenu_desktopappinfo_get_icon (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_get_icon (G_APP_INFO(info->super_appinfo));
 }
@@ -145,6 +157,8 @@ gmenu_desktopappinfo_get_icon (GAppInfo *appinfo)
 static gboolean
 gmenu_desktopappinfo_launch (GAppInfo *appinfo, GList *files, GAppLaunchContext *launch_context, GError **error)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_launch (G_APP_INFO(info->super_appinfo), files, launch_context, error);
 }
@@ -152,6 +166,8 @@ gmenu_desktopappinfo_launch (GAppInfo *appinfo, GList *files, GAppLaunchContext 
 static gboolean
 gmenu_desktopappinfo_supports_uris (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_supports_uris (G_APP_INFO(info->super_appinfo));
 }
@@ -159,6 +175,8 @@ gmenu_desktopappinfo_supports_uris (GAppInfo *appinfo)
 static gboolean
 gmenu_desktopappinfo_supports_files (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_supports_files (G_APP_INFO(info->super_appinfo));
 }
@@ -169,6 +187,8 @@ gmenu_desktopappinfo_launch_uris (GAppInfo           *appinfo,
                                 GAppLaunchContext  *launch_context,
                                 GError            **error)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_launch_uris (G_APP_INFO(info->super_appinfo), uris, launch_context, error);
 }
@@ -176,6 +196,8 @@ gmenu_desktopappinfo_launch_uris (GAppInfo           *appinfo,
 static gboolean
 gmenu_desktopappinfo_should_show (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_should_show (G_APP_INFO(info->super_appinfo));
 }
@@ -185,6 +207,8 @@ gmenu_desktopappinfo_set_as_default_for_type (GAppInfo    *appinfo,
                                                 const char  *content_type,
                                                 GError     **error)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_set_as_default_for_type (G_APP_INFO(info->super_appinfo), content_type, error);
 }
@@ -194,6 +218,8 @@ gmenu_desktopappinfo_set_as_default_for_extension (GAppInfo    *appinfo,
                                                  const char  *extension,
                                                  GError     **error)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_set_as_default_for_extension (G_APP_INFO(info->super_appinfo), extension, error);
 }
@@ -203,6 +229,8 @@ gmenu_desktopappinfo_add_supports_type (GAppInfo    *appinfo,
                                       const char  *content_type,
                                       GError     **error)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_add_supports_type (G_APP_INFO(info->super_appinfo), content_type, error);
 }
@@ -210,6 +238,8 @@ gmenu_desktopappinfo_add_supports_type (GAppInfo    *appinfo,
 static gboolean
 gmenu_desktopappinfo_can_remove_supports_type (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_can_remove_supports_type (G_APP_INFO(info->super_appinfo));
 }
@@ -219,6 +249,8 @@ gmenu_desktopappinfo_remove_supports_type (GAppInfo    *appinfo,
                                          const char  *content_type,
                                          GError     **error)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_remove_supports_type (G_APP_INFO(info->super_appinfo), content_type, error);
 }
@@ -226,6 +258,8 @@ gmenu_desktopappinfo_remove_supports_type (GAppInfo    *appinfo,
 static gboolean
 gmenu_desktopappinfo_can_delete (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_can_delete (G_APP_INFO(info->super_appinfo));
 }
@@ -233,6 +267,8 @@ gmenu_desktopappinfo_can_delete (GAppInfo *appinfo)
 static gboolean
 gmenu_desktopappinfo_delete (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_delete (G_APP_INFO(info->super_appinfo));
 }
@@ -240,6 +276,8 @@ gmenu_desktopappinfo_delete (GAppInfo *appinfo)
 static const char *
 gmenu_desktopappinfo_get_commandline (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_get_commandline (G_APP_INFO(info->super_appinfo));
 }
@@ -247,6 +285,8 @@ gmenu_desktopappinfo_get_commandline (GAppInfo *appinfo)
 static const char *
 gmenu_desktopappinfo_get_display_name (GAppInfo *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_get_display_name (G_APP_INFO(info->super_appinfo));
 }
@@ -256,6 +296,8 @@ gmenu_desktopappinfo_set_as_last_used_for_type (GAppInfo    *appinfo,
                                          const char  *content_type,
                                          GError     **error)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_set_as_last_used_for_type (G_APP_INFO(info->super_appinfo), content_type, error);
 }
@@ -263,6 +305,8 @@ gmenu_desktopappinfo_set_as_last_used_for_type (GAppInfo    *appinfo,
 static const char **
 gmenu_desktopappinfo_get_supported_types (GAppInfo    *appinfo)
 {
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+
   GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
   return g_app_info_get_supported_types (G_APP_INFO(info->super_appinfo));
 }
@@ -412,8 +456,8 @@ gmenu_desktopappinfo_new_from_keyfile (GKeyFile *keyfile)
  */
 const char * gmenu_desktopappinfo_get_filename (GMenuDesktopAppInfo *appinfo)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_get_filename (info->super_appinfo);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+  return g_desktop_app_info_get_filename (appinfo->super_appinfo);
 }
 
 /**
@@ -426,8 +470,8 @@ const char * gmenu_desktopappinfo_get_filename (GMenuDesktopAppInfo *appinfo)
  */
 const char * gmenu_desktopappinfo_get_generic_name (GMenuDesktopAppInfo *appinfo)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_get_generic_name (info->super_appinfo);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+  return g_desktop_app_info_get_generic_name (appinfo->super_appinfo);
 }
 
 /**
@@ -441,8 +485,8 @@ const char * gmenu_desktopappinfo_get_generic_name (GMenuDesktopAppInfo *appinfo
  */
 const char * gmenu_desktopappinfo_get_categories (GMenuDesktopAppInfo *appinfo)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_get_categories (info->super_appinfo);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+  return g_desktop_app_info_get_categories (appinfo->super_appinfo);
 }
 
 /**
@@ -455,8 +499,8 @@ const char * gmenu_desktopappinfo_get_categories (GMenuDesktopAppInfo *appinfo)
  */
 const char * const *gmenu_desktopappinfo_get_keywords (GMenuDesktopAppInfo *appinfo)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_get_keywords (info->super_appinfo);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+  return g_desktop_app_info_get_keywords (appinfo->super_appinfo);
 }
 
 /**
@@ -471,8 +515,8 @@ const char * const *gmenu_desktopappinfo_get_keywords (GMenuDesktopAppInfo *appi
  */
 gboolean gmenu_desktopappinfo_get_nodisplay (GMenuDesktopAppInfo *appinfo)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_get_nodisplay (info->super_appinfo);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+  return g_desktop_app_info_get_nodisplay (appinfo->super_appinfo);
 }
 
 /**
@@ -498,8 +542,8 @@ gboolean gmenu_desktopappinfo_get_nodisplay (GMenuDesktopAppInfo *appinfo)
  */
 gboolean gmenu_desktopappinfo_get_show_in (GMenuDesktopAppInfo *appinfo, const gchar *desktop_env)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_get_show_in (info->super_appinfo, desktop_env);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+  return g_desktop_app_info_get_show_in (appinfo->super_appinfo, desktop_env);
 }
 
 /**
@@ -518,9 +562,9 @@ gboolean gmenu_desktopappinfo_get_show_in (GMenuDesktopAppInfo *appinfo, const g
  */
 const char * gmenu_desktopappinfo_get_startup_wm_class (GMenuDesktopAppInfo *appinfo)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
 
-  return info->startup_wm_class;
+  return appinfo->startup_wm_class;
 }
 
 /**
@@ -534,8 +578,8 @@ const char * gmenu_desktopappinfo_get_startup_wm_class (GMenuDesktopAppInfo *app
  **/
 gboolean gmenu_desktopappinfo_get_is_hidden (GMenuDesktopAppInfo *appinfo)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_get_is_hidden (info->super_appinfo);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+  return g_desktop_app_info_get_is_hidden (appinfo->super_appinfo);
 }
 
 /**
@@ -550,8 +594,8 @@ gboolean gmenu_desktopappinfo_get_is_hidden (GMenuDesktopAppInfo *appinfo)
  */
 gboolean gmenu_desktopappinfo_has_key (GMenuDesktopAppInfo *appinfo, const char *key)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_has_key (info->super_appinfo, key);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+  return g_desktop_app_info_has_key (appinfo->super_appinfo, key);
 }
 
 /**
@@ -568,8 +612,8 @@ gboolean gmenu_desktopappinfo_has_key (GMenuDesktopAppInfo *appinfo, const char 
  */
 char * gmenu_desktopappinfo_get_string (GMenuDesktopAppInfo *appinfo, const char *key)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_get_string (info->super_appinfo, key);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+  return g_desktop_app_info_get_string (appinfo->super_appinfo, key);
 }
 
 /**
@@ -587,8 +631,8 @@ char * gmenu_desktopappinfo_get_string (GMenuDesktopAppInfo *appinfo, const char
  */
 char * gmenu_desktopappinfo_get_locale_string (GMenuDesktopAppInfo *appinfo, const char *key)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_get_locale_string (info->super_appinfo, key);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+  return g_desktop_app_info_get_locale_string (appinfo->super_appinfo, key);
 }
 
 /**
@@ -605,8 +649,8 @@ char * gmenu_desktopappinfo_get_locale_string (GMenuDesktopAppInfo *appinfo, con
  */
 gboolean gmenu_desktopappinfo_get_boolean (GMenuDesktopAppInfo *appinfo, const char *key)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_get_boolean (info->super_appinfo, key);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+  return g_desktop_app_info_get_boolean (appinfo->super_appinfo, key);
 }
 
 /**
@@ -623,8 +667,8 @@ gboolean gmenu_desktopappinfo_get_boolean (GMenuDesktopAppInfo *appinfo, const c
  **/
 const gchar * const * gmenu_desktopappinfo_list_actions (GMenuDesktopAppInfo *appinfo)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_list_actions (info->super_appinfo);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+  return g_desktop_app_info_list_actions (appinfo->super_appinfo);
 }
 
 /**
@@ -652,8 +696,8 @@ const gchar * const * gmenu_desktopappinfo_list_actions (GMenuDesktopAppInfo *ap
  */
 void gmenu_desktopappinfo_launch_action (GMenuDesktopAppInfo *appinfo, const gchar *action_name, GAppLaunchContext *launch_context)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  g_desktop_app_info_launch_action (info->super_appinfo, action_name, launch_context);
+  g_return_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo));
+  g_desktop_app_info_launch_action (appinfo->super_appinfo, action_name, launch_context);
 }
 
 /**
@@ -674,8 +718,8 @@ void gmenu_desktopappinfo_launch_action (GMenuDesktopAppInfo *appinfo, const gch
  */
 gchar * gmenu_desktopappinfo_get_action_name (GMenuDesktopAppInfo *appinfo, const gchar *action_name)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_get_action_name (info->super_appinfo, action_name);
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), NULL);
+  return g_desktop_app_info_get_action_name (appinfo->super_appinfo, action_name);
 }
 
 /**
@@ -719,8 +763,8 @@ gboolean gmenu_desktopappinfo_launch_uris_as_manager (GMenuDesktopAppInfo       
                                            gpointer                    pid_callback_data,
                                            GError                    **error)
 {
-  GMenuDesktopAppInfo *info = GMENU_DESKTOPAPPINFO (appinfo);
-  return g_desktop_app_info_launch_uris_as_manager (info->super_appinfo,
+  g_return_val_if_fail (GMENU_IS_DESKTOPAPPINFO (appinfo), FALSE);
+  return g_desktop_app_info_launch_uris_as_manager (appinfo->super_appinfo,
                                                     uris,
                                                     launch_context,
                                                     spawn_flags,
