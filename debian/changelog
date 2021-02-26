@@ -1,3 +1,10 @@
+cinnamon-menus (4.8.3) ulyssa; urgency=medium
+
+  [ Lars Mueller ]
+  * Prevent a crash when changing a desktop file to a malformed format
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 26 Feb 2021 16:12:56 +0000
+
 cinnamon-menus (4.8.2) ulyssa; urgency=medium
 
   [ Lars Mueller ]
