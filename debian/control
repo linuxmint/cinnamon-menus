@@ -4,10 +4,10 @@ Priority: optional
 Maintainer: Clement Lefebvre <root@linuxmint.com>
 Build-Depends: debhelper-compat (= 12),
                dh-sequence-gir,
-               libgirepository1.0-dev (>= 1.58.3),
-               libglib2.0-dev (>= 2.30.0),
-               gobject-introspection (>= 1.58.3),
+               gobject-introspection (>= 1.58.3-2),
                gtk-doc-tools (>= 1.4),
+               libgirepository1.0-dev (>= 1.58.3-2),
+               libglib2.0-dev (>= 2.30.0),
                meson
 Standards-Version: 4.5.0
 
