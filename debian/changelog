@@ -1,3 +1,10 @@
+cinnamon-menus (5.2.0) una; urgency=medium
+
+  [ Oliver Kästner ]
+  * update packaging (#53)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 15 Nov 2021 13:12:04 +0000
+
 cinnamon-menus (5.0.0) uma; urgency=medium
 
   * 5.0.0
