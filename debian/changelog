@@ -1,3 +1,13 @@
+cinnamon-menus (5.4.0) vanessa; urgency=medium
+
+  [ Clement Lefebvre ]
+  * CI: Update targets
+
+  [ Michael Webster ]
+  * Restore and update debian/ symbols file.
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 10 Jun 2022 15:04:14 +0200
+
 cinnamon-menus (5.2.0) una; urgency=medium
 
   [ Oliver Kästner ]
