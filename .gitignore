@@ -1,0 +1,10 @@
+*.debhelper.log
+debian/*.debhelper
+debian/*.substvars
+debian/debhelper-build-stamp
+debian/files
+debian/gir1.2-cmenu-3.0/
+debian/libcinnamon-menu-3-0-dbg/
+debian/libcinnamon-menu-3-0/
+debian/libcinnamon-menu-3-dev/
+debian/tmp/
