@@ -9,7 +9,7 @@ configure_file(
 
 gnome.gtkdoc(
     'cmenu',
-    src_dir: join_paths(meson.source_root(), 'libmenu'),
+    src_dir: join_paths(meson.project_source_root(), 'libmenu'),
     main_xml: 'cmenu-docs.xml',
     scan_args: ['--rebuild-types'],
     ignore_headers: libmenu_private_headers,
