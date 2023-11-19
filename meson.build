@@ -1,4 +1,4 @@
-project('cinnamon-menus', 'c', version : '5.8.0', meson_version: '>=0.56.0')
+project('cinnamon-menus', 'c', version : '6.0.0', meson_version: '>=0.56.0')
 
 gnome = import('gnome')
 
