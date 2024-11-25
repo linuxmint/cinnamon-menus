@@ -1,3 +1,9 @@
+cinnamon-menus (6.4.0) xia; urgency=medium
+
+  * 6.4.0
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 25 Nov 2024 12:19:45 +0000
+
 cinnamon-menus (6.2.0) wilma; urgency=medium
 
   * packaging: Forbid compilation if the symbols file is outdated
