@@ -8,11 +8,13 @@ on:
   workflow_dispatch:
     inputs:
       days-before-stale:
-        description: 'Days of inactivity before marking stale'
+        description: 'Days of inactivity before marking stale (4y, 3y, 2y, 1y, 180d, 90d)'
         required: false
         default: '730'
         type: choice
         options:
+          - '1460'
+          - '1095'
           - '730'
           - '365'
           - '180'
