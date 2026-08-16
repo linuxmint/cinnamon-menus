@@ -48,6 +48,7 @@ Depends: libcinnamon-menu-3-0 (= ${binary:Version}),
          libglib2.0-dev (>= 2.30.0),
          ${gir:Depends},
          ${misc:Depends}
+Provides: ${gir:Provides}
 Description: Cinnamon implementation of the freedesktop menu specification
  The package contains an implementation of the draft
  "Desktop Menu Specification" from freedesktop.org:
