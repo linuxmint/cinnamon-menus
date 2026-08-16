@@ -6,9 +6,8 @@ Homepage: https://github.com/linuxmint/cinnamon-menus
 Build-Depends: debhelper-compat (= 13),
                dh-sequence-gir,
                gir1.2-gio-2.0-dev,
-               gobject-introspection (>= 1.58.3-2),
+               gobject-introspection (>= 1.80),
                gtk-doc-tools (>= 1.4),
-               libgirepository1.0-dev (>= 1.58.3-2),
                libglib2.0-dev (>= 2.30.0),
                meson
 Standards-Version: 4.5.0
