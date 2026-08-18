@@ -991,7 +991,23 @@ entry_directory_foreach_recursive (EntryDirectory            *ed,
 						   relative_path->str,
                entry);
 
-          ret = func (ed, entry, file_id, set, user_data);
+          /* The desktop file id is built out of the file's relative path, so a
+           * name that is not valid UTF-8 ends up handed to every consumer of
+           * the tree; introspection bindings refuse to convert it and throw. */
+          if (g_utf8_validate (file_id, -1, NULL))
+            {
+              ret = func (ed, entry, file_id, set, user_data);
+            }
+          else
+            {
+              char *display_path;
+
+              display_path = g_filename_display_name (desktop_entry_get_path (entry));
+              g_warning ("Ignoring \"%s\": its name is not valid UTF-8", display_path);
+              g_free (display_path);
+
+              ret = TRUE;
+            }
 
           g_free (file_id);
 
