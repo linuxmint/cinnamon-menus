@@ -61,7 +61,9 @@ Section: introspection
 Priority: optional
 Architecture: any
 Multi-Arch: same
-Depends: ${gir:Depends}, ${misc:Depends}
+Depends: libcinnamon-menu-3-0 (= ${binary:Version}),
+         ${gir:Depends},
+         ${misc:Depends}
 Description: GObject introspection data for the Cinnamon menu library
  This package contains introspection data for Cinnamon menu, an
  implementation of the desktop menu specification from freedesktop.org.
