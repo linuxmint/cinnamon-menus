@@ -14,6 +14,7 @@ Standards-Version: 4.5.0
 
 Package: libcinnamon-menu-3-0
 Architecture: any
+Multi-Arch: same
 Section: libs
 Priority: optional
 Depends: ${misc:Depends}, ${shlibs:Depends}
@@ -40,6 +41,7 @@ Description: Cinnamon implementation of the freedesktop menu specification
 
 Package: libcinnamon-menu-3-dev
 Architecture: any
+Multi-Arch: same
 Section: libdevel
 Priority: optional
 Depends: gir1.2-cmenu-3.0 (= ${binary:Version}),
@@ -58,6 +60,7 @@ Package: gir1.2-cmenu-3.0
 Section: introspection
 Priority: optional
 Architecture: any
+Multi-Arch: same
 Depends: ${gir:Depends}, ${misc:Depends}
 Description: GObject introspection data for the Cinnamon menu library
  This package contains introspection data for Cinnamon menu, an
