@@ -10,7 +10,7 @@ Build-Depends: debhelper-compat (= 13),
                gtk-doc-tools (>= 1.4),
                libglib2.0-dev (>= 2.30.0),
                meson
-Standards-Version: 4.5.0
+Standards-Version: 4.7.0
 
 Package: libcinnamon-menu-3-0
 Architecture: any
