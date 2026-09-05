@@ -1,3 +1,11 @@
+cinnamon-menus (6.7.1) alfa; urgency=medium
+
+  [ Fabio Fantoni ]
+  * entry-directories: skip entries whose desktop file id is not valid UTF-8 (#85)
+  * debian: fix and improve the packaging (#87)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sat, 05 Sep 2026 15:11:41 +0100
+
 cinnamon-menus (6.7.0) unstable; urgency=medium
 
   [ Michael Webster ]
